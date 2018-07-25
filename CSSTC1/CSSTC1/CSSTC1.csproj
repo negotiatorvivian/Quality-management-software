@@ -113,8 +113,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstantVariables\ContentFlags.cs" />
     <Compile Include="ConstantVariables\FilePaths.cs" />
+    <Compile Include="ConstantVariables\InsertionPos.cs" />
     <Compile Include="ConstantVariables\NamingRules.cs" />
+    <Compile Include="FileProcessors\FileReader1.cs" />
+    <Compile Include="FileProcessors\FileWriters1.cs" />
+    <Compile Include="FileProcessors\models\FileList.cs" />
+    <Compile Include="FileProcessors\models\ProjectInfo.cs" />
+    <Compile Include="FileProcessors\models\TableCell.cs" />
     <Compile Include="InputProcessors\BasicInfoProcessor.cs" />
     <Compile Include="Pages\BasicInfo.cs">
       <SubType>Form</SubType>
@@ -122,6 +129,9 @@
     <Compile Include="Pages\BasicInfo.Designer.cs">
       <DependentUpon>BasicInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Pages\Ribbon1.resx">
+      <DependentUpon>Ribbon1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ThisDocument.resx">
       <DependentUpon>ThisDocument.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +140,12 @@
     </EmbeddedResource>
     <None Include="CSSTC1_TemporaryKey.pfx" />
     <None Include="CSSTC模板.dotx" />
+    <Compile Include="Pages\Ribbon1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pages\Ribbon1.Designer.cs">
+      <DependentUpon>Ribbon1.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThisDocument.cs">
       <DependentUpon>CSSTC模板.dotx</DependentUpon>
     </Compile>
@@ -160,7 +176,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" />
   <ProjectExtensions>

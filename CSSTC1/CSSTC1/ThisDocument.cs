@@ -35,7 +35,7 @@ namespace CSSTC1
         private void InternalStartup()
         {
             this.basic_info.Show();
-            //this.Startup += new System.EventHandler(this.ThisDocument_Startup);
+            this.Startup += new System.EventHandler(this.ThisDocument_Startup);
             this.Shutdown += new System.EventHandler(this.ThisDocument_Shutdown);
 
         }

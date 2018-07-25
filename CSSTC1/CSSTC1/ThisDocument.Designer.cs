@@ -139,51 +139,7 @@ namespace CSSTC1 {
         
         internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl28;
         
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl29;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl30;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl31;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl32;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl33;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl34;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl35;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl36;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl37;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl38;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl39;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl40;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl41;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl42;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl43;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl44;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl45;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl46;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl47;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl48;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl49;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl50;
-        
-        internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl51;
+        internal Microsoft.Office.Tools.Word.PlainTextContentControl PzControl0;
         
         internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl52;
         
@@ -244,6 +200,50 @@ namespace CSSTC1 {
         internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl80;
         
         internal Microsoft.Office.Tools.Word.PlainTextContentControl plainTextContentControl81;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 文档审查;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 静态分析;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 功能测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 性能测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 强度测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 接口测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 可靠性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 边界测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 安全性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 人机交互界面测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 代码走查;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 容量测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 余量测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 安装性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 恢复性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 敏感性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 互操作性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 兼容性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 标准符合性测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 数据处理测试;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 内存使用缺陷;
+        
+        internal Microsoft.Office.Tools.Word.Bookmark 逻辑测试;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         private global::System.Object missing = global::System.Type.Missing;
@@ -408,29 +408,7 @@ namespace CSSTC1 {
             this.plainTextContentControl26.BeginInit();
             this.plainTextContentControl27.BeginInit();
             this.plainTextContentControl28.BeginInit();
-            this.plainTextContentControl29.BeginInit();
-            this.plainTextContentControl30.BeginInit();
-            this.plainTextContentControl31.BeginInit();
-            this.plainTextContentControl32.BeginInit();
-            this.plainTextContentControl33.BeginInit();
-            this.plainTextContentControl34.BeginInit();
-            this.plainTextContentControl35.BeginInit();
-            this.plainTextContentControl36.BeginInit();
-            this.plainTextContentControl37.BeginInit();
-            this.plainTextContentControl38.BeginInit();
-            this.plainTextContentControl39.BeginInit();
-            this.plainTextContentControl40.BeginInit();
-            this.plainTextContentControl41.BeginInit();
-            this.plainTextContentControl42.BeginInit();
-            this.plainTextContentControl43.BeginInit();
-            this.plainTextContentControl44.BeginInit();
-            this.plainTextContentControl45.BeginInit();
-            this.plainTextContentControl46.BeginInit();
-            this.plainTextContentControl47.BeginInit();
-            this.plainTextContentControl48.BeginInit();
-            this.plainTextContentControl49.BeginInit();
-            this.plainTextContentControl50.BeginInit();
-            this.plainTextContentControl51.BeginInit();
+            this.PzControl0.BeginInit();
             this.plainTextContentControl52.BeginInit();
             this.plainTextContentControl53.BeginInit();
             this.plainTextContentControl54.BeginInit();
@@ -461,6 +439,28 @@ namespace CSSTC1 {
             this.plainTextContentControl79.BeginInit();
             this.plainTextContentControl80.BeginInit();
             this.plainTextContentControl81.BeginInit();
+            this.文档审查.BeginInit();
+            this.静态分析.BeginInit();
+            this.功能测试.BeginInit();
+            this.性能测试.BeginInit();
+            this.强度测试.BeginInit();
+            this.接口测试.BeginInit();
+            this.可靠性测试.BeginInit();
+            this.边界测试.BeginInit();
+            this.安全性测试.BeginInit();
+            this.人机交互界面测试.BeginInit();
+            this.代码走查.BeginInit();
+            this.容量测试.BeginInit();
+            this.余量测试.BeginInit();
+            this.安装性测试.BeginInit();
+            this.恢复性测试.BeginInit();
+            this.敏感性测试.BeginInit();
+            this.互操作性测试.BeginInit();
+            this.兼容性测试.BeginInit();
+            this.标准符合性测试.BeginInit();
+            this.数据处理测试.BeginInit();
+            this.内存使用缺陷.BeginInit();
+            this.逻辑测试.BeginInit();
         }
         
         /// 
@@ -468,6 +468,28 @@ namespace CSSTC1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         private void EndInitialization() {
+            this.逻辑测试.EndInit();
+            this.内存使用缺陷.EndInit();
+            this.数据处理测试.EndInit();
+            this.标准符合性测试.EndInit();
+            this.兼容性测试.EndInit();
+            this.互操作性测试.EndInit();
+            this.敏感性测试.EndInit();
+            this.恢复性测试.EndInit();
+            this.安装性测试.EndInit();
+            this.余量测试.EndInit();
+            this.容量测试.EndInit();
+            this.代码走查.EndInit();
+            this.人机交互界面测试.EndInit();
+            this.安全性测试.EndInit();
+            this.边界测试.EndInit();
+            this.可靠性测试.EndInit();
+            this.接口测试.EndInit();
+            this.强度测试.EndInit();
+            this.性能测试.EndInit();
+            this.功能测试.EndInit();
+            this.静态分析.EndInit();
+            this.文档审查.EndInit();
             this.plainTextContentControl81.EndInit();
             this.plainTextContentControl80.EndInit();
             this.plainTextContentControl79.EndInit();
@@ -498,29 +520,7 @@ namespace CSSTC1 {
             this.plainTextContentControl54.EndInit();
             this.plainTextContentControl53.EndInit();
             this.plainTextContentControl52.EndInit();
-            this.plainTextContentControl51.EndInit();
-            this.plainTextContentControl50.EndInit();
-            this.plainTextContentControl49.EndInit();
-            this.plainTextContentControl48.EndInit();
-            this.plainTextContentControl47.EndInit();
-            this.plainTextContentControl46.EndInit();
-            this.plainTextContentControl45.EndInit();
-            this.plainTextContentControl44.EndInit();
-            this.plainTextContentControl43.EndInit();
-            this.plainTextContentControl42.EndInit();
-            this.plainTextContentControl41.EndInit();
-            this.plainTextContentControl40.EndInit();
-            this.plainTextContentControl39.EndInit();
-            this.plainTextContentControl38.EndInit();
-            this.plainTextContentControl37.EndInit();
-            this.plainTextContentControl36.EndInit();
-            this.plainTextContentControl35.EndInit();
-            this.plainTextContentControl34.EndInit();
-            this.plainTextContentControl33.EndInit();
-            this.plainTextContentControl32.EndInit();
-            this.plainTextContentControl31.EndInit();
-            this.plainTextContentControl30.EndInit();
-            this.plainTextContentControl29.EndInit();
+            this.PzControl0.EndInit();
             this.plainTextContentControl28.EndInit();
             this.plainTextContentControl27.EndInit();
             this.plainTextContentControl26.EndInit();
@@ -651,29 +651,7 @@ namespace CSSTC1 {
             this.plainTextContentControl26 = Globals.Factory.CreatePlainTextContentControl(null, null, "8492335", "plainTextContentControl26", this);
             this.plainTextContentControl27 = Globals.Factory.CreatePlainTextContentControl(null, null, "959607605", "plainTextContentControl27", this);
             this.plainTextContentControl28 = Globals.Factory.CreatePlainTextContentControl(null, null, "3680828327", "plainTextContentControl28", this);
-            this.plainTextContentControl29 = Globals.Factory.CreatePlainTextContentControl(null, null, "4024964752", "plainTextContentControl29", this);
-            this.plainTextContentControl30 = Globals.Factory.CreatePlainTextContentControl(null, null, "1392768860", "plainTextContentControl30", this);
-            this.plainTextContentControl31 = Globals.Factory.CreatePlainTextContentControl(null, null, "632214996", "plainTextContentControl31", this);
-            this.plainTextContentControl32 = Globals.Factory.CreatePlainTextContentControl(null, null, "2770256761", "plainTextContentControl32", this);
-            this.plainTextContentControl33 = Globals.Factory.CreatePlainTextContentControl(null, null, "2208374930", "plainTextContentControl33", this);
-            this.plainTextContentControl34 = Globals.Factory.CreatePlainTextContentControl(null, null, "2499453784", "plainTextContentControl34", this);
-            this.plainTextContentControl35 = Globals.Factory.CreatePlainTextContentControl(null, null, "3487414347", "plainTextContentControl35", this);
-            this.plainTextContentControl36 = Globals.Factory.CreatePlainTextContentControl(null, null, "671770648", "plainTextContentControl36", this);
-            this.plainTextContentControl37 = Globals.Factory.CreatePlainTextContentControl(null, null, "724565453", "plainTextContentControl37", this);
-            this.plainTextContentControl38 = Globals.Factory.CreatePlainTextContentControl(null, null, "3899071110", "plainTextContentControl38", this);
-            this.plainTextContentControl39 = Globals.Factory.CreatePlainTextContentControl(null, null, "82569541", "plainTextContentControl39", this);
-            this.plainTextContentControl40 = Globals.Factory.CreatePlainTextContentControl(null, null, "2823377693", "plainTextContentControl40", this);
-            this.plainTextContentControl41 = Globals.Factory.CreatePlainTextContentControl(null, null, "1988973209", "plainTextContentControl41", this);
-            this.plainTextContentControl42 = Globals.Factory.CreatePlainTextContentControl(null, null, "226821536", "plainTextContentControl42", this);
-            this.plainTextContentControl43 = Globals.Factory.CreatePlainTextContentControl(null, null, "2284450002", "plainTextContentControl43", this);
-            this.plainTextContentControl44 = Globals.Factory.CreatePlainTextContentControl(null, null, "2902778046", "plainTextContentControl44", this);
-            this.plainTextContentControl45 = Globals.Factory.CreatePlainTextContentControl(null, null, "1328093838", "plainTextContentControl45", this);
-            this.plainTextContentControl46 = Globals.Factory.CreatePlainTextContentControl(null, null, "603464095", "plainTextContentControl46", this);
-            this.plainTextContentControl47 = Globals.Factory.CreatePlainTextContentControl(null, null, "1966381376", "plainTextContentControl47", this);
-            this.plainTextContentControl48 = Globals.Factory.CreatePlainTextContentControl(null, null, "2876023943", "plainTextContentControl48", this);
-            this.plainTextContentControl49 = Globals.Factory.CreatePlainTextContentControl(null, null, "1390772031", "plainTextContentControl49", this);
-            this.plainTextContentControl50 = Globals.Factory.CreatePlainTextContentControl(null, null, "721942744", "plainTextContentControl50", this);
-            this.plainTextContentControl51 = Globals.Factory.CreatePlainTextContentControl(null, null, "3989341018", "plainTextContentControl51", this);
+            this.PzControl0 = Globals.Factory.CreatePlainTextContentControl(null, null, "4024964752", "PzControl0", this);
             this.plainTextContentControl52 = Globals.Factory.CreatePlainTextContentControl(null, null, "3587868203", "plainTextContentControl52", this);
             this.plainTextContentControl53 = Globals.Factory.CreatePlainTextContentControl(null, null, "3038537754", "plainTextContentControl53", this);
             this.plainTextContentControl54 = Globals.Factory.CreatePlainTextContentControl(null, null, "1563675853", "plainTextContentControl54", this);
@@ -704,6 +682,28 @@ namespace CSSTC1 {
             this.plainTextContentControl79 = Globals.Factory.CreatePlainTextContentControl(null, null, "3556952283", "plainTextContentControl79", this);
             this.plainTextContentControl80 = Globals.Factory.CreatePlainTextContentControl(null, null, "238214948", "plainTextContentControl80", this);
             this.plainTextContentControl81 = Globals.Factory.CreatePlainTextContentControl(null, null, "3248448644", "plainTextContentControl81", this);
+            this.文档审查 = Globals.Factory.CreateBookmark(null, null, "文档审查", "文档审查", this);
+            this.静态分析 = Globals.Factory.CreateBookmark(null, null, "静态分析", "静态分析", this);
+            this.功能测试 = Globals.Factory.CreateBookmark(null, null, "功能测试", "功能测试", this);
+            this.性能测试 = Globals.Factory.CreateBookmark(null, null, "性能测试", "性能测试", this);
+            this.强度测试 = Globals.Factory.CreateBookmark(null, null, "强度测试", "强度测试", this);
+            this.接口测试 = Globals.Factory.CreateBookmark(null, null, "接口测试", "接口测试", this);
+            this.可靠性测试 = Globals.Factory.CreateBookmark(null, null, "可靠性测试", "可靠性测试", this);
+            this.边界测试 = Globals.Factory.CreateBookmark(null, null, "边界测试", "边界测试", this);
+            this.安全性测试 = Globals.Factory.CreateBookmark(null, null, "安全性测试", "安全性测试", this);
+            this.人机交互界面测试 = Globals.Factory.CreateBookmark(null, null, "人机交互界面测试", "人机交互界面测试", this);
+            this.代码走查 = Globals.Factory.CreateBookmark(null, null, "代码走查", "代码走查", this);
+            this.容量测试 = Globals.Factory.CreateBookmark(null, null, "容量测试", "容量测试", this);
+            this.余量测试 = Globals.Factory.CreateBookmark(null, null, "余量测试", "余量测试", this);
+            this.安装性测试 = Globals.Factory.CreateBookmark(null, null, "安装性测试", "安装性测试", this);
+            this.恢复性测试 = Globals.Factory.CreateBookmark(null, null, "恢复性测试", "恢复性测试", this);
+            this.敏感性测试 = Globals.Factory.CreateBookmark(null, null, "敏感性测试", "敏感性测试", this);
+            this.互操作性测试 = Globals.Factory.CreateBookmark(null, null, "互操作性测试", "互操作性测试", this);
+            this.兼容性测试 = Globals.Factory.CreateBookmark(null, null, "兼容性测试", "兼容性测试", this);
+            this.标准符合性测试 = Globals.Factory.CreateBookmark(null, null, "标准符合性测试", "标准符合性测试", this);
+            this.数据处理测试 = Globals.Factory.CreateBookmark(null, null, "数据处理测试", "数据处理测试", this);
+            this.内存使用缺陷 = Globals.Factory.CreateBookmark(null, null, "内存使用缺陷", "内存使用缺陷", this);
+            this.逻辑测试 = Globals.Factory.CreateBookmark(null, null, "逻辑测试", "逻辑测试", this);
         }
         
         /// 
@@ -957,97 +957,9 @@ namespace CSSTC1 {
             // 
             this.plainTextContentControl28.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
             // 
-            // plainTextContentControl29
+            // PzControl0
             // 
-            this.plainTextContentControl29.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl30
-            // 
-            this.plainTextContentControl30.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl31
-            // 
-            this.plainTextContentControl31.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl32
-            // 
-            this.plainTextContentControl32.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl33
-            // 
-            this.plainTextContentControl33.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl34
-            // 
-            this.plainTextContentControl34.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl35
-            // 
-            this.plainTextContentControl35.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl36
-            // 
-            this.plainTextContentControl36.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl37
-            // 
-            this.plainTextContentControl37.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl38
-            // 
-            this.plainTextContentControl38.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl39
-            // 
-            this.plainTextContentControl39.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl40
-            // 
-            this.plainTextContentControl40.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl41
-            // 
-            this.plainTextContentControl41.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl42
-            // 
-            this.plainTextContentControl42.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl43
-            // 
-            this.plainTextContentControl43.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl44
-            // 
-            this.plainTextContentControl44.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl45
-            // 
-            this.plainTextContentControl45.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl46
-            // 
-            this.plainTextContentControl46.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl47
-            // 
-            this.plainTextContentControl47.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl48
-            // 
-            this.plainTextContentControl48.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl49
-            // 
-            this.plainTextContentControl49.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl50
-            // 
-            this.plainTextContentControl50.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
-            // 
-            // plainTextContentControl51
-            // 
-            this.plainTextContentControl51.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            this.PzControl0.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
             // 
             // plainTextContentControl52
             // 
@@ -1169,6 +1081,94 @@ namespace CSSTC1 {
             // 
             this.plainTextContentControl81.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
             // 
+            // 文档审查
+            // 
+            this.文档审查.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 静态分析
+            // 
+            this.静态分析.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 功能测试
+            // 
+            this.功能测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 性能测试
+            // 
+            this.性能测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 强度测试
+            // 
+            this.强度测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 接口测试
+            // 
+            this.接口测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 可靠性测试
+            // 
+            this.可靠性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 边界测试
+            // 
+            this.边界测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 安全性测试
+            // 
+            this.安全性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 人机交互界面测试
+            // 
+            this.人机交互界面测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 代码走查
+            // 
+            this.代码走查.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 容量测试
+            // 
+            this.容量测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 余量测试
+            // 
+            this.余量测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 安装性测试
+            // 
+            this.安装性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 恢复性测试
+            // 
+            this.恢复性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 敏感性测试
+            // 
+            this.敏感性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 互操作性测试
+            // 
+            this.互操作性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 兼容性测试
+            // 
+            this.兼容性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 标准符合性测试
+            // 
+            this.标准符合性测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 数据处理测试
+            // 
+            this.数据处理测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 内存使用缺陷
+            // 
+            this.内存使用缺陷.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
+            // 逻辑测试
+            // 
+            this.逻辑测试.DefaultDataSourceUpdateMode = System.Windows.Forms.DataSourceUpdateMode.Never;
+            // 
             // ThisDocument
             // 
         }
@@ -1185,6 +1185,28 @@ namespace CSSTC1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Tools.Office.ProgrammingModel.dll", "10.0.0.0")]
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
         protected override void OnShutdown() {
+            this.逻辑测试.Dispose();
+            this.内存使用缺陷.Dispose();
+            this.数据处理测试.Dispose();
+            this.标准符合性测试.Dispose();
+            this.兼容性测试.Dispose();
+            this.互操作性测试.Dispose();
+            this.敏感性测试.Dispose();
+            this.恢复性测试.Dispose();
+            this.安装性测试.Dispose();
+            this.余量测试.Dispose();
+            this.容量测试.Dispose();
+            this.代码走查.Dispose();
+            this.人机交互界面测试.Dispose();
+            this.安全性测试.Dispose();
+            this.边界测试.Dispose();
+            this.可靠性测试.Dispose();
+            this.接口测试.Dispose();
+            this.强度测试.Dispose();
+            this.性能测试.Dispose();
+            this.功能测试.Dispose();
+            this.静态分析.Dispose();
+            this.文档审查.Dispose();
             this.plainTextContentControl81.Dispose();
             this.plainTextContentControl80.Dispose();
             this.plainTextContentControl79.Dispose();
@@ -1215,29 +1237,7 @@ namespace CSSTC1 {
             this.plainTextContentControl54.Dispose();
             this.plainTextContentControl53.Dispose();
             this.plainTextContentControl52.Dispose();
-            this.plainTextContentControl51.Dispose();
-            this.plainTextContentControl50.Dispose();
-            this.plainTextContentControl49.Dispose();
-            this.plainTextContentControl48.Dispose();
-            this.plainTextContentControl47.Dispose();
-            this.plainTextContentControl46.Dispose();
-            this.plainTextContentControl45.Dispose();
-            this.plainTextContentControl44.Dispose();
-            this.plainTextContentControl43.Dispose();
-            this.plainTextContentControl42.Dispose();
-            this.plainTextContentControl41.Dispose();
-            this.plainTextContentControl40.Dispose();
-            this.plainTextContentControl39.Dispose();
-            this.plainTextContentControl38.Dispose();
-            this.plainTextContentControl37.Dispose();
-            this.plainTextContentControl36.Dispose();
-            this.plainTextContentControl35.Dispose();
-            this.plainTextContentControl34.Dispose();
-            this.plainTextContentControl33.Dispose();
-            this.plainTextContentControl32.Dispose();
-            this.plainTextContentControl31.Dispose();
-            this.plainTextContentControl30.Dispose();
-            this.plainTextContentControl29.Dispose();
+            this.PzControl0.Dispose();
             this.plainTextContentControl28.Dispose();
             this.plainTextContentControl27.Dispose();
             this.plainTextContentControl26.Dispose();

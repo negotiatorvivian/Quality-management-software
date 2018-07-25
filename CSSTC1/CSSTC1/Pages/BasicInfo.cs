@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using CSSTC1.InputProcessors;
+using CSSTC1.ConstantVariables;
 
 namespace CSSTC1.Pages {
     public partial class BasicInfo : Form {
@@ -54,31 +55,6 @@ namespace CSSTC1.Pages {
         public string Csbg_pingshenshijian;
 
         BasicInfoProcessor processor = new BasicInfoProcessor();
-        private void button1_Click(object sender, EventArgs e) {
-            this.Xm_biaoshi = xm_biaoshi.Text;
-            this.Xm_mingcheng = xm_mingcheng.Text;
-            this.Pzx_ceshi = pzx_ceshi.Checked;
-            this.Xt_ceshi = xt_ceshi.Checked;
-            this.Pz_guanliyuan = pz_guanliyuan.Text;
-            this.Bcj_guanliyuan = bcj_guanliyuan.Text;
-            this.Zlbz_renyuan = zlbz_renyuan.Text;
-            this.Cs_jianduyuan = cs_jianduyuan.Text;
-            this.Sb_guanliyuan = sb_guanliyuan.Text;
-            this.Fuzhurren = fuzhurren.Text;
-            this.Cw_fuzhuren = cw_fuzhuren.Text;
-            this.Zhuren = zhuren.Text;
-            this.Wt_xingming = wt_xingming.Text;
-            this.Wt_dianhua = wt_dianhua.Text;
-            this.Wt_danwei = wt_danwei.Text;
-            this.Kf_xingming = kf_xingming.Text;
-            this.Kf_dianhua = kf_dianhua.Text;
-            this.Kf_danwei = kf_danwei.Text;
-            this.Xm_kaishishijian = xm_kaishishijian.Text;
-            this.Xm_jieshushijian = xm_jieshushijian.Text;
-            string[] values = { Xm_biaoshi, Xm_mingcheng, Pz_guanliyuan, Bcj_guanliyuan, Zlbz_renyuan, Cs_jianduyuan,                                     Sb_guanliyuan, Fuzhurren, Cw_fuzhuren, Zhuren, Wt_xingming, Wt_dianhua, Kf_xingming,                                      Kf_danwei, Kf_danwei, Kf_danwei, Xm_kaishishijian, Xm_jieshushijian};
-            string[] bookmarks = { "Xm_biaoshi", "Xm_mingcheng", "Pz_guanliyuan", "Bcj_guanliyuan", "Zlbz_renyuan",                                          "Cs_jianduyuan", "Sb_guanliyuan", "Fuzhurren", "Cw_fuzhuren", "Zhuren", "Wt_xingming",                                    "Wt_dianhua", "Kf_xingming", "Kf_danwei", "Kf_danwei", "Kf_danwei", "Xm_kaishishijian",                                   "Xm_jieshushijian"};
-            processor.fill_basic_info(bookmarks, values);
-            }
 
         private void wd_shenchashijian_ValueChanged(object sender, EventArgs e) {
             this.Wd_shenchashijian = wd_shenchashijian.Text;
@@ -156,6 +132,37 @@ namespace CSSTC1.Pages {
             this.Csbg_pingshenshijian = csbg_pingshenshijian.Text;
         }
 
+        private void button1_Click(object sender, EventArgs e) {
+            button1.Enabled = false;
+            this.Xm_biaoshi = xm_biaoshi.Text;
+            this.Xm_mingcheng = xm_mingcheng.Text;
+            ContentFlags.peizhiceshi = pzx_ceshi.Checked;
+            ContentFlags.xitongceshi = xt_ceshi.Checked;
+            this.Pz_guanliyuan = pz_guanliyuan.Text;
+            this.Bcj_guanliyuan = bcj_guanliyuan.Text;
+            this.Zlbz_renyuan = zlbz_renyuan.Text;
+            this.Cs_jianduyuan = cs_jianduyuan.Text;
+            this.Sb_guanliyuan = sb_guanliyuan.Text;
+            this.Fuzhurren = fuzhurren.Text;
+            this.Cw_fuzhuren = cw_fuzhuren.Text;
+            this.Zhuren = zhuren.Text;
+            this.Wt_xingming = wt_xingming.Text;
+            this.Wt_dianhua = wt_dianhua.Text;
+            this.Wt_danwei = wt_danwei.Text;
+            this.Kf_xingming = kf_xingming.Text;
+            this.Kf_dianhua = kf_dianhua.Text;
+            this.Kf_danwei = kf_danwei.Text;
+            this.Xm_kaishishijian = xm_kaishishijian.Text;
+            this.Xm_jieshushijian = xm_jieshushijian.Text;
+            string[] values = { Xm_biaoshi, Xm_mingcheng, Pz_guanliyuan, Bcj_guanliyuan, Zlbz_renyuan, Cs_jianduyuan,                                     Sb_guanliyuan, Fuzhurren, Cw_fuzhuren, Zhuren, Wt_xingming, Wt_dianhua, Kf_xingming,                                      Kf_danwei, Kf_danwei, Kf_danwei, Xm_kaishishijian, Xm_jieshushijian };
+            string[] bookmarks = { "Xm_biaoshi", "Xm_mingcheng", "Pz_guanliyuan", "Bcj_guanliyuan", "Zlbz_renyuan",                                         "Cs_jianduyuan", "Sb_guanliyuan", "Fuzhurren", "Cw_fuzhuren", "Zhuren", "Wt_xingming",                                    "Wt_dianhua", "Kf_xingming", "Kf_danwei", "Kf_danwei", "Kf_danwei", "Xm_kaishishijian",                                   "Xm_jieshushijian" };
+            processor.fill_basic_info(bookmarks, values);
+            Globals.ThisDocument.basic_info.Hide();
+            MessageBox.Show("正在写入，请稍候...");
+        }
 
+        private void button2_Click(object sender, EventArgs e) {
+            Globals.ThisDocument.basic_info.Hide();
+        }
         }
     }
