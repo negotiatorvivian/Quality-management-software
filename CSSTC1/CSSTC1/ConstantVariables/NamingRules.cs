@@ -8,6 +8,7 @@ namespace CSSTC1.ConstantVariables {
     class NamingRules {
         public static string Xm_biaoshi = "项目标识";
         public static string Xm_mingcheng = "项目名称";
+        public static string Rj_mingcheng = "软件名称";
         public static string Pz_guanliyuan = "配置管理员";
         public static string Bcj_guanliyuan = "被测件管理员";
         public static string Zlbz_renyuan = "质量保证人员";
@@ -25,12 +26,21 @@ namespace CSSTC1.ConstantVariables {
         public static string Xm_kaishishijian = "项目开始时间";
         public static string Xm_jieshushijian = "项目结束时间";
 
+        public static string[] Csyj_files = {"研制任务书", "技术方案", "技术规格书", "软件研制任务书",
+                                                "软件需求规格说明"};
+
         public static string ignore_file = "中国船舶工业集团公司软件质量与可靠性测评中心";
         public static string company = "中国船舶工业集团公司软件质量与可靠性测评中心";
 
-        public static string[] PzControls = { "文档审查", "静态分析", "功能测试", "性能测试", "强度测试", "接口测试", "可靠性测                      试", "边界测试", "安全性测试", "人机交互界面测试", "代码走查", "容量测试", "余量测试", "安装性测试", "敏感                       性测试", "恢复性测试", "互操作性测试", "兼容性测试", "标准符合性测试", "数据处理测试", "内存使用缺陷", "逻                      辑测试" };
+        public static string[] PzControls = { "文档审查", "静态分析", "功能测试", "性能测试", "强度测试", "接口测试", 
+                                                "可靠性测试", "边界测试", "安全性测试", "人机交互界面测试", "代码走查",
+                                                "容量测试", "余量测试", "安装性测试", "敏感性测试", "恢复性测试", 
+                                                "互操作性测试", "兼容性测试", "标准符合性测试", "数据处理测试", 
+                                                "内存使用缺陷", "逻辑测试" };
 
-        public static string[] Xmjj_paras = { "xt_mingcheng", "rj_mingcheng", "xt_banben", "yx_huanjing", "kf_huanjing", "bc_yuyan", "dm_guimo", "dengji", "yz_danwei", "beizhu" };
+        public static string[] Xmjj_paras = { "xt_mingcheng", "rj_mingcheng", "xt_banben", "yx_huanjing", 
+                                                "kf_huanjing", "bc_yuyan", "dm_guimo", "dengji", "yz_danwei", 
+                                                "beizhu" };
 
         public static string[] kfhj_params = { "Visual", "Tornado" };
         public static string[] kfhj_bookmarks = { "VC", "tornado", "BC", "编程环境其他" };

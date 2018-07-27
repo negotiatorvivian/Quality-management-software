@@ -15,7 +15,7 @@ namespace CSSTC1.InputProcessors {
         //public Microsoft.Office.Interop.Word._Application wordApp = new Microsoft.Office.Interop.Word.Application();
         public FileWriters1 file_writer = new FileWriters1();
 
-        public void fill_basic_info(string[] bookmarks, string[] values){
+        public void fill_basic_info(string[] bookmarks, string[] values, bool[] test_accordings) {
             DocumentBuilder doc_builder = new DocumentBuilder(this.doc);
             int index = 0;
             BindingFlags flag = BindingFlags.Static | BindingFlags.Public;
@@ -29,26 +29,37 @@ namespace CSSTC1.InputProcessors {
                 }
                 index = index + 1;
             }
+            string year = values[values.Length - 2].Substring(0, 4);
+            doc_builder.MoveToBookmark("年份");
+            doc_builder.Write(year);
             NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
             foreach(Aspose.Words.Fields.FieldStart field_ref in nodes){
                 Aspose.Words.Fields.Field field = field_ref.GetField();
                 field.Update();
-                doc.Save(FilePaths.save_root_file);
+                //doc.Save(FilePaths.save_root_file);
             }
             doc.Save(FilePaths.save_root_file);
-            //doc.Range.UpdateFields();
-            //doc.Save(FilePaths.save_cache_file, SaveFormat.Docx);
-            //this.update_document(FilePaths.save_cache_file);
+            fill_test_accordings(test_accordings);
         }
 
-        //public void update_document(string path) {
-        //    this.wordApp.Visible = false;
-        //    this.wordApp.Documents.Open(path);
-        //    object oTemplate = path;
-        //    Microsoft.Office.Interop.Word._Document oDoc = this.wordApp.Documents.Add(ref oTemplate, ref                                                                    FilePaths.oMissing, ref FilePaths.oMissing, ref FilePaths.oMissing);
-        //    oDoc.Fields.Update();
-        //    oDoc.SaveAs2(FilePaths.save_root_file);
-        //    this.wordApp.Quit();
-        //}
+        public void fill_test_accordings(bool[] test_accordings) {
+            string ceshiyiju = "";
+            for(int i = 0; i < test_accordings.Length; i++){
+                bool flag = test_accordings[i];
+                if(flag){
+                    ceshiyiju += NamingRules.Csyj_files[i] + '、';
+                }
+            }
+            if(ceshiyiju.Length > 0){
+                ceshiyiju = ceshiyiju.Substring(0, ceshiyiju.Length - 1);
+                Document doc = new Document(FilePaths.save_root_file);
+                DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            
+                if(doc_builder.MoveToBookmark("测试依据")){
+                    doc_builder.Write(ceshiyiju);
+                }
+                doc.Save(FilePaths.save_root_file);
+            }
+       }
         }
     }

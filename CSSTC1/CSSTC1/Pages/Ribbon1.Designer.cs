@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon1));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.splitButton2 = this.Factory.CreateRibbonSplitButton();
+            this.button5 = this.Factory.CreateRibbonButton();
+            this.button6 = this.Factory.CreateRibbonButton();
+            this.button7 = this.Factory.CreateRibbonButton();
+            this.button8 = this.Factory.CreateRibbonButton();
             this.splitButton1 = this.Factory.CreateRibbonSplitButton();
             this.button1 = this.Factory.CreateRibbonButton();
             this.button2 = this.Factory.CreateRibbonButton();
@@ -49,9 +54,47 @@
             // 
             // group1
             // 
+            this.group1.Items.Add(this.splitButton2);
             this.group1.Items.Add(this.splitButton1);
             this.group1.Label = "上传文件";
             this.group1.Name = "group1";
+            // 
+            // splitButton2
+            // 
+            this.splitButton2.ButtonEnabled = false;
+            this.splitButton2.Image = ((System.Drawing.Image)(resources.GetObject("splitButton2.Image")));
+            this.splitButton2.Items.Add(this.button5);
+            this.splitButton2.Items.Add(this.button6);
+            this.splitButton2.Items.Add(this.button7);
+            this.splitButton2.Items.Add(this.button8);
+            this.splitButton2.Label = "填写基本信息";
+            this.splitButton2.Name = "splitButton2";
+            this.splitButton2.SuperTip = "选择要读取的文件，请按照格式排列";
+            // 
+            // button5
+            // 
+            this.button5.Label = "项目立项阶段";
+            this.button5.Name = "button5";
+            this.button5.ShowImage = true;
+            this.button5.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Label = "第二部分";
+            this.button6.Name = "button6";
+            this.button6.ShowImage = true;
+            // 
+            // button7
+            // 
+            this.button7.Label = "第三部分";
+            this.button7.Name = "button7";
+            this.button7.ShowImage = true;
+            // 
+            // button8
+            // 
+            this.button8.Label = "第四部分";
+            this.button8.Name = "button8";
+            this.button8.ShowImage = true;
             // 
             // splitButton1
             // 
@@ -119,6 +162,11 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitButton2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
     }
 
 }

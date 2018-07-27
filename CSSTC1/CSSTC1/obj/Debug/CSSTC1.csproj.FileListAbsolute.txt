@@ -42,7 +42,6 @@ D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-softwar
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\bin\Debug\Microsoft.Office.Tools.Word.v4.0.Utilities.dll
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\bin\Debug\Microsoft.Office.Tools.Word.v4.0.Utilities.xml
-D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.csprojResolveAssemblyReference.cache
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.Pages.Ribbon1.resources
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.ThisDocument.resources
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.Pages.BasicInfo.resources
@@ -50,3 +49,4 @@ D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-softwar
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.csproj.GenerateResource.Cache
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.dll
 D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.pdb
+D:\users\vivian\documents\visual studio 2010\Projects\Quality-management-software-feature-firstpart_20180726\CSSTC1\CSSTC1\obj\Debug\CSSTC1.Pages.ProjectEstabInfo.resources

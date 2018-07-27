@@ -7,6 +7,7 @@ using Aspose.Words.Tables;
 using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors;
 using CSSTC1.FileProcessors.models;
+using System.Windows.Forms;
 
 namespace CSSTC1.FileProcessors {
     public class FileReader1 {
@@ -14,8 +15,8 @@ namespace CSSTC1.FileProcessors {
         private FileWriters1 file_writer = new FileWriters1();
         public void read_charts(string filepath) {
             Document doc = new Document(filepath);
-            NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
 
+            NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
             if(ContentFlags.peizhiceshi) {
                 this.read_pzx_chart(count, doc);
                 count += 1;
@@ -30,15 +31,20 @@ namespace CSSTC1.FileProcessors {
             else {
                 this.read_xt_chart(ContentFlags.missing, doc);
             }
+            file_writer.write_rwtzd_chart();
 
             this.read_csry_chart(count, doc);
             count += 1;
-            this.read_xmjs_chart(count, doc);
+            bool res = this.read_xmjs_chart(count, doc);
             count += 1;
-
-            int[] index = { count, count + 1, count + 2 };
-            this.read_wdqd_chart(index, doc);
+            if(res){
+                for(int i = 0; i < ContentFlags.lingqucishu; i++){
+                    int[] index = { count + i * 3, count + i * 3 + 1, count + i * 3 + 2 };
+                    this.read_wdqd_chart(index, doc, i);
+                }
+            }
             file_writer.conference_signing();
+            MessageBox.Show("写入文档完成");
         }
 
         public void read_pzx_chart(int index, Document doc) {
@@ -60,8 +66,6 @@ namespace CSSTC1.FileProcessors {
                 file_writer.write_pzx_chart(cellTexts);
             }
         }
-
-
 
         public void read_xt_chart(int index, Document doc) {
             List<string> cellTexts = new List<string>();
@@ -101,7 +105,7 @@ namespace CSSTC1.FileProcessors {
             file_writer.write_csry_chart(names);
         }
 
-        public void read_xmjs_chart(int index, Document doc) {
+        public bool read_xmjs_chart(int index, Document doc) {
             List<ProjectInfo> pro_infos = new List<ProjectInfo>();
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             Node node = doc.GetChild(NodeType.Table, index, true);
@@ -131,10 +135,13 @@ namespace CSSTC1.FileProcessors {
                 }
 
             }
-            file_writer.write_xmjj_chart(pro_infos);
+            bool res = file_writer.write_xmjj_chart(pro_infos);
+            return res;
         }
 
-        public void read_wdqd_chart(int[] index, Document doc) {
+
+        //文档清单表格
+        public void read_wdqd_chart(int[] index, Document doc, int time) {
             List<FileList> file_lists = new List<FileList>();
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             foreach(int i in index) {
@@ -162,7 +169,7 @@ namespace CSSTC1.FileProcessors {
                     file_lists.Add(file);
                 }
             }
-            file_writer.write_wdqd_chart(file_lists);
+            file_writer.write_wdqd_chart(file_lists, time);
 
         }
 

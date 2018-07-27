@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace CSSTC1.FileProcessors {
     class FileWriters1 {
-
+        //配置项测试
         public void write_pzx_chart(List<string> cells) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
@@ -35,6 +35,7 @@ namespace CSSTC1.FileProcessors {
                 foreach(Paragraph para in nodes) {
                     string temp = para.Range.Text.Substring(0, para.Range.Text.Length - 1);
                     if(cells.Contains(temp)) {
+                        ContentFlags.test_types.Add(temp);
                         this.input_confirm(doc, rootdoc_builder, temp, "配置");
                     }
                     else
@@ -44,6 +45,7 @@ namespace CSSTC1.FileProcessors {
             doc.Save(FilePaths.save_root_file);
         }
 
+        //系统测试
         public void write_xt_chart(List<string> cells) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
@@ -69,6 +71,7 @@ namespace CSSTC1.FileProcessors {
                     string temp = para.Range.Text.Substring(0, para.Range.Text.Length - 1);
                     if(cells.Contains(temp)) {
                         this.input_confirm(doc, rootdoc_builder, temp, "系统");
+                        ContentFlags.test_types.Add(temp);
                     }
                     else
                         this.input_negative(doc, rootdoc_builder, temp, "系统");
@@ -100,6 +103,39 @@ namespace CSSTC1.FileProcessors {
 
         }
 
+        //任务通知单
+        public void write_rwtzd_chart(){
+            Document doc = new Document(FilePaths.save_root_file);
+            DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            bool pzx_flag = ContentFlags.peizhiceshi;
+            bool xt_flag = ContentFlags.xitongceshi;
+            string insert_str = "";
+            if(pzx_flag && xt_flag){
+                 insert_str = "配置项测试和系统测试";
+            }
+            else if(pzx_flag == true && xt_flag == false)
+                insert_str = "配置项测试";
+            else if(pzx_flag == false && xt_flag == true)
+                insert_str = "系统测试";
+            else
+                insert_str = "";
+            if(doc_builder.MoveToBookmark("测试级别"))
+                doc_builder.Write(insert_str);
+            string types_str = "";
+            int test_num = 0;
+            foreach(string t in ContentFlags.test_types){
+                types_str += t + '、';
+                test_num += 1;
+            }
+            types_str = types_str.Substring(0, types_str.Length - 1);
+            if(doc_builder.MoveToBookmark("测试类型"))
+                doc_builder.Write(types_str);
+            if(doc_builder.MoveToBookmark("测试类型个数"))
+                doc_builder.Write(test_num.ToString());
+            doc.Save(FilePaths.save_root_file);
+        }
+
+        //测试人员
         public void write_csry_chart(String names) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
@@ -108,7 +144,8 @@ namespace CSSTC1.FileProcessors {
             doc.Save(FilePaths.save_root_file);
         }
 
-        public void write_xmjj_chart(List<ProjectInfo> pro_infos) {
+        //项目简介（总）
+        public bool write_xmjj_chart(List<ProjectInfo> pro_infos) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
             //rootdoc_builder.MoveToCell(InsertionPos.jbqk_table, InsertionPos.jbqk_bcyy_row, InsertionPos.jbqk_cell, 0);
@@ -152,11 +189,12 @@ namespace CSSTC1.FileProcessors {
                 }
             }
             doc.Save(FilePaths.save_root_file);
-
+            return true;
 
         }
 
-        public void write_wdqd_chart(List<FileList> files) {
+        //文档清单
+        public void write_wdqd_chart(List<FileList> files, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
             Bookmark mark = doc.Range.Bookmarks["项目标识"];
@@ -189,7 +227,8 @@ namespace CSSTC1.FileProcessors {
                     string type_count = "(0" + file_counter[type_list[i]].ToString() + ')';
                     if(file_counter[type_list[i]] > 9)
                         type_count = "(" + file_counter[type_list[i]].ToString() + ')';
-                    string text = title + "-C" + type_list[i] + type_count + '-' + file.wd_banben + '-' + xm_nianfen;
+                    string text = title + "-C" + type_list[i] + type_count + '-' + 
+                        file.wd_banben + '-' + xm_nianfen;
                     content_list.Add(text);
 
                 }
@@ -198,20 +237,23 @@ namespace CSSTC1.FileProcessors {
                     content_list.Add(text);
                 }
             }
-            this.write_bcjdbd_chart(files, content_list);
-            this.write_bcjqd_chart(files, content_list);
-            this.write_bcjlqqd_chart(files, content_list);
+            this.write_bcjdbd_chart(files, content_list, time);
+            this.write_bcjqd_chart(files, content_list, time);
+            this.write_bcjlqqd_chart(files, content_list, time);
             this.write_lxwtf_chart(files);
-            this.write_rksqd_chart(files, content_list);
+            this.write_rksqd_chart(files, content_list, time);
         }
 
-        public void write_bcjdbd_chart(List<FileList> files, List<string> content_list) {
+        //被测件调拨单
+        public void write_bcjdbd_chart(List<FileList> files, List<string> content_list, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjdbd_table, true);
+            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjdbd_table + 5 * time, true);
             Table table = (Table)node;
 
-            rootdoc_builder.MoveToSection(2);
+            int cur_section = 2 * time + 1;
+            rootdoc_builder.MoveToSection(cur_section);
+            //rootdoc_builder.MoveToSection(7);
             rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, 1, InsertionPos.bcjdbd_pois_row, 0);
             rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
             int row_index = 1;
@@ -219,22 +261,23 @@ namespace CSSTC1.FileProcessors {
 
                 if(row_index < files.Count) {
                     if(row_index > 1) {
-                        rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, 1, InsertionPos.bcjdbd_pois_row, 0);
+                        rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, 1, 
+                            InsertionPos.bcjdbd_pois_row, 0);
                         rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
                         rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, row_index,
                             InsertionPos.bcjdbd_pois_row, 0);
                         rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
-
-
                     }
                     var row = table.Rows[row_index].Clone(true);
                     table.Rows.Insert(1 + row_index, row);
                 }
 
-                rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, row_index, InsertionPos.bcjdbd_res_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, row_index, 
+                    InsertionPos.bcjdbd_res_row, 0);
                 Cell cell = table.Rows[row_index].Cells[1];
                 rootdoc_builder.Write(content_list[row_index - 1]);
-                rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, row_index, InsertionPos.bcjdbd_name_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, row_index, 
+                    InsertionPos.bcjdbd_name_row, 0);
                 rootdoc_builder.Write(file.wd_mingcheng);
 
                 row_index += 1;
@@ -244,13 +287,16 @@ namespace CSSTC1.FileProcessors {
             doc.Save(FilePaths.save_root_file);
         }
 
-        public void write_bcjqd_chart(List<FileList> files, List<string> content_list) {
+        //被测件清单
+        public void write_bcjqd_chart(List<FileList> files, List<string> content_list, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjqd_table, true);
+            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjqd_table + 5 * time, true);
             Table table = (Table)node;
 
-            rootdoc_builder.MoveToSection(3);
+            //rootdoc_builder.MoveToSection(3);
+            int cur_section = 2 * time + 1;
+            rootdoc_builder.MoveToSection(cur_section);
             int row_index = 1;
             int merge_cell = 1;
             foreach(FileList file in files) {
@@ -284,13 +330,16 @@ namespace CSSTC1.FileProcessors {
             doc.Save(FilePaths.save_root_file);
         }
 
-        public void write_bcjlqqd_chart(List<FileList> files, List<string> content_list) {
+        //被测件领取清单
+        public void write_bcjlqqd_chart(List<FileList> files, List<string> content_list, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjlqqd_table, true);
+            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjlqqd_table + 5 * time, true);
             Table table = (Table)node;
 
-            rootdoc_builder.MoveToSection(4);
+            //rootdoc_builder.MoveToSection(4);
+            int cur_section = 2 * time + 1;
+            rootdoc_builder.MoveToSection(cur_section);
             int row_index = 2;
 
             foreach(FileList file in files) {
@@ -298,9 +347,11 @@ namespace CSSTC1.FileProcessors {
                     var row = table.Rows[row_index].Clone(true);
                     table.Rows.Insert(row_index, row);
                 }
-                rootdoc_builder.MoveToCell(InsertionPos.bcjlqqd_sec_table, row_index, InsertionPos.bcjlqqd_name_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjlqqd_sec_table, row_index, 
+                    InsertionPos.bcjlqqd_name_row, 0);
                 rootdoc_builder.Write(file.wd_mingcheng);
-                rootdoc_builder.MoveToCell(InsertionPos.bcjlqqd_sec_table, row_index, InsertionPos.bcjlqqd_res_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjlqqd_sec_table, row_index, 
+                    InsertionPos.bcjlqqd_res_row, 0);
                 rootdoc_builder.Write(content_list[row_index - 2]);
 
                 //rootdoc_builder.Write(file.wd_laiyuan);
@@ -309,6 +360,64 @@ namespace CSSTC1.FileProcessors {
             doc.Save(FilePaths.save_root_file);
         }
 
+        //入库申请单
+        public void write_rksqd_chart(List<FileList> files, List<string> content_list, int time) {
+            Document doc = new Document(FilePaths.save_root_file);
+            DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
+            Node node = doc.GetChild(NodeType.Table, InsertionPos.rksqd_table + 5 * time, true);
+            Table table = (Table)node;
+
+            //rootdoc_builder.MoveToSection(5);
+            int cur_section = 2 * time + 1;
+            rootdoc_builder.MoveToSection(cur_section);
+            int row_index = 5;
+
+            foreach(FileList file in files) {
+                if(row_index < files.Count + 4) {
+                    var row = table.Rows[row_index].Clone(true);
+                    table.Rows.Insert(row_index + 1, row);
+                }
+                rootdoc_builder.MoveToCell(InsertionPos.rksqd_sec_table, row_index, 
+                    InsertionPos.rksqd_name_row, 0);
+                rootdoc_builder.Write(file.wd_mingcheng);
+                rootdoc_builder.MoveToCell(InsertionPos.rksqd_sec_table, row_index, 
+                    InsertionPos.rksqd_iden_row, 0);
+                rootdoc_builder.Write(content_list[row_index - 5]);
+
+                //rootdoc_builder.Write(file.wd_laiyuan);
+                row_index += 1;
+                doc.Save(FilePaths.save_root_file);
+
+            }
+            doc.Save(FilePaths.save_root_file);
+        }
+
+        //联系委托方
+        public void write_lxwtf_chart(List<FileList> files) {
+            Document doc = new Document(FilePaths.save_root_file);
+            DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            string lxwtf_filenames = "";
+            string pzztbgd_filesnames = "";
+            foreach(FileList file in files) {
+                lxwtf_filenames += file.wd_mingcheng + '、';
+                pzztbgd_filesnames += file.wd_mingcheng + '\n';
+            }
+            lxwtf_filenames = lxwtf_filenames.Substring(0, lxwtf_filenames.Length - 1);
+            Bookmark bookmark = doc.Range.Bookmarks["被测件文档清单"];
+            if(bookmark != null) {
+                doc_builder.MoveToBookmark("被测件文档清单");
+                doc_builder.Write(lxwtf_filenames);
+            }
+            Bookmark bookmark1 = doc.Range.Bookmarks["被测件清单1"];
+            if(bookmark1 != null) {
+                doc_builder.MoveToBookmark("被测件清单1");
+                doc_builder.Write(pzztbgd_filesnames);
+            }
+            doc.Save(FilePaths.save_root_file);
+
+        }
+
+        //会议签到表
         public void conference_signing() {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
@@ -334,12 +443,15 @@ namespace CSSTC1.FileProcessors {
                         var row = table.Rows[row_index].Clone(true);
                         table.Rows.Insert(1 + row_index, row);
                     }
-                    doc_builder.MoveToSection(1);
-                    doc_builder.MoveToCell(InsertionPos.hyqdb_sec_table, row_index, InsertionPos.hyqdb_name_row, 0);
+                    //doc_builder.MoveToSection(1);
+                    doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index, 
+                        InsertionPos.hyqdb_name_row, 0);
                     doc_builder.Write(name);
-                    doc_builder.MoveToCell(InsertionPos.hyqdb_sec_table, row_index, InsertionPos.hyqdb_company_row, 0);
+                    doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index,
+                        InsertionPos.hyqdb_company_row, 0);
                     doc_builder.Write(NamingRules.company);
-                    doc_builder.MoveToCell(InsertionPos.hyqdb_sec_table, row_index, InsertionPos.hyqdb_job_row, 0);
+                    doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index, 
+                        InsertionPos.hyqdb_job_row, 0);
                     doc_builder.Write(NamingRules.get_job_title(name));
 
                     //rootdoc_builder.Write(file.wd_laiyuan);
@@ -348,57 +460,6 @@ namespace CSSTC1.FileProcessors {
             }
             doc.Save(FilePaths.save_root_file);
 
-        }
-
-        public void write_lxwtf_chart(List<FileList> files) {
-            Document doc = new Document(FilePaths.save_root_file);
-            DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            string lxwtf_filenames = "";
-            string pzztbgd_filesnames = "";
-            foreach(FileList file in files) {
-                lxwtf_filenames += file.wd_mingcheng + '、';
-                pzztbgd_filesnames += file.wd_mingcheng + '\n';
-            }
-            lxwtf_filenames = lxwtf_filenames.Substring(0, lxwtf_filenames.Length - 1);
-            Bookmark bookmark = doc.Range.Bookmarks["被测件文档清单"];
-            if(bookmark != null) {
-                doc_builder.MoveToBookmark("被测件文档清单");
-                doc_builder.Write(lxwtf_filenames);
-            }
-            Bookmark bookmark1 = doc.Range.Bookmarks["被测件清单1"];
-            if(bookmark1 != null) {
-                doc_builder.MoveToBookmark("被测件清单1");
-                doc_builder.Write(pzztbgd_filesnames);
-            }
-            doc.Save(FilePaths.save_root_file);
-
-        }
-
-        public void write_rksqd_chart(List<FileList> files, List<string> content_list) {
-            Document doc = new Document(FilePaths.save_root_file);
-            DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, InsertionPos.rksqd_table, true);
-            Table table = (Table)node;
-
-            rootdoc_builder.MoveToSection(5);
-            int row_index = 5;
-
-            foreach(FileList file in files) {
-                if(row_index < files.Count + 4) {
-                    var row = table.Rows[row_index].Clone(true);
-                    table.Rows.Insert(row_index + 1, row);
-                }
-                rootdoc_builder.MoveToCell(InsertionPos.rksqd_sec_table, row_index, InsertionPos.rksqd_name_row, 0);
-                rootdoc_builder.Write(file.wd_mingcheng);
-                rootdoc_builder.MoveToCell(InsertionPos.rksqd_sec_table, row_index, InsertionPos.rksqd_iden_row, 0);
-                rootdoc_builder.Write(content_list[row_index - 5]);
-
-                //rootdoc_builder.Write(file.wd_laiyuan);
-                row_index += 1;
-                doc.Save(FilePaths.save_root_file);
-
-            }
-            doc.Save(FilePaths.save_root_file);
         }
 
 

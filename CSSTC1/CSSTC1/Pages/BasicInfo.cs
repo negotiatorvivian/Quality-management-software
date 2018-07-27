@@ -16,6 +16,7 @@ namespace CSSTC1.Pages {
             }
         public string Xm_biaoshi;
         public string Xm_mingcheng;
+        public string Rj_mingcheng;
         public bool Pzx_ceshi;
         public bool Xt_ceshi;
         public string Pz_guanliyuan;
@@ -53,6 +54,11 @@ namespace CSSTC1.Pages {
         public string Xtcs_shoulunshijian;
         public string Xtcs_huiguishijian;
         public string Csbg_pingshenshijian;
+        public bool Yz_renwushu;
+        public bool Js_fangan;
+        public bool Js_guigeshu;
+        public bool Rjyz_renwushu;
+        public bool Rjxq_guigeshuoming;
 
         BasicInfoProcessor processor = new BasicInfoProcessor();
 
@@ -136,6 +142,7 @@ namespace CSSTC1.Pages {
             button1.Enabled = false;
             this.Xm_biaoshi = xm_biaoshi.Text;
             this.Xm_mingcheng = xm_mingcheng.Text;
+            this.Rj_mingcheng = rj_mingcheng.Text;
             ContentFlags.peizhiceshi = pzx_ceshi.Checked;
             ContentFlags.xitongceshi = xt_ceshi.Checked;
             this.Pz_guanliyuan = pz_guanliyuan.Text;
@@ -154,9 +161,22 @@ namespace CSSTC1.Pages {
             this.Kf_danwei = kf_danwei.Text;
             this.Xm_kaishishijian = xm_kaishishijian.Text;
             this.Xm_jieshushijian = xm_jieshushijian.Text;
-            string[] values = { Xm_biaoshi, Xm_mingcheng, Pz_guanliyuan, Bcj_guanliyuan, Zlbz_renyuan, Cs_jianduyuan,                                     Sb_guanliyuan, Fuzhurren, Cw_fuzhuren, Zhuren, Wt_xingming, Wt_dianhua, Kf_xingming,                                      Kf_danwei, Kf_danwei, Kf_danwei, Xm_kaishishijian, Xm_jieshushijian };
-            string[] bookmarks = { "Xm_biaoshi", "Xm_mingcheng", "Pz_guanliyuan", "Bcj_guanliyuan", "Zlbz_renyuan",                                         "Cs_jianduyuan", "Sb_guanliyuan", "Fuzhurren", "Cw_fuzhuren", "Zhuren", "Wt_xingming",                                    "Wt_dianhua", "Kf_xingming", "Kf_danwei", "Kf_danwei", "Kf_danwei", "Xm_kaishishijian",                                   "Xm_jieshushijian" };
-            processor.fill_basic_info(bookmarks, values);
+            this.Yz_renwushu = checkBox1.Checked;
+            this.Js_fangan = checkBox2.Checked;
+            this.Js_guigeshu = checkBox3.Checked;
+            this.Rjyz_renwushu = checkBox4.Checked;
+            this.Rjxq_guigeshuoming = checkBox5.Checked;
+            string[] values = { Xm_biaoshi, Xm_mingcheng, Rj_mingcheng, Pz_guanliyuan, Bcj_guanliyuan, 
+                                  Zlbz_renyuan, Cs_jianduyuan, Sb_guanliyuan, Fuzhurren, Cw_fuzhuren, Zhuren,
+                                  Wt_xingming, Wt_dianhua, Wt_danwei, Kf_xingming, Kf_dianhua, Kf_danwei, 
+                                  Xm_kaishishijian, Xm_jieshushijian};
+            string[] bookmarks = { "Xm_biaoshi", "Xm_mingcheng", "Rj_mingcheng", "Pz_guanliyuan", "Bcj_guanliyuan",
+                                     "Zlbz_renyuan","Cs_jianduyuan", "Sb_guanliyuan", "Fuzhurren", "Cw_fuzhuren", 
+                                     "Zhuren", "Wt_xingming","Wt_dianhua", "Wt_danwei", "Kf_xingming", 
+                                     "Kf_dianhua", "Kf_danwei", "Xm_kaishishijian", "Xm_jieshushijian" };
+            bool[] test_accordings = { this.Yz_renwushu, this.Js_fangan, this.Js_guigeshu, this.Rjyz_renwushu, 
+                                         this.Rjxq_guigeshuoming };
+            processor.fill_basic_info(bookmarks, values, test_accordings);
             Globals.ThisDocument.basic_info.Hide();
             //MessageBox.Show("正在写入，请稍候...");
         }
@@ -164,5 +184,7 @@ namespace CSSTC1.Pages {
         private void button2_Click(object sender, EventArgs e) {
             Globals.ThisDocument.basic_info.Hide();
         }
+
+        
         }
     }

@@ -113,12 +113,22 @@
             this.label19 = new System.Windows.Forms.Label();
             this.xm_kaishishijian = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.rj_mingcheng = new System.Windows.Forms.TextBox();
             this.cs_jianduyuan = new System.Windows.Forms.TextBox();
             this.xt_ceshi = new System.Windows.Forms.CheckBox();
             this.pzx_ceshi = new System.Windows.Forms.CheckBox();
             this.label37 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label40 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -133,6 +143,8 @@
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -170,7 +182,7 @@
             // 
             // xm_fuzzeren
             // 
-            this.xm_fuzzeren.Location = new System.Drawing.Point(112, 109);
+            this.xm_fuzzeren.Location = new System.Drawing.Point(112, 141);
             this.xm_fuzzeren.Name = "xm_fuzzeren";
             this.xm_fuzzeren.Size = new System.Drawing.Size(153, 23);
             this.xm_fuzzeren.TabIndex = 6;
@@ -179,7 +191,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 112);
+            this.label3.Location = new System.Drawing.Point(9, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 14);
             this.label3.TabIndex = 5;
@@ -187,7 +199,7 @@
             // 
             // pz_guanliyuan
             // 
-            this.pz_guanliyuan.Location = new System.Drawing.Point(112, 141);
+            this.pz_guanliyuan.Location = new System.Drawing.Point(112, 173);
             this.pz_guanliyuan.Name = "pz_guanliyuan";
             this.pz_guanliyuan.Size = new System.Drawing.Size(153, 23);
             this.pz_guanliyuan.TabIndex = 8;
@@ -196,7 +208,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 144);
+            this.label4.Location = new System.Drawing.Point(9, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 14);
             this.label4.TabIndex = 7;
@@ -204,7 +216,7 @@
             // 
             // bcj_guanliyuan
             // 
-            this.bcj_guanliyuan.Location = new System.Drawing.Point(112, 174);
+            this.bcj_guanliyuan.Location = new System.Drawing.Point(112, 206);
             this.bcj_guanliyuan.Name = "bcj_guanliyuan";
             this.bcj_guanliyuan.Size = new System.Drawing.Size(153, 23);
             this.bcj_guanliyuan.TabIndex = 10;
@@ -213,7 +225,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 177);
+            this.label5.Location = new System.Drawing.Point(9, 209);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 14);
             this.label5.TabIndex = 9;
@@ -221,7 +233,7 @@
             // 
             // zlbz_renyuan
             // 
-            this.zlbz_renyuan.Location = new System.Drawing.Point(112, 208);
+            this.zlbz_renyuan.Location = new System.Drawing.Point(112, 240);
             this.zlbz_renyuan.Name = "zlbz_renyuan";
             this.zlbz_renyuan.Size = new System.Drawing.Size(153, 23);
             this.zlbz_renyuan.TabIndex = 12;
@@ -230,7 +242,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 211);
+            this.label6.Location = new System.Drawing.Point(9, 243);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 14);
             this.label6.TabIndex = 11;
@@ -239,7 +251,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 243);
+            this.label7.Location = new System.Drawing.Point(9, 275);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 14);
             this.label7.TabIndex = 13;
@@ -248,7 +260,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 274);
+            this.label8.Location = new System.Drawing.Point(9, 306);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 14);
             this.label8.TabIndex = 14;
@@ -256,7 +268,7 @@
             // 
             // sb_guanliyuan
             // 
-            this.sb_guanliyuan.Location = new System.Drawing.Point(112, 271);
+            this.sb_guanliyuan.Location = new System.Drawing.Point(112, 303);
             this.sb_guanliyuan.Name = "sb_guanliyuan";
             this.sb_guanliyuan.Size = new System.Drawing.Size(153, 23);
             this.sb_guanliyuan.TabIndex = 15;
@@ -264,7 +276,7 @@
             // 
             // fuzhurren
             // 
-            this.fuzhurren.Location = new System.Drawing.Point(112, 303);
+            this.fuzhurren.Location = new System.Drawing.Point(112, 335);
             this.fuzhurren.Name = "fuzhurren";
             this.fuzhurren.Size = new System.Drawing.Size(153, 23);
             this.fuzhurren.TabIndex = 17;
@@ -273,7 +285,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 312);
+            this.label9.Location = new System.Drawing.Point(11, 336);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 14);
             this.label9.TabIndex = 16;
@@ -281,7 +293,7 @@
             // 
             // cw_fuzhuren
             // 
-            this.cw_fuzhuren.Location = new System.Drawing.Point(112, 335);
+            this.cw_fuzhuren.Location = new System.Drawing.Point(112, 367);
             this.cw_fuzhuren.Name = "cw_fuzhuren";
             this.cw_fuzhuren.Size = new System.Drawing.Size(153, 23);
             this.cw_fuzhuren.TabIndex = 19;
@@ -290,7 +302,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 338);
+            this.label10.Location = new System.Drawing.Point(9, 370);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 14);
             this.label10.TabIndex = 18;
@@ -298,7 +310,7 @@
             // 
             // zhuren
             // 
-            this.zhuren.Location = new System.Drawing.Point(118, 374);
+            this.zhuren.Location = new System.Drawing.Point(118, 406);
             this.zhuren.Name = "zhuren";
             this.zhuren.Size = new System.Drawing.Size(153, 23);
             this.zhuren.TabIndex = 21;
@@ -307,7 +319,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 371);
+            this.label11.Location = new System.Drawing.Point(9, 403);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 14);
             this.label11.TabIndex = 20;
@@ -440,6 +452,8 @@
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label20.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label20.Location = new System.Drawing.Point(12, 23);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(119, 14);
@@ -454,11 +468,11 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.xm_kaishishijian);
-            this.groupBox3.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.groupBox3.Font = new System.Drawing.Font("隶书", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox3.Location = new System.Drawing.Point(293, 136);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(555, 271);
+            this.groupBox3.Size = new System.Drawing.Size(555, 232);
             this.groupBox3.TabIndex = 40;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "时间";
@@ -474,11 +488,12 @@
             this.tab_control1.Controls.Add(this.tabPage7);
             this.tab_control1.Controls.Add(this.tabPage8);
             this.tab_control1.Controls.Add(this.tabPage9);
+            this.tab_control1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tab_control1.HotTrack = true;
             this.tab_control1.Location = new System.Drawing.Point(6, 80);
             this.tab_control1.Name = "tab_control1";
             this.tab_control1.SelectedIndex = 0;
-            this.tab_control1.Size = new System.Drawing.Size(543, 185);
+            this.tab_control1.Size = new System.Drawing.Size(543, 148);
             this.tab_control1.TabIndex = 41;
             // 
             // tabPage1
@@ -489,10 +504,11 @@
             this.tabPage1.Controls.Add(this.wd_querenshijian);
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.wd_shenchashijian);
+            this.tabPage1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(535, 158);
+            this.tabPage1.Size = new System.Drawing.Size(535, 121);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "文档审查时间";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -500,7 +516,8 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(157, 101);
+            this.label23.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label23.Location = new System.Drawing.Point(157, 94);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(63, 14);
             this.label23.TabIndex = 49;
@@ -510,17 +527,18 @@
             // 
             this.wd_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.wd_huiguishijian.Location = new System.Drawing.Point(236, 98);
+            this.wd_huiguishijian.Location = new System.Drawing.Point(236, 91);
             this.wd_huiguishijian.Name = "wd_huiguishijian";
             this.wd_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.wd_huiguishijian.TabIndex = 48;
-            this.wd_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.wd_huiguishijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
             this.wd_huiguishijian.ValueChanged += new System.EventHandler(this.wd_huiguishijian_ValueChanged);
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(157, 61);
+            this.label22.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label22.Location = new System.Drawing.Point(157, 54);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(63, 14);
             this.label22.TabIndex = 47;
@@ -530,17 +548,18 @@
             // 
             this.wd_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.wd_querenshijian.Location = new System.Drawing.Point(236, 58);
+            this.wd_querenshijian.Location = new System.Drawing.Point(236, 51);
             this.wd_querenshijian.Name = "wd_querenshijian";
             this.wd_querenshijian.Size = new System.Drawing.Size(141, 22);
             this.wd_querenshijian.TabIndex = 46;
-            this.wd_querenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.wd_querenshijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
             this.wd_querenshijian.ValueChanged += new System.EventHandler(this.wd_querenshijian_ValueChanged);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(157, 22);
+            this.label21.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label21.Location = new System.Drawing.Point(157, 15);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(63, 14);
             this.label21.TabIndex = 45;
@@ -550,11 +569,11 @@
             // 
             this.wd_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.wd_shenchashijian.Location = new System.Drawing.Point(236, 19);
+            this.wd_shenchashijian.Location = new System.Drawing.Point(236, 12);
             this.wd_shenchashijian.Name = "wd_shenchashijian";
             this.wd_shenchashijian.Size = new System.Drawing.Size(141, 22);
             this.wd_shenchashijian.TabIndex = 44;
-            this.wd_shenchashijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.wd_shenchashijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
             this.wd_shenchashijian.ValueChanged += new System.EventHandler(this.wd_shenchashijian_ValueChanged);
             // 
             // tabPage2
@@ -568,7 +587,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(535, 158);
+            this.tabPage2.Size = new System.Drawing.Size(535, 121);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "静态分析时间";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -576,7 +595,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(157, 101);
+            this.label24.Location = new System.Drawing.Point(157, 94);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(63, 14);
             this.label24.TabIndex = 55;
@@ -586,7 +605,7 @@
             // 
             this.jt_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.jt_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jt_huiguishijian.Location = new System.Drawing.Point(236, 98);
+            this.jt_huiguishijian.Location = new System.Drawing.Point(236, 91);
             this.jt_huiguishijian.Name = "jt_huiguishijian";
             this.jt_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.jt_huiguishijian.TabIndex = 54;
@@ -596,7 +615,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(157, 61);
+            this.label25.Location = new System.Drawing.Point(157, 54);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(63, 14);
             this.label25.TabIndex = 53;
@@ -606,7 +625,7 @@
             // 
             this.jtfx_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.jtfx_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jtfx_querenshijian.Location = new System.Drawing.Point(236, 58);
+            this.jtfx_querenshijian.Location = new System.Drawing.Point(236, 51);
             this.jtfx_querenshijian.Name = "jtfx_querenshijian";
             this.jtfx_querenshijian.Size = new System.Drawing.Size(141, 22);
             this.jtfx_querenshijian.TabIndex = 52;
@@ -616,7 +635,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(157, 22);
+            this.label26.Location = new System.Drawing.Point(157, 15);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(63, 14);
             this.label26.TabIndex = 51;
@@ -626,7 +645,7 @@
             // 
             this.jtfx_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.jtfx_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jtfx_shenchashijian.Location = new System.Drawing.Point(236, 19);
+            this.jtfx_shenchashijian.Location = new System.Drawing.Point(236, 12);
             this.jtfx_shenchashijian.Name = "jtfx_shenchashijian";
             this.jtfx_shenchashijian.Size = new System.Drawing.Size(141, 22);
             this.jtfx_shenchashijian.TabIndex = 50;
@@ -643,7 +662,7 @@
             this.tabPage3.Controls.Add(this.dmsc_shijian);
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(535, 158);
+            this.tabPage3.Size = new System.Drawing.Size(535, 121);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "代码审查时间";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -651,7 +670,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(157, 101);
+            this.label27.Location = new System.Drawing.Point(157, 93);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(63, 14);
             this.label27.TabIndex = 61;
@@ -661,7 +680,7 @@
             // 
             this.dmhg_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmhg_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmhg_huiguishijian.Location = new System.Drawing.Point(236, 98);
+            this.dmhg_huiguishijian.Location = new System.Drawing.Point(236, 90);
             this.dmhg_huiguishijian.Name = "dmhg_huiguishijian";
             this.dmhg_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.dmhg_huiguishijian.TabIndex = 60;
@@ -671,7 +690,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(157, 61);
+            this.label28.Location = new System.Drawing.Point(157, 53);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(63, 14);
             this.label28.TabIndex = 59;
@@ -681,7 +700,7 @@
             // 
             this.dmsc_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmsc_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmsc_querenshijian.Location = new System.Drawing.Point(236, 58);
+            this.dmsc_querenshijian.Location = new System.Drawing.Point(236, 50);
             this.dmsc_querenshijian.Name = "dmsc_querenshijian";
             this.dmsc_querenshijian.Size = new System.Drawing.Size(141, 22);
             this.dmsc_querenshijian.TabIndex = 58;
@@ -691,7 +710,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(157, 22);
+            this.label29.Location = new System.Drawing.Point(157, 14);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(63, 14);
             this.label29.TabIndex = 57;
@@ -701,7 +720,7 @@
             // 
             this.dmsc_shijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmsc_shijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmsc_shijian.Location = new System.Drawing.Point(236, 19);
+            this.dmsc_shijian.Location = new System.Drawing.Point(236, 11);
             this.dmsc_shijian.Name = "dmsc_shijian";
             this.dmsc_shijian.Size = new System.Drawing.Size(141, 22);
             this.dmsc_shijian.TabIndex = 56;
@@ -718,7 +737,7 @@
             this.tabPage4.Controls.Add(this.dmzc_shenchashijian);
             this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(535, 158);
+            this.tabPage4.Size = new System.Drawing.Size(535, 121);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "代码走查时间";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -726,7 +745,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(157, 101);
+            this.label30.Location = new System.Drawing.Point(157, 93);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(63, 14);
             this.label30.TabIndex = 61;
@@ -736,7 +755,7 @@
             // 
             this.dmzc_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmzc_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmzc_huiguishijian.Location = new System.Drawing.Point(236, 98);
+            this.dmzc_huiguishijian.Location = new System.Drawing.Point(236, 90);
             this.dmzc_huiguishijian.Name = "dmzc_huiguishijian";
             this.dmzc_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.dmzc_huiguishijian.TabIndex = 60;
@@ -746,7 +765,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(157, 61);
+            this.label31.Location = new System.Drawing.Point(157, 53);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(63, 14);
             this.label31.TabIndex = 59;
@@ -756,7 +775,7 @@
             // 
             this.dmzc_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmzc_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmzc_querenshijian.Location = new System.Drawing.Point(236, 58);
+            this.dmzc_querenshijian.Location = new System.Drawing.Point(236, 50);
             this.dmzc_querenshijian.Name = "dmzc_querenshijian";
             this.dmzc_querenshijian.Size = new System.Drawing.Size(141, 22);
             this.dmzc_querenshijian.TabIndex = 58;
@@ -766,7 +785,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(157, 22);
+            this.label32.Location = new System.Drawing.Point(157, 14);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(63, 14);
             this.label32.TabIndex = 57;
@@ -776,7 +795,7 @@
             // 
             this.dmzc_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmzc_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmzc_shenchashijian.Location = new System.Drawing.Point(236, 19);
+            this.dmzc_shenchashijian.Location = new System.Drawing.Point(236, 11);
             this.dmzc_shenchashijian.Name = "dmzc_shenchashijian";
             this.dmzc_shenchashijian.Size = new System.Drawing.Size(141, 22);
             this.dmzc_shenchashijian.TabIndex = 56;
@@ -789,7 +808,7 @@
             this.tabPage5.Controls.Add(this.csdg_pingshenshijian);
             this.tabPage5.Location = new System.Drawing.Point(4, 23);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(535, 158);
+            this.tabPage5.Size = new System.Drawing.Size(535, 121);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "测试大纲评审时间";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -797,7 +816,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(133, 61);
+            this.label33.Location = new System.Drawing.Point(133, 54);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(119, 14);
             this.label33.TabIndex = 59;
@@ -807,7 +826,7 @@
             // 
             this.csdg_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.csdg_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.csdg_pingshenshijian.Location = new System.Drawing.Point(260, 58);
+            this.csdg_pingshenshijian.Location = new System.Drawing.Point(260, 51);
             this.csdg_pingshenshijian.Name = "csdg_pingshenshijian";
             this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csdg_pingshenshijian.TabIndex = 58;
@@ -822,7 +841,7 @@
             this.tabPage6.Controls.Add(this.dtpz_shoulunshijian);
             this.tabPage6.Location = new System.Drawing.Point(4, 23);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(535, 158);
+            this.tabPage6.Size = new System.Drawing.Size(535, 121);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "动态配置项测试执行时间";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -830,7 +849,7 @@
             // label_48
             // 
             this.label_48.AutoSize = true;
-            this.label_48.Location = new System.Drawing.Point(133, 83);
+            this.label_48.Location = new System.Drawing.Point(133, 74);
             this.label_48.Name = "label_48";
             this.label_48.Size = new System.Drawing.Size(91, 14);
             this.label_48.TabIndex = 61;
@@ -840,7 +859,7 @@
             // 
             this.dtpz_huigui.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dtpz_huigui.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpz_huigui.Location = new System.Drawing.Point(260, 80);
+            this.dtpz_huigui.Location = new System.Drawing.Point(260, 71);
             this.dtpz_huigui.Name = "dtpz_huigui";
             this.dtpz_huigui.Size = new System.Drawing.Size(141, 22);
             this.dtpz_huigui.TabIndex = 60;
@@ -850,7 +869,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(133, 42);
+            this.label47.Location = new System.Drawing.Point(133, 33);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(91, 14);
             this.label47.TabIndex = 57;
@@ -860,7 +879,7 @@
             // 
             this.dtpz_shoulunshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dtpz_shoulunshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpz_shoulunshijian.Location = new System.Drawing.Point(260, 39);
+            this.dtpz_shoulunshijian.Location = new System.Drawing.Point(260, 30);
             this.dtpz_shoulunshijian.Name = "dtpz_shoulunshijian";
             this.dtpz_shoulunshijian.Size = new System.Drawing.Size(141, 22);
             this.dtpz_shoulunshijian.TabIndex = 56;
@@ -873,7 +892,7 @@
             this.tabPage7.Controls.Add(this.ljcs_shijian);
             this.tabPage7.Location = new System.Drawing.Point(4, 23);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(535, 158);
+            this.tabPage7.Size = new System.Drawing.Size(535, 121);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "逻辑测试时间";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -881,7 +900,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(146, 61);
+            this.label36.Location = new System.Drawing.Point(146, 54);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(91, 14);
             this.label36.TabIndex = 59;
@@ -891,7 +910,7 @@
             // 
             this.ljcs_shijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ljcs_shijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ljcs_shijian.Location = new System.Drawing.Point(260, 58);
+            this.ljcs_shijian.Location = new System.Drawing.Point(260, 51);
             this.ljcs_shijian.Name = "ljcs_shijian";
             this.ljcs_shijian.Size = new System.Drawing.Size(141, 22);
             this.ljcs_shijian.TabIndex = 58;
@@ -906,7 +925,7 @@
             this.tabPage8.Controls.Add(this.xtcs_shoulunshijian);
             this.tabPage8.Location = new System.Drawing.Point(4, 23);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(535, 158);
+            this.tabPage8.Size = new System.Drawing.Size(535, 121);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "系统测试时间";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -914,7 +933,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(133, 82);
+            this.label34.Location = new System.Drawing.Point(133, 75);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(119, 14);
             this.label34.TabIndex = 65;
@@ -924,7 +943,7 @@
             // 
             this.xtcs_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.xtcs_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.xtcs_huiguishijian.Location = new System.Drawing.Point(260, 79);
+            this.xtcs_huiguishijian.Location = new System.Drawing.Point(260, 72);
             this.xtcs_huiguishijian.Name = "xtcs_huiguishijian";
             this.xtcs_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.xtcs_huiguishijian.TabIndex = 64;
@@ -934,7 +953,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(133, 41);
+            this.label35.Location = new System.Drawing.Point(133, 34);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(119, 14);
             this.label35.TabIndex = 63;
@@ -944,7 +963,7 @@
             // 
             this.xtcs_shoulunshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.xtcs_shoulunshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.xtcs_shoulunshijian.Location = new System.Drawing.Point(260, 38);
+            this.xtcs_shoulunshijian.Location = new System.Drawing.Point(260, 31);
             this.xtcs_shoulunshijian.Name = "xtcs_shoulunshijian";
             this.xtcs_shoulunshijian.Size = new System.Drawing.Size(141, 22);
             this.xtcs_shoulunshijian.TabIndex = 62;
@@ -957,7 +976,7 @@
             this.tabPage9.Controls.Add(this.csbg_pingshenshijian);
             this.tabPage9.Location = new System.Drawing.Point(4, 23);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(535, 158);
+            this.tabPage9.Size = new System.Drawing.Size(535, 121);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "测试报告评审时间";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -965,7 +984,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(133, 61);
+            this.label38.Location = new System.Drawing.Point(133, 53);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(119, 14);
             this.label38.TabIndex = 57;
@@ -975,7 +994,7 @@
             // 
             this.csbg_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.csbg_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.csbg_pingshenshijian.Location = new System.Drawing.Point(260, 58);
+            this.csbg_pingshenshijian.Location = new System.Drawing.Point(260, 50);
             this.csbg_pingshenshijian.Name = "csbg_pingshenshijian";
             this.csbg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csbg_pingshenshijian.TabIndex = 56;
@@ -990,7 +1009,7 @@
             this.xm_jieshushijian.Name = "xm_jieshushijian";
             this.xm_jieshushijian.Size = new System.Drawing.Size(141, 22);
             this.xm_jieshushijian.TabIndex = 41;
-            this.xm_jieshushijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.xm_jieshushijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
             // 
             // label18
             // 
@@ -1021,10 +1040,12 @@
             this.xm_kaishishijian.Name = "xm_kaishishijian";
             this.xm_kaishishijian.Size = new System.Drawing.Size(141, 22);
             this.xm_kaishishijian.TabIndex = 25;
-            this.xm_kaishishijian.Value = new System.DateTime(2018, 7, 23, 20, 58, 14, 0);
+            this.xm_kaishishijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label39);
+            this.panel1.Controls.Add(this.rj_mingcheng);
             this.panel1.Controls.Add(this.cs_jianduyuan);
             this.panel1.Controls.Add(this.xt_ceshi);
             this.panel1.Controls.Add(this.pzx_ceshi);
@@ -1040,18 +1061,35 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.cw_fuzhuren);
             this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 401);
+            this.panel1.Size = new System.Drawing.Size(281, 437);
             this.panel1.TabIndex = 42;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(9, 79);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(63, 14);
+            this.label39.TabIndex = 47;
+            this.label39.Text = "软件名称";
+            // 
+            // rj_mingcheng
+            // 
+            this.rj_mingcheng.Location = new System.Drawing.Point(78, 76);
+            this.rj_mingcheng.Name = "rj_mingcheng";
+            this.rj_mingcheng.Size = new System.Drawing.Size(187, 23);
+            this.rj_mingcheng.TabIndex = 48;
             // 
             // cs_jianduyuan
             // 
-            this.cs_jianduyuan.Location = new System.Drawing.Point(112, 240);
+            this.cs_jianduyuan.Location = new System.Drawing.Point(112, 272);
             this.cs_jianduyuan.Name = "cs_jianduyuan";
             this.cs_jianduyuan.Size = new System.Drawing.Size(153, 23);
             this.cs_jianduyuan.TabIndex = 46;
@@ -1060,7 +1098,7 @@
             // xt_ceshi
             // 
             this.xt_ceshi.AutoSize = true;
-            this.xt_ceshi.Location = new System.Drawing.Point(183, 78);
+            this.xt_ceshi.Location = new System.Drawing.Point(183, 110);
             this.xt_ceshi.Name = "xt_ceshi";
             this.xt_ceshi.Size = new System.Drawing.Size(82, 18);
             this.xt_ceshi.TabIndex = 45;
@@ -1072,7 +1110,7 @@
             this.pzx_ceshi.AutoSize = true;
             this.pzx_ceshi.Checked = true;
             this.pzx_ceshi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pzx_ceshi.Location = new System.Drawing.Point(77, 78);
+            this.pzx_ceshi.Location = new System.Drawing.Point(79, 110);
             this.pzx_ceshi.Name = "pzx_ceshi";
             this.pzx_ceshi.Size = new System.Drawing.Size(96, 18);
             this.pzx_ceshi.TabIndex = 44;
@@ -1082,7 +1120,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(9, 78);
+            this.label37.Location = new System.Drawing.Point(9, 110);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(63, 14);
             this.label37.TabIndex = 43;
@@ -1090,7 +1128,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(734, 413);
+            this.button1.Location = new System.Drawing.Point(742, 463);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 43;
@@ -1100,7 +1138,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(641, 413);
+            this.button2.Location = new System.Drawing.Point(644, 463);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 44;
@@ -1108,11 +1146,106 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(305, 376);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(63, 14);
+            this.label40.TabIndex = 51;
+            this.label40.Text = "测试依据";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.checkBox1);
+            this.flowLayoutPanel1.Controls.Add(this.checkBox2);
+            this.flowLayoutPanel1.Controls.Add(this.checkBox3);
+            this.flowLayoutPanel1.Controls.Add(this.checkBox4);
+            this.flowLayoutPanel1.Controls.Add(this.checkBox5);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 19);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(534, 50);
+            this.flowLayoutPanel1.TabIndex = 52;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox1.Location = new System.Drawing.Point(3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(96, 18);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "研制任务书";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox2.Location = new System.Drawing.Point(105, 3);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(82, 18);
+            this.checkBox2.TabIndex = 1;
+            this.checkBox2.Text = "技术方案";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox3.Location = new System.Drawing.Point(193, 3);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(96, 18);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "技术规格书";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox4.Location = new System.Drawing.Point(295, 3);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(124, 18);
+            this.checkBox4.TabIndex = 3;
+            this.checkBox4.Text = "软件研制任务书";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.checkBox5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox5.Location = new System.Drawing.Point(3, 27);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(138, 18);
+            this.checkBox5.TabIndex = 4;
+            this.checkBox5.Text = "软件需求规格说明";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox4.Font = new System.Drawing.Font("隶书", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox4.Location = new System.Drawing.Point(299, 374);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(549, 79);
+            this.groupBox4.TabIndex = 29;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "测试依据";
+            // 
             // BasicInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 446);
+            this.ClientSize = new System.Drawing.Size(856, 495);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.label40);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
@@ -1128,7 +1261,6 @@
             this.Controls.Add(this.wt_xingming);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.zhuren);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.xm_mingcheng);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.xm_biaoshi);
@@ -1140,7 +1272,6 @@
             this.Name = "BasicInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "项目基本信息";
-            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1168,6 +1299,9 @@
             this.tabPage9.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1271,5 +1405,15 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox rj_mingcheng;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.GroupBox groupBox4;
         }
     }

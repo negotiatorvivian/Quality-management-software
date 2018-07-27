@@ -16,7 +16,8 @@ namespace CSSTC1
     public partial class ThisDocument
     {
         public BasicInfo basic_info = new BasicInfo();
-        public Microsoft.Office.Interop.Word._Application wordApp = null;
+        public ProjectEstabInfo project_estab_info = new ProjectEstabInfo();
+        //public Microsoft.Office.Interop.Word._Application wordApp = null;
 
         private void ThisDocument_Startup(object sender, System.EventArgs e)
         {
