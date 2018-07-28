@@ -12,5 +12,7 @@ namespace CSSTC1.ConstantVariables {
         public static Dictionary<string, int> file_type_counter = new Dictionary<string,int>();
         public static HashSet<string> test_types= new HashSet<string>();
         public static int lingqucishu = 1;
+        public static List<string> lingqushijian = new List<string>();
+        public static string xiangmukaishishijian = "";
     }
 }

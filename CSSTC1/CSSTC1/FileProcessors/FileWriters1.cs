@@ -7,6 +7,7 @@ using Aspose.Words.Tables;
 using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors.models;
 using System.Text.RegularExpressions;
+using CSSTC1.InputProcessors;
 
 namespace CSSTC1.FileProcessors {
     class FileWriters1 {
@@ -148,7 +149,7 @@ namespace CSSTC1.FileProcessors {
         public bool write_xmjj_chart(List<ProjectInfo> pro_infos) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            //rootdoc_builder.MoveToCell(InsertionPos.jbqk_table, InsertionPos.jbqk_bcyy_row, InsertionPos.jbqk_cell, 0);
+           
             var languanges = new HashSet<string>();
             var environments = new HashSet<string>();
             string runtime_env = "";
@@ -240,7 +241,7 @@ namespace CSSTC1.FileProcessors {
             this.write_bcjdbd_chart(files, content_list, time);
             this.write_bcjqd_chart(files, content_list, time);
             this.write_bcjlqqd_chart(files, content_list, time);
-            this.write_lxwtf_chart(files);
+            this.write_lxwtf_chart(files, time);
             this.write_rksqd_chart(files, content_list, time);
         }
 
@@ -299,32 +300,49 @@ namespace CSSTC1.FileProcessors {
             rootdoc_builder.MoveToSection(cur_section);
             int row_index = 1;
             int merge_cell = 1;
+            
             foreach(FileList file in files) {
                 if(row_index < files.Count) {
                     var row = table.Rows[row_index].Clone(true);
                     table.Rows.Insert(1 + row_index, row);
+                    
                 }
-                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, InsertionPos.bcjqd_name_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
+                    InsertionPos.bcjqd_name_row, 0);
                 rootdoc_builder.Write(file.wd_mingcheng);
-                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, InsertionPos.bcjqd_res_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
+                    InsertionPos.bcjqd_res_row, 0);
                 rootdoc_builder.Write(content_list[row_index - 1]);
-                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, InsertionPos.bcjqd_orig_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
+                    InsertionPos.bcjqd_orig_row, 0);
                 Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.bcjqd_orig_row];
                 string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
+                string date = ProjectEstabInfoProcessor.cal_time(ContentFlags.lingqushijian[time], 0);
                 if(temp.Equals(file.wd_laiyuan)) {
+                    //合并来源列
                     rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
                             InsertionPos.bcjqd_orig_row, 0);
                     rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
-                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, InsertionPos.bcjqd_orig_row, 0);
+                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
+                        InsertionPos.bcjqd_orig_row, 0);
+                    rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
+
+                    //合并接收日期列
+                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
+                        InsertionPos.bcjqd_date_row, 0);
+                    rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
+                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index,
+                        InsertionPos.bcjqd_date_row, 0);
                     rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                 }
                 else {
-
                     rootdoc_builder.Write(file.wd_laiyuan);
                     merge_cell = row_index;
-
+                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
+                        InsertionPos.bcjqd_date_row, 0);
+                    rootdoc_builder.Write(date);
                 }
-                //rootdoc_builder.Write(file.wd_laiyuan);
+
                 row_index += 1;
             }
             doc.Save(FilePaths.save_root_file);
@@ -386,14 +404,14 @@ namespace CSSTC1.FileProcessors {
 
                 //rootdoc_builder.Write(file.wd_laiyuan);
                 row_index += 1;
-                doc.Save(FilePaths.save_root_file);
+                //doc.Save(FilePaths.save_root_file);
 
             }
             doc.Save(FilePaths.save_root_file);
         }
 
-        //联系委托方
-        public void write_lxwtf_chart(List<FileList> files) {
+        //联系委托方、配置报告单
+        public void write_lxwtf_chart(List<FileList> files, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             string lxwtf_filenames = "";
@@ -403,14 +421,17 @@ namespace CSSTC1.FileProcessors {
                 pzztbgd_filesnames += file.wd_mingcheng + '\n';
             }
             lxwtf_filenames = lxwtf_filenames.Substring(0, lxwtf_filenames.Length - 1);
+            //第八页填写的内容
             Bookmark bookmark = doc.Range.Bookmarks["被测件文档清单"];
             if(bookmark != null) {
                 doc_builder.MoveToBookmark("被测件文档清单");
                 doc_builder.Write(lxwtf_filenames);
             }
-            Bookmark bookmark1 = doc.Range.Bookmarks["被测件清单1"];
+            //配置状态报告单中的配置状态
+            string temp = "被测件清单" + (time + 1).ToString();
+            Bookmark bookmark1 = doc.Range.Bookmarks[temp];
             if(bookmark1 != null) {
-                doc_builder.MoveToBookmark("被测件清单1");
+                doc_builder.MoveToBookmark(temp);
                 doc_builder.Write(pzztbgd_filesnames);
             }
             doc.Save(FilePaths.save_root_file);
@@ -461,7 +482,6 @@ namespace CSSTC1.FileProcessors {
             doc.Save(FilePaths.save_root_file);
 
         }
-
 
     }
 }

@@ -36,7 +36,6 @@ namespace CSSTC1.InputProcessors {
             foreach(Aspose.Words.Fields.FieldStart field_ref in nodes){
                 Aspose.Words.Fields.Field field = field_ref.GetField();
                 field.Update();
-                //doc.Save(FilePaths.save_root_file);
             }
             doc.Save(FilePaths.save_root_file);
             fill_test_accordings(test_accordings);

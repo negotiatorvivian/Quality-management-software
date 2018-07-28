@@ -36,6 +36,7 @@ namespace CSSTC1.ConstantVariables {
         public static int bcjqd_res_row = 3;
         public static int bcjqd_name_row = 1;
         public static int bcjqd_orig_row = 7;
+        public static int bcjqd_date_row = 8;
 
         public static int bcjlqqd_table = 9;
         public static int bcjlqqd_sec_table = 2;
