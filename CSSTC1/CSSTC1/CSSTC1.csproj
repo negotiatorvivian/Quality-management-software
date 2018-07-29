@@ -114,6 +114,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonUtils\CharHelper.cs" />
+    <Compile Include="CommonUtils\DateHelper.cs" />
+    <Compile Include="CommonUtils\MappingHelper.cs" />
     <Compile Include="ConstantVariables\ContentFlags.cs" />
     <Compile Include="ConstantVariables\FilePaths.cs" />
     <Compile Include="ConstantVariables\InsertionPos.cs" />

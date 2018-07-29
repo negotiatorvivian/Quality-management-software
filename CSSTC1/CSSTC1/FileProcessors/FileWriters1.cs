@@ -8,6 +8,7 @@ using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors.models;
 using System.Text.RegularExpressions;
 using CSSTC1.InputProcessors;
+using CSSTC1.CommonUtils;
 
 namespace CSSTC1.FileProcessors {
     class FileWriters1 {
@@ -20,11 +21,11 @@ namespace CSSTC1.FileProcessors {
             rootdoc_builder.Font.Size = 12.0;
             if(cells.Count == 0) {
                 rootdoc_builder.Write(char.ConvertFromUtf32(163));
-                this.input_negative(doc, rootdoc_builder, "测试环境", "配置项");
+                CharHelper.input_negative(doc, rootdoc_builder, "测试环境", "配置项");
             }
             else {
                 rootdoc_builder.Write(char.ConvertFromUtf32(82));
-                this.input_confirm(doc, rootdoc_builder, "测试环境", "配置项");
+                CharHelper.input_confirm(doc, rootdoc_builder, "测试环境", "配置项");
 
             }
             rootdoc_builder.MoveToCell(InsertionPos.pz_table, InsertionPos.pz_row, InsertionPos.pz_cell1, 0);
@@ -37,10 +38,10 @@ namespace CSSTC1.FileProcessors {
                     string temp = para.Range.Text.Substring(0, para.Range.Text.Length - 1);
                     if(cells.Contains(temp)) {
                         ContentFlags.test_types.Add(temp);
-                        this.input_confirm(doc, rootdoc_builder, temp, "配置");
+                        CharHelper.input_confirm(doc, rootdoc_builder, temp, "配置");
                     }
                     else
-                        this.input_negative(doc, rootdoc_builder, temp, "配置");
+                        CharHelper.input_negative(doc, rootdoc_builder, temp, "配置");
                 }
             }
             doc.Save(FilePaths.save_root_file);
@@ -55,11 +56,11 @@ namespace CSSTC1.FileProcessors {
             rootdoc_builder.Font.Size = 12.0;
             if(cells.Count == 0) {
                 rootdoc_builder.Write(char.ConvertFromUtf32(163));
-                this.input_negative(doc, rootdoc_builder, "测试环境", "系统");
+                CharHelper.input_negative(doc, rootdoc_builder, "测试环境", "系统");
             }
             else {
                 rootdoc_builder.Write(char.ConvertFromUtf32(82));
-                this.input_confirm(doc, rootdoc_builder, "测试环境", "系统");
+                CharHelper.input_confirm(doc, rootdoc_builder, "测试环境", "系统");
 
             }
             rootdoc_builder.MoveToCell(InsertionPos.xt_table, InsertionPos.xt_row, InsertionPos.xt_cell1, 0);
@@ -71,37 +72,14 @@ namespace CSSTC1.FileProcessors {
                 foreach(Paragraph para in nodes) {
                     string temp = para.Range.Text.Substring(0, para.Range.Text.Length - 1);
                     if(cells.Contains(temp)) {
-                        this.input_confirm(doc, rootdoc_builder, temp, "系统");
+                        CharHelper.input_confirm(doc, rootdoc_builder, temp, "系统");
                         ContentFlags.test_types.Add(temp);
                     }
                     else
-                        this.input_negative(doc, rootdoc_builder, temp, "系统");
+                        CharHelper.input_negative(doc, rootdoc_builder, temp, "系统");
                 }
             }
             doc.Save(FilePaths.save_root_file);
-        }
-
-        public void input_confirm(Document doc, DocumentBuilder doc_builder, string temp, string type) {
-            Bookmark bookmark = doc.Range.Bookmarks[type + temp];
-            if(bookmark != null) {
-                bookmark.Text = "";
-                doc_builder.MoveToBookmark(type + temp);
-                doc_builder.Font.Name = "Wingdings 2";
-                doc_builder.Font.Size = 12.0;
-                doc_builder.Write(char.ConvertFromUtf32(82));
-            }
-        }
-
-        public void input_negative(Document doc, DocumentBuilder doc_builder, string temp, string type) {
-            Bookmark bookmark = doc.Range.Bookmarks[type + temp];
-            if(bookmark != null) {
-                bookmark.Text = "";
-                doc_builder.MoveToBookmark(type + temp, true, false);
-                doc_builder.Font.Name = "Wingdings 2";
-                doc_builder.Font.Size = 12.0;
-                doc_builder.Write(char.ConvertFromUtf32(163));
-            }
-
         }
 
         //任务通知单
@@ -140,8 +118,8 @@ namespace CSSTC1.FileProcessors {
         public void write_csry_chart(String names) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            rootdoc_builder.MoveToBookmark("测试组成员");
-            rootdoc_builder.Write(names);
+            if(rootdoc_builder.MoveToBookmark("测试组成员"))
+                rootdoc_builder.Write(names);
             doc.Save(FilePaths.save_root_file);
         }
 
@@ -171,22 +149,22 @@ namespace CSSTC1.FileProcessors {
                     line_count += lines;
                 }
             }
-            rootdoc_builder.MoveToBookmark("代码行数");
-            rootdoc_builder.Write(line_count.ToString());
-            rootdoc_builder.MoveToBookmark("运行环境");
-            rootdoc_builder.Write(runtime_env);
+            if(rootdoc_builder.MoveToBookmark("代码行数"))
+                rootdoc_builder.Write(line_count.ToString());
+            if(rootdoc_builder.MoveToBookmark("运行环境"))
+                rootdoc_builder.Write(runtime_env);
             foreach(string language in languanges) {
                 if(language.Equals("C++"))
-                    this.input_confirm(doc, rootdoc_builder, "cplus", "");
+                    CharHelper.input_confirm(doc, rootdoc_builder, "cplus", "");
                 else if(language.Equals("C#"))
-                    this.input_confirm(doc, rootdoc_builder, "csharp", "");
+                    CharHelper.input_confirm(doc, rootdoc_builder, "csharp", "");
                 else
-                    this.input_confirm(doc, rootdoc_builder, language, "");
+                    CharHelper.input_confirm(doc, rootdoc_builder, language, "");
             }
             for(int i = 0; i < NamingRules.kfhj_params.Length; i++) {
                 string str = NamingRules.kfhj_params[i];
                 if(code_env.IndexOf(str, 0) >= 0) {
-                    this.input_confirm(doc, rootdoc_builder, NamingRules.kfhj_bookmarks[i], "");
+                    CharHelper.input_confirm(doc, rootdoc_builder, NamingRules.kfhj_bookmarks[i], "");
                 }
             }
             doc.Save(FilePaths.save_root_file);
@@ -194,7 +172,7 @@ namespace CSSTC1.FileProcessors {
 
         }
 
-        //文档清单
+        //填写文档清单命名
         public void write_wdqd_chart(List<FileList> files, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
@@ -206,19 +184,20 @@ namespace CSSTC1.FileProcessors {
             List<string> content_list = new List<string>();
             List<string> type_list = new List<string>();
             Dictionary<string, int> file_counter = new Dictionary<string, int>();
+            Dictionary<string, int> file_type_counter = new Dictionary<string, int>();
 
             foreach(FileList file in files) {
-                string type = NamingRules.get_file_type(file.wd_mingcheng);
-                if(ContentFlags.file_type_counter.ContainsKey(type)) {
-                    ContentFlags.file_type_counter[type] += 1;
+                string type = MappingHelper.get_file_type(file.wd_mingcheng);
+                if(file_type_counter.ContainsKey(type)) {
+                    file_type_counter[type] += 1;
                 }
                 else
-                    ContentFlags.file_type_counter.Add(type, 1);
+                    file_type_counter.Add(type, 1);
                 type_list.Add(type);
             }
             for(int i = 0; i < files.Count; i++) {
                 FileList file = files[i];
-                int value = ContentFlags.file_type_counter[type_list[i]];
+                int value = file_type_counter[type_list[i]];
                 if(value > 1) {
                     if(file_counter.ContainsKey(type_list[i])) {
                         file_counter[type_list[i]] += 1;
@@ -231,7 +210,6 @@ namespace CSSTC1.FileProcessors {
                     string text = title + "-C" + type_list[i] + type_count + '-' + 
                         file.wd_banben + '-' + xm_nianfen;
                     content_list.Add(text);
-
                 }
                 else {
                     string text = title + "-C" + type_list[i] + '-' + file.wd_banben + '-' + xm_nianfen;
@@ -254,7 +232,6 @@ namespace CSSTC1.FileProcessors {
 
             int cur_section = 2 * time + 1;
             rootdoc_builder.MoveToSection(cur_section);
-            //rootdoc_builder.MoveToSection(7);
             rootdoc_builder.MoveToCell(InsertionPos.bcjdbd_sec_table, 1, InsertionPos.bcjdbd_pois_row, 0);
             rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
             int row_index = 1;
@@ -282,7 +259,6 @@ namespace CSSTC1.FileProcessors {
                 rootdoc_builder.Write(file.wd_mingcheng);
 
                 row_index += 1;
-                //doc.Save(FilePaths.save_root_file);
             }
 
             doc.Save(FilePaths.save_root_file);
@@ -295,7 +271,6 @@ namespace CSSTC1.FileProcessors {
             Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjqd_table + 5 * time, true);
             Table table = (Table)node;
 
-            //rootdoc_builder.MoveToSection(3);
             int cur_section = 2 * time + 1;
             rootdoc_builder.MoveToSection(cur_section);
             int row_index = 1;
@@ -305,7 +280,6 @@ namespace CSSTC1.FileProcessors {
                 if(row_index < files.Count) {
                     var row = table.Rows[row_index].Clone(true);
                     table.Rows.Insert(1 + row_index, row);
-                    
                 }
                 rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
                     InsertionPos.bcjqd_name_row, 0);
@@ -317,7 +291,7 @@ namespace CSSTC1.FileProcessors {
                     InsertionPos.bcjqd_orig_row, 0);
                 Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.bcjqd_orig_row];
                 string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
-                string date = ProjectEstabInfoProcessor.cal_time(ContentFlags.lingqushijian[time], 0);
+                string date = DateHelper.cal_time(ContentFlags.lingqushijian[time], 0);
                 if(temp.Equals(file.wd_laiyuan)) {
                     //合并来源列
                     rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
@@ -355,7 +329,6 @@ namespace CSSTC1.FileProcessors {
             Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjlqqd_table + 5 * time, true);
             Table table = (Table)node;
 
-            //rootdoc_builder.MoveToSection(4);
             int cur_section = 2 * time + 1;
             rootdoc_builder.MoveToSection(cur_section);
             int row_index = 2;
@@ -372,7 +345,6 @@ namespace CSSTC1.FileProcessors {
                     InsertionPos.bcjlqqd_res_row, 0);
                 rootdoc_builder.Write(content_list[row_index - 2]);
 
-                //rootdoc_builder.Write(file.wd_laiyuan);
                 row_index += 1;
             }
             doc.Save(FilePaths.save_root_file);
@@ -385,7 +357,6 @@ namespace CSSTC1.FileProcessors {
             Node node = doc.GetChild(NodeType.Table, InsertionPos.rksqd_table + 5 * time, true);
             Table table = (Table)node;
 
-            //rootdoc_builder.MoveToSection(5);
             int cur_section = 2 * time + 1;
             rootdoc_builder.MoveToSection(cur_section);
             int row_index = 5;
@@ -402,9 +373,7 @@ namespace CSSTC1.FileProcessors {
                     InsertionPos.rksqd_iden_row, 0);
                 rootdoc_builder.Write(content_list[row_index - 5]);
 
-                //rootdoc_builder.Write(file.wd_laiyuan);
                 row_index += 1;
-                //doc.Save(FilePaths.save_root_file);
 
             }
             doc.Save(FilePaths.save_root_file);
@@ -442,7 +411,6 @@ namespace CSSTC1.FileProcessors {
         public void conference_signing() {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            //doc_builder.MoveToBookmark("");
             Bookmark mark = doc.Range.Bookmarks["评审组成员"];
             Bookmark mark1 = doc.Range.Bookmarks["评审组长"];
             if(mark != null) {
@@ -456,7 +424,6 @@ namespace CSSTC1.FileProcessors {
                 Node node = doc.GetChild(NodeType.Table, InsertionPos.hyqdb_table, true);
                 Table table = (Table)node;
 
-                //doc_builder.MoveToSection(1);
                 int row_index = 1;
 
                 foreach(string name in name_list1) {
@@ -464,7 +431,6 @@ namespace CSSTC1.FileProcessors {
                         var row = table.Rows[row_index].Clone(true);
                         table.Rows.Insert(1 + row_index, row);
                     }
-                    //doc_builder.MoveToSection(1);
                     doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index, 
                         InsertionPos.hyqdb_name_row, 0);
                     doc_builder.Write(name);
@@ -473,9 +439,8 @@ namespace CSSTC1.FileProcessors {
                     doc_builder.Write(NamingRules.company);
                     doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index, 
                         InsertionPos.hyqdb_job_row, 0);
-                    doc_builder.Write(NamingRules.get_job_title(name));
+                    doc_builder.Write(MappingHelper.get_job_title(name));
 
-                    //rootdoc_builder.Write(file.wd_laiyuan);
                     row_index += 1;
                 }
             }
