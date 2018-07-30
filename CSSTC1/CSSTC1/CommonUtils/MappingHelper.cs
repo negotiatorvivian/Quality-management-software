@@ -90,7 +90,16 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
-
+        public static int get_doc_section(string name) {
+            switch(name) {
+                case "被测件清单":
+                    return 3;
+                case "配置报告单":
+                    return 4;
+                default:
+                    return 0;
+            }
+        }
 
     }
 }

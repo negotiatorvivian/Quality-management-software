@@ -8,6 +8,7 @@ namespace CSSTC1.ConstantVariables {
         public static bool peizhiceshi;
         public static bool xitongceshi;
         public static int missing = -1;
+        public static int copy = 0;
 
         public static HashSet<string> test_types= new HashSet<string>();
         public static int lingqucishu = 1;

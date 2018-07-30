@@ -8,6 +8,7 @@ using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors;
 using CSSTC1.FileProcessors.models;
 using System.Windows.Forms;
+using CSSTC1.CommonUtils;
 
 namespace CSSTC1.FileProcessors {
     public class FileReader1 {
@@ -42,6 +43,7 @@ namespace CSSTC1.FileProcessors {
                     int[] index = { count + i * 3, count + i * 3 + 1, count + i * 3 + 2 };
                     this.read_wdqd_chart(index, doc, i);
                 }
+                
             }
             file_writer.conference_signing();
             MessageBox.Show("写入文档完成");

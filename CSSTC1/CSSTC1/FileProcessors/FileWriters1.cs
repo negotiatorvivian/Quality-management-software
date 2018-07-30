@@ -21,11 +21,11 @@ namespace CSSTC1.FileProcessors {
             rootdoc_builder.Font.Size = 12.0;
             if(cells.Count == 0) {
                 rootdoc_builder.Write(char.ConvertFromUtf32(163));
-                CharHelper.input_negative(doc, rootdoc_builder, "测试环境", "配置项");
+                OperationHelper.input_negative(doc, rootdoc_builder, "测试环境", "配置项");
             }
             else {
                 rootdoc_builder.Write(char.ConvertFromUtf32(82));
-                CharHelper.input_confirm(doc, rootdoc_builder, "测试环境", "配置项");
+                OperationHelper.input_confirm(doc, rootdoc_builder, "测试环境", "配置项");
 
             }
             rootdoc_builder.MoveToCell(InsertionPos.pz_table, InsertionPos.pz_row, InsertionPos.pz_cell1, 0);
@@ -38,10 +38,10 @@ namespace CSSTC1.FileProcessors {
                     string temp = para.Range.Text.Substring(0, para.Range.Text.Length - 1);
                     if(cells.Contains(temp)) {
                         ContentFlags.test_types.Add(temp);
-                        CharHelper.input_confirm(doc, rootdoc_builder, temp, "配置");
+                        OperationHelper.input_confirm(doc, rootdoc_builder, temp, "配置");
                     }
                     else
-                        CharHelper.input_negative(doc, rootdoc_builder, temp, "配置");
+                        OperationHelper.input_negative(doc, rootdoc_builder, temp, "配置");
                 }
             }
             doc.Save(FilePaths.save_root_file);
@@ -56,11 +56,11 @@ namespace CSSTC1.FileProcessors {
             rootdoc_builder.Font.Size = 12.0;
             if(cells.Count == 0) {
                 rootdoc_builder.Write(char.ConvertFromUtf32(163));
-                CharHelper.input_negative(doc, rootdoc_builder, "测试环境", "系统");
+                OperationHelper.input_negative(doc, rootdoc_builder, "测试环境", "系统");
             }
             else {
                 rootdoc_builder.Write(char.ConvertFromUtf32(82));
-                CharHelper.input_confirm(doc, rootdoc_builder, "测试环境", "系统");
+                OperationHelper.input_confirm(doc, rootdoc_builder, "测试环境", "系统");
 
             }
             rootdoc_builder.MoveToCell(InsertionPos.xt_table, InsertionPos.xt_row, InsertionPos.xt_cell1, 0);
@@ -72,11 +72,11 @@ namespace CSSTC1.FileProcessors {
                 foreach(Paragraph para in nodes) {
                     string temp = para.Range.Text.Substring(0, para.Range.Text.Length - 1);
                     if(cells.Contains(temp)) {
-                        CharHelper.input_confirm(doc, rootdoc_builder, temp, "系统");
+                        OperationHelper.input_confirm(doc, rootdoc_builder, temp, "系统");
                         ContentFlags.test_types.Add(temp);
                     }
                     else
-                        CharHelper.input_negative(doc, rootdoc_builder, temp, "系统");
+                        OperationHelper.input_negative(doc, rootdoc_builder, temp, "系统");
                 }
             }
             doc.Save(FilePaths.save_root_file);
@@ -155,16 +155,16 @@ namespace CSSTC1.FileProcessors {
                 rootdoc_builder.Write(runtime_env);
             foreach(string language in languanges) {
                 if(language.Equals("C++"))
-                    CharHelper.input_confirm(doc, rootdoc_builder, "cplus", "");
+                    OperationHelper.input_confirm(doc, rootdoc_builder, "cplus", "");
                 else if(language.Equals("C#"))
-                    CharHelper.input_confirm(doc, rootdoc_builder, "csharp", "");
+                    OperationHelper.input_confirm(doc, rootdoc_builder, "csharp", "");
                 else
-                    CharHelper.input_confirm(doc, rootdoc_builder, language, "");
+                    OperationHelper.input_confirm(doc, rootdoc_builder, language, "");
             }
             for(int i = 0; i < NamingRules.kfhj_params.Length; i++) {
                 string str = NamingRules.kfhj_params[i];
                 if(code_env.IndexOf(str, 0) >= 0) {
-                    CharHelper.input_confirm(doc, rootdoc_builder, NamingRules.kfhj_bookmarks[i], "");
+                    OperationHelper.input_confirm(doc, rootdoc_builder, NamingRules.kfhj_bookmarks[i], "");
                 }
             }
             doc.Save(FilePaths.save_root_file);

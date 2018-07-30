@@ -31,13 +31,14 @@ namespace CSSTC1.InputProcessors {
                 //被测件接收时间以默认为准还是输入为准？？
                 //doc = this.fill_time_blank(doc, doc_builder, "被测件接收时间", xmks_time, lixiang_time - 7);
             }
-            else{
-                doc_builder.MoveToBookmark("被测件调拨2");
-                doc_builder.CurrentSection.Range.Delete();
-                doc_builder.MoveToBookmark("被测件调拨2配置状态");
-                doc_builder.CurrentSection.Range.Delete();
+            //else{
+            //    doc_builder.MoveToBookmark("被测件调拨2");
+            //    doc_builder.CurrentSection.Range.Delete();
+            //    doc_builder.MoveToBookmark("被测件调拨2配置状态");
+            //    doc_builder.CurrentSection.Range.Delete();
 
-            }
+            //}
+            this.change_file_struc(doc, doc_builder, "被测件领取次数");
             for(int i = 0; i < lq_times.Count; i ++){
                 if(doc_builder.MoveToBookmark("入库日期" + (i + 1).ToString()))
                     doc_builder.Write(lq_times[i]);
@@ -47,8 +48,8 @@ namespace CSSTC1.InputProcessors {
                     doc_builder.Write(pl_time);
                 }
                 else{
-                    doc_builder.MoveToBookmark("合同偏离通知单");
-                    doc_builder.CurrentSection.Range.Delete();
+                    string[] marks = {"合同偏离通知单"};
+                    OperationHelper.delete_section(doc, doc_builder,marks);
                 }
             }
             NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
@@ -59,6 +60,25 @@ namespace CSSTC1.InputProcessors {
             doc.Save(FilePaths.save_root_file);
         }
 
-
+        public void change_file_struc(Document doc, DocumentBuilder doc_builder, string content){
+            switch(content){
+                case "被测件领取次数":{
+                    if(ContentFlags.lingqucishu == 1) {
+                        string[] marks = { "被测件调拨2", "被测件调拨2配置状态" };
+                        OperationHelper.delete_section(doc, doc_builder, marks);
+                        doc.Save(FilePaths.save_root_file);
+                    }
+                    if(ContentFlags.lingqucishu > 2) {
+                        string mark = "被测件清单";
+                        OperationHelper.copy_section(doc, mark, ContentFlags.lingqucishu - 2, 1);
+                        string mark1 = "配置报告单";
+                        OperationHelper.copy_section(doc, mark1, ContentFlags.lingqucishu - 2, 1);
+                       // doc.Save(FilePaths.save_root_file);
+                    }
+                    break;
+                }
+                default:break;
+        }
+        }
     }
 }

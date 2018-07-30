@@ -114,7 +114,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonUtils\CharHelper.cs" />
+    <Compile Include="CommonUtils\OperationHelper.cs" />
     <Compile Include="CommonUtils\DateHelper.cs" />
     <Compile Include="CommonUtils\MappingHelper.cs" />
     <Compile Include="ConstantVariables\ContentFlags.cs" />
