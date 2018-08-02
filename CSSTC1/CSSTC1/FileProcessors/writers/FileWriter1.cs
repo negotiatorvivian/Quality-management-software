@@ -10,8 +10,8 @@ using System.Text.RegularExpressions;
 using CSSTC1.InputProcessors;
 using CSSTC1.CommonUtils;
 
-namespace CSSTC1.FileProcessors {
-    class FileWriters1 {
+namespace CSSTC1.FileProcessors.writers {
+    class FileWriter1 {
         //配置项测试
         public void write_pzx_chart(List<string> cells) {
             Document doc = new Document(FilePaths.save_root_file);
@@ -216,6 +216,8 @@ namespace CSSTC1.FileProcessors {
                     content_list.Add(text);
                 }
             }
+            ContentFlags.beicejianqingdan = files;
+            ContentFlags.content_list = content_list;
             this.write_bcjdbd_chart(files, content_list, time);
             this.write_bcjqd_chart(files, content_list, time);
             this.write_bcjlqqd_chart(files, content_list, time);

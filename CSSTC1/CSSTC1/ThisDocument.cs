@@ -17,10 +17,12 @@ namespace CSSTC1
     {
         public BasicInfo basic_info = new BasicInfo();
         public ProjectEstabInfo project_estab_info = new ProjectEstabInfo();
+        public Ribbon1 ribbon;
         //public Microsoft.Office.Interop.Word._Application wordApp = null;
 
         private void ThisDocument_Startup(object sender, System.EventArgs e)
         {
+            this.ribbon = new Ribbon1();
         }
 
         private void ThisDocument_Shutdown(object sender, System.EventArgs e)
@@ -38,7 +40,6 @@ namespace CSSTC1
             this.basic_info.Show();
             this.Startup += new System.EventHandler(this.ThisDocument_Startup);
             this.Shutdown += new System.EventHandler(this.ThisDocument_Shutdown);
-
         }
 
         #endregion

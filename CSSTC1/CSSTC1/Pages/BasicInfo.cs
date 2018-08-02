@@ -161,11 +161,13 @@ namespace CSSTC1.Pages {
             this.Kf_danwei = kf_danwei.Text;
             this.Xm_kaishishijian = xm_kaishishijian.Text;
             this.Xm_jieshushijian = xm_jieshushijian.Text;
+            ContentFlags.ceshidagang = this.checkBox6.Checked;
             this.Yz_renwushu = checkBox1.Checked;
             this.Js_fangan = checkBox2.Checked;
             this.Js_guigeshu = checkBox3.Checked;
             this.Rjyz_renwushu = checkBox4.Checked;
             this.Rjxq_guigeshuoming = checkBox5.Checked;
+
             string[] values = { Xm_biaoshi, Xm_mingcheng, Rj_mingcheng, Pz_guanliyuan, Bcj_guanliyuan, 
                                   Zlbz_renyuan, Cs_jianduyuan, Sb_guanliyuan, Fuzhurren, Cw_fuzhuren, Zhuren,
                                   Wt_xingming, Wt_dianhua, Wt_danwei, Kf_xingming, Kf_dianhua, Kf_danwei, 
@@ -177,12 +179,48 @@ namespace CSSTC1.Pages {
             bool[] test_accordings = { this.Yz_renwushu, this.Js_fangan, this.Js_guigeshu, this.Rjyz_renwushu, 
                                          this.Rjxq_guigeshuoming };
             processor.fill_basic_info(bookmarks, values, test_accordings);
+            this.del_section();
             Globals.ThisDocument.basic_info.Hide();
             //MessageBox.Show("正在写入，请稍候...");
         }
 
         private void button2_Click(object sender, EventArgs e) {
             Globals.ThisDocument.basic_info.Hide();
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e) {
+            bool status = this.checkBox6.Enabled;
+            this.checkBox6.Checked = !status;
+            this.checkBox6.Enabled = !status;
+            this.csdg_pingshenshijian.Enabled = !status;
+            this.checkBox7.Checked = status;
+            this.checkBox7.Enabled = status;
+            this.csxq_pingshenshijian.Enabled = status;
+
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e) {
+            bool status = this.checkBox7.Enabled;
+            this.checkBox6.Checked = status;
+            this.checkBox6.Enabled = status;
+            this.csdg_pingshenshijian.Enabled = status;
+            this.checkBox7.Checked = !status;
+            this.checkBox7.Enabled = !status;
+            this.csxq_pingshenshijian.Enabled = !status;
+        }
+
+      
+        private void del_section(){
+            if(!this.csdg_pingshenshijian.Enabled){
+                string[] bookmarks = { "测试大纲1", "测试大纲2", "测试大纲3", "测试大纲4", 
+                                         "测试大纲5", "测试大纲6", "测试大纲7"};
+                CommonUtils.OperationHelper.delete_section(FilePaths.save_root_file, bookmarks);
+            }
+            else{
+                string[] bookmarks = { "测试需求1", "测试需求2", "测试需求3", "测试需求4", 
+                                         "测试需求5", "测试需求6", "测试需求7"};
+                CommonUtils.OperationHelper.delete_section(FilePaths.save_root_file, bookmarks);
+            }
         }
 
         

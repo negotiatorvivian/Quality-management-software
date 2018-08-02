@@ -90,6 +90,7 @@
             this.label32 = new System.Windows.Forms.Label();
             this.dmzc_shenchashijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.csxq_pingshenshijian = new System.Windows.Forms.DateTimePicker();
             this.label33 = new System.Windows.Forms.Label();
             this.csdg_pingshenshijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -129,6 +130,8 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -163,6 +166,7 @@
             this.xm_biaoshi.Name = "xm_biaoshi";
             this.xm_biaoshi.Size = new System.Drawing.Size(187, 23);
             this.xm_biaoshi.TabIndex = 2;
+            this.xm_biaoshi.Text = "SERI-XXXX-ZZZZZZZ-V2.0";
             // 
             // label2
             // 
@@ -179,6 +183,7 @@
             this.xm_mingcheng.Name = "xm_mingcheng";
             this.xm_mingcheng.Size = new System.Drawing.Size(187, 23);
             this.xm_mingcheng.TabIndex = 4;
+            this.xm_mingcheng.Text = "AAAA软件测评";
             // 
             // xm_fuzzeren
             // 
@@ -331,6 +336,7 @@
             this.wt_xingming.Name = "wt_xingming";
             this.wt_xingming.Size = new System.Drawing.Size(141, 23);
             this.wt_xingming.TabIndex = 23;
+            this.wt_xingming.Text = "郑先生";
             // 
             // label12
             // 
@@ -347,6 +353,7 @@
             this.wt_dianhua.Name = "wt_dianhua";
             this.wt_dianhua.Size = new System.Drawing.Size(141, 23);
             this.wt_dianhua.TabIndex = 25;
+            this.wt_dianhua.Text = "13011578902";
             // 
             // label13
             // 
@@ -365,6 +372,7 @@
             this.wt_danwei.Name = "wt_danwei";
             this.wt_danwei.Size = new System.Drawing.Size(141, 23);
             this.wt_danwei.TabIndex = 27;
+            this.wt_danwei.Text = "BBB单位";
             // 
             // label14
             // 
@@ -393,6 +401,7 @@
             this.kf_danwei.Name = "kf_danwei";
             this.kf_danwei.Size = new System.Drawing.Size(141, 23);
             this.kf_danwei.TabIndex = 33;
+            this.kf_danwei.Text = "CCC公司";
             // 
             // label15
             // 
@@ -420,6 +429,7 @@
             this.kf_dianhua.Name = "kf_dianhua";
             this.kf_dianhua.Size = new System.Drawing.Size(141, 23);
             this.kf_dianhua.TabIndex = 31;
+            this.kf_dianhua.Text = "19899872567";
             // 
             // kf_xingming
             // 
@@ -427,6 +437,7 @@
             this.kf_xingming.Name = "kf_xingming";
             this.kf_xingming.Size = new System.Drawing.Size(141, 23);
             this.kf_xingming.TabIndex = 30;
+            this.kf_xingming.Text = "李四";
             // 
             // label17
             // 
@@ -595,6 +606,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label24.Location = new System.Drawing.Point(157, 94);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(63, 14);
@@ -615,6 +627,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label25.Location = new System.Drawing.Point(157, 54);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(63, 14);
@@ -635,6 +648,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label26.Location = new System.Drawing.Point(157, 15);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(63, 14);
@@ -670,6 +684,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label27.Location = new System.Drawing.Point(157, 93);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(63, 14);
@@ -690,6 +705,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label28.Location = new System.Drawing.Point(157, 53);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(63, 14);
@@ -710,6 +726,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label29.Location = new System.Drawing.Point(157, 14);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(63, 14);
@@ -745,6 +762,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label30.Location = new System.Drawing.Point(157, 93);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(63, 14);
@@ -765,6 +783,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label31.Location = new System.Drawing.Point(157, 53);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(63, 14);
@@ -785,6 +804,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label32.Location = new System.Drawing.Point(157, 14);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(63, 14);
@@ -804,6 +824,9 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.checkBox7);
+            this.tabPage5.Controls.Add(this.checkBox6);
+            this.tabPage5.Controls.Add(this.csxq_pingshenshijian);
             this.tabPage5.Controls.Add(this.label33);
             this.tabPage5.Controls.Add(this.csdg_pingshenshijian);
             this.tabPage5.Location = new System.Drawing.Point(4, 23);
@@ -813,20 +836,31 @@
             this.tabPage5.Text = "测试大纲评审时间";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // csxq_pingshenshijian
+            // 
+            this.csxq_pingshenshijian.Enabled = false;
+            this.csxq_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.csxq_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.csxq_pingshenshijian.Location = new System.Drawing.Point(300, 72);
+            this.csxq_pingshenshijian.Name = "csxq_pingshenshijian";
+            this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
+            this.csxq_pingshenshijian.TabIndex = 60;
+            this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(133, 54);
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label33.Location = new System.Drawing.Point(128, 38);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(119, 14);
+            this.label33.Size = new System.Drawing.Size(0, 14);
             this.label33.TabIndex = 59;
-            this.label33.Text = "测试大纲评审时间";
             // 
             // csdg_pingshenshijian
             // 
             this.csdg_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.csdg_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.csdg_pingshenshijian.Location = new System.Drawing.Point(260, 51);
+            this.csdg_pingshenshijian.Location = new System.Drawing.Point(300, 35);
             this.csdg_pingshenshijian.Name = "csdg_pingshenshijian";
             this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csdg_pingshenshijian.TabIndex = 58;
@@ -849,6 +883,7 @@
             // label_48
             // 
             this.label_48.AutoSize = true;
+            this.label_48.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label_48.Location = new System.Drawing.Point(133, 74);
             this.label_48.Name = "label_48";
             this.label_48.Size = new System.Drawing.Size(91, 14);
@@ -869,6 +904,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
+            this.label47.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label47.Location = new System.Drawing.Point(133, 33);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(91, 14);
@@ -900,6 +936,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label36.Location = new System.Drawing.Point(146, 54);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(91, 14);
@@ -933,6 +970,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label34.Location = new System.Drawing.Point(133, 75);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(119, 14);
@@ -953,6 +991,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
+            this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label35.Location = new System.Drawing.Point(133, 34);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(119, 14);
@@ -984,6 +1023,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
+            this.label38.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label38.Location = new System.Drawing.Point(133, 53);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(119, 14);
@@ -1086,6 +1126,7 @@
             this.rj_mingcheng.Name = "rj_mingcheng";
             this.rj_mingcheng.Size = new System.Drawing.Size(187, 23);
             this.rj_mingcheng.TabIndex = 48;
+            this.rj_mingcheng.Text = "AAAA软件";
             // 
             // cs_jianduyuan
             // 
@@ -1194,6 +1235,8 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox3.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBox3.Location = new System.Drawing.Point(193, 3);
@@ -1206,6 +1249,8 @@
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox4.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.checkBox4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBox4.Location = new System.Drawing.Point(295, 3);
@@ -1238,6 +1283,33 @@
             this.groupBox4.TabIndex = 29;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测试依据";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Checked = true;
+            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox6.Location = new System.Drawing.Point(110, 37);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(138, 18);
+            this.checkBox6.TabIndex = 62;
+            this.checkBox6.Text = "测试大纲评审时间";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Enabled = false;
+            this.checkBox7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox7.Location = new System.Drawing.Point(110, 74);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(180, 18);
+            this.checkBox7.TabIndex = 63;
+            this.checkBox7.Text = "测试需求与计划评审时间";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
             // 
             // BasicInfo
             // 
@@ -1416,5 +1488,8 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DateTimePicker csxq_pingshenshijian;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox6;
         }
     }

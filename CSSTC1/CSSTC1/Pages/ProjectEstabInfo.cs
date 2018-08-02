@@ -86,6 +86,7 @@ namespace CSSTC1.Pages {
             string lq_times = this.comboBox1.Text;
             List<string> lq_time = new List<string>();
             if(lq_times[0].Equals('1')){
+                ContentFlags.lingqucishu = 1;
                 lq_time.Add(this.dateTimePicker1.Text);
             }
             else if(lq_times[0].Equals('2')) {

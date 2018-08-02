@@ -48,6 +48,7 @@ namespace CSSTC1.InputProcessors {
                     doc_builder.Write(pl_time);
                 }
                 else{
+                    ContentFlags.pianli_1 = 0;
                     string[] marks = {"合同偏离通知单"};
                     OperationHelper.delete_section(doc, doc_builder,marks);
                 }

@@ -7,14 +7,17 @@ using Aspose.Words.Tables;
 using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors;
 using CSSTC1.FileProcessors.models;
+using CSSTC1.FileProcessors.writers;
 using System.Windows.Forms;
 using CSSTC1.CommonUtils;
 
-namespace CSSTC1.FileProcessors {
+namespace CSSTC1.FileProcessors.readers {
     public class FileReader1 {
         public static int count = 0;
-        private FileWriters1 file_writer = new FileWriters1();
-        public void read_charts(string filepath) {
+        private FileWriter1 file_writer = new FileWriter1();
+
+        public void read_charts(string filepath){
+            //MessageBox.
             Document doc = new Document(filepath);
 
             NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);

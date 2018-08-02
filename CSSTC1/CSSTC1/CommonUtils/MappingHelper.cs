@@ -85,6 +85,8 @@ namespace CSSTC1.CommonUtils {
                     return "副主任";
                 case "张凯":
                     return "高工";
+                case "贺仁亚":
+                    return "副研究员";
                 default:
                     return "工程师";
             }

@@ -31,17 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon1));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.splitButton2 = this.Factory.CreateRibbonSplitButton();
+            this.menu3 = this.Factory.CreateRibbonMenu();
             this.button5 = this.Factory.CreateRibbonButton();
             this.button6 = this.Factory.CreateRibbonButton();
             this.button7 = this.Factory.CreateRibbonButton();
             this.button8 = this.Factory.CreateRibbonButton();
-            this.splitButton1 = this.Factory.CreateRibbonSplitButton();
+            this.menu2 = this.Factory.CreateRibbonMenu();
             this.button1 = this.Factory.CreateRibbonButton();
-            this.button2 = this.Factory.CreateRibbonButton();
+            this.menu1 = this.Factory.CreateRibbonMenu();
+            this.button9 = this.Factory.CreateRibbonButton();
+            this.button10 = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
             this.button4 = this.Factory.CreateRibbonButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             // 
@@ -54,22 +58,20 @@
             // 
             // group1
             // 
-            this.group1.Items.Add(this.splitButton2);
-            this.group1.Items.Add(this.splitButton1);
+            this.group1.Items.Add(this.menu3);
+            this.group1.Items.Add(this.menu2);
             this.group1.Label = "上传文件";
             this.group1.Name = "group1";
             // 
-            // splitButton2
+            // menu3
             // 
-            this.splitButton2.ButtonEnabled = false;
-            this.splitButton2.Image = ((System.Drawing.Image)(resources.GetObject("splitButton2.Image")));
-            this.splitButton2.Items.Add(this.button5);
-            this.splitButton2.Items.Add(this.button6);
-            this.splitButton2.Items.Add(this.button7);
-            this.splitButton2.Items.Add(this.button8);
-            this.splitButton2.Label = "填写基本信息";
-            this.splitButton2.Name = "splitButton2";
-            this.splitButton2.SuperTip = "选择要读取的文件，请按照格式排列";
+            this.menu3.Items.Add(this.button5);
+            this.menu3.Items.Add(this.button6);
+            this.menu3.Items.Add(this.button7);
+            this.menu3.Items.Add(this.button8);
+            this.menu3.Label = "填写基本信息";
+            this.menu3.Name = "menu3";
+            this.menu3.SuperTip = "s";
             // 
             // button5
             // 
@@ -80,7 +82,7 @@
             // 
             // button6
             // 
-            this.button6.Label = "第二部分";
+            this.button6.Label = "测试需求分析与策划";
             this.button6.Name = "button6";
             this.button6.ShowImage = true;
             // 
@@ -96,17 +98,16 @@
             this.button8.Name = "button8";
             this.button8.ShowImage = true;
             // 
-            // splitButton1
+            // menu2
             // 
-            this.splitButton1.ButtonEnabled = false;
-            this.splitButton1.Image = ((System.Drawing.Image)(resources.GetObject("splitButton1.Image")));
-            this.splitButton1.Items.Add(this.button1);
-            this.splitButton1.Items.Add(this.button2);
-            this.splitButton1.Items.Add(this.button3);
-            this.splitButton1.Items.Add(this.button4);
-            this.splitButton1.Label = "选择文件";
-            this.splitButton1.Name = "splitButton1";
-            this.splitButton1.SuperTip = "选择要读取的文件，请按照格式排列";
+            this.menu2.Image = ((System.Drawing.Image)(resources.GetObject("menu2.Image")));
+            this.menu2.Items.Add(this.button1);
+            this.menu2.Items.Add(this.menu1);
+            this.menu2.Items.Add(this.button3);
+            this.menu2.Items.Add(this.button4);
+            this.menu2.Label = "读取文件";
+            this.menu2.Name = "menu2";
+            this.menu2.SuperTip = "选择要读取的文件，请注意文件内表格排列顺序";
             // 
             // button1
             // 
@@ -115,11 +116,27 @@
             this.button1.ShowImage = true;
             this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
-            // button2
+            // menu1
             // 
-            this.button2.Label = "第二部分";
-            this.button2.Name = "button2";
-            this.button2.ShowImage = true;
+            this.menu1.Items.Add(this.button9);
+            this.menu1.Items.Add(this.button10);
+            this.menu1.Label = "测试需求分析与策划阶段";
+            this.menu1.Name = "menu1";
+            this.menu1.ShowImage = true;
+            // 
+            // button9
+            // 
+            this.button9.Label = "测试大纲";
+            this.button9.Name = "button9";
+            this.button9.ShowImage = true;
+            this.button9.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Label = "测试需求规格说明与测试计划";
+            this.button10.Name = "button10";
+            this.button10.ShowImage = true;
+            this.button10.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button10_Click);
             // 
             // button3
             // 
@@ -139,6 +156,16 @@
             this.openFileDialog1.FileName = "质量管理体系文件";
             this.openFileDialog1.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
             // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.DefaultExt = "doc";
+            this.openFileDialog2.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
+            // 
+            // openFileDialog3
+            // 
+            this.openFileDialog3.DefaultExt = "doc";
+            this.openFileDialog3.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
+            // 
             // Ribbon1
             // 
             this.Name = "Ribbon1";
@@ -156,13 +183,17 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitButton1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu menu2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button3;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button4;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSplitButton splitButton2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu menu1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button9;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button10;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu menu3;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button5;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;

@@ -8,12 +8,13 @@ using CSSTC1.ConstantVariables;
 using Aspose.Words;
 using System.Windows.Forms;
 using CSSTC1.FileProcessors;
+using CSSTC1.FileProcessors.writers;
 
 namespace CSSTC1.InputProcessors {
     class BasicInfoProcessor {
         public Document doc = new Document(FilePaths.root_file);
         //public Microsoft.Office.Interop.Word._Application wordApp = new Microsoft.Office.Interop.Word.Application();
-        public FileWriters1 file_writer = new FileWriters1();
+        public FileWriter1 file_writer = new FileWriter1();
 
         public void fill_basic_info(string[] bookmarks, string[] values, bool[] test_accordings) {
             DocumentBuilder doc_builder = new DocumentBuilder(this.doc);

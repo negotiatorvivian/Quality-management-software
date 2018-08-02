@@ -53,5 +53,45 @@ namespace CSSTC1.ConstantVariables {
         public static int rksqd_name_row = 0;
         public static int rksqd_iden_row = 3;
 
+        //测试大纲内审表位置
+        public static int csdgns_sec_table1 = 5;
+        public static int csdgns_ques_row = 1;
+        public static int csdgns_solu_row = 3;
+        public static int csdgns_sec_table2 = 6;
+        public static int csdgns_section = 2;
+
+        //测试大纲外审表位置
+        public static int csdgws_sec_table1 = 2;
+        public static int csdgws_sec_table2 = 3;
+        public static int csdgws_section = 4;
+        public static int csdgws_ques_row = 1;
+        public static int csdgws_solu_row = 3;
+
+        //测试需求内审表位置
+        public static int csxqns_sec_table1 = 2;
+        public static int csxqns_sec_table2 = 3;
+        public static int csxqns_section = 2;
+        public static int csxqns_ques_row = 1;
+        public static int csxqns_solu_row = 3;
+
+        //测试策划内审表位置
+        public static int cschns_sec_table1 = 6;
+        public static int cschns_sec_table2 = 7;
+        public static int cschns_section = 2;
+        public static int cschns_ques_row = 1;
+        public static int cschns_solu_row = 3;
+
+        //测试需求与策划外审表位置
+        public static int csxqws_sec_table1 = 2;
+        public static int csxqws_sec_table2 = 3;
+        public static int csxqws_section = 4;
+        public static int csxqws_ques_row = 1;
+        public static int csxqws_solu_row = 3;
+
+        //配置管理计划表位置
+        public static int pzgljh_section = 2;
+        public static int pzgljh_sec_table = 1;
+        public static int pzgljh_name_row = 0;
+        public static int pzgljh_iden_row = 1;
     }
 }

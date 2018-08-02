@@ -121,8 +121,13 @@
     <Compile Include="ConstantVariables\FilePaths.cs" />
     <Compile Include="ConstantVariables\InsertionPos.cs" />
     <Compile Include="ConstantVariables\NamingRules.cs" />
-    <Compile Include="FileProcessors\FileReader1.cs" />
-    <Compile Include="FileProcessors\FileWriters1.cs" />
+    <Compile Include="FileProcessors\readers\FileReader1.cs" />
+    <Compile Include="FileProcessors\readers\FileReader2.cs" />
+    <Compile Include="FileProcessors\readers\FileReader3.cs" />
+    <Compile Include="FileProcessors\writers\FileWriter2.cs" />
+    <Compile Include="FileProcessors\writers\FileWriter3.cs" />
+    <Compile Include="FileProcessors\writers\FileWriter1.cs" />
+    <Compile Include="FileProcessors\models\QestionReport.cs" />
     <Compile Include="FileProcessors\models\FileList.cs" />
     <Compile Include="FileProcessors\models\ProjectInfo.cs" />
     <Compile Include="FileProcessors\models\TableCell.cs" />

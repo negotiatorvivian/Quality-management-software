@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Aspose.Words;
 using CSSTC1.ConstantVariables;
+using CSSTC1.FileProcessors.models;
 
 namespace CSSTC1.CommonUtils {
     class OperationHelper {
@@ -37,6 +38,16 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
+        public static void delete_section(string path, string[] bookmarks) {
+            Document doc = new Document(path);
+            DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            foreach(string mark in bookmarks) {
+                if(doc_builder.MoveToBookmark(mark))
+                    doc_builder.CurrentSection.Range.Delete();
+            }
+            doc.Save(path);
+        }
+
         public static void copy_section(Document doc, string type, int count, int diff) {
             int sec_num = MappingHelper.get_doc_section(type);
             for(int i = 0; i < count; i++) {
@@ -46,5 +57,7 @@ namespace CSSTC1.CommonUtils {
                 
             }
         }
+
+       
     }
 }
