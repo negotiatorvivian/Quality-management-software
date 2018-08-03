@@ -5,6 +5,11 @@ using System.Text;
 
 namespace CSSTC1.ConstantVariables {
     class InsertionPos {
+        //全局变量
+        public static int hyqdb_name_row = 1;
+        public static int hyqdb_company_row = 2;
+        public static int hyqdb_job_row = 3;
+
         public static int pz_table = 2;
         public static int pz_row = 3;
         public static int pz_cell0 = 0;
@@ -25,6 +30,10 @@ namespace CSSTC1.ConstantVariables {
         public static int jbqk_xtqk_row = 8;
         public static int jbqk_cell = 1;
 
+        //测试合同内审签到表
+        public static int cshtqd_section = 0;
+        public static int cshtqd_sec_table = 5;
+
         public static int bcjdbd_table = 7;
         public static int bcjdbd_res_row = 1;
         public static int bcjdbd_name_row = 2;
@@ -43,22 +52,25 @@ namespace CSSTC1.ConstantVariables {
         public static int bcjlqqd_res_row = 1;
         public static int bcjlqqd_name_row = 2;
 
-        public static int hyqdb_table = 5;
-        public static int hyqdb_name_row = 1;
-        public static int hyqdb_company_row = 2;
-        public static int hyqdb_job_row = 3;
+        
+
+        
 
         public static int rksqd_table = 10;
         public static int rksqd_sec_table = 3;
         public static int rksqd_name_row = 0;
         public static int rksqd_iden_row = 3;
-
+        
         //测试大纲内审表位置
         public static int csdgns_sec_table1 = 5;
         public static int csdgns_ques_row = 1;
         public static int csdgns_solu_row = 3;
         public static int csdgns_sec_table2 = 6;
         public static int csdgns_section = 2;
+        //会议签到表
+        public static int csdgqd_section = 2;
+        public static int csdgqd_sec_table = 4;
+
 
         //测试大纲外审表位置
         public static int csdgws_sec_table1 = 2;
@@ -73,6 +85,9 @@ namespace CSSTC1.ConstantVariables {
         public static int csxqns_section = 2;
         public static int csxqns_ques_row = 1;
         public static int csxqns_solu_row = 3;
+        //会议签到表
+        public static int csxqqd_section = 2;
+        public static int csxqqd_sec_table = 1;
 
         //测试策划内审表位置
         public static int cschns_sec_table1 = 6;
@@ -80,6 +95,9 @@ namespace CSSTC1.ConstantVariables {
         public static int cschns_section = 2;
         public static int cschns_ques_row = 1;
         public static int cschns_solu_row = 3;
+        //会议签到表
+        public static int cschqd_section = 2;
+        public static int cschqd_sec_table = 5;
 
         //测试需求与策划外审表位置
         public static int csxqws_sec_table1 = 2;

@@ -90,6 +90,8 @@
             this.label32 = new System.Windows.Forms.Label();
             this.dmzc_shenchashijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.csxq_pingshenshijian = new System.Windows.Forms.DateTimePicker();
             this.label33 = new System.Windows.Forms.Label();
             this.csdg_pingshenshijian = new System.Windows.Forms.DateTimePicker();
@@ -102,7 +104,7 @@
             this.label36 = new System.Windows.Forms.Label();
             this.ljcs_shijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.label34 = new System.Windows.Forms.Label();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.xtcs_huiguishijian = new System.Windows.Forms.DateTimePicker();
             this.label35 = new System.Windows.Forms.Label();
             this.xtcs_shoulunshijian = new System.Windows.Forms.DateTimePicker();
@@ -130,8 +132,6 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -184,6 +184,7 @@
             this.xm_mingcheng.Size = new System.Drawing.Size(187, 23);
             this.xm_mingcheng.TabIndex = 4;
             this.xm_mingcheng.Text = "AAAA软件测评";
+            this.xm_mingcheng.TextChanged += new System.EventHandler(this.xm_mingcheng_TextChanged);
             // 
             // xm_fuzzeren
             // 
@@ -833,8 +834,35 @@
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(535, 121);
             this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "测试大纲评审时间";
+            this.tabPage5.Text = "测试大纲或需求规格说明评审时间";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Enabled = false;
+            this.checkBox7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox7.Location = new System.Drawing.Point(110, 74);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(180, 18);
+            this.checkBox7.TabIndex = 63;
+            this.checkBox7.Text = "测试需求与计划评审时间";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Checked = true;
+            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox6.Location = new System.Drawing.Point(110, 37);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(138, 18);
+            this.checkBox6.TabIndex = 62;
+            this.checkBox6.Text = "测试大纲评审时间";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // csxq_pingshenshijian
             // 
@@ -846,6 +874,7 @@
             this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csxq_pingshenshijian.TabIndex = 60;
             this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.csxq_pingshenshijian.ValueChanged += new System.EventHandler(this.csxq_pingshenshijian_ValueChanged);
             // 
             // label33
             // 
@@ -956,7 +985,7 @@
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.label34);
+            this.tabPage8.Controls.Add(this.checkBox8);
             this.tabPage8.Controls.Add(this.xtcs_huiguishijian);
             this.tabPage8.Controls.Add(this.label35);
             this.tabPage8.Controls.Add(this.xtcs_shoulunshijian);
@@ -967,15 +996,19 @@
             this.tabPage8.Text = "系统测试时间";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // label34
+            // checkBox8
             // 
-            this.label34.AutoSize = true;
-            this.label34.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label34.Location = new System.Drawing.Point(133, 75);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(119, 14);
-            this.label34.TabIndex = 65;
-            this.label34.Text = "系统回归测试时间";
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Checked = true;
+            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox8.Location = new System.Drawing.Point(110, 75);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(138, 18);
+            this.checkBox8.TabIndex = 66;
+            this.checkBox8.Text = "系统回归测试时间";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
             // 
             // xtcs_huiguishijian
             // 
@@ -992,7 +1025,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label35.Location = new System.Drawing.Point(133, 34);
+            this.label35.Location = new System.Drawing.Point(121, 38);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(119, 14);
             this.label35.TabIndex = 63;
@@ -1049,7 +1082,7 @@
             this.xm_jieshushijian.Name = "xm_jieshushijian";
             this.xm_jieshushijian.Size = new System.Drawing.Size(141, 22);
             this.xm_jieshushijian.TabIndex = 41;
-            this.xm_jieshushijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.xm_jieshushijian.Value = new System.DateTime(2018, 7, 1, 0, 0, 0, 0);
             // 
             // label18
             // 
@@ -1080,7 +1113,7 @@
             this.xm_kaishishijian.Name = "xm_kaishishijian";
             this.xm_kaishishijian.Size = new System.Drawing.Size(141, 22);
             this.xm_kaishishijian.TabIndex = 25;
-            this.xm_kaishishijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.xm_kaishishijian.Value = new System.DateTime(2018, 1, 1, 0, 0, 0, 0);
             // 
             // panel1
             // 
@@ -1284,33 +1317,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测试依据";
             // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox6.Location = new System.Drawing.Point(110, 37);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(138, 18);
-            this.checkBox6.TabIndex = 62;
-            this.checkBox6.Text = "测试大纲评审时间";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Enabled = false;
-            this.checkBox7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox7.Location = new System.Drawing.Point(110, 74);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(180, 18);
-            this.checkBox7.TabIndex = 63;
-            this.checkBox7.Text = "测试需求与计划评审时间";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
-            // 
             // BasicInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1468,7 +1474,6 @@
         private System.Windows.Forms.DateTimePicker csdg_pingshenshijian;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.DateTimePicker ljcs_shijian;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.DateTimePicker xtcs_huiguishijian;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.DateTimePicker xtcs_shoulunshijian;
@@ -1491,5 +1496,6 @@
         private System.Windows.Forms.DateTimePicker csxq_pingshenshijian;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox8;
         }
     }

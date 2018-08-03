@@ -52,7 +52,7 @@ namespace CSSTC1.ConstantVariables {
 
         public Dictionary<string, int> file_type_match = new Dictionary<string, int>();
 
-        
+        public static string pingshenzuzhang = "唐龙利";
 
         
     }

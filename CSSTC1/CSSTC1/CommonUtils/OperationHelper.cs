@@ -5,6 +5,7 @@ using System.Text;
 using Aspose.Words;
 using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors.models;
+using Aspose.Words.Tables;
 
 namespace CSSTC1.CommonUtils {
     class OperationHelper {
@@ -58,6 +59,55 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
-       
+        //填写评审组成员信息
+        public static void fill_pszcy_info(DocumentBuilder doc_builder, List<string> names) {
+            string text = "";
+            foreach(string name in names){
+                text += name + '、';
+                string title = MappingHelper.get_job_title(name);
+            }
+            text = text.Substring(0, text.Length - 1);
+            if(doc_builder.MoveToBookmark("评审组成员"))
+                doc_builder.Write(text);
+            names.Insert(0, NamingRules.pingshenzuzhang);
+            ContentFlags.pingshenzuchengyuan = names;
+        }
+
+        //会议签到表
+        public static bool conference_signing(Document doc, DocumentBuilder doc_builder,
+            int section_index, int sec_table_index) {
+            if(ContentFlags.pingshenzuchengyuan.Count == 0)
+                return false;
+            doc_builder.MoveToSection(section_index);
+            Table table = (Table)doc.Sections[section_index].GetChild(NodeType.Table,
+                sec_table_index, true);
+            int row_index = 1;
+            foreach(string name in ContentFlags.pingshenzuchengyuan) {
+                if(row_index < ContentFlags.pingshenzuchengyuan.Count) {
+                    var row = table.Rows[row_index].Clone(true);
+                    table.Rows.Insert(1 + row_index, row);
+                }
+                doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.hyqdb_name_row, 0);
+                doc_builder.Write(name);
+                doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.hyqdb_job_row, 0);
+                string title = MappingHelper.get_job_title(name);
+                doc_builder.Write(title);
+                row_index += 1;
+            }
+            return true;
+        }
+
+        public static void update_file(){
+            Document doc = new Document(FilePaths.save_root_file);
+            if(doc != null){
+                DocumentBuilder doc_builder = new DocumentBuilder(doc);
+                NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
+                foreach(Aspose.Words.Fields.FieldStart field_ref in nodes) {
+                    Aspose.Words.Fields.Field field = field_ref.GetField();
+                    field.Update();
+                }
+                doc.Save(FilePaths.save_root_file);
+            }
+        }
     }
 }

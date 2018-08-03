@@ -11,14 +11,18 @@ namespace CSSTC1.ConstantVariables {
         public static int missing = -1;
         public static int copy = 0;
 
-        public static HashSet<string> test_types= new HashSet<string>();
+        public static HashSet<string> test_types = new HashSet<string>();
+
         public static int lingqucishu = 2;
-        public static List<string> lingqushijian = new List<string>();
-        public static string xiangmukaishishijian = "";
         public static int pianli_1 = 1;
 
-        public static List<FileList> beicejianqingdan = new List<FileList>();
-        public static List<string> content_list = new List<string>();
+        //public static List<FileList> beicejianqingdan = new List<FileList>();
+        //public static List<string> content_list = new List<string>();
+        public static Dictionary<string, FileList> beicejianqingdan_dict = new Dictionary<string, FileList>();
+
         public static bool ceshidagang = true;
+        public static int pianli_2 = 1;
+
+        public static List<string> pingshenzuchengyuan = new List<string>();
     }
 }

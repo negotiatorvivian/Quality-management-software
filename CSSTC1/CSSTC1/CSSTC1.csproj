@@ -121,6 +121,7 @@
     <Compile Include="ConstantVariables\FilePaths.cs" />
     <Compile Include="ConstantVariables\InsertionPos.cs" />
     <Compile Include="ConstantVariables\NamingRules.cs" />
+    <Compile Include="ConstantVariables\TimeStamp.cs" />
     <Compile Include="FileProcessors\readers\FileReader1.cs" />
     <Compile Include="FileProcessors\readers\FileReader2.cs" />
     <Compile Include="FileProcessors\readers\FileReader3.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="FileProcessors\models\ProjectInfo.cs" />
     <Compile Include="FileProcessors\models\TableCell.cs" />
     <Compile Include="InputProcessors\BasicInfoProcessor.cs" />
+    <Compile Include="InputProcessors\DemandAnaProcessor.cs" />
     <Compile Include="InputProcessors\ProjectEstabInfoProcessor.cs" />
     <Compile Include="Pages\BasicInfo.cs">
       <SubType>Form</SubType>
@@ -139,6 +141,9 @@
     <Compile Include="Pages\BasicInfo.Designer.cs">
       <DependentUpon>BasicInfo.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Pages\DemandAnalysis.resx">
+      <DependentUpon>DemandAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\ProjectEstabInfo.resx">
       <DependentUpon>ProjectEstabInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +158,12 @@
     </EmbeddedResource>
     <None Include="CSSTC1_TemporaryKey.pfx" />
     <None Include="CSSTC模板.dotx" />
+    <Compile Include="Pages\DemandAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\DemandAnalysis.Designer.cs">
+      <DependentUpon>DemandAnalysis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProjectEstabInfo.cs">
       <SubType>Form</SubType>
     </Compile>

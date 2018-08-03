@@ -28,7 +28,6 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ribbon1));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.menu3 = this.Factory.CreateRibbonMenu();
@@ -46,6 +45,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
+            this.button2 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             // 
@@ -60,6 +60,7 @@
             // 
             this.group1.Items.Add(this.menu3);
             this.group1.Items.Add(this.menu2);
+            this.group1.Items.Add(this.button2);
             this.group1.Label = "上传文件";
             this.group1.Name = "group1";
             // 
@@ -71,7 +72,7 @@
             this.menu3.Items.Add(this.button8);
             this.menu3.Label = "填写基本信息";
             this.menu3.Name = "menu3";
-            this.menu3.SuperTip = "s";
+            this.menu3.SuperTip = "填写各个阶段的基本信息";
             // 
             // button5
             // 
@@ -85,6 +86,7 @@
             this.button6.Label = "测试需求分析与策划";
             this.button6.Name = "button6";
             this.button6.ShowImage = true;
+            this.button6.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button6_Click);
             // 
             // button7
             // 
@@ -100,7 +102,6 @@
             // 
             // menu2
             // 
-            this.menu2.Image = ((System.Drawing.Image)(resources.GetObject("menu2.Image")));
             this.menu2.Items.Add(this.button1);
             this.menu2.Items.Add(this.menu1);
             this.menu2.Items.Add(this.button3);
@@ -166,6 +167,12 @@
             this.openFileDialog3.DefaultExt = "doc";
             this.openFileDialog3.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
             // 
+            // button2
+            // 
+            this.button2.Label = "更新文档内容";
+            this.button2.Name = "button2";
+            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
+            // 
             // Ribbon1
             // 
             this.Name = "Ribbon1";
@@ -198,6 +205,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button6;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
     }
 
 }

@@ -7,6 +7,7 @@ using CSSTC1.FileProcessors.writers;
 using Aspose.Words;
 using Aspose.Words.Tables;
 using System.Windows.Forms;
+using CSSTC1.ConstantVariables;
 
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader3 {
@@ -47,6 +48,12 @@ namespace CSSTC1.FileProcessors.readers {
                 reports.Add(qus_report);
             }
             return reports;
+        }
+
+        public void read_psz_members(List<string> names) {
+            Document doc = new Document(FilePaths.save_root_file);
+            DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            writer.write_hyqdb_chart(doc, doc_builder, names);
         }
     }
 }

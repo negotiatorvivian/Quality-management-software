@@ -7,6 +7,7 @@ using Aspose.Words;
 using CSSTC1.ConstantVariables;
 using System.Windows.Forms;
 using Aspose.Words.Tables;
+using CSSTC1.CommonUtils;
 
 namespace CSSTC1.FileProcessors.writers {
     class FileWriter3 {
@@ -83,6 +84,23 @@ namespace CSSTC1.FileProcessors.writers {
             }
             if(doc_builder.MoveToBookmark("测试说明与计划更改内容"))
                 doc_builder.Write(this.questions);
+        }
+
+        //会议签到表
+        public void write_hyqdb_chart(Document doc, DocumentBuilder doc_builder, List<string> names) {
+            int section_index = InsertionPos.csxqqd_section + ContentFlags.lingqucishu * 2 + ContentFlags.pianli_1;
+            int sec_table_index = InsertionPos.csxqqd_sec_table;
+            OperationHelper.fill_pszcy_info(doc_builder, names);
+            bool res = OperationHelper.conference_signing(doc, doc_builder, section_index, sec_table_index);
+            if(!res)
+                MessageBox.Show("请先填写测试需求分析与策划阶段的信息");
+            else{
+                int section_index1 = InsertionPos.cschqd_section + ContentFlags.lingqucishu * 2 + 
+                    ContentFlags.pianli_1;
+                int sec_table_index1 = InsertionPos.cschqd_sec_table;
+                OperationHelper.conference_signing(doc, doc_builder, section_index1, sec_table_index1);
+                doc.Save(FilePaths.save_root_file);
+            }
         }
     }
 }

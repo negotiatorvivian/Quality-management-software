@@ -16,14 +16,10 @@ namespace CSSTC1.InputProcessors {
         //填写项目时间线
         public void fill_estab_info(string lx_time, List<string> lq_times, string pl_time){
             int lixiang_time = int.Parse(lx_time);
-            ContentFlags.lingqushijian = lq_times;
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            Bookmark mark = doc.Range.Bookmarks["项目开始时间"];
-            string xmks_time = "";
-            if(mark != null) {
-                xmks_time = mark.Text;
-                ContentFlags.xiangmukaishishijian = xmks_time;
+            string xmks_time = TimeStamp.xiangmukaishishijian ;
+            if(xmks_time.Length > 0) {
                 doc = DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第一次", xmks_time, lixiang_time);
                 doc = DateHelper.fill_time_blank(doc, doc_builder, "任务通知时间", xmks_time, lixiang_time - 1);
                 doc = DateHelper.fill_time_blank(doc, doc_builder, "内部评审时间", xmks_time, lixiang_time - 4);
@@ -45,7 +41,9 @@ namespace CSSTC1.InputProcessors {
             }
             if(doc_builder.MoveToBookmark("偏离联系时间")){
                 if(pl_time.Length > 0){
-                    doc_builder.Write(pl_time);
+                    string[] temp = pl_time.Split('/');
+                    string temp1 = temp[0] + "年" + temp[1] + "月" + temp[2] + "日";
+                    doc_builder.Write(temp1);
                 }
                 else{
                     ContentFlags.pianli_1 = 0;

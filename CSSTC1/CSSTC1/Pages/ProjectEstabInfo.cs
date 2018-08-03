@@ -15,7 +15,7 @@ namespace CSSTC1.Pages {
         public ProjectEstabInfo() {
             InitializeComponent();
         }
-
+        #region  用户界面组件控制
         private void button2_Click(object sender, EventArgs e) {
             Globals.ThisDocument.project_estab_info.Hide();
         }
@@ -79,7 +79,9 @@ namespace CSSTC1.Pages {
                     break;
             }
         }
+        #endregion
 
+        //提交信息
         private void button1_Click(object sender, EventArgs e) {
             string lx_time = this.numericUpDown1.Value.ToString();
             //decimal lx_time = this.numericUpDown1.Value;
@@ -87,25 +89,35 @@ namespace CSSTC1.Pages {
             List<string> lq_time = new List<string>();
             if(lq_times[0].Equals('1')){
                 ContentFlags.lingqucishu = 1;
-                lq_time.Add(this.dateTimePicker1.Text);
+                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
+                TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
             }
             else if(lq_times[0].Equals('2')) {
                 ContentFlags.lingqucishu = 2;
-                lq_time.Add(this.dateTimePicker1.Text);
-                lq_time.Add(this.dateTimePicker2.Text);
+                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker2.Value.ToLongDateString());
+                TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
+                TimeStamp.lingqushijian.Add(this.dateTimePicker2.Text);
             }
             else if(lq_times[0].Equals('3')) {
                 ContentFlags.lingqucishu = 3;
-                lq_time.Add(this.dateTimePicker1.Text);
-                lq_time.Add(this.dateTimePicker2.Text);
-                lq_time.Add(this.dateTimePicker3.Text);
+                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker2.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker3.Value.ToLongDateString());
+                TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
+                TimeStamp.lingqushijian.Add(this.dateTimePicker2.Text);
+                TimeStamp.lingqushijian.Add(this.dateTimePicker3.Text);
             }
             else{
                 ContentFlags.lingqucishu = lq_times[0];
-                lq_time.Add(this.dateTimePicker1.Text);
-                lq_time.Add(this.dateTimePicker2.Text);
-                lq_time.Add(this.dateTimePicker3.Text);
-                lq_time.Add(this.dateTimePicker4.Text);
+                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker2.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker3.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker4.Value.ToLongDateString());
+                TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
+                TimeStamp.lingqushijian.Add(this.dateTimePicker2.Text);
+                TimeStamp.lingqushijian.Add(this.dateTimePicker3.Text);
+                TimeStamp.lingqushijian.Add(this.dateTimePicker4.Text);
             }
             string pl_time = "";
             if(this.dateTimePicker5.Enabled == true){
@@ -115,8 +127,5 @@ namespace CSSTC1.Pages {
             Globals.ThisDocument.project_estab_info.Hide();
         }
 
-        
-
-     
     }
 }

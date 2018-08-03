@@ -9,6 +9,7 @@ using CSSTC1.FileProcessors.models;
 using System.Text.RegularExpressions;
 using CSSTC1.InputProcessors;
 using CSSTC1.CommonUtils;
+using System.Windows.Forms;
 
 namespace CSSTC1.FileProcessors.writers {
     class FileWriter1 {
@@ -216,8 +217,16 @@ namespace CSSTC1.FileProcessors.writers {
                     content_list.Add(text);
                 }
             }
-            ContentFlags.beicejianqingdan = files;
-            ContentFlags.content_list = content_list;
+
+            Dictionary<string, FileList> beicejianqingdan_dict = new Dictionary<string, FileList>();
+            int j = 0;
+            foreach(FileList file in files) {
+                if(!beicejianqingdan_dict.ContainsKey(content_list[j])){
+                    beicejianqingdan_dict.Add(content_list[j], file);
+                    j = j + 1;
+                }
+            }
+            ContentFlags.beicejianqingdan_dict = beicejianqingdan_dict;
             this.write_bcjdbd_chart(files, content_list, time);
             this.write_bcjqd_chart(files, content_list, time);
             this.write_bcjlqqd_chart(files, content_list, time);
@@ -293,7 +302,7 @@ namespace CSSTC1.FileProcessors.writers {
                     InsertionPos.bcjqd_orig_row, 0);
                 Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.bcjqd_orig_row];
                 string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
-                string date = DateHelper.cal_time(ContentFlags.lingqushijian[time], 0);
+                string date = DateHelper.cal_time(TimeStamp.lingqushijian[time], 0);
                 if(temp.Equals(file.wd_laiyuan)) {
                     //合并来源列
                     rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
@@ -410,44 +419,16 @@ namespace CSSTC1.FileProcessors.writers {
         }
 
         //会议签到表
-        public void conference_signing() {
-            Document doc = new Document(FilePaths.save_root_file);
-            DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            Bookmark mark = doc.Range.Bookmarks["评审组成员"];
-            Bookmark mark1 = doc.Range.Bookmarks["评审组长"];
-            if(mark != null) {
-                string names = mark1.Text + '、' + mark.Text;
-                string[] name_list = names.Split('、');
-                List<string> name_list1 = new List<string>();
-                foreach(string name in name_list) {
-                    if(name.Length > 0)
-                        name_list1.Add(name);
-                }
-                Node node = doc.GetChild(NodeType.Table, InsertionPos.hyqdb_table, true);
-                Table table = (Table)node;
-
-                int row_index = 1;
-
-                foreach(string name in name_list1) {
-                    if(row_index < name_list1.Count) {
-                        var row = table.Rows[row_index].Clone(true);
-                        table.Rows.Insert(1 + row_index, row);
-                    }
-                    doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index, 
-                        InsertionPos.hyqdb_name_row, 0);
-                    doc_builder.Write(name);
-                    doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index,
-                        InsertionPos.hyqdb_company_row, 0);
-                    doc_builder.Write(NamingRules.company);
-                    doc_builder.MoveToCell(InsertionPos.hyqdb_table, row_index, 
-                        InsertionPos.hyqdb_job_row, 0);
-                    doc_builder.Write(MappingHelper.get_job_title(name));
-
-                    row_index += 1;
-                }
+        public bool write_hyqdb_chart(Document doc, DocumentBuilder doc_builder) {
+            int section_index = InsertionPos.cshtqd_section;
+            int sec_table_index = InsertionPos.cshtqd_sec_table;
+            bool res = OperationHelper.conference_signing(doc, doc_builder, section_index, sec_table_index);
+            if(!res){
+                return false;
             }
-            doc.Save(FilePaths.save_root_file);
-
+            else
+                doc.Save(FilePaths.save_root_file);
+            return true;
         }
 
     }

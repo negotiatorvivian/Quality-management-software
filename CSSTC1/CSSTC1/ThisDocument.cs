@@ -17,6 +17,7 @@ namespace CSSTC1
     {
         public BasicInfo basic_info = new BasicInfo();
         public ProjectEstabInfo project_estab_info = new ProjectEstabInfo();
+        public DemandAnalysis demand_analysis_form = new DemandAnalysis();
         public Ribbon1 ribbon;
         //public Microsoft.Office.Interop.Word._Application wordApp = null;
 

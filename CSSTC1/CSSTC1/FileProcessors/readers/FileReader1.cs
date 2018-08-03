@@ -17,39 +17,45 @@ namespace CSSTC1.FileProcessors.readers {
         private FileWriter1 file_writer = new FileWriter1();
 
         public void read_charts(string filepath){
-            //MessageBox.
-            Document doc = new Document(filepath);
-
-            NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
-            if(ContentFlags.peizhiceshi) {
-                this.read_pzx_chart(count, doc);
-                count += 1;
-            }
-            else {
-                this.read_pzx_chart(ContentFlags.missing, doc);
-            }
-            if(ContentFlags.xitongceshi) {
-                this.read_xt_chart(count, doc);
-                count += 1;
-            }
-            else {
-                this.read_xt_chart(ContentFlags.missing, doc);
-            }
-            file_writer.write_rwtzd_chart();
-
-            this.read_csry_chart(count, doc);
-            count += 1;
-            bool res = this.read_xmjs_chart(count, doc);
-            count += 1;
-            if(res){
-                for(int i = 0; i < ContentFlags.lingqucishu; i++){
-                    int[] index = { count + i * 3, count + i * 3 + 1, count + i * 3 + 2 };
-                    this.read_wdqd_chart(index, doc, i);
+    
+            if(ContentFlags.pingshenzuchengyuan.Count > 0){
+                Document doc = new Document(filepath);
+                NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
+                if(ContentFlags.peizhiceshi) {
+                    this.read_pzx_chart(count, doc);
+                    count += 1;
                 }
-                
+                else {
+                    this.read_pzx_chart(ContentFlags.missing, doc);
+                }
+                if(ContentFlags.xitongceshi) {
+                    this.read_xt_chart(count, doc);
+                    count += 1;
+                }
+                else {
+                    this.read_xt_chart(ContentFlags.missing, doc);
+                }
+                file_writer.write_rwtzd_chart();
+
+                this.read_csry_chart(count, doc);
+                count += 1;
+                bool res = this.read_xmjs_chart(count, doc);
+                count += 1;
+                if(res){
+                    for(int i = 0; i < ContentFlags.lingqucishu; i++){
+                        int[] index = { count + i * 3, count + i * 3 + 1, count + i * 3 + 2 };
+                        this.read_wdqd_chart(index, doc, i);
+                    }
+                }
+                Document doc1 = new Document(FilePaths.save_root_file);
+                DocumentBuilder doc_builder = new DocumentBuilder(doc1);
+                bool res1 = file_writer.write_hyqdb_chart(doc1, doc_builder);
+                if(res1)
+                    MessageBox.Show("写入文档完成!");
             }
-            file_writer.conference_signing();
-            MessageBox.Show("写入文档完成");
+            else
+                MessageBox.Show("请先填写测试需求分析与策划阶段的信息！");
+
         }
 
         public void read_pzx_chart(int index, Document doc) {
