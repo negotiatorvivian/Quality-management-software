@@ -16,7 +16,9 @@ namespace CSSTC1.FileProcessors.models {
         public string yz_danwei;
         public string beizhu;
 
-        public ProjectInfo(string xt_mingcheng, string rj_mingcheng, string xt_banben, string yx_huanjing, string                           kf_huanjing, string bc_yuyan, string dm_guimo, string dengji, string yz_danwei, string beizhu) {
+        public ProjectInfo(string xt_mingcheng, string rj_mingcheng, string xt_banben, string yx_huanjing, 
+            string kf_huanjing, string bc_yuyan, string dm_guimo, string dengji, string yz_danwei, 
+            string beizhu) {
             this.xt_mingcheng = xt_mingcheng;
             this.rj_mingcheng = rj_mingcheng;
             this.xt_banben = xt_banben;

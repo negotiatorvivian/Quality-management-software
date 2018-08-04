@@ -17,7 +17,6 @@ namespace CSSTC1.FileProcessors.readers {
         private FileWriter1 file_writer = new FileWriter1();
 
         public void read_charts(string filepath){
-    
             if(ContentFlags.pingshenzuchengyuan.Count > 0){
                 Document doc = new Document(filepath);
                 NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
@@ -68,14 +67,38 @@ namespace CSSTC1.FileProcessors.readers {
                 Node node = doc.GetChild(NodeType.Table, index, true);
                 Table table = (Table)node;
                 Row row = table.Rows[0];
+                int jtfx_index = 0;
+                bool flag = false;
                 foreach(Cell cell in row.Cells) {
                     string cellText = cell.GetText().ToString().Trim();
                     cellTexts.Add(cellText.Substring(0, cellText.Length - 1));
+                    if(!cellText.Equals("静态分析\a") && !flag)
+                        jtfx_index += 1;
+                    else if(cellText.Equals("静态分析\a"))
+                        flag = true;
                 }
                 NamingRules.table_names.Add(index, "配置项测试");
                 cellTexts.RemoveAt(0);
                 file_writer.write_pzx_chart(cellTexts);
+                this.read_jtfx_chart(doc, doc_builder, table, jtfx_index);
             }
+        }
+
+        public void read_jtfx_chart(Document doc, DocumentBuilder doc_builder, Table table, int index) {
+            int row_index = 1;
+            List<String> software_name = new List<string>();
+            foreach(Row row in table.Rows){
+                if(row_index == table.Rows.Count)
+                    break;
+                doc_builder.MoveToCell(0, row_index, index, 0);
+                string temp = doc_builder.CurrentNode.Range.Text;
+                if(temp.Equals("√")){
+                    string name = table.Rows[row_index].Cells[0].Range.Text;
+                    software_name.Add(name.Substring(0, name.Length - 1));
+                }
+                row_index += 1;
+            }
+            ContentFlags.software_list = software_name;
         }
 
         public void read_xt_chart(int index, Document doc) {
@@ -118,6 +141,7 @@ namespace CSSTC1.FileProcessors.readers {
 
         public bool read_xmjs_chart(int index, Document doc) {
             List<ProjectInfo> pro_infos = new List<ProjectInfo>();
+            List<StaticAnalysisFile> static_files = new List<StaticAnalysisFile>();
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             Node node = doc.GetChild(NodeType.Table, index, true);
             Table table = (Table)node;
@@ -143,9 +167,15 @@ namespace CSSTC1.FileProcessors.readers {
                     ProjectInfo pro_info = new ProjectInfo(temp[0], temp[1], temp[2], temp[3], temp[4],
                                         temp[5], temp[6], temp[7], temp[8], temp[9]);
                     pro_infos.Add(pro_info);
+                    if(ContentFlags.software_list.Contains(temp[1])){
+                        StaticAnalysisFile static_file = new StaticAnalysisFile(temp[1], "全部源代码", temp[2], 
+                            temp[5], temp[8]);
+                        static_files.Add(static_file);
+                    }
                 }
 
             }
+            ContentFlags.static_files = static_files;
             bool res = file_writer.write_xmjj_chart(pro_infos);
             return res;
         }

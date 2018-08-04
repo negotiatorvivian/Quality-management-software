@@ -70,6 +70,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\迅雷下载\Aspose.Words.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
@@ -80,6 +82,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Tools.v4.0.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -122,9 +125,14 @@
     <Compile Include="ConstantVariables\InsertionPos.cs" />
     <Compile Include="ConstantVariables\NamingRules.cs" />
     <Compile Include="ConstantVariables\TimeStamp.cs" />
+    <Compile Include="FileProcessors\models\HardwareItems.cs" />
+    <Compile Include="FileProcessors\models\SoftwareItems.cs" />
+    <Compile Include="FileProcessors\models\StaticAnalysisFile.cs" />
+    <Compile Include="FileProcessors\models\TestEnvironment.cs" />
     <Compile Include="FileProcessors\readers\FileReader1.cs" />
     <Compile Include="FileProcessors\readers\FileReader2.cs" />
     <Compile Include="FileProcessors\readers\FileReader3.cs" />
+    <Compile Include="FileProcessors\readers\FileReader4.cs" />
     <Compile Include="FileProcessors\writers\FileWriter2.cs" />
     <Compile Include="FileProcessors\writers\FileWriter3.cs" />
     <Compile Include="FileProcessors\writers\FileWriter1.cs" />
@@ -134,6 +142,7 @@
     <Compile Include="FileProcessors\models\TableCell.cs" />
     <Compile Include="InputProcessors\BasicInfoProcessor.cs" />
     <Compile Include="InputProcessors\DemandAnaProcessor.cs" />
+    <Compile Include="InputProcessors\DesignAndExeProcessor.cs" />
     <Compile Include="InputProcessors\ProjectEstabInfoProcessor.cs" />
     <Compile Include="Pages\BasicInfo.cs">
       <SubType>Form</SubType>
@@ -143,6 +152,12 @@
     </Compile>
     <EmbeddedResource Include="Pages\DemandAnalysis.resx">
       <DependentUpon>DemandAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\DesignAndExecution.resx">
+      <DependentUpon>DesignAndExecution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PopUpWindow.resx">
+      <DependentUpon>PopUpWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ProjectEstabInfo.resx">
       <DependentUpon>ProjectEstabInfo.cs</DependentUpon>
@@ -163,6 +178,18 @@
     </Compile>
     <Compile Include="Pages\DemandAnalysis.Designer.cs">
       <DependentUpon>DemandAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DesignAndExecution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\DesignAndExecution.Designer.cs">
+      <DependentUpon>DesignAndExecution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PopUpWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\PopUpWindow.Designer.cs">
+      <DependentUpon>PopUpWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProjectEstabInfo.cs">
       <SubType>Form</SubType>

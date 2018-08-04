@@ -46,13 +46,16 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             this.button2 = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
+            this.group2.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
             this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.group2);
             this.tab1.Label = "TabAddIns";
             this.tab1.Name = "tab1";
             // 
@@ -60,7 +63,6 @@
             // 
             this.group1.Items.Add(this.menu3);
             this.group1.Items.Add(this.menu2);
-            this.group1.Items.Add(this.button2);
             this.group1.Label = "上传文件";
             this.group1.Name = "group1";
             // 
@@ -90,9 +92,10 @@
             // 
             // button7
             // 
-            this.button7.Label = "第三部分";
+            this.button7.Label = "测试设计与执行";
             this.button7.Name = "button7";
             this.button7.ShowImage = true;
+            this.button7.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -173,6 +176,12 @@
             this.button2.Name = "button2";
             this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
             // 
+            // group2
+            // 
+            this.group2.Items.Add(this.button2);
+            this.group2.Label = "更新";
+            this.group2.Name = "group2";
+            // 
             // Ribbon1
             // 
             this.Name = "Ribbon1";
@@ -183,6 +192,8 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
 
         }
 
@@ -206,6 +217,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button7;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
     }
 
 }

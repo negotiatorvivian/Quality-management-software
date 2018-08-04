@@ -223,6 +223,8 @@ namespace CSSTC1.Pages {
             this.Rjyz_renwushu = checkBox4.Checked;
             this.Rjxq_guigeshuoming = checkBox5.Checked;
 
+            
+
             string[] values = { Xm_biaoshi, Xm_mingcheng, Rj_mingcheng, Pz_guanliyuan, Bcj_guanliyuan, 
                                   Zlbz_renyuan, Cs_jianduyuan, Sb_guanliyuan, Fuzhurren, Cw_fuzhuren, Zhuren,
                                   Wt_xingming, Wt_dianhua, Wt_danwei, Kf_xingming, Kf_dianhua, Kf_danwei, 
@@ -253,5 +255,20 @@ namespace CSSTC1.Pages {
             }
         }
 
+        //所有时间信息
+        public void record_time(){
+            //文档审查时间            
+            TimeStamp.wdscqr_time = this.wd_querenshijian.Value.ToShortDateString();
+            TimeStamp.wdscqr_format_time = this.wd_querenshijian.Value.ToLongDateString();
+            TimeStamp.wdschg_time = this.wd_huiguishijian.Value.ToShortDateString();
+            TimeStamp.wdschg_format_time = this.wd_huiguishijian.Value.ToLongDateString();
+            //静态分析时间
+            TimeStamp.jtfxsc_time = this.jtfx_shenchashijian.Value.ToShortDateString();
+            TimeStamp.jtfxsc_format_time = this.jtfx_shenchashijian.Value.ToLongDateString();
+            TimeStamp.jtfxhg_time = this.jt_huiguishijian.Value.ToShortDateString();
+            TimeStamp.jtfxhg_format_time = this.jt_huiguishijian.Value.ToLongDateString();
+            TimeStamp.jtfxqr_time = this.jtfx_querenshijian.Value.ToShortDateString();
+            TimeStamp.jtfxqr_format_time = this.jtfx_querenshijian.Value.ToLongDateString();
+        }
         }
     }

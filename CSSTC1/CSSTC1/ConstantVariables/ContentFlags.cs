@@ -12,12 +12,13 @@ namespace CSSTC1.ConstantVariables {
         public static int copy = 0;
 
         public static HashSet<string> test_types = new HashSet<string>();
+        public static List<StaticAnalysisFile> static_files = new List<StaticAnalysisFile>();
 
         public static int lingqucishu = 2;
         public static int pianli_1 = 1;
 
         //public static List<FileList> beicejianqingdan = new List<FileList>();
-        //public static List<string> content_list = new List<string>();
+        public static List<string> software_list = new List<string>();
         public static Dictionary<string, FileList> beicejianqingdan_dict = new Dictionary<string, FileList>();
 
         public static bool ceshidagang = true;

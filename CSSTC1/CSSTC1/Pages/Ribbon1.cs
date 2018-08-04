@@ -72,6 +72,12 @@ namespace CSSTC1.Pages {
             MessageBox.Show("文档更新完成!");
         }
 
+        private void button7_Click(object sender, RibbonControlEventArgs e) {
+            bool res = Globals.ThisDocument.design_and_exe.fill_table();
+            if(res)
+                Globals.ThisDocument.design_and_exe.Show();
+        }
+
         
     }
 }

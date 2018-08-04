@@ -33,11 +33,6 @@ namespace CSSTC1.InputProcessors {
             string year = values[values.Length - 2].Substring(0, 4);
             doc_builder.MoveToBookmark("年份");
             doc_builder.Write(year);
-            //NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
-            //foreach(Aspose.Words.Fields.FieldStart field_ref in nodes){
-            //    Aspose.Words.Fields.Field field = field_ref.GetField();
-            //    field.Update();
-            //}
             doc.Save(FilePaths.save_root_file);
             fill_test_accordings(test_accordings);
         }

@@ -17,15 +17,21 @@ namespace CSSTC1.CommonUtils {
                     return "02";
                 case "软件任务书":
                     return "02";
+                case "任务书":
+                    return "02";
                 case "软件质量保证计划":
                     return "03";
                 case "软件配置管理计划":
                     return "04";
                 case "软件需求规格说明":
                     return "05";
+                case "需求规格说明":
+                    return "05";
                 case "接口需求规格说明":
                     return "06";
                 case "软件设计文档":
+                    return "07";
+                case "设计文档":
                     return "07";
                 case "软件概要设计文档":
                     return "08";
@@ -37,7 +43,11 @@ namespace CSSTC1.CommonUtils {
                     return "09";
                 case "详细设计说明书":
                     return "09";
+                case "详细设计文档":
+                    return "09";
                 case "接口设计文档":
+                    return "10";
+                case "接口设计":
                     return "10";
                 case "软件产品规格说明":
                     return "11";

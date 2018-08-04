@@ -19,6 +19,7 @@ namespace CSSTC1
         public ProjectEstabInfo project_estab_info = new ProjectEstabInfo();
         public DemandAnalysis demand_analysis_form = new DemandAnalysis();
         public Ribbon1 ribbon;
+        public DesignAndExecution design_and_exe = new DesignAndExecution();
         //public Microsoft.Office.Interop.Word._Application wordApp = null;
 
         private void ThisDocument_Startup(object sender, System.EventArgs e)
