@@ -279,7 +279,7 @@ namespace CSSTC1.FileProcessors.writers {
         public void write_bcjqd_chart(List<FileList> files, List<string> content_list, int time) {
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder rootdoc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, InsertionPos.bcjqd_table + 5 * time, true);
+            Node node = doc.GetChild(NodeType.Table, InsertionPos.lx_bcjqd_table + 5 * time, true);
             Table table = (Table)node;
 
             int cur_section = 2 * time + 1;
@@ -292,39 +292,39 @@ namespace CSSTC1.FileProcessors.writers {
                     var row = table.Rows[row_index].Clone(true);
                     table.Rows.Insert(1 + row_index, row);
                 }
-                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
-                    InsertionPos.bcjqd_name_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index, 
+                    InsertionPos.lx_bcjqd_name_row, 0);
                 rootdoc_builder.Write(file.wd_mingcheng);
-                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
-                    InsertionPos.bcjqd_res_row, 0);
+                rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
+                    InsertionPos.lx_bcjqd_res_row, 0);
                 rootdoc_builder.Write(content_list[row_index - 1]);
-                rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
-                    InsertionPos.bcjqd_orig_row, 0);
-                Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.bcjqd_orig_row];
+                rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
+                    InsertionPos.lx_bcjqd_orig_row, 0);
+                Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.lx_bcjqd_orig_row];
                 string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
                 string date = DateHelper.cal_time(TimeStamp.lingqushijian[time], 0);
                 if(temp.Equals(file.wd_laiyuan)) {
                     //合并来源列
-                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
-                            InsertionPos.bcjqd_orig_row, 0);
+                    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, merge_cell,
+                            InsertionPos.lx_bcjqd_orig_row, 0);
                     rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
-                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index, 
-                        InsertionPos.bcjqd_orig_row, 0);
+                    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
+                        InsertionPos.lx_bcjqd_orig_row, 0);
                     rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
 
                     //合并接收日期列
-                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
-                        InsertionPos.bcjqd_date_row, 0);
+                    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, merge_cell,
+                        InsertionPos.lx_bcjqd_date_row, 0);
                     rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
-                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, row_index,
-                        InsertionPos.bcjqd_date_row, 0);
+                    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
+                        InsertionPos.lx_bcjqd_date_row, 0);
                     rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                 }
                 else {
                     rootdoc_builder.Write(file.wd_laiyuan);
                     merge_cell = row_index;
-                    rootdoc_builder.MoveToCell(InsertionPos.bcjqd_sec_table, merge_cell,
-                        InsertionPos.bcjqd_date_row, 0);
+                    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, merge_cell,
+                        InsertionPos.lx_bcjqd_date_row, 0);
                     rootdoc_builder.Write(date);
                 }
 

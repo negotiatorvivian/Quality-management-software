@@ -17,7 +17,6 @@ namespace CSSTC1.ConstantVariables {
         public static int lingqucishu = 2;
         public static int pianli_1 = 1;
 
-        //public static List<FileList> beicejianqingdan = new List<FileList>();
         public static List<string> software_list = new List<string>();
         public static Dictionary<string, FileList> beicejianqingdan_dict = new Dictionary<string, FileList>();
 
@@ -25,5 +24,6 @@ namespace CSSTC1.ConstantVariables {
         public static int pianli_2 = 1;
 
         public static List<string> pingshenzuchengyuan = new List<string>();
+        public static Dictionary<string, SoftwareItems> software_dict;
     }
 }

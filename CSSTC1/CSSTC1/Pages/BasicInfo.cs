@@ -237,6 +237,7 @@ namespace CSSTC1.Pages {
                                          this.Rjxq_guigeshuoming };
             processor.fill_basic_info(bookmarks, values, test_accordings);
             this.del_section();
+            this.record_time();
             Globals.ThisDocument.basic_info.Hide();
             //MessageBox.Show("正在写入，请稍候...");
         }

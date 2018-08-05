@@ -42,11 +42,12 @@
             this.button10 = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
             this.button4 = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.button2 = this.Factory.CreateRibbonButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = this.Factory.CreateRibbonButton();
-            this.group2 = this.Factory.CreateRibbonGroup();
+            this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
@@ -85,6 +86,7 @@
             // 
             // button6
             // 
+            this.button6.Enabled = false;
             this.button6.Label = "测试需求分析与策划";
             this.button6.Name = "button6";
             this.button6.ShowImage = true;
@@ -92,6 +94,7 @@
             // 
             // button7
             // 
+            this.button7.Enabled = false;
             this.button7.Label = "测试设计与执行";
             this.button7.Name = "button7";
             this.button7.ShowImage = true;
@@ -99,6 +102,7 @@
             // 
             // button8
             // 
+            this.button8.Enabled = false;
             this.button8.Label = "第四部分";
             this.button8.Name = "button8";
             this.button8.ShowImage = true;
@@ -115,6 +119,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Label = "项目立项阶段";
             this.button1.Name = "button1";
             this.button1.ShowImage = true;
@@ -122,6 +127,7 @@
             // 
             // menu1
             // 
+            this.menu1.Enabled = false;
             this.menu1.Items.Add(this.button9);
             this.menu1.Items.Add(this.button10);
             this.menu1.Label = "测试需求分析与策划阶段";
@@ -144,15 +150,30 @@
             // 
             // button3
             // 
-            this.button3.Label = "第三部分";
+            this.button3.Enabled = false;
+            this.button3.Label = "测试设计与执行阶段";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
+            this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Label = "第四部分";
             this.button4.Name = "button4";
             this.button4.ShowImage = true;
+            // 
+            // group2
+            // 
+            this.group2.Items.Add(this.button2);
+            this.group2.Label = "更新";
+            this.group2.Name = "group2";
+            // 
+            // button2
+            // 
+            this.button2.Label = "更新文档内容";
+            this.button2.Name = "button2";
+            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
             // 
             // openFileDialog1
             // 
@@ -170,17 +191,9 @@
             this.openFileDialog3.DefaultExt = "doc";
             this.openFileDialog3.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
             // 
-            // button2
+            // openFileDialog4
             // 
-            this.button2.Label = "更新文档内容";
-            this.button2.Name = "button2";
-            this.button2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button2_Click);
-            // 
-            // group2
-            // 
-            this.group2.Items.Add(this.button2);
-            this.group2.Label = "更新";
-            this.group2.Name = "group2";
+            this.openFileDialog4.FileName = "openFileDialog4";
             // 
             // Ribbon1
             // 
@@ -218,6 +231,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button8;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog4;
     }
 
 }

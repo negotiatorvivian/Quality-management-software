@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace CSSTC1.FileProcessors.models {
-    class FileList {
+    public class FileList {
         public string xm_biaoshi;
         public string wd_mingcheng;
         public string wd_banben;

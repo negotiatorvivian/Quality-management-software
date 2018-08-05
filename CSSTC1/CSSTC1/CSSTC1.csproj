@@ -117,6 +117,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonUtils\ChartHelper.cs" />
     <Compile Include="CommonUtils\OperationHelper.cs" />
     <Compile Include="CommonUtils\DateHelper.cs" />
     <Compile Include="CommonUtils\MappingHelper.cs" />
@@ -140,6 +141,9 @@
     <Compile Include="FileProcessors\models\FileList.cs" />
     <Compile Include="FileProcessors\models\ProjectInfo.cs" />
     <Compile Include="FileProcessors\models\TableCell.cs" />
+    <Compile Include="FileProcessors\writers\FileWriter4.cs" />
+    <Compile Include="FileProcessors\writers\PartFive3_4\FileWriter5.cs" />
+    <Compile Include="FileProcessors\writers\PartFive3_4\FileWriter6.cs" />
     <Compile Include="InputProcessors\BasicInfoProcessor.cs" />
     <Compile Include="InputProcessors\DemandAnaProcessor.cs" />
     <Compile Include="InputProcessors\DesignAndExeProcessor.cs" />
@@ -233,6 +237,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets" />
   <ProjectExtensions>
