@@ -26,20 +26,15 @@ namespace CSSTC1.Pages {
             this.checkedListBox1.SetItemChecked(6, true);
             this.checkedListBox1.SetItemChecked(7, true);
             this.checkedListBox1.SetItemChecked(8, true);
+            if(TimeStamp.sldtcs_time != null){
+                DateTime date1 = DateHelper.cal_date(TimeStamp.sldtcs_time, 10);
+                DateTime date2 = DateHelper.cal_date(TimeStamp.sldtcs_time, 5);
+                this.dateTimePicker1.Value = date1;
+                this.dateTimePicker2.Value = date2;
+
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e) {
-            Globals.ThisDocument.design_and_exe.Hide();
-        }
-
-        //确认键提交信息
-        private void button1_Click(object sender, EventArgs e) {
-            this.button1.Enabled = false;
-            bool res = this.processor.fill_time_line();
-            if(!res)
-                MessageBox.Show("填写测试设计与执行阶段时间线出错");
-            this.Hide();
-        }
         #region 在界面窗体动态创建更新静态项表格
         public bool fill_table(){
             if(ContentFlags.static_files.Count == 0)
@@ -54,13 +49,23 @@ namespace CSSTC1.Pages {
                 label1.AutoSize = true;
                 label1.Dock = System.Windows.Forms.DockStyle.Fill;
 
-                System.Windows.Forms.Label label2 = new System.Windows.Forms.Label();
-                label2.AutoSize = true;
-                label2.Dock = System.Windows.Forms.DockStyle.Fill;
-                label2.Size = new System.Drawing.Size(94, 30);
-                label2.Text = file.jtfx_fanwei;
-                label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                //System.Windows.Forms.Label label2 = new System.Windows.Forms.Label();
+                //label2.AutoSize = true;
+                //label2.Dock = System.Windows.Forms.DockStyle.Fill;
+                //label2.Size = new System.Drawing.Size(94, 30);
+                //label2.Text = file.jtfx_fanwei;
+                //label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 
+                System.Windows.Forms.TextBox textBox2 = new System.Windows.Forms.TextBox();
+                textBox2.BackColor = System.Drawing.SystemColors.Control;
+                textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+                textBox2.MaximumSize = new System.Drawing.Size(94, 30);
+                textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                textBox2.Margin = new System.Windows.Forms.Padding(0);
+                textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                textBox2.AutoSize = true;
+                textBox2.Multiline = true;
+                textBox2.Text = file.jtfx_fanwei;
 
                 System.Windows.Forms.TextBox textBox3 = new System.Windows.Forms.TextBox();
                 textBox3.BackColor = System.Drawing.SystemColors.Control;
@@ -68,26 +73,44 @@ namespace CSSTC1.Pages {
                 textBox3.MaximumSize = new System.Drawing.Size(100, 0);
                 textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 textBox3.Margin = new System.Windows.Forms.Padding(0);
-                //textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
                 textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                 textBox3.AutoSize = true;
                 textBox3.Multiline = true;
                 textBox3.Text = file.bc_yuyan;
 
-                System.Windows.Forms.Label label4 = new System.Windows.Forms.Label();
-                label4.AutoSize = true;
-                label4.Dock = System.Windows.Forms.DockStyle.Fill;
-                label4.Size = new System.Drawing.Size(100, 30);
-                label4.Text = file.xt_banben;
-                label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                //System.Windows.Forms.Label label4 = new System.Windows.Forms.Label();
+                //label4.AutoSize = true;
+                //label4.Dock = System.Windows.Forms.DockStyle.Fill;
+                //label4.Size = new System.Drawing.Size(100, 30);
+                //label4.Text = file.xt_banben;
+                //label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                System.Windows.Forms.TextBox textBox4 = new System.Windows.Forms.TextBox();
+                textBox4.BackColor = System.Drawing.SystemColors.Control;
+                textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+                textBox4.MaximumSize = new System.Drawing.Size(100, 30);
+                textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                textBox4.Margin = new System.Windows.Forms.Padding(0);
+                textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                textBox4.AutoSize = true;
+                textBox4.Multiline = true;
+                textBox4.Text = file.xt_banben;
 
-                System.Windows.Forms.Label label5 = new System.Windows.Forms.Label();
-                label5.AutoSize = true;
-                label5.Dock = System.Windows.Forms.DockStyle.Fill;
-                label5.Size = new System.Drawing.Size(176, 30);
-                label5.Text = file.yz_danwei;
-                label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
+                //System.Windows.Forms.Label label5 = new System.Windows.Forms.Label();
+                //label5.AutoSize = true;
+                //label5.Dock = System.Windows.Forms.DockStyle.Fill;
+                //label5.Size = new System.Drawing.Size(176, 30);
+                //label5.Text = file.yz_danwei;
+                //label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                System.Windows.Forms.TextBox textBox5 = new System.Windows.Forms.TextBox();
+                textBox5.BackColor = System.Drawing.SystemColors.Control;
+                textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+                textBox5.MaximumSize = new System.Drawing.Size(176, 30);
+                textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                textBox5.Margin = new System.Windows.Forms.Padding(0);
+                textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+                textBox5.AutoSize = true;
+                textBox5.Multiline = true;
+                textBox5.Text = file.yz_danwei;
                 System.Windows.Forms.ComboBox comboBox1 = new ComboBox();
                 comboBox1.BackColor = System.Drawing.SystemColors.Control;
                 comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -100,12 +123,12 @@ namespace CSSTC1.Pages {
                 comboBox1.Enabled = false;
                 comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
                 comboBoxes.Add(comboBox1);
-                LinkLabel linkLabel1  =  this.add_new_label();
+                LinkLabel linkLabel1 = this.add_delete_label();
                 this.tableLayoutPanel1.Controls.Add(label1, 0, row_index);
-                this.tableLayoutPanel1.Controls.Add(label2, 1, row_index);
+                this.tableLayoutPanel1.Controls.Add(textBox2, 1, row_index);
                 this.tableLayoutPanel1.Controls.Add(textBox3, 2, row_index);
-                this.tableLayoutPanel1.Controls.Add(label4, 3, row_index);
-                this.tableLayoutPanel1.Controls.Add(label5, 4, row_index);
+                this.tableLayoutPanel1.Controls.Add(textBox4, 3, row_index);
+                this.tableLayoutPanel1.Controls.Add(textBox5, 4, row_index);
                 this.tableLayoutPanel1.Controls.Add(comboBox1, 5, row_index);
                 this.tableLayoutPanel1.Controls.Add(linkLabel1, 6, row_index);
                 row_index += 1;
@@ -126,11 +149,12 @@ namespace CSSTC1.Pages {
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-            TimeStamp.csjxps_time = this.dateTimePicker1.Value.ToShortDateString();
-            TimeStamp.csjxps_format_time = this.dateTimePicker1.Value.ToLongDateString();
+            TimeStamp.cssmps_time = this.dateTimePicker1.Value.ToShortDateString();
+            TimeStamp.cssmps_format_time = this.dateTimePicker1.Value.ToLongDateString();
             foreach(ComboBox box in comboBoxes){
                 box.Enabled = true;
             }
+            this.button1.Enabled = true;
             DateTime temp1 = DateHelper.cal_date(TimeStamp.csjxps_time, 1);
             DateTime temp2 = DateHelper.cal_date(TimeStamp.csjxps_time, 1);
         }
@@ -151,7 +175,7 @@ namespace CSSTC1.Pages {
 
         }
 
-        private LinkLabel add_new_label(){
+        private LinkLabel add_delete_label(){
             // 
             // linkLabel1
             // 
@@ -167,6 +191,63 @@ namespace CSSTC1.Pages {
             this.labels.Add(linkLabel1);
             return linkLabel1;
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) {
+            string times = this.comboBox2.Text;
+            switch(times) {
+                case "有": {
+                        this.label8.Enabled = true;
+                        this.dateTimePicker3.Enabled = true;
+                        break;
+                    }
+                case "无": {
+                        this.label8.Enabled = false;
+                        this.dateTimePicker3.Enabled = false;
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
         #endregion
+
+        //读取页面上更改后的信息
+        public bool read_current_list(){
+            TableLayoutControlCollection controls = this.tableLayoutPanel1.Controls;
+            List<string> software_list = new List<string>();
+            for(int i = 7; i < controls.Count; i +=7){
+                string name = controls[i].Text;
+                software_list.Add(name);
+            }
+            if(software_list.Count == 0){
+                return false;
+            }
+            ContentFlags.software_list = software_list;
+            //读取修改过的信息
+
+
+            return true;
+        }
+
+
+        //确认键提交信息
+        private void button1_Click(object sender, EventArgs e) {
+            this.button1.Enabled = false;
+            string csjxps_format_time = "";
+            if(this.dateTimePicker3.Enabled)
+                csjxps_format_time = this.dateTimePicker3.Value.ToLongDateString();
+            bool res1 = this.read_current_list();
+            if(!res1)
+                MessageBox.Show("未选择静态测试软件项目");
+
+            bool res = this.processor.fill_time_line(csjxps_format_time);
+            if(!res)
+                MessageBox.Show("填写测试设计与执行阶段时间线出错");
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            Globals.ThisDocument.design_and_exe.Hide();
+        }
     }
 }

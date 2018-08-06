@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace CSSTC1.InputProcessors {
     class DesignAndExeProcessor {
-        public bool fill_time_line(){
+        public bool fill_time_line(string pl_time){
             Document doc = new Document(FilePaths.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
 
@@ -17,6 +17,16 @@ namespace CSSTC1.InputProcessors {
             if(TimeStamp.wdscqr_time == null){
                 //MessageBox.Show("未输入文档审查确认时间");
                 return false;
+            }
+            //是否有测试就绪评审环节
+            if(pl_time.Length > 0){
+                ContentFlags.pianli_3 = 0;
+                string[] marks = { "合同偏离通知单2" };
+                OperationHelper.delete_section(doc, doc_builder, marks);
+            }
+            else{
+                if(doc_builder.MoveToBookmark("测试就绪内部评审时间"))
+                    doc_builder.Write(pl_time);
             }
             DateHelper.fill_time_blank(doc, doc_builder, "文档审查结果记录入库时间", TimeStamp.wdscqr_time, 1);
             //文档审查确认时间
@@ -37,6 +47,9 @@ namespace CSSTC1.InputProcessors {
             DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第六次", TimeStamp.jtfxqr_time, 3);
             if(doc_builder.MoveToBookmark("静态分析回归时间"))
                 doc_builder.Write(TimeStamp.jtfxhg_format_time);
+            //测试说明内部评审时间
+            if(doc_builder.MoveToBookmark("测试说明内部评审时间"))
+                doc_builder.Write(TimeStamp.cssmps_format_time);
             doc.Save(FilePaths.save_root_file);
             return true;
 

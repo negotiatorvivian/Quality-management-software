@@ -9,6 +9,7 @@ using Aspose.Words.Tables;
 
 namespace CSSTC1.CommonUtils {
     class OperationHelper {
+        public static int copy = 0;
         public static void input_confirm(Document doc, DocumentBuilder doc_builder, string temp, string type) {
             Bookmark bookmark = doc.Range.Bookmarks[type + temp];
             if(bookmark != null) {
@@ -53,7 +54,8 @@ namespace CSSTC1.CommonUtils {
             int sec_num = MappingHelper.get_doc_section(type);
             for(int i = 0; i < count; i++) {
                 Section new_sec = doc.Sections[sec_num].Clone();
-                ContentFlags.copy += 1;
+                //ContentFlags.copy += 1;
+                copy += 1;
                 doc.InsertAfter(new_sec, doc.Sections[sec_num + diff]);
                 
             }

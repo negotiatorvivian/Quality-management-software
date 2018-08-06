@@ -126,6 +126,7 @@
     <Compile Include="ConstantVariables\InsertionPos.cs" />
     <Compile Include="ConstantVariables\NamingRules.cs" />
     <Compile Include="ConstantVariables\TimeStamp.cs" />
+    <Compile Include="FileProcessors\models\DynamicHardwareItems.cs" />
     <Compile Include="FileProcessors\models\HardwareItems.cs" />
     <Compile Include="FileProcessors\models\SoftwareItems.cs" />
     <Compile Include="FileProcessors\models\StaticAnalysisFile.cs" />

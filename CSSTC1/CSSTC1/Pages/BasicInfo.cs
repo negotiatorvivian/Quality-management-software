@@ -132,6 +132,8 @@ namespace CSSTC1.Pages {
 
         private void dtpz_shoulunshijian_ValueChanged(object sender, EventArgs e) {
             this.Dtpz_shoulunshijian = dtpz_shoulunshijian.Text;
+            TimeStamp.sldtcs_format_time = this.dtpz_shoulunshijian.Value.ToLongDateString();
+            TimeStamp.sldtcs_time = this.dtpz_shoulunshijian.Value.ToShortDateString();
         }
 
         private void dtpz_huigui_ValueChanged(object sender, EventArgs e) {

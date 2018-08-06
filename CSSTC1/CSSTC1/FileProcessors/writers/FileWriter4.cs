@@ -20,13 +20,13 @@ namespace CSSTC1.FileProcessors.writers {
         Table hardware_table;
         Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict = new Dictionary<string,
                 List<SoftwareItems>>();
-        Dictionary<string, List<HardwareItems>> yingjianpeizhi_dict = new Dictionary<string,
-            List<HardwareItems>>();
+        Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict = new Dictionary<string,
+            List<DynamicHardwareItems>>();
 
         public FileWriter4(List<SoftwareItems> software_items, List<HardwareItems> hardware_items, 
             List<QestionReport> reports, Table software_table, Table hardware_table, Dictionary<string, 
-            List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string, 
-            List<HardwareItems>> yingjianpeizhi_dict) {
+            List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string,
+            List<DynamicHardwareItems>> yingjianpeizhi_dict) {
             this.hardware_items = hardware_items;
             this.software_items = software_items;
             this.hardware_table = hardware_table;
@@ -131,7 +131,7 @@ namespace CSSTC1.FileProcessors.writers {
             if(doc_builder.MoveToBookmark(mark))
                 doc_builder.Write(text);
         }
-
+        //联系委托方
         public void write_lxwtf_chart(Document doc, DocumentBuilder doc_builder,
             List<SoftwareItems> software_items, string mark) {
             string text = "";
@@ -172,6 +172,7 @@ namespace CSSTC1.FileProcessors.writers {
             return dict;
         }
 
+        //配置状态报告单
         public void write_pzztbg2_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, SoftwareItems> new_dict, string mark) {
             string text = "";
@@ -185,7 +186,8 @@ namespace CSSTC1.FileProcessors.writers {
 
         //填写测试工具或设备表格
         public void write_csgjhsb_chart(Document doc, DocumentBuilder doc_builder,
-            Dictionary<string, SoftwareItems> new_dict, int section_index, int sec_table_index, int[] time_diff) {
+            Dictionary<string, SoftwareItems> new_dict, int section_index, int sec_table_index, 
+            int[] time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -211,7 +213,7 @@ namespace CSSTC1.FileProcessors.writers {
         }
     
 
-        //添测试工具或设备核查单
+        //填写测试工具或设备核查单
         public void append_content(Document doc, DocumentBuilder doc_builder, Table table, int section_index, 
             int sec_table_index, int row_index, int[] time_diff) {
             int cur_section = section_index;

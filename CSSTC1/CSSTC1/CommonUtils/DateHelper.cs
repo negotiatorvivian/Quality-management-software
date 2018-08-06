@@ -27,6 +27,8 @@ namespace CSSTC1.CommonUtils {
         }
 
         public static DateTime cal_date(string origin_time, int diff) {
+            if(origin_time == null || origin_time.Length == 0)
+                return new DateTime();
             string[] items = origin_time.Split('/');
             DateTime start_date = new DateTime(int.Parse(items[0]), int.Parse(items[1]), int.Parse(items[2]));
             DateTime temp = DateTime.Parse(start_date.ToString("yyyy-MM-dd")).AddDays(0 - diff);

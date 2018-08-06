@@ -31,15 +31,15 @@ namespace CSSTC1.FileProcessors.readers {
             reports = this.read_smns_chart(smns_table);
             Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict = new Dictionary<string, 
                 List<SoftwareItems>>();
-            Dictionary<string, List<HardwareItems>> yingjianpeizhi_dict = new Dictionary<string, 
-                List<HardwareItems>>();
+            Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict = new Dictionary<string,
+                List<DynamicHardwareItems>>();
             for(int i = 0; i < ContentFlags.software_list.Count; i++) {
-                List<HardwareItems> temp1 = new List<HardwareItems>();
+                List<DynamicHardwareItems> temp1 = new List<DynamicHardwareItems>();
                 List<SoftwareItems> temp2 = new List<SoftwareItems>();
                 //Table table1 = (Table)doc.GetChild(NodeType.Table, 2 * i + 3, true);
                 //Table table2 = (Table)doc.GetChild(NodeType.Table, 2 * i + 4, true);
                 this.read_rjjtcshj_chart(doc, doc_builder, 2 * i + 3, temp2);
-                this.read_yjjtcshj_chart(doc, doc_builder, 2 * i + 4, temp1);
+                this.read_yjdtcshj_chart(doc, doc_builder, 2 * i + 4, temp1);
                 if(temp1 == null || temp2 == null){
                     MessageBox.Show("读取软件配置项动态测试环境软件项和硬件项表格失败");
                     return false;
@@ -56,7 +56,7 @@ namespace CSSTC1.FileProcessors.readers {
             return true;
         }
     
-
+        //软件静态测试和静态测试环境表格
         public Table read_rjjtcshj_chart(Document doc, DocumentBuilder doc_builder, int index, 
             List<SoftwareItems> software_items) {
             int row_index = 1;
@@ -77,6 +77,7 @@ namespace CSSTC1.FileProcessors.readers {
             return table;
         }
 
+        //软件静态测试环境硬件项表格
         public Table read_yjjtcshj_chart(Document doc, DocumentBuilder doc_builder, int index,
             List<HardwareItems> hardware_items) {
             int row_index = 1;
@@ -96,6 +97,34 @@ namespace CSSTC1.FileProcessors.readers {
                 provider = provider.Substring(0, provider.Length - 1);
                 HardwareItems item = new HardwareItems(name, id, use, status, provider);
                 hardware_items.Add(item);
+            }
+            return table;
+        }
+
+        //软件动态测试环境硬件项表格
+        public Table read_yjdtcshj_chart(Document doc, DocumentBuilder doc_builder, int index,
+            List<DynamicHardwareItems> dy_hardware_items) {
+            int row_index = 1;
+            Table table = (Table)doc.GetChild(NodeType.Table, index, true);
+            for(int i = row_index; i < table.Rows.Count; i++) {
+                Row row = table.Rows[i];
+                string name = row.Cells[1].Range.Text;
+                name = name.Substring(0, name.Length - 1);
+                string id = row.Cells[2].Range.Text;
+                id = id.Substring(0, id.Length - 1);
+                string count = row.Cells[3].Range.Text;
+                count = count.Substring(0, count.Length - 1);
+                string use = row.Cells[4].Range.Text;
+                use = use.Substring(0, use.Length - 1);
+                string configuration = row.Cells[5].Range.Text;
+                configuration = configuration.Substring(0, configuration.Length - 1);
+                string status = row.Cells[6].Range.Text;
+                status = status.Substring(0, status.Length - 1);
+                string provider = row.Cells[7].Range.Text;
+                provider = provider.Substring(0, provider.Length - 1);
+                DynamicHardwareItems item = new DynamicHardwareItems(name, id, count, use, configuration, 
+                    status, provider);
+                dy_hardware_items.Add(item);
             }
             return table;
         }

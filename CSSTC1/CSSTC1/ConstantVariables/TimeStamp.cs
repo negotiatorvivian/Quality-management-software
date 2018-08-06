@@ -13,8 +13,13 @@ namespace CSSTC1.ConstantVariables {
         public static string ceshisc_time;
         public static string ceshisc_format_time;
 
+        //首轮动态测试时间
+        public static string sldtcs_time;
+        public static string sldtcs_format_time;
+
         //第三阶段偏离联系时间
         public static string pianli2_time;
+
 
         //就绪内部评审时间
         public static string csjxps_time;
@@ -39,7 +44,10 @@ namespace CSSTC1.ConstantVariables {
         //静态分析确认时间
         public static string jtfxqr_time;
         public static string jtfxqr_format_time;
-        
+
+        //就绪内部评审时间
+        public static string cssmps_time;
+        public static string cssmps_format_time;
 
         public static List<TestEnvironment> test_envs = new List<TestEnvironment>();
 

@@ -186,9 +186,19 @@ namespace CSSTC1.ConstantVariables {
         public static int cssmps_bcjqd_section = 34;
         public static int cssmps_bcjqd_sec_table = 0;
         public static int cssmns_bcjqd_name_row = 1;
-        //public static int cssmns_bcjqd_type_row = 2;
         public static int cssmns_bcjqd_iden_row = 3;
-        //public static int cssmns_bcjqd_orig_row = 7;
+        //测试说明评审被测件清单位置
+        public static int cssmps_bcjdbd_sec_table = 1;
+        //测试说明评审被测件领取清单位置
+        public static int cssmps_bcjlqqd_sec_table = 2;
+        public static int cssmps_bcjlqqd_type_row = 6;
+        //搭建环境阶段测试环境确认表位置
+        public static int djhj_cshjqr_section = 36;
+        public static int djhj_cshjqr_sec_table = 0;
+        //搭建环境阶段测试环境核查表位置
+        public static int djhj_cshjhc_section = 37;
+        public static int djhj_cshjhc_sec_table = 0;
+
 
     }
 }
