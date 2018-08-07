@@ -25,7 +25,7 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
             this.write_charts();
         }
         public void write_charts(){
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             this.write_bcjqd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
                 InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjqd_sec_table,
@@ -42,7 +42,7 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                 InsertionPos.djhj_cshjqr_section, InsertionPos.djhj_cshjqr_sec_table, times);
             this.append_content(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict, 
                 InsertionPos.djhj_cshjhc_section, InsertionPos.djhj_cshjhc_sec_table + 1, 1, times);
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
             MessageBox.Show("搭建环境就绪评审完成");
         }
 
@@ -331,7 +331,7 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                 doc_builder.MoveToSection(cur_section);
                 temp += 1;
             }
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
                 
             for(int i = 0; i < new_dict.Count; i++) { //循环每个软件的软件配置项和硬件配置项   
                 int count = 0;
@@ -468,7 +468,7 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
             count += 1;
 
         }
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
 
         //}
         }

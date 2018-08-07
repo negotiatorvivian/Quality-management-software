@@ -13,19 +13,19 @@ namespace CSSTC1.FileProcessors.writers {
     class FileWriter2 {
         public string questions = "";
         public void write_charts(List<QestionReport> ns_report, List<QestionReport> ws_report) {
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             bool res = this.write_csdgnswt_chart(doc, doc_builder, ns_report);
             if(res)
                 this.write_csdgnswtzz_chart(doc, doc_builder, ns_report);
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
             bool res1 = this.write_csdgwswt_chart(doc, doc_builder, ws_report);
             if(res1)
                 this.write_csdgwswtzz_chart(doc, doc_builder, ws_report);
             this.write_file_list(doc, doc_builder, InsertionPos.pzgljh_section,
                 InsertionPos.pzgljh_sec_table, ContentFlags.beicejianqingdan_dict);
             this.write_pzgg_chart(doc, doc_builder, ws_report);
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
             MessageBox.Show("测试大纲文件读取完成");
 
         }
@@ -154,7 +154,7 @@ namespace CSSTC1.FileProcessors.writers {
             if(!res)
                 MessageBox.Show("请先填写测试需求分析与策划阶段的信息");
             else
-                doc.Save(FilePaths.save_root_file);
+                doc.Save(FileConstants.save_root_file);
         }
     }
 }

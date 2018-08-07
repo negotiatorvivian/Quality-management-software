@@ -51,7 +51,7 @@ namespace CSSTC1.FileProcessors.readers {
         }
 
         public void read_psz_members(List<string> names) {
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             writer.write_hyqdb_chart(doc, doc_builder, names);
         }

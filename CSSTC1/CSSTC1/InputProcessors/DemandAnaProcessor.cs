@@ -11,7 +11,7 @@ namespace CSSTC1.InputProcessors {
     public class DemandAnaProcessor {
         //填写第三四部分项目时间
         public void fill_time_info(string ns_time, string pl_time){
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             if(doc_builder.MoveToBookmark("偏离联系时间2") && pl_time.Length > 0){
                 doc_builder.Write(pl_time);
@@ -53,7 +53,7 @@ namespace CSSTC1.InputProcessors {
                 string temp1 = ceshidagang_shencha1.Substring(0, index + 1);
                 if(doc_builder.MoveToBookmark("测试大纲审查时间"))
                     doc_builder.Write(temp1);
-                doc.Save(FilePaths.save_root_file);
+                doc.Save(FileConstants.save_root_file);
             }
             else
                 MessageBox.Show("请先填写项目立项阶段信息");
@@ -68,7 +68,7 @@ namespace CSSTC1.InputProcessors {
                     doc_builder.Write(TimeStamp.ceshisc_format_time);
                 DateHelper.fill_time_blank(doc, doc_builder, "测试说明与计划出库时间", TimeStamp.ceshisc_time, -1);
             }
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace CSSTC1.FileProcessors.models {
     public class StaticAnalysisFile {
         public string rj_mingcheng;
         public string xt_banben;
+        public string hg_banben;
         public string bc_yuyan;
         public string yz_danwei;
         public string jtfx_fanwei;
@@ -15,6 +16,17 @@ namespace CSSTC1.FileProcessors.models {
             string bc_yuyan, string yz_danwei) {
             this.rj_mingcheng = rj_mingcheng;
             this.xt_banben = xt_banben;
+            this.hg_banben = xt_banben;
+            this.bc_yuyan = bc_yuyan;
+            this.yz_danwei = yz_danwei;
+            this.jtfx_fanwei = jtfx_fanwei;
+        }
+        //有回归版本
+        public StaticAnalysisFile(string rj_mingcheng, string jtfx_fanwei, string xt_banben, string hg_banben,
+            string bc_yuyan, string yz_danwei) {
+            this.rj_mingcheng = rj_mingcheng;
+            this.xt_banben = xt_banben;
+            this.hg_banben = hg_banben;
             this.bc_yuyan = bc_yuyan;
             this.yz_danwei = yz_danwei;
             this.jtfx_fanwei = jtfx_fanwei;

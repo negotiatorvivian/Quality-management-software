@@ -9,12 +9,12 @@ using Aspose.Words;
 using System.Windows.Forms;
 using CSSTC1.FileProcessors;
 using CSSTC1.FileProcessors.writers;
+using CSSTC1.CommonUtils;
 
 namespace CSSTC1.InputProcessors {
     class BasicInfoProcessor {
-        public Document doc = new Document(FilePaths.root_file);
+        public Document doc = new Document(FileConstants.root_file);
         //public Microsoft.Office.Interop.Word._Application wordApp = new Microsoft.Office.Interop.Word.Application();
-        public FileWriter1 file_writer = new FileWriter1();
 
         public void fill_basic_info(string[] bookmarks, string[] values, bool[] test_accordings) {
             DocumentBuilder doc_builder = new DocumentBuilder(this.doc);
@@ -33,8 +33,9 @@ namespace CSSTC1.InputProcessors {
             string year = values[values.Length - 2].Substring(0, 4);
             doc_builder.MoveToBookmark("年份");
             doc_builder.Write(year);
-            doc.Save(FilePaths.save_root_file);
-            fill_test_accordings(test_accordings);
+            this.fill_test_accordings(test_accordings);
+            this.change_file_structure(doc, doc_builder);
+            doc.Save(FileConstants.save_root_file);
         }
 
         public void fill_test_accordings(bool[] test_accordings) {
@@ -47,14 +48,30 @@ namespace CSSTC1.InputProcessors {
             }
             if(ceshiyiju.Length > 0){
                 ceshiyiju = ceshiyiju.Substring(0, ceshiyiju.Length - 1);
-                Document doc = new Document(FilePaths.save_root_file);
+                Document doc = new Document(FileConstants.save_root_file);
                 DocumentBuilder doc_builder = new DocumentBuilder(doc);
             
                 if(doc_builder.MoveToBookmark("测试依据")){
                     doc_builder.Write(ceshiyiju);
                 }
-                doc.Save(FilePaths.save_root_file);
+                doc.Save(FileConstants.save_root_file);
             }
        }
+
+        public bool change_file_structure(Document doc, DocumentBuilder doc_builder){
+            if(ContentFlags.wendangshencha == 0)
+                OperationHelper.delete_section(doc, doc_builder, "文档审查", "wendangshencha");
+            if(ContentFlags.jingtaifenxi == 0)
+                OperationHelper.delete_section(doc, doc_builder, "静态分析", "jingtaifenxi");
+            if(ContentFlags.daimashencha == 0)
+                OperationHelper.delete_section(doc, doc_builder, "代码审查", "daimashencha");
+            if(ContentFlags.daimazoucha == 0)
+                OperationHelper.delete_section(doc, doc_builder, "代码走查", "daimazoucha");
+            if(ContentFlags.luojiceshi == 0)
+                OperationHelper.delete_section(doc, doc_builder, "逻辑测试", "luojiceshi");
+            if(ContentFlags.xitonghuiguiceshi == 0)
+                OperationHelper.delete_section(doc, doc_builder, "系统回归测试", "xitonghuiguiceshi");
+            return true;
+        }
         }
     }

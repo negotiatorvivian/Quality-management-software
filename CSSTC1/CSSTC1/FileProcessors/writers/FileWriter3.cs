@@ -14,7 +14,7 @@ namespace CSSTC1.FileProcessors.writers {
         public string questions = "";
         public void write_charts(List<QestionReport> xqns_reports, List<QestionReport> chns_reports, 
             List<QestionReport> ws_report) {
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             bool res = this.write_chart(doc, doc_builder, xqns_reports, InsertionPos.csxqns_section, 
                 InsertionPos.csxqns_sec_table1, InsertionPos.csxqns_ques_row);
@@ -32,7 +32,7 @@ namespace CSSTC1.FileProcessors.writers {
                 this.write_wtzz_chart(doc, doc_builder, ws_report, InsertionPos.csxqws_section,
                 InsertionPos.csxqws_sec_table2, InsertionPos.csxqws_solu_row);
             this.write_pzgg_chart(doc, doc_builder, ws_report);
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
 
             MessageBox.Show("需求规格与说明文件读取完成");
         }
@@ -99,7 +99,7 @@ namespace CSSTC1.FileProcessors.writers {
                     ContentFlags.pianli_1;
                 int sec_table_index1 = InsertionPos.cschqd_sec_table;
                 OperationHelper.conference_signing(doc, doc_builder, section_index1, sec_table_index1);
-                doc.Save(FilePaths.save_root_file);
+                doc.Save(FileConstants.save_root_file);
             }
         }
     }

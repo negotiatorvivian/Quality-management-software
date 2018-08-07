@@ -42,12 +42,6 @@ namespace CSSTC1.Pages {
         public string Jtfx_shenchashijian;
         public string Jtfx_querenshijian;
         public string Jtfx_huiguishijian;
-        public string Dmsc_shenchashijian;
-        public string Dmsc_querenshijian;
-        public string Dmsc_huiguishijian;
-        public string Dmzc_shenchashijian;
-        public string Dmzc_querenshijian;
-        public string Dmzc_huiguishijian;
         public string Csdg_pingshenshijian;
         public string Dtpz_shoulunshijian;
         public string Dtpz_huiguishijian;
@@ -75,41 +69,6 @@ namespace CSSTC1.Pages {
             this.Wd_huiguishijian = wd_huiguishijian.Text;
             }
 
-        private void jtfx_shenchashijian_ValueChanged(object sender, EventArgs e) {
-            this.Jtfx_shenchashijian = jtfx_shenchashijian.Text;
-        }
-
-        private void jtfx_querenshijian_ValueChanged(object sender, EventArgs e) {
-            this.Jtfx_querenshijian = jtfx_querenshijian.Text;
-        }
-
-        private void jt_huiguishijian_ValueChanged(object sender, EventArgs e) {
-            this.Jtfx_huiguishijian = jt_huiguishijian.Text;
-        }
-
-        private void dmsc_shijian_ValueChanged(object sender, EventArgs e) {
-            this.Dmsc_shenchashijian = dmsc_shijian.Text;
-        }
-
-        private void dmsc_querenshijian_ValueChanged(object sender, EventArgs e) {
-            this.Dmsc_querenshijian = dmsc_querenshijian.Text;
-        }
-
-        private void dmhg_huiguishijian_ValueChanged(object sender, EventArgs e) {
-            this.Dmzc_huiguishijian = dmhg_huiguishijian.Text;
-        }
-
-        private void dmzc_shenchashijian_ValueChanged(object sender, EventArgs e) {
-            this.Dmzc_shenchashijian = dmzc_shenchashijian.Text;
-        }
-
-        private void dmzc_querenshijian_ValueChanged(object sender, EventArgs e) {
-            this.Dmzc_querenshijian = dmzc_querenshijian.Text;
-        }
-
-        private void dmzc_huiguishijian_ValueChanged(object sender, EventArgs e) {
-            this.Dmzc_huiguishijian = dmzc_huiguishijian.Text;
-        }
 
         private void csdg_pingshenshijian_ValueChanged(object sender, EventArgs e) {
             //this.Csdg_pingshenshijian = csdg_pingshenshijian.Text;
@@ -145,7 +104,8 @@ namespace CSSTC1.Pages {
         }
 
         private void xtcs_shoulunshijian_ValueChanged(object sender, EventArgs e) {
-            this.Xtcs_shoulunshijian = xtcs_shoulunshijian.Text;
+            TimeStamp.slxtcs_time = this.xtcs_shoulunshijian.Value.ToShortDateString();
+            TimeStamp.slxtcs_format_time = this.xtcs_shoulunshijian.Value.ToLongDateString();
         }
 
         private void xtcs_huiguishijian_ValueChanged(object sender, EventArgs e) {
@@ -153,7 +113,8 @@ namespace CSSTC1.Pages {
         }
 
         private void csbg_pingshenshijian_ValueChanged(object sender, EventArgs e) {
-            this.Csbg_pingshenshijian = csbg_pingshenshijian.Text;
+            TimeStamp.csbgps_time = this.csbg_pingshenshijian.Value.ToShortDateString();
+            TimeStamp.csbgps_format_time = this.csbg_pingshenshijian.Value.ToLongDateString();
         }
         #endregion
 
@@ -191,6 +152,27 @@ namespace CSSTC1.Pages {
                     temp = temp.Substring(0, index + 2);
                 this.rj_mingcheng.Text = temp;
             }
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e) {
+            foreach(Control control in this.panel2.Controls)
+                control.Enabled = this.checkBox9.Checked;
+        }
+
+        private void checkBox10_CheckedChanged(object sender, EventArgs e) {
+            this.panel3.Enabled = this.checkBox10.Checked;
+        }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e) {
+            this.panel4.Enabled = this.checkBox11.Checked;
+        }
+
+        private void checkBox12_CheckedChanged(object sender, EventArgs e) {
+            this.panel5.Enabled = this.checkBox12.Checked;
+        }
+
+        private void checkBox14_CheckedChanged(object sender, EventArgs e) {
+            this.ljcs_shijian.Enabled = this.checkBox4.Checked;
         }
         #endregion
 
@@ -237,9 +219,9 @@ namespace CSSTC1.Pages {
                                      "Kf_dianhua", "Kf_danwei", "Xm_kaishishijian", "Xm_jieshushijian" };
             bool[] test_accordings = { this.Yz_renwushu, this.Js_fangan, this.Js_guigeshu, this.Rjyz_renwushu, 
                                          this.Rjxq_guigeshuoming };
+            this.record_time();
             processor.fill_basic_info(bookmarks, values, test_accordings);
             this.del_section();
-            this.record_time();
             Globals.ThisDocument.basic_info.Hide();
             //MessageBox.Show("正在写入，请稍候...");
         }
@@ -249,29 +231,79 @@ namespace CSSTC1.Pages {
             if(!this.csdg_pingshenshijian.Enabled){
                 string[] bookmarks = { "测试大纲1", "测试大纲2", "测试大纲3", "测试大纲4", 
                                          "测试大纲5", "测试大纲6", "测试大纲7"};
-                CommonUtils.OperationHelper.delete_section(FilePaths.save_root_file, bookmarks);
+                CommonUtils.OperationHelper.delete_section(FileConstants.save_root_file, bookmarks);
             }
             else{
                 string[] bookmarks = { "测试需求1", "测试需求2", "测试需求3", "测试需求4", 
                                          "测试需求5", "测试需求6", "测试需求7"};
-                CommonUtils.OperationHelper.delete_section(FilePaths.save_root_file, bookmarks);
+                CommonUtils.OperationHelper.delete_section(FileConstants.save_root_file, bookmarks);
             }
         }
 
         //所有时间信息
         public void record_time(){
-            //文档审查时间            
-            TimeStamp.wdscqr_time = this.wd_querenshijian.Value.ToShortDateString();
-            TimeStamp.wdscqr_format_time = this.wd_querenshijian.Value.ToLongDateString();
-            TimeStamp.wdschg_time = this.wd_huiguishijian.Value.ToShortDateString();
-            TimeStamp.wdschg_format_time = this.wd_huiguishijian.Value.ToLongDateString();
+            if(this.checkBox9.Checked){
+                //文档审查时间            
+                TimeStamp.wdscqr_time = this.wd_querenshijian.Value.ToShortDateString();
+                TimeStamp.wdscqr_format_time = this.wd_querenshijian.Value.ToLongDateString();
+                TimeStamp.wdschg_time = this.wd_huiguishijian.Value.ToShortDateString();
+                TimeStamp.wdschg_format_time = this.wd_huiguishijian.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.wendangshencha = 0;
+            if(this.checkBox10.Checked){
             //静态分析时间
-            TimeStamp.jtfxsc_time = this.jtfx_shenchashijian.Value.ToShortDateString();
-            TimeStamp.jtfxsc_format_time = this.jtfx_shenchashijian.Value.ToLongDateString();
-            TimeStamp.jtfxhg_time = this.jt_huiguishijian.Value.ToShortDateString();
-            TimeStamp.jtfxhg_format_time = this.jt_huiguishijian.Value.ToLongDateString();
-            TimeStamp.jtfxqr_time = this.jtfx_querenshijian.Value.ToShortDateString();
-            TimeStamp.jtfxqr_format_time = this.jtfx_querenshijian.Value.ToLongDateString();
+                TimeStamp.jtfxsc_time = this.dateTimePicker2.Value.ToShortDateString();
+                TimeStamp.jtfxsc_format_time = this.dateTimePicker2.Value.ToLongDateString();
+                TimeStamp.jtfxhg_time = this.jt_huiguishijian.Value.ToShortDateString();
+                TimeStamp.jtfxhg_format_time = this.jt_huiguishijian.Value.ToLongDateString();
+                TimeStamp.jtfxqr_time = this.dateTimePicker1.Value.ToShortDateString();
+                TimeStamp.jtfxqr_format_time = this.dateTimePicker1.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.jingtaifenxi = 0;
+            if(this.checkBox11.Checked) {
+            //代码审查时间
+                TimeStamp.dmsc_time = this.dmsc_shijian.Value.ToShortDateString();
+                TimeStamp.dmsc_format_time = this.dmsc_shijian.Value.ToLongDateString();
+                TimeStamp.dmscqr_time = this.dateTimePicker3.Value.ToShortDateString();
+                TimeStamp.dmscqr_format_time = this.dateTimePicker3.Value.ToLongDateString();
+                TimeStamp.dmschg_time = this.dmhg_huiguishijian.Value.ToShortDateString();
+                TimeStamp.dmschg_format_time = this.dmhg_huiguishijian.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.daimashencha = 0;
+            if(this.checkBox12.Checked) {
+                //代码走查时间
+                TimeStamp.dmzc_time = this.dateTimePicker6.Value.ToShortDateString();
+                TimeStamp.dmzc_format_time = this.dateTimePicker6.Value.ToLongDateString();
+                TimeStamp.dmzcqr_time = this.dateTimePicker4.Value.ToShortDateString();
+                TimeStamp.dmzcqr_format_time = this.dateTimePicker4.Value.ToLongDateString();
+                TimeStamp.dmzchg_time = this.dateTimePicker5.Value.ToShortDateString();
+                TimeStamp.dmzchg_format_time = this.dateTimePicker5.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.daimazoucha = 0;
+            if(this.checkBox14.Checked) {
+                //逻辑测试时间
+                TimeStamp.ljcs_time = this.ljcs_shijian.Value.ToShortDateString();
+                TimeStamp.ljcs_format_time = this.ljcs_shijian.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.luojiceshi = 0;
+            if(this.checkBox8.Checked) {
+                //系统测试回归时间
+                TimeStamp.xthgcs_time = this.xtcs_huiguishijian.Value.ToShortDateString();
+                TimeStamp.xthgcs_format_time = this.xtcs_huiguishijian.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.xitonghuiguiceshi = 0;
         }
+
+
+
+
+
+   
         }
     }

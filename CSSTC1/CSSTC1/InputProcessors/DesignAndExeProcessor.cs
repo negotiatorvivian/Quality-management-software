@@ -10,7 +10,7 @@ using System.Windows;
 namespace CSSTC1.InputProcessors {
     class DesignAndExeProcessor {
         public bool fill_time_line(string pl_time){
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
 
             //第五章 文档审查结果记录入库时间
@@ -50,7 +50,7 @@ namespace CSSTC1.InputProcessors {
             //测试说明内部评审时间
             if(doc_builder.MoveToBookmark("测试说明内部评审时间"))
                 doc_builder.Write(TimeStamp.cssmps_format_time);
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
             return true;
 
         }

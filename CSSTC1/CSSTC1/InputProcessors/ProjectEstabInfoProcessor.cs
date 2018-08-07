@@ -16,7 +16,7 @@ namespace CSSTC1.InputProcessors {
         //填写项目时间线
         public void fill_estab_info(string lx_time, List<string> lq_times, string pl_time){
             int lixiang_time = int.Parse(lx_time);
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             string xmks_time = TimeStamp.xiangmukaishishijian ;
             if(xmks_time.Length > 0) {
@@ -56,7 +56,7 @@ namespace CSSTC1.InputProcessors {
                 Aspose.Words.Fields.Field field = field_ref.GetField();
                 field.Update();
             }
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
         }
 
         public void change_file_struc(Document doc, DocumentBuilder doc_builder, string content){
@@ -65,7 +65,7 @@ namespace CSSTC1.InputProcessors {
                     if(ContentFlags.lingqucishu == 1) {
                         string[] marks = { "被测件调拨2", "被测件调拨2配置状态" };
                         OperationHelper.delete_section(doc, doc_builder, marks);
-                        doc.Save(FilePaths.save_root_file);
+                        doc.Save(FileConstants.save_root_file);
                     }
                     if(ContentFlags.lingqucishu > 2) {
                         string mark = "被测件清单";

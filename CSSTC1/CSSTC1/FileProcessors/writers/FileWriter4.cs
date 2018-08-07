@@ -38,7 +38,7 @@ namespace CSSTC1.FileProcessors.writers {
         }
 
         public void write_charts(){
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             Dictionary<string, FileList> beicejianqingdan_dict = this.update_fileId
                 (ContentFlags.beicejianqingdan_dict);
@@ -96,7 +96,7 @@ namespace CSSTC1.FileProcessors.writers {
                 InsertionPos.sj_rksqd_sec_table3, 3, InsertionPos.sj_rksqd_name_row,
                 InsertionPos.sj_rksqd_iden_row, times);
             this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单4");
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
             ContentFlags.software_dict = new_software_dict;
             MessageBox.Show("文档审查与静态分析部分写入完成！");
             //FileWriter5 append_writer = new FileWriter5(new_software_dict);

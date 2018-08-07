@@ -6,6 +6,7 @@ using Aspose.Words;
 using CSSTC1.ConstantVariables;
 using CSSTC1.FileProcessors.models;
 using Aspose.Words.Tables;
+using System.Reflection;
 
 namespace CSSTC1.CommonUtils {
     class OperationHelper {
@@ -50,6 +51,29 @@ namespace CSSTC1.CommonUtils {
             doc.Save(path);
         }
 
+        public static void delete_section(Document doc, DocumentBuilder doc_builder, string bookmark,
+            string section_flag){
+            BindingFlags flag = BindingFlags.Static | BindingFlags.Public;
+            FieldInfo f_key = typeof(FileConstants).GetField(section_flag, flag);
+            if(f_key != null){
+                string temp = f_key.GetValue(new FileConstants()).ToString();
+                int section_count = Int16.Parse(temp);
+                List<Section> sections = new List<Section>();
+                if(doc_builder.MoveToBookmark(bookmark)){
+                    Section section = doc_builder.CurrentSection;
+                    sections.Add(section);
+                    for(int i = 0; i < section_count - 1; i++){
+                        Section new_section = (Section)section.NextSibling;
+                        sections.Add(new_section);
+                        section = new_section;
+                    }
+                    foreach(Section sec in sections){
+                        sec.Range.Delete();
+                    }
+                    //doc.Save(FileConstants.save_root_file);
+                }
+            }
+        }
         public static void copy_section(Document doc, string type, int count, int diff) {
             int sec_num = MappingHelper.get_doc_section(type);
             for(int i = 0; i < count; i++) {
@@ -100,7 +124,7 @@ namespace CSSTC1.CommonUtils {
         }
 
         public static void update_file(){
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             if(doc != null){
                 DocumentBuilder doc_builder = new DocumentBuilder(doc);
                 NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
@@ -108,7 +132,7 @@ namespace CSSTC1.CommonUtils {
                     Aspose.Words.Fields.Field field = field_ref.GetField();
                     field.Update();
                 }
-                doc.Save(FilePaths.save_root_file);
+                doc.Save(FileConstants.save_root_file);
             }
         }
     }

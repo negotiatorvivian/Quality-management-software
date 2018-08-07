@@ -122,7 +122,7 @@
     <Compile Include="CommonUtils\DateHelper.cs" />
     <Compile Include="CommonUtils\MappingHelper.cs" />
     <Compile Include="ConstantVariables\ContentFlags.cs" />
-    <Compile Include="ConstantVariables\FilePaths.cs" />
+    <Compile Include="ConstantVariables\FileConstants.cs" />
     <Compile Include="ConstantVariables\InsertionPos.cs" />
     <Compile Include="ConstantVariables\NamingRules.cs" />
     <Compile Include="ConstantVariables\TimeStamp.cs" />
@@ -161,6 +161,12 @@
     <EmbeddedResource Include="Pages\DesignAndExecution.resx">
       <DependentUpon>DesignAndExecution.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PopUpCodeCheckChart.resx">
+      <DependentUpon>PopUpCodeCheckChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\PopUpStaticAnaChart.resx">
+      <DependentUpon>PopUpStaticAnaChart.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\PopUpWindow.resx">
       <DependentUpon>PopUpWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +195,18 @@
     </Compile>
     <Compile Include="Pages\DesignAndExecution.Designer.cs">
       <DependentUpon>DesignAndExecution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PopUpCodeCheckChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\PopUpCodeCheckChart.Designer.cs">
+      <DependentUpon>PopUpCodeCheckChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PopUpStaticAnaChart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\PopUpStaticAnaChart.Designer.cs">
+      <DependentUpon>PopUpStaticAnaChart.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\PopUpWindow.cs">
       <SubType>Form</SubType>

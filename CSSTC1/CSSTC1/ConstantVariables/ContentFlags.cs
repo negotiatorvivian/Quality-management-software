@@ -13,6 +13,9 @@ namespace CSSTC1.ConstantVariables {
         #region 项目立项阶段
         public static bool peizhiceshi;
         public static bool xitongceshi;
+
+       
+
         //测试类型
         public static HashSet<string> test_types = new HashSet<string>();
         //立项阶段被测件清单
@@ -34,15 +37,36 @@ namespace CSSTC1.ConstantVariables {
         #endregion
 
         #region 测试设计和执行阶段
+ 
         public static Dictionary<string, SoftwareItems> software_dict;
         //第一部分上传表格中选择静态分析的软件名称集合
         public static List<string> software_list = new List<string>();
+        public static List<StaticAnalysisFile> software_info_list = new List<StaticAnalysisFile>();
+        //第一部分上传表格中选择代码走查的软件名称集合
+        public static List<string> dmzc_software_list = new List<string>();
+        public static List<StaticAnalysisFile> dmzc_software_info = new List<StaticAnalysisFile>();
+        //第一部分上传表格中选择代码审查的软件名称集合
+        public static List<string> dmsc_software_list = new List<string>();
+        public static List<StaticAnalysisFile> dmsc_software_info = new List<StaticAnalysisFile>();
         //软件静态测试环境软件项
         public static List<StaticAnalysisFile> static_files = new List<StaticAnalysisFile>();
         //被测件子软件数量
         public static int beiceruanjianshuliang = 1;
-        //是否有测试就绪内部评审
+
+        //是否有偏离报告
         public static int pianli_3 = 1;
+        //是否有文档审查
+        public static int wendangshencha = 6;
+        //是否有静态分析
+        public static int jingtaifenxi = 15;
+        //是否有代码审查(13节)
+        public static int daimashencha = 13;
+        //是否有代码走查(13节)
+        public static int daimazoucha = 13;
+        //是否有逻辑测试
+        public static int luojiceshi = 3;
+        //是否有系统回归测试
+        public static int xitonghuiguiceshi = 10;
         #endregion
 
     }

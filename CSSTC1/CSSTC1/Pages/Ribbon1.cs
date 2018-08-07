@@ -76,14 +76,10 @@ namespace CSSTC1.Pages {
 
         //读取测试设计与执行阶段文件
         private void button3_Click(object sender, RibbonControlEventArgs e) {
-            if(TimeStamp.jtfxhg_time != null) {
-                if(openFileDialog4.ShowDialog() == DialogResult.OK) {
-                    string read_in_file = openFileDialog4.FileName;
-                    file_reader4.read_charts(read_in_file);
-                }
-            }
-            else
-                MessageBox.Show("未填写项目文档审查时间与静态分析时间!");
+            if(openFileDialog4.ShowDialog() == DialogResult.OK) {
+                string read_in_file = openFileDialog4.FileName;
+                file_reader4.read_charts(read_in_file);
+            }    
         }
 
         //根据已填写信息更新测试大纲或需求说明阶段界面的默认值

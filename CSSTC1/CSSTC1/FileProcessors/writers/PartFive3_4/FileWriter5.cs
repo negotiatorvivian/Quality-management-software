@@ -23,7 +23,7 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
         }
         //测试说明内审的的过程SQA偏差与问题追踪报告
         public void write_charts(List<QestionReport> cssmns_reports) {
-            Document doc = new Document(FilePaths.save_root_file);
+            Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             bool res = this.write_chart(doc, doc_builder, cssmns_reports, InsertionPos.cssmns_section,
                 InsertionPos.cssmns_sec_table1, InsertionPos.cssmns_ques_row);
@@ -38,7 +38,7 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
                 InsertionPos.cssmps_rksqd_sec_table, 4, InsertionPos.sj_rksqd_name_row,
                 InsertionPos.sj_rksqd_iden_row, times);
             this.write_pzzt_chart(doc, doc_builder, "测试说明入库清单1");
-            doc.Save(FilePaths.save_root_file);
+            doc.Save(FileConstants.save_root_file);
             MessageBox.Show("测试说明内部评审部分写入完成！");
 
         }
@@ -99,7 +99,7 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
                     ContentFlags.pianli_1;
                 int sec_table_index1 = InsertionPos.cschqd_sec_table;
                 OperationHelper.conference_signing(doc, doc_builder, section_index1, sec_table_index1);
-                doc.Save(FilePaths.save_root_file);
+                doc.Save(FileConstants.save_root_file);
             }
         }
 

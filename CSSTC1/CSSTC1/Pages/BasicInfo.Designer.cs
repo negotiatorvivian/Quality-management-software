@@ -62,33 +62,42 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tab_control1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label23 = new System.Windows.Forms.Label();
-            this.wd_huiguishijian = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
-            this.wd_querenshijian = new System.Windows.Forms.DateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
             this.wd_shenchashijian = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
+            this.wd_querenshijian = new System.Windows.Forms.DateTimePicker();
+            this.wd_huiguishijian = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label24 = new System.Windows.Forms.Label();
-            this.jt_huiguishijian = new System.Windows.Forms.DateTimePicker();
-            this.label25 = new System.Windows.Forms.Label();
-            this.jtfx_querenshijian = new System.Windows.Forms.DateTimePicker();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
-            this.jtfx_shenchashijian = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label25 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.jt_huiguishijian = new System.Windows.Forms.DateTimePicker();
+            this.label24 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.label27 = new System.Windows.Forms.Label();
             this.dmhg_huiguishijian = new System.Windows.Forms.DateTimePicker();
             this.label28 = new System.Windows.Forms.Label();
-            this.dmsc_querenshijian = new System.Windows.Forms.DateTimePicker();
             this.label29 = new System.Windows.Forms.Label();
             this.dmsc_shijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
             this.label30 = new System.Windows.Forms.Label();
-            this.dmzc_huiguishijian = new System.Windows.Forms.DateTimePicker();
             this.label31 = new System.Windows.Forms.Label();
-            this.dmzc_querenshijian = new System.Windows.Forms.DateTimePicker();
             this.label32 = new System.Windows.Forms.Label();
-            this.dmzc_shenchashijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -101,7 +110,7 @@
             this.label47 = new System.Windows.Forms.Label();
             this.dtpz_shoulunshijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.label36 = new System.Windows.Forms.Label();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
             this.ljcs_shijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
@@ -137,9 +146,13 @@
             this.groupBox3.SuspendLayout();
             this.tab_control1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
@@ -510,12 +523,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label23);
-            this.tabPage1.Controls.Add(this.wd_huiguishijian);
-            this.tabPage1.Controls.Add(this.label22);
-            this.tabPage1.Controls.Add(this.wd_querenshijian);
-            this.tabPage1.Controls.Add(this.label21);
-            this.tabPage1.Controls.Add(this.wd_shenchashijian);
+            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.checkBox9);
             this.tabPage1.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
@@ -525,21 +534,71 @@
             this.tabPage1.Text = "文档审查时间";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label21);
+            this.panel2.Controls.Add(this.wd_shenchashijian);
+            this.panel2.Controls.Add(this.label23);
+            this.panel2.Controls.Add(this.wd_querenshijian);
+            this.panel2.Controls.Add(this.wd_huiguishijian);
+            this.panel2.Controls.Add(this.label22);
+            this.panel2.Location = new System.Drawing.Point(212, 1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(241, 119);
+            this.panel2.TabIndex = 51;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Enabled = false;
+            this.label21.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label21.Location = new System.Drawing.Point(3, 12);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(63, 14);
+            this.label21.TabIndex = 45;
+            this.label21.Text = "审查时间";
+            // 
+            // wd_shenchashijian
+            // 
+            this.wd_shenchashijian.Enabled = false;
+            this.wd_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.wd_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.wd_shenchashijian.Location = new System.Drawing.Point(93, 9);
+            this.wd_shenchashijian.Name = "wd_shenchashijian";
+            this.wd_shenchashijian.Size = new System.Drawing.Size(141, 22);
+            this.wd_shenchashijian.TabIndex = 44;
+            this.wd_shenchashijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.wd_shenchashijian.ValueChanged += new System.EventHandler(this.wd_shenchashijian_ValueChanged);
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.Enabled = false;
             this.label23.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label23.Location = new System.Drawing.Point(157, 94);
+            this.label23.Location = new System.Drawing.Point(3, 91);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(63, 14);
             this.label23.TabIndex = 49;
             this.label23.Text = "回归时间";
             // 
+            // wd_querenshijian
+            // 
+            this.wd_querenshijian.Enabled = false;
+            this.wd_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.wd_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.wd_querenshijian.Location = new System.Drawing.Point(93, 48);
+            this.wd_querenshijian.Name = "wd_querenshijian";
+            this.wd_querenshijian.Size = new System.Drawing.Size(141, 22);
+            this.wd_querenshijian.TabIndex = 46;
+            this.wd_querenshijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.wd_querenshijian.ValueChanged += new System.EventHandler(this.wd_querenshijian_ValueChanged);
+            // 
             // wd_huiguishijian
             // 
+            this.wd_huiguishijian.Enabled = false;
             this.wd_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.wd_huiguishijian.Location = new System.Drawing.Point(236, 91);
+            this.wd_huiguishijian.Location = new System.Drawing.Point(93, 88);
             this.wd_huiguishijian.Name = "wd_huiguishijian";
             this.wd_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.wd_huiguishijian.TabIndex = 48;
@@ -549,53 +608,29 @@
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.Enabled = false;
             this.label22.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label22.Location = new System.Drawing.Point(157, 54);
+            this.label22.Location = new System.Drawing.Point(3, 51);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(63, 14);
             this.label22.TabIndex = 47;
             this.label22.Text = "确认时间";
             // 
-            // wd_querenshijian
+            // checkBox9
             // 
-            this.wd_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.wd_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.wd_querenshijian.Location = new System.Drawing.Point(236, 51);
-            this.wd_querenshijian.Name = "wd_querenshijian";
-            this.wd_querenshijian.Size = new System.Drawing.Size(141, 22);
-            this.wd_querenshijian.TabIndex = 46;
-            this.wd_querenshijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
-            this.wd_querenshijian.ValueChanged += new System.EventHandler(this.wd_querenshijian_ValueChanged);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.label21.Location = new System.Drawing.Point(157, 15);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(63, 14);
-            this.label21.TabIndex = 45;
-            this.label21.Text = "审查时间";
-            // 
-            // wd_shenchashijian
-            // 
-            this.wd_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.wd_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.wd_shenchashijian.Location = new System.Drawing.Point(236, 12);
-            this.wd_shenchashijian.Name = "wd_shenchashijian";
-            this.wd_shenchashijian.Size = new System.Drawing.Size(141, 22);
-            this.wd_shenchashijian.TabIndex = 44;
-            this.wd_shenchashijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
-            this.wd_shenchashijian.ValueChanged += new System.EventHandler(this.wd_shenchashijian_ValueChanged);
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(81, 48);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(82, 18);
+            this.checkBox9.TabIndex = 50;
+            this.checkBox9.Text = "文档审查";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.jt_huiguishijian);
-            this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.jtfx_querenshijian);
-            this.tabPage2.Controls.Add(this.label26);
-            this.tabPage2.Controls.Add(this.jtfx_shenchashijian);
+            this.tabPage2.Controls.Add(this.checkBox10);
+            this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -604,77 +639,96 @@
             this.tabPage2.Text = "静态分析时间";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label24
+            // checkBox10
             // 
-            this.label24.AutoSize = true;
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(157, 94);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(63, 14);
-            this.label24.TabIndex = 55;
-            this.label24.Text = "回归时间";
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox10.Location = new System.Drawing.Point(79, 48);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(82, 18);
+            this.checkBox10.TabIndex = 60;
+            this.checkBox10.Text = "静态分析";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
             // 
-            // jt_huiguishijian
+            // panel3
             // 
-            this.jt_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.jt_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jt_huiguishijian.Location = new System.Drawing.Point(236, 91);
-            this.jt_huiguishijian.Name = "jt_huiguishijian";
-            this.jt_huiguishijian.Size = new System.Drawing.Size(141, 22);
-            this.jt_huiguishijian.TabIndex = 54;
-            this.jt_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.jt_huiguishijian.ValueChanged += new System.EventHandler(this.jt_huiguishijian_ValueChanged);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(157, 54);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(63, 14);
-            this.label25.TabIndex = 53;
-            this.label25.Text = "确认时间";
-            // 
-            // jtfx_querenshijian
-            // 
-            this.jtfx_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.jtfx_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jtfx_querenshijian.Location = new System.Drawing.Point(236, 51);
-            this.jtfx_querenshijian.Name = "jtfx_querenshijian";
-            this.jtfx_querenshijian.Size = new System.Drawing.Size(141, 22);
-            this.jtfx_querenshijian.TabIndex = 52;
-            this.jtfx_querenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.jtfx_querenshijian.ValueChanged += new System.EventHandler(this.jtfx_querenshijian_ValueChanged);
+            this.panel3.Controls.Add(this.label26);
+            this.panel3.Controls.Add(this.dateTimePicker1);
+            this.panel3.Controls.Add(this.label25);
+            this.panel3.Controls.Add(this.dateTimePicker2);
+            this.panel3.Controls.Add(this.jt_huiguishijian);
+            this.panel3.Controls.Add(this.label24);
+            this.panel3.Enabled = false;
+            this.panel3.Location = new System.Drawing.Point(204, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(251, 121);
+            this.panel3.TabIndex = 59;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label26.Location = new System.Drawing.Point(157, 15);
+            this.label26.Location = new System.Drawing.Point(5, 11);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(63, 14);
             this.label26.TabIndex = 51;
             this.label26.Text = "审查时间";
             // 
-            // jtfx_shenchashijian
+            // dateTimePicker1
             // 
-            this.jtfx_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.jtfx_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jtfx_shenchashijian.Location = new System.Drawing.Point(236, 12);
-            this.jtfx_shenchashijian.Name = "jtfx_shenchashijian";
-            this.jtfx_shenchashijian.Size = new System.Drawing.Size(141, 22);
-            this.jtfx_shenchashijian.TabIndex = 50;
-            this.jtfx_shenchashijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.jtfx_shenchashijian.ValueChanged += new System.EventHandler(this.jtfx_shenchashijian_ValueChanged);
+            this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(84, 50);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(141, 22);
+            this.dateTimePicker1.TabIndex = 58;
+            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label25.Location = new System.Drawing.Point(5, 50);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(63, 14);
+            this.label25.TabIndex = 53;
+            this.label25.Text = "确认时间";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(84, 11);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(141, 22);
+            this.dateTimePicker2.TabIndex = 57;
+            this.dateTimePicker2.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
+            // jt_huiguishijian
+            // 
+            this.jt_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.jt_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.jt_huiguishijian.Location = new System.Drawing.Point(84, 87);
+            this.jt_huiguishijian.Name = "jt_huiguishijian";
+            this.jt_huiguishijian.Size = new System.Drawing.Size(141, 22);
+            this.jt_huiguishijian.TabIndex = 54;
+            this.jt_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label24.Location = new System.Drawing.Point(5, 90);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(63, 14);
+            this.label24.TabIndex = 55;
+            this.label24.Text = "回归时间";
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label27);
-            this.tabPage3.Controls.Add(this.dmhg_huiguishijian);
-            this.tabPage3.Controls.Add(this.label28);
-            this.tabPage3.Controls.Add(this.dmsc_querenshijian);
-            this.tabPage3.Controls.Add(this.label29);
-            this.tabPage3.Controls.Add(this.dmsc_shijian);
+            this.tabPage3.Controls.Add(this.checkBox11);
+            this.tabPage3.Controls.Add(this.panel4);
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(535, 121);
@@ -682,77 +736,96 @@
             this.tabPage3.Text = "代码审查时间";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox11.Location = new System.Drawing.Point(96, 50);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(82, 18);
+            this.checkBox11.TabIndex = 63;
+            this.checkBox11.Text = "代码审查";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dateTimePicker3);
+            this.panel4.Controls.Add(this.label27);
+            this.panel4.Controls.Add(this.dmhg_huiguishijian);
+            this.panel4.Controls.Add(this.label28);
+            this.panel4.Controls.Add(this.label29);
+            this.panel4.Controls.Add(this.dmsc_shijian);
+            this.panel4.Enabled = false;
+            this.panel4.Location = new System.Drawing.Point(201, 1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(238, 123);
+            this.panel4.TabIndex = 62;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(88, 49);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(141, 22);
+            this.dateTimePicker3.TabIndex = 67;
+            this.dateTimePicker3.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(157, 93);
+            this.label27.Location = new System.Drawing.Point(9, 92);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(63, 14);
-            this.label27.TabIndex = 61;
+            this.label27.TabIndex = 66;
             this.label27.Text = "回归时间";
             // 
             // dmhg_huiguishijian
             // 
             this.dmhg_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmhg_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmhg_huiguishijian.Location = new System.Drawing.Point(236, 90);
+            this.dmhg_huiguishijian.Location = new System.Drawing.Point(88, 89);
             this.dmhg_huiguishijian.Name = "dmhg_huiguishijian";
             this.dmhg_huiguishijian.Size = new System.Drawing.Size(141, 22);
-            this.dmhg_huiguishijian.TabIndex = 60;
+            this.dmhg_huiguishijian.TabIndex = 65;
             this.dmhg_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dmhg_huiguishijian.ValueChanged += new System.EventHandler(this.dmhg_huiguishijian_ValueChanged);
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label28.Location = new System.Drawing.Point(157, 53);
+            this.label28.Location = new System.Drawing.Point(9, 52);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(63, 14);
-            this.label28.TabIndex = 59;
+            this.label28.TabIndex = 64;
             this.label28.Text = "确认时间";
-            // 
-            // dmsc_querenshijian
-            // 
-            this.dmsc_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dmsc_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmsc_querenshijian.Location = new System.Drawing.Point(236, 50);
-            this.dmsc_querenshijian.Name = "dmsc_querenshijian";
-            this.dmsc_querenshijian.Size = new System.Drawing.Size(141, 22);
-            this.dmsc_querenshijian.TabIndex = 58;
-            this.dmsc_querenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dmsc_querenshijian.ValueChanged += new System.EventHandler(this.dmsc_querenshijian_ValueChanged);
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label29.Location = new System.Drawing.Point(157, 14);
+            this.label29.Location = new System.Drawing.Point(9, 13);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(63, 14);
-            this.label29.TabIndex = 57;
+            this.label29.TabIndex = 63;
             this.label29.Text = "审查时间";
             // 
             // dmsc_shijian
             // 
             this.dmsc_shijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dmsc_shijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmsc_shijian.Location = new System.Drawing.Point(236, 11);
+            this.dmsc_shijian.Location = new System.Drawing.Point(88, 10);
             this.dmsc_shijian.Name = "dmsc_shijian";
             this.dmsc_shijian.Size = new System.Drawing.Size(141, 22);
-            this.dmsc_shijian.TabIndex = 56;
+            this.dmsc_shijian.TabIndex = 62;
             this.dmsc_shijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dmsc_shijian.ValueChanged += new System.EventHandler(this.dmsc_shijian_ValueChanged);
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label30);
-            this.tabPage4.Controls.Add(this.dmzc_huiguishijian);
-            this.tabPage4.Controls.Add(this.label31);
-            this.tabPage4.Controls.Add(this.dmzc_querenshijian);
-            this.tabPage4.Controls.Add(this.label32);
-            this.tabPage4.Controls.Add(this.dmzc_shenchashijian);
+            this.tabPage4.Controls.Add(this.checkBox12);
+            this.tabPage4.Controls.Add(this.panel5);
             this.tabPage4.Location = new System.Drawing.Point(4, 23);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(535, 121);
@@ -760,68 +833,103 @@
             this.tabPage4.Text = "代码走查时间";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox12.Location = new System.Drawing.Point(91, 50);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(82, 18);
+            this.checkBox12.TabIndex = 64;
+            this.checkBox12.Text = "代码走查";
+            this.checkBox12.UseVisualStyleBackColor = true;
+            this.checkBox12.CheckedChanged += new System.EventHandler(this.checkBox12_CheckedChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.checkBox13);
+            this.panel5.Controls.Add(this.dateTimePicker4);
+            this.panel5.Controls.Add(this.dateTimePicker5);
+            this.panel5.Controls.Add(this.dateTimePicker6);
+            this.panel5.Controls.Add(this.label30);
+            this.panel5.Controls.Add(this.label31);
+            this.panel5.Controls.Add(this.label32);
+            this.panel5.Enabled = false;
+            this.panel5.Location = new System.Drawing.Point(187, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(257, 115);
+            this.panel5.TabIndex = 0;
+            // 
+            // checkBox13
+            // 
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox13.Location = new System.Drawing.Point(-99, 45);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(82, 18);
+            this.checkBox13.TabIndex = 64;
+            this.checkBox13.Text = "代码走查";
+            this.checkBox13.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker4.Location = new System.Drawing.Point(100, 46);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(141, 22);
+            this.dateTimePicker4.TabIndex = 70;
+            this.dateTimePicker4.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker5.Location = new System.Drawing.Point(100, 86);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(141, 22);
+            this.dateTimePicker5.TabIndex = 69;
+            this.dateTimePicker5.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
+            // dateTimePicker6
+            // 
+            this.dateTimePicker6.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker6.Location = new System.Drawing.Point(100, 7);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(141, 22);
+            this.dateTimePicker6.TabIndex = 68;
+            this.dateTimePicker6.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
             this.label30.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label30.Location = new System.Drawing.Point(157, 93);
+            this.label30.Location = new System.Drawing.Point(16, 90);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(63, 14);
-            this.label30.TabIndex = 61;
+            this.label30.TabIndex = 64;
             this.label30.Text = "回归时间";
-            // 
-            // dmzc_huiguishijian
-            // 
-            this.dmzc_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dmzc_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmzc_huiguishijian.Location = new System.Drawing.Point(236, 90);
-            this.dmzc_huiguishijian.Name = "dmzc_huiguishijian";
-            this.dmzc_huiguishijian.Size = new System.Drawing.Size(141, 22);
-            this.dmzc_huiguishijian.TabIndex = 60;
-            this.dmzc_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dmzc_huiguishijian.ValueChanged += new System.EventHandler(this.dmzc_huiguishijian_ValueChanged);
             // 
             // label31
             // 
             this.label31.AutoSize = true;
             this.label31.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label31.Location = new System.Drawing.Point(157, 53);
+            this.label31.Location = new System.Drawing.Point(16, 51);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(63, 14);
-            this.label31.TabIndex = 59;
+            this.label31.TabIndex = 63;
             this.label31.Text = "确认时间";
-            // 
-            // dmzc_querenshijian
-            // 
-            this.dmzc_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dmzc_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmzc_querenshijian.Location = new System.Drawing.Point(236, 50);
-            this.dmzc_querenshijian.Name = "dmzc_querenshijian";
-            this.dmzc_querenshijian.Size = new System.Drawing.Size(141, 22);
-            this.dmzc_querenshijian.TabIndex = 58;
-            this.dmzc_querenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dmzc_querenshijian.ValueChanged += new System.EventHandler(this.dmzc_querenshijian_ValueChanged);
             // 
             // label32
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label32.Location = new System.Drawing.Point(157, 14);
+            this.label32.Location = new System.Drawing.Point(16, 10);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(63, 14);
-            this.label32.TabIndex = 57;
+            this.label32.TabIndex = 62;
             this.label32.Text = "审查时间";
-            // 
-            // dmzc_shenchashijian
-            // 
-            this.dmzc_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dmzc_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dmzc_shenchashijian.Location = new System.Drawing.Point(236, 11);
-            this.dmzc_shenchashijian.Name = "dmzc_shenchashijian";
-            this.dmzc_shenchashijian.Size = new System.Drawing.Size(141, 22);
-            this.dmzc_shenchashijian.TabIndex = 56;
-            this.dmzc_shenchashijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dmzc_shenchashijian.ValueChanged += new System.EventHandler(this.dmzc_shenchashijian_ValueChanged);
             // 
             // tabPage5
             // 
@@ -953,7 +1061,7 @@
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.label36);
+            this.tabPage7.Controls.Add(this.checkBox14);
             this.tabPage7.Controls.Add(this.ljcs_shijian);
             this.tabPage7.Location = new System.Drawing.Point(4, 23);
             this.tabPage7.Name = "tabPage7";
@@ -962,21 +1070,24 @@
             this.tabPage7.Text = "逻辑测试时间";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // label36
+            // checkBox14
             // 
-            this.label36.AutoSize = true;
-            this.label36.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label36.Location = new System.Drawing.Point(146, 54);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(91, 14);
-            this.label36.TabIndex = 59;
-            this.label36.Text = "逻辑测试时间";
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox14.Location = new System.Drawing.Point(142, 51);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(82, 18);
+            this.checkBox14.TabIndex = 59;
+            this.checkBox14.Text = "逻辑测试";
+            this.checkBox14.UseVisualStyleBackColor = true;
+            this.checkBox14.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
             // 
             // ljcs_shijian
             // 
+            this.ljcs_shijian.Enabled = false;
             this.ljcs_shijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ljcs_shijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ljcs_shijian.Location = new System.Drawing.Point(260, 51);
+            this.ljcs_shijian.Location = new System.Drawing.Point(252, 49);
             this.ljcs_shijian.Name = "ljcs_shijian";
             this.ljcs_shijian.Size = new System.Drawing.Size(141, 22);
             this.ljcs_shijian.TabIndex = 58;
@@ -1350,7 +1461,6 @@
             this.Name = "BasicInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "项目基本信息";
-            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -1360,12 +1470,20 @@
             this.tab_control1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
@@ -1446,24 +1564,6 @@
         private System.Windows.Forms.DateTimePicker wd_querenshijian;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker wd_shenchashijian;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DateTimePicker jt_huiguishijian;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.DateTimePicker jtfx_querenshijian;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.DateTimePicker jtfx_shenchashijian;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.DateTimePicker dmhg_huiguishijian;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.DateTimePicker dmsc_querenshijian;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.DateTimePicker dmsc_shijian;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.DateTimePicker dmzc_huiguishijian;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.DateTimePicker dmzc_querenshijian;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.DateTimePicker dmzc_shenchashijian;
         private System.Windows.Forms.Label label_48;
         private System.Windows.Forms.DateTimePicker dtpz_huigui;
         private System.Windows.Forms.Label label47;
@@ -1472,7 +1572,6 @@
         private System.Windows.Forms.DateTimePicker csbg_pingshenshijian;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.DateTimePicker csdg_pingshenshijian;
-        private System.Windows.Forms.Label label36;
         private System.Windows.Forms.DateTimePicker ljcs_shijian;
         private System.Windows.Forms.DateTimePicker xtcs_huiguishijian;
         private System.Windows.Forms.Label label35;
@@ -1497,5 +1596,33 @@
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DateTimePicker jt_huiguishijian;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DateTimePicker dmhg_huiguishijian;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.DateTimePicker dmsc_shijian;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker6;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.CheckBox checkBox14;
         }
     }
