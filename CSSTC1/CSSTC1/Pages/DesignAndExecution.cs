@@ -14,113 +14,181 @@ using CSSTC1.InputProcessors;
 namespace CSSTC1.Pages {
     public partial class DesignAndExecution : Form {
         private DesignAndExeProcessor processor = new DesignAndExeProcessor();
-
+        List<ComboBox> comboBoxes = new List<ComboBox>();
+        #region  构造函数与界面操作
         public DesignAndExecution() {
             InitializeComponent();
-            this.checkedListBox1.SetItemChecked(0, true);
-            this.checkedListBox1.SetItemChecked(1, true);
-            this.checkedListBox1.SetItemChecked(4, true);
-            this.checkedListBox1.SetItemChecked(5, true);
-            this.checkedListBox1.SetItemChecked(6, true);
-            this.checkedListBox1.SetItemChecked(7, true);
-            this.checkedListBox1.SetItemChecked(8, true);
+            if(ContentFlags.wendangshencha > 0)
+                this.checkedListBox1.SetItemChecked(0, true);
+            if(ContentFlags.jingtaifenxi > 0){
+                this.checkedListBox1.SetItemChecked(1, true);
+                this.button3.Enabled = true;
+            }
+            if(ContentFlags.daimazoucha > 0){
+                this.checkedListBox1.SetItemChecked(2, true);
+                this.button4.Enabled = true;
+            }
+            if(ContentFlags.daimashencha > 0){
+                this.checkedListBox1.SetItemChecked(3, true);
+                this.button5.Enabled = true;
+            }
+            if(ContentFlags.peizhiceshi > 0){
+                this.checkedListBox1.SetItemChecked(4, true);
+                this.checkedListBox1.SetItemChecked(5, true);
+            }
+            if(ContentFlags.luojiceshi > 0)
+                this.checkedListBox1.SetItemChecked(6, true);
+            if(ContentFlags.xitongceshi > 0)
+                this.checkedListBox1.SetItemChecked(7, true);
+            if(ContentFlags.xitonghuiguiceshi > 0)
+                this.checkedListBox1.SetItemChecked(8, true);
             
         }
 
-        public bool fill_table() {
-            if(ContentFlags.static_files.Count == 0)
-                return false;
-            if(TimeStamp.sldtcs_time != null) {
-                DateTime date1 = DateHelper.cal_date(TimeStamp.sldtcs_time, 10);
-                DateTime date2 = DateHelper.cal_date(TimeStamp.sldtcs_time, 5);
-                this.dateTimePicker1.Value = date1;
-                this.dateTimePicker2.Value = date2;
-            }
-            return true;
+        //取消键
+        private void button2_Click(object sender, EventArgs e) {
+            this.Hide();
         }
-
-        ////读取页面上更改后的信息
-        //public bool read_current_list(){
-        //    TableLayoutControlCollection controls = this.tableLayoutPanel1.Controls;
-        //    List<string> software_list = new List<string>();
-        //    for(int i = 7; i < controls.Count; i +=7){
-        //        string name = controls[i].Text;
-        //        software_list.Add(name);
-        //    }
-        //    if(software_list.Count == 0){
-        //        return false;
-        //    }
-        //    ContentFlags.software_list = software_list;
-        //    //读取修改过的信息
-        //    return true;
-        //}
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) {
-            string times = this.comboBox2.Text;
+        
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e) {
+            string times = this.comboBox3.Text;
             switch(times) {
-                case "有": {
-                        this.label8.Enabled = true;
-                        this.dateTimePicker3.Enabled = true;
+                case "1次": {
+                        this.label3.Enabled = false;
+                        this.dateTimePicker5.Enabled = false;
                         break;
                     }
-                case "无": {
-                        this.label8.Enabled = false;
-                        this.dateTimePicker3.Enabled = false;
+                case "2次": {
+                        this.label3.Enabled = true;
+                        this.dateTimePicker5.Enabled = true;
                         break;
                     }
                 default:
                     break;
+
             }
         }
-        //确认键提交信息
-        private void button1_Click(object sender, EventArgs e) {
-            this.button1.Enabled = false;
-            string csjxps_format_time = "";
-            if(this.dateTimePicker3.Enabled)
-                csjxps_format_time = this.dateTimePicker3.Value.ToLongDateString();
-            //bool res1 = this.read_current_list();
-            //if(!res1)
-            //    MessageBox.Show("未选择静态测试软件项目");
 
-            //bool res = this.processor.fill_time_line(csjxps_format_time);
-            //if(!res)
-            //    MessageBox.Show("填写测试设计与执行阶段时间线出错");
-            this.Hide();
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
+            this.button1.Enabled = true;
         }
 
-        private void button2_Click(object sender, EventArgs e) {
-            Globals.ThisDocument.design_and_exe.Hide();
+        private void button6_Click(object sender, EventArgs e) {
+            this.fill_csjx_table();
+            this.panel1.Show();
         }
 
+        public bool fill_table() {
+            if(ContentFlags.static_files.Count == 0)
+                return true;
+                //return false;
+            if(TimeStamp.sldtcs_time != null) {
+                DateTime date1 = DateHelper.cal_date(TimeStamp.sldtcs_time, 10);
+                DateTime date2 = DateHelper.cal_date(TimeStamp.sldtcs_time, 5);
+                this.dateTimePicker1.Value = date1;
+                this.dateTimePicker4.Value = date2;
+                this.dateTimePicker5.Value = date2;
+            }
+            return true;
+        }
+
+        //测试就绪表格
+        public bool fill_csjx_table() {
+            if(ContentFlags.peizhiceshi == 0) {
+                this.tableLayoutPanel2.Visible = false;
+                return true;
+            }
+            if(ContentFlags.pro_infos.Count == 0)
+                return false;
+            int row_index = 1;
+            //this.tableLayoutPanel2.RowCount = ContentFlags.pro_infos.Count + 1;
+            for(int i = 0; i < ContentFlags.pro_infos.Count - 1; i++) {
+                this.tableLayoutPanel2.RowCount += 1;
+                this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            }
+            foreach(ProjectInfo file in ContentFlags.pro_infos) {
+                System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
+                label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                label1.Text = file.rj_mingcheng;
+                label1.AutoSize = true;
+                label1.Dock = System.Windows.Forms.DockStyle.Fill;
+
+
+                System.Windows.Forms.ComboBox comboBox1 = new ComboBox();
+                comboBox1.BackColor = System.Drawing.SystemColors.Control;
+                comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+                comboBox1.FormattingEnabled = true;
+                comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2"});
+                comboBox1.Size = new System.Drawing.Size(93, 21);
+                comboBox1.Text = "1";
+                comboBox1.Enabled = true;
+                this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+                comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+                comboBoxes.Add(comboBox1);
+                this.tableLayoutPanel2.Controls.Add(label1, 0, row_index);
+                this.tableLayoutPanel2.Controls.Add(comboBox1, 1, row_index);
+                row_index += 1;
+            }
+            return true;
+        }
+        
+        //测试环境选择2时
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+            Control control = (Control)sender;
+            int index = this.tableLayoutPanel2.Controls.IndexOf(control) / this.tableLayoutPanel2.ColumnCount;
+            string temp = this.tableLayoutPanel2.GetControlFromPosition(1, index).Text;
+            if(temp.Equals("2")) {
+                string software_name = this.tableLayoutPanel2.GetControlFromPosition(0, index).Text;
+                PopUpWindow pop_up = new PopUpWindow(software_name);
+                pop_up.Show();
+                this.tableLayoutPanel2.GetControlFromPosition(1, index).Enabled = false;
+            }
+        }
+
+        /************************展示静态分析 代码走查 代码审查表*********************************/
         private void button3_Click(object sender, EventArgs e) {
             PopUpStaticAnaChart chart1 = new PopUpStaticAnaChart("静态分析模块名");
             chart1.Show();
         }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-            TimeStamp.cssmps_time = this.dateTimePicker1.Value.ToShortDateString();
-            TimeStamp.cssmps_format_time = this.dateTimePicker1.Value.ToLongDateString();
-            //foreach(ComboBox box in comboBoxes) {
-            //    box.Enabled = true;
-            //}
-            this.button1.Enabled = true;
-            DateTime temp1 = DateHelper.cal_date(TimeStamp.csjxps_time, 1);
-            DateTime temp2 = DateHelper.cal_date(TimeStamp.csjxps_time, 1);
-        }
-
-        private void button2_Click_1(object sender, EventArgs e) {
-            this.Hide();
-        }
 
         private void button5_Click(object sender, EventArgs e) {
-            PopUpCodeCheckChart chart1 = new PopUpCodeCheckChart("代码审查模块名", "代码审查范围", 
+            PopUpCodeCheckChart chart1 = new PopUpCodeCheckChart("代码审查模块名", "代码审查范围",
                 "dmsc_software_list", "dmsc_software_info", ContentFlags.dmsc_software_info);
             chart1.Show();
         }
 
         private void button4_Click(object sender, EventArgs e) {
-            PopUpCodeCheckChart chart1 = new PopUpCodeCheckChart("代码走查模块名", "代码走查范围", 
+            PopUpCodeCheckChart chart1 = new PopUpCodeCheckChart("代码走查模块名", "代码走查范围",
                 "dmzc_software_list", "dmzc_software_info", ContentFlags.dmzc_software_info);
             chart1.Show();
         }
+        /************************展示静态分析 代码走查 代码审查表*********************************/
+        
+#endregion
+
+        //确认键提交信息
+        private void button1_Click(object sender, EventArgs e) {
+            this.button1.Enabled = false;
+            TimeStamp.cssmps_time = this.dateTimePicker1.Value.ToShortDateString();
+            TimeStamp.cssmps_format_time = this.dateTimePicker1.Value.ToLongDateString();
+            this.Hide();
+        }
+
+        private void button7_Click(object sender, EventArgs e) {
+            string times = this.comboBox3.Text;
+            string pl_time = this.comboBox2.Text;
+            TimeStamp.csjxps_time.Add(this.dateTimePicker4.Value.ToShortDateString());
+            TimeStamp.csjxps_format_time.Add(this.dateTimePicker4.Value.ToLongDateString());
+            if(this.dateTimePicker5.Enabled){
+                TimeStamp.csjxps_time.Add(this.dateTimePicker5.Value.ToShortDateString());
+                TimeStamp.csjxps_format_time.Add(this.dateTimePicker5.Value.ToLongDateString());
+            }
+            if(pl_time.Equals("无"))
+                ContentFlags.pianli_3 = 0;
+            this.panel1.Hide();
+        }
+
     }
 }

@@ -19,8 +19,12 @@ namespace CSSTC1.ConstantVariables {
         public static int daimashencha = 13;
         //代码走查节数
         public static int daimazoucha = 13;
+        //配置项测试节数
+        public static int peizhiceshi = 23;
         //逻辑测试节数
         public static int luojiceshi = 3;
+        //系统测试节数
+        public static int xitongceshi = 20;
         //系统回归测试节数
         public static int xitonghuiguiceshi = 10;
     }

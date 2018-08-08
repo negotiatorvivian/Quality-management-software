@@ -30,7 +30,11 @@ namespace CSSTC1.Pages {
             List<System.Windows.Forms.TextBox> boxes = new List<TextBox>();
             List<string> huigui_banben = this.update_version();
             int row_index = 1;
-            this.tableLayoutPanel1.RowCount = ContentFlags.static_files.Count + 1;
+           // this.tableLayoutPanel1.RowCount = ContentFlags.static_files.Count + 1;
+            for(int i = 0; i < ContentFlags.static_files.Count - 1; i++) {
+                this.tableLayoutPanel1.RowCount += 1;
+                this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            }
             foreach(StaticAnalysisFile file in ContentFlags.static_files) {
                 System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
                 label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -39,7 +43,7 @@ namespace CSSTC1.Pages {
                 label1.Dock = System.Windows.Forms.DockStyle.Fill;
 
                 System.Windows.Forms.TextBox textBox2 = new System.Windows.Forms.TextBox();
-                textBox2.BackColor = System.Drawing.SystemColors.Control;
+                textBox2.BackColor = System.Drawing.SystemColors.Window;
                 textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
                 textBox2.MaximumSize = new System.Drawing.Size(94, 30);
                 textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -50,7 +54,7 @@ namespace CSSTC1.Pages {
                 textBox2.Text = file.jtfx_fanwei;
 
                 System.Windows.Forms.TextBox textBox3 = new System.Windows.Forms.TextBox();
-                textBox3.BackColor = System.Drawing.SystemColors.Control;
+                textBox3.BackColor = System.Drawing.SystemColors.Window;
                 textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
                 textBox3.MaximumSize = new System.Drawing.Size(100, 0);
                 textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -61,7 +65,7 @@ namespace CSSTC1.Pages {
                 textBox3.Text = file.bc_yuyan;
 
                 System.Windows.Forms.TextBox textBox4 = new System.Windows.Forms.TextBox();
-                textBox4.BackColor = System.Drawing.SystemColors.Control;
+                textBox4.BackColor = System.Drawing.SystemColors.Window;
                 textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
                 textBox4.MaximumSize = new System.Drawing.Size(100, 30);
                 textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -69,10 +73,11 @@ namespace CSSTC1.Pages {
                 textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                 textBox4.AutoSize = true;
                 textBox4.Multiline = true;
-                textBox4.Text = file.xt_banben;
+                string version = file.xt_banben.Split('/')[0];
+                textBox4.Text = version;
 
                 System.Windows.Forms.TextBox textBox6 = new System.Windows.Forms.TextBox();
-                textBox6.BackColor = System.Drawing.SystemColors.Control;
+                textBox6.BackColor = System.Drawing.SystemColors.Window;
                 textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
                 textBox6.MaximumSize = new System.Drawing.Size(100, 30);
                 textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -83,7 +88,7 @@ namespace CSSTC1.Pages {
                 textBox6.Text = huigui_banben[row_index - 1];
 
                 System.Windows.Forms.TextBox textBox5 = new System.Windows.Forms.TextBox();
-                textBox5.BackColor = System.Drawing.SystemColors.Control;
+                textBox5.BackColor = System.Drawing.SystemColors.Window;
                 textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
                 textBox5.MaximumSize = new System.Drawing.Size(157, 30);
                 textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -92,18 +97,6 @@ namespace CSSTC1.Pages {
                 textBox5.AutoSize = true;
                 textBox5.Multiline = true;
                 textBox5.Text = file.yz_danwei;
-                System.Windows.Forms.ComboBox comboBox1 = new ComboBox();
-                comboBox1.BackColor = System.Drawing.SystemColors.Control;
-                comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-                comboBox1.FormattingEnabled = true;
-                comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2"});
-                comboBox1.Size = new System.Drawing.Size(93, 21);
-                comboBox1.Text = "1";
-                comboBox1.Enabled = false;
-                comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-                comboBoxes.Add(comboBox1);
                 LinkLabel linkLabel1 = this.add_delete_label();
                 this.tableLayoutPanel1.Controls.Add(label1, 0, row_index);
                 this.tableLayoutPanel1.Controls.Add(textBox2, 1, row_index);
@@ -116,20 +109,6 @@ namespace CSSTC1.Pages {
             }
             return true;
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
-            Control control = (Control)sender;
-            int index = this.tableLayoutPanel1.Controls.IndexOf(control) / this.tableLayoutPanel1.ColumnCount;
-            string temp = this.tableLayoutPanel1.GetControlFromPosition(5, index).Text;
-            if(temp.Equals("2")) {
-                string software_name = this.tableLayoutPanel1.GetControlFromPosition(0, index).Text;
-                PopUpWindow pop_up = new PopUpWindow(software_name);
-                pop_up.Show();
-                this.tableLayoutPanel1.GetControlFromPosition(5, index).Enabled = false;
-            }
-        }
-
-       
 
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
@@ -197,15 +176,15 @@ namespace CSSTC1.Pages {
                 string old_version = controls[i + 3].Text;
                 string new_version = controls[i + 4].Text;
                 string provider = controls[i + 5].Text;
-                StaticAnalysisFile file = new StaticAnalysisFile(name, range, old_version, new_version, code_language, 
-                    provider);
+                StaticAnalysisFile file = new StaticAnalysisFile(name, range, old_version, new_version, 
+                    code_language, provider);
                 files.Add(file);
             }
             if(software_list.Count == 0) {
                 return false;
             }
-            ContentFlags.software_list = software_list;
-            ContentFlags.software_info_list = files;
+            ContentFlags.static_list = software_list;
+            ContentFlags.static_files = files;
             return true;
         }
 

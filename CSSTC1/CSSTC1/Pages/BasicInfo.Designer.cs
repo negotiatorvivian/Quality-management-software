@@ -568,7 +568,6 @@
             this.wd_shenchashijian.Size = new System.Drawing.Size(141, 22);
             this.wd_shenchashijian.TabIndex = 44;
             this.wd_shenchashijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
-            this.wd_shenchashijian.ValueChanged += new System.EventHandler(this.wd_shenchashijian_ValueChanged);
             // 
             // label23
             // 
@@ -591,7 +590,6 @@
             this.wd_querenshijian.Size = new System.Drawing.Size(141, 22);
             this.wd_querenshijian.TabIndex = 46;
             this.wd_querenshijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
-            this.wd_querenshijian.ValueChanged += new System.EventHandler(this.wd_querenshijian_ValueChanged);
             // 
             // wd_huiguishijian
             // 
@@ -603,7 +601,6 @@
             this.wd_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.wd_huiguishijian.TabIndex = 48;
             this.wd_huiguishijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
-            this.wd_huiguishijian.ValueChanged += new System.EventHandler(this.wd_huiguishijian_ValueChanged);
             // 
             // label22
             // 
@@ -982,7 +979,7 @@
             this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csxq_pingshenshijian.TabIndex = 60;
             this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.csxq_pingshenshijian.ValueChanged += new System.EventHandler(this.csxq_pingshenshijian_ValueChanged);
+         
             // 
             // label33
             // 
@@ -1002,7 +999,7 @@
             this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csdg_pingshenshijian.TabIndex = 58;
             this.csdg_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.csdg_pingshenshijian.ValueChanged += new System.EventHandler(this.csdg_pingshenshijian_ValueChanged);
+   
             // 
             // tabPage6
             // 
@@ -1036,7 +1033,6 @@
             this.dtpz_huigui.Size = new System.Drawing.Size(141, 22);
             this.dtpz_huigui.TabIndex = 60;
             this.dtpz_huigui.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.dtpz_huigui.ValueChanged += new System.EventHandler(this.dtpz_huigui_ValueChanged);
             // 
             // label47
             // 
@@ -1092,7 +1088,6 @@
             this.ljcs_shijian.Size = new System.Drawing.Size(141, 22);
             this.ljcs_shijian.TabIndex = 58;
             this.ljcs_shijian.Value = new System.DateTime(2018, 7, 23, 20, 42, 1, 0);
-            this.ljcs_shijian.ValueChanged += new System.EventHandler(this.ljcs_shijian_ValueChanged);
             // 
             // tabPage8
             // 
@@ -1130,7 +1125,6 @@
             this.xtcs_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.xtcs_huiguishijian.TabIndex = 64;
             this.xtcs_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            this.xtcs_huiguishijian.ValueChanged += new System.EventHandler(this.xtcs_huiguishijian_ValueChanged);
             // 
             // label35
             // 
@@ -1461,6 +1455,7 @@
             this.Name = "BasicInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "项目基本信息";
+            this.TopMost = true;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

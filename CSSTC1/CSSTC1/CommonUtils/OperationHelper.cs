@@ -70,7 +70,6 @@ namespace CSSTC1.CommonUtils {
                     foreach(Section sec in sections){
                         sec.Range.Delete();
                     }
-                    //doc.Save(FileConstants.save_root_file);
                 }
             }
         }

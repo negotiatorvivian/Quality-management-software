@@ -13,95 +13,114 @@ using CSSTC1.FileProcessors.writers.part3_4;
 
 namespace CSSTC1.FileProcessors.writers {
     class FileWriter4 {
-        List<SoftwareItems> software_items = new List<SoftwareItems>();
-        List<HardwareItems> hardware_items = new List<HardwareItems>();
-        List<QestionReport> reports = new List<QestionReport>();
+        List<StaticAnalysisFile> software_items = new List<StaticAnalysisFile>();
         Table software_table;
         Table hardware_table;
         Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict = new Dictionary<string,
                 List<SoftwareItems>>();
         Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict = new Dictionary<string,
             List<DynamicHardwareItems>>();
+        List<int> times = new List<int>();
 
-        public FileWriter4(List<SoftwareItems> software_items, List<HardwareItems> hardware_items, 
-            List<QestionReport> reports, Table software_table, Table hardware_table, Dictionary<string, 
-            List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string,
-            List<DynamicHardwareItems>> yingjianpeizhi_dict) {
-            this.hardware_items = hardware_items;
+        //构造方法
+        public FileWriter4(List<StaticAnalysisFile> software_items, Table software_table, Table hardware_table) {
             this.software_items = software_items;
             this.hardware_table = hardware_table;
             this.software_table = software_table;
-            this.yingjianpeizhi_dict = yingjianpeizhi_dict;
-            this.ruanjianpeizhi_dict = ruanjianpeizhi_dict;
-            this.reports = reports;
+            times.Add(ContentFlags.pianli_1);
+            times.Add(ContentFlags.pianli_2);
+            times.Add(ContentFlags.lingqucishu * 2);
             this.write_charts();
         }
 
         public void write_charts(){
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            Dictionary<string, FileList> beicejianqingdan_dict = this.update_fileId
+            Dictionary<string, FileList> beicejianqingdan_dict = this.get_wdsc_files
                 (ContentFlags.beicejianqingdan_dict);
-            int[] times = { ContentFlags.pianli_1, ContentFlags.pianli_2, ContentFlags.lingqucishu *2};
-            ChartHelper.write_bcjqd_chart(doc, doc_builder, beicejianqingdan_dict, InsertionPos.sj_bcjqd_section,
-                InsertionPos.sj_bcjqd_sec_table, InsertionPos.sj_bcjqd_name_row, InsertionPos.sj_bcjqd_iden_row,
-                times);
-            ChartHelper.write_bcjdbd_chart(doc, doc_builder, beicejianqingdan_dict, InsertionPos.sj_bcjdbd_section,
-                InsertionPos.sj_bcjdbd_sec_table, 1, 
-                InsertionPos.sj_bcjdbd_name_row,InsertionPos.sj_bcjdbd_iden_row,
-                times);
-            ChartHelper.write_bcjdbd_chart(doc, doc_builder, beicejianqingdan_dict, InsertionPos.sj_bcjdbd_section,
-                InsertionPos.sj_bcjlqqd_sec_table, 2, InsertionPos.sj_bcjdbd_name_row, 
-                InsertionPos.sj_bcjdbd_iden_row, times);
-            ChartHelper.write_bcjdbd_chart(doc, doc_builder, beicejianqingdan_dict, InsertionPos.sj_rksqd_section,
-                InsertionPos.sj_rksqd_sec_table, 5, InsertionPos.sj_rksqd_name_row,
-                InsertionPos.sj_rksqd_iden_row, times);
-            this.write_pzztbg_chart(doc, doc_builder, beicejianqingdan_dict, "文档审查入库软件文档");
-            this.write_lxwtf_chart(doc, doc_builder, software_items, "委托方提供代码");
-            Dictionary<string, SoftwareItems> software_dict = this.set_file_id(doc, doc_builder, 
-                software_items);
-            ChartHelper.write_rksqd_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjdbd_section2,
-                InsertionPos.sj_bcjdbd_sec_table2, 1, InsertionPos.sj_bcjdbd_name_row,
-                InsertionPos.sj_bcjdbd_iden_row, times);
-            ChartHelper.write_bcjqd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjqd_section2,
-                InsertionPos.sj_bcjqd_sec_table2, InsertionPos.sj_bcjqd_name_row,
-                InsertionPos.sj_bcjqd_iden_row, times);
-            ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict,
-                InsertionPos.sj_bcjlqqd_section2, InsertionPos.sj_bcjlqqd_sec_table2, 2, 
-                InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
-            ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_rksqd_section2,
-                InsertionPos.sj_rksqd_sec_table2, 3, InsertionPos.sj_rksqd_name_row,
-                InsertionPos.sj_rksqd_iden_row, times);
-            this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单3");
-            this.write_csgjhsb_chart(doc, doc_builder, software_dict, InsertionPos.sj_csgjqr_section,
-               InsertionPos.sj_csgjqr_sec_table, times);
+            /***************************文档审查开始*********************************/
+            if(ContentFlags.wendangshencha > 0){
+                ChartHelper.write_bcjqd_chart(doc, doc_builder, beicejianqingdan_dict, 
+                    InsertionPos.sj_bcjqd_section,
+                    InsertionPos.sj_bcjqd_sec_table, InsertionPos.sj_bcjqd_name_row, 
+                    InsertionPos.sj_bcjqd_iden_row,
+                    times);
+                ChartHelper.write_bcjdbd_chart(doc, doc_builder, beicejianqingdan_dict, 
+                    InsertionPos.sj_bcjdbd_section,
+                    InsertionPos.sj_bcjdbd_sec_table, 1, 
+                    InsertionPos.sj_bcjdbd_name_row,InsertionPos.sj_bcjdbd_iden_row,
+                    times);
+                ChartHelper.write_bcjdbd_chart(doc, doc_builder, beicejianqingdan_dict, 
+                    InsertionPos.sj_bcjdbd_section,
+                    InsertionPos.sj_bcjlqqd_sec_table, 2, InsertionPos.sj_bcjdbd_name_row, 
+                    InsertionPos.sj_bcjdbd_iden_row, times);
+                ChartHelper.write_bcjdbd_chart(doc, doc_builder, beicejianqingdan_dict, 
+                    InsertionPos.sj_rksqd_section,
+                    InsertionPos.sj_rksqd_sec_table, 5, InsertionPos.sj_rksqd_name_row,
+                    InsertionPos.sj_rksqd_iden_row, times);
+                this.write_pzztbg_chart(doc, doc_builder, beicejianqingdan_dict, "文档审查入库软件文档");
+            }
+            times.Add(ContentFlags.wendangshencha);
+            /***************************文档审查结束*********************************/
+
+            /***************************静态分析开始*********************************/
+            if(ContentFlags.jingtaifenxi > 0) {
+                this.write_lxwtf_chart(doc, doc_builder, software_items, "委托方提供代码");
+                Dictionary<string, StaticAnalysisFile> software_dict = this.set_file_id(doc, doc_builder, 
+                    software_items);
+                ChartHelper.write_rksqd_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjdbd_section2,
+                    InsertionPos.sj_bcjdbd_sec_table2, 1, InsertionPos.sj_bcjdbd_name_row,
+                    InsertionPos.sj_bcjdbd_iden_row, times);
+                ChartHelper.write_bcjqd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjqd_section2,
+                    InsertionPos.sj_bcjqd_sec_table2, InsertionPos.sj_bcjqd_name_row,
+                    InsertionPos.sj_bcjqd_iden_row, times);
+                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict,
+                    InsertionPos.sj_bcjlqqd_section2, InsertionPos.sj_bcjlqqd_sec_table2, 2, 
+                    InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
+                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_rksqd_section2,
+                    InsertionPos.sj_rksqd_sec_table2, 3, InsertionPos.sj_rksqd_name_row,
+                    InsertionPos.sj_rksqd_iden_row, times);
+                this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单3", false);
+                //this.write_csgjhsb_chart(doc, doc_builder, software_dict, InsertionPos.sj_csgjqr_section,
+                   //InsertionPos.sj_csgjqr_sec_table, times);
             
-            Table new_table = (Table)this.software_table.Clone(true);
-            this.append_content(doc, doc_builder, new_table, InsertionPos.sj_cshjhc_section,
-                InsertionPos.sj_cshjhc_sec_table, 1, times);
-            Table new_table1 = (Table)this.hardware_table.Clone(true);
-            this.append_content(doc, doc_builder, new_table1, InsertionPos.sj_cshjhc_section,
-                InsertionPos.sj_cshjhc_sec_table, 2, times);
-            Dictionary<string, SoftwareItems> new_software_dict = this.update_softwareId(software_dict);
-            ChartHelper.write_bcjqd2_chart(doc, doc_builder, new_software_dict, InsertionPos.sj_bcjqd_section3,
-                InsertionPos.sj_bcjqd_sec_table3, InsertionPos.sj_bcjqd_name_row,
-                InsertionPos.sj_bcjqd_iden_row, times);
-            ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict, InsertionPos.sj_bcjdbd_section3,
-                InsertionPos.sj_bcjdbd_sec_table3, 1, InsertionPos.sj_bcjdbd_name_row,
-                InsertionPos.sj_bcjdbd_iden_row, times);
-            ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict,
-                InsertionPos.sj_bcjlqqd_section3, InsertionPos.sj_bcjlqqd_sec_table3, 2,
-                InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
-            ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict, InsertionPos.sj_rksqd_section3,
-                InsertionPos.sj_rksqd_sec_table3, 3, InsertionPos.sj_rksqd_name_row,
-                InsertionPos.sj_rksqd_iden_row, times);
-            this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单4");
+                Table new_table = (Table)this.software_table.Clone(true);
+                this.append_content(doc, doc_builder, new_table, InsertionPos.sj_cshjhc_section,
+                    InsertionPos.sj_cshjhc_sec_table, 1, times);
+                Table new_table1 = (Table)this.hardware_table.Clone(true);
+                this.append_content(doc, doc_builder, new_table1, InsertionPos.sj_cshjhc_section,
+                    InsertionPos.sj_cshjhc_sec_table, 2, times);
+                Dictionary<string, StaticAnalysisFile> new_software_dict = this.update_softwareId(software_dict);
+                ChartHelper.write_bcjqd2_chart(doc, doc_builder, new_software_dict, InsertionPos.sj_bcjqd_section3,
+                    InsertionPos.sj_bcjqd_sec_table3, InsertionPos.sj_bcjqd_name_row,
+                    InsertionPos.sj_bcjqd_iden_row, times);
+                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict, 
+                    InsertionPos.sj_bcjdbd_section3,
+                    InsertionPos.sj_bcjdbd_sec_table3, 1, InsertionPos.sj_bcjdbd_name_row,
+                    InsertionPos.sj_bcjdbd_iden_row, times);
+                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict,
+                    InsertionPos.sj_bcjlqqd_section3, InsertionPos.sj_bcjlqqd_sec_table3, 2,
+                    InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
+                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict, 
+                    InsertionPos.sj_rksqd_section3,
+                    InsertionPos.sj_rksqd_sec_table3, 3, InsertionPos.sj_rksqd_name_row,
+                    InsertionPos.sj_rksqd_iden_row, times);
+                this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单4", true);
+                ContentFlags.software_dict = new_software_dict;
+            }
+            else{
+                Dictionary<string, StaticAnalysisFile> software_dict = this.set_file_id(doc, doc_builder,
+                    software_items);
+                Dictionary<string, StaticAnalysisFile> new_software_dict = this.update_softwareId(software_dict);
+                ContentFlags.software_dict = new_software_dict;
+            }
+            times.Add(ContentFlags.jingtaifenxi);
+            /***************************静态分析结束*********************************/
             doc.Save(FileConstants.save_root_file);
-            ContentFlags.software_dict = new_software_dict;
             MessageBox.Show("文档审查与静态分析部分写入完成！");
-            //FileWriter5 append_writer = new FileWriter5(new_software_dict);
         }
 
+        #region  公共方法
         public Dictionary<string, FileList> update_fileId(Dictionary<string, FileList> beicejianqingdan_dict) {
             Dictionary<string, FileList> new_dict = new Dictionary<string,FileList>();
             foreach(string key in beicejianqingdan_dict.Keys){
@@ -120,7 +139,10 @@ namespace CSSTC1.FileProcessors.writers {
             }
             return new_dict;
         }
+ 
+        #endregion
 
+        #region  文档审查方法
         public void write_pzztbg_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, FileList> new_dict, string mark){
             string text = "";
@@ -131,11 +153,43 @@ namespace CSSTC1.FileProcessors.writers {
             if(doc_builder.MoveToBookmark(mark))
                 doc_builder.Write(text);
         }
+
+        //获取文档审查部分的文档列表
+        public Dictionary<string, FileList> get_wdsc_files(Dictionary<string, FileList> beicejianqingdan_dict) {
+            List<string> file_ids = beicejianqingdan_dict.Select(r => r.Key).ToList();
+            Dictionary<string, FileList> wdsc_files = new Dictionary<string, FileList>();
+            int count = 0;
+            foreach(FileList file in ContentFlags.all_file_lists) {
+                if(file.wd_banben.Length > 4) {
+                    string new_version = file.wd_banben.Substring(5, file.wd_banben.Length - 5);
+                    file.wd_banben = new_version;
+                    string id = file_ids[count];
+                    Regex reg = new Regex("[v|V][0-9][.][0-9]+");
+                    MatchCollection matches = reg.Matches(id, 0);
+
+                    if(matches == null)
+                        continue;
+                    string temp = matches[matches.Count - 1].Value;
+                    int start_index = matches[matches.Count - 1].Index;
+                    int end_index = start_index + temp.Length;
+
+                    id = id.Substring(0, start_index) + new_version + id.Substring(end_index, id.Length -
+                        end_index);
+                    //id = id.Replace(temp, new_version);
+                    wdsc_files.Add(id, file);
+                }
+                count += 1;
+            }
+            return wdsc_files;
+        }
+        #endregion
+
+        #region 静态分析方法
         //联系委托方
         public void write_lxwtf_chart(Document doc, DocumentBuilder doc_builder,
-            List<SoftwareItems> software_items, string mark) {
+            List<StaticAnalysisFile> software_items, string mark) {
             string text = "";
-            foreach(SoftwareItems item in software_items) {
+            foreach(StaticAnalysisFile item in software_items) {
                 text += item.rj_mingcheng + '、';
             }
             text = text.Substring(0, text.Length - 1);
@@ -144,9 +198,9 @@ namespace CSSTC1.FileProcessors.writers {
         }
 
         //填写文件标识
-        public Dictionary<string, SoftwareItems> set_file_id(Document doc, DocumentBuilder doc_builder, 
-            List<SoftwareItems> software_items) {
-            Dictionary<string, SoftwareItems> dict = new Dictionary<string,SoftwareItems>();
+        public Dictionary<string, StaticAnalysisFile> set_file_id(Document doc, DocumentBuilder doc_builder, 
+            List<StaticAnalysisFile> software_items) {
+            Dictionary<string, StaticAnalysisFile> dict = new Dictionary<string, StaticAnalysisFile>();
             string id = "";
             string year = "";
             if(doc_builder.MoveToBookmark("项目标识"))
@@ -158,14 +212,14 @@ namespace CSSTC1.FileProcessors.writers {
             else
                 return null;
             int count = 1;
-            foreach(SoftwareItems item in software_items) {
+            foreach(StaticAnalysisFile item in software_items) {
                 string key = NamingRules.pre_name;
                 key += '{' + doc.Range.Bookmarks["项目标识"].Text + "}-C19";
                 if(count < 10){
-                    key += "(0" + count.ToString() + ')' + "-" + item.rj_banben + '-' + year;
+                    key += "(0" + count.ToString() + ')' + "-" + item.xt_banben + '-' + year;
                 }
                 else
-                    key += '(' + count.ToString() + ')' + "-" + item.rj_banben + '-' + year;
+                    key += '(' + count.ToString() + ')' + "-" + item.xt_banben + '-' + year;
                 dict.Add(key, item);
                 count += 1;
             }
@@ -174,11 +228,14 @@ namespace CSSTC1.FileProcessors.writers {
 
         //配置状态报告单
         public void write_pzztbg2_chart(Document doc, DocumentBuilder doc_builder,
-            Dictionary<string, SoftwareItems> new_dict, string mark) {
+            Dictionary<string, StaticAnalysisFile> new_dict, string mark, bool huigui) {
             string text = "";
             foreach(string key in new_dict.Keys) {
-                SoftwareItems file = new_dict[key];
-                text += file.rj_mingcheng + "\t\t" + file.rj_banben + '\n';
+                StaticAnalysisFile file = new_dict[key];
+                if(huigui)
+                    text += file.rj_mingcheng + "\t\t" + file.hg_banben + '\n';
+                else
+                    text += file.rj_mingcheng + "\t\t" + file.xt_banben + '\n';
             }
             if(doc_builder.MoveToBookmark(mark))
                 doc_builder.Write(text);
@@ -187,7 +244,7 @@ namespace CSSTC1.FileProcessors.writers {
         //填写测试工具或设备表格
         public void write_csgjhsb_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, SoftwareItems> new_dict, int section_index, int sec_table_index, 
-            int[] time_diff) {
+            List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -214,8 +271,8 @@ namespace CSSTC1.FileProcessors.writers {
     
 
         //填写测试工具或设备核查单
-        public void append_content(Document doc, DocumentBuilder doc_builder, Table table, int section_index, 
-            int sec_table_index, int row_index, int[] time_diff) {
+        public void append_content(Document doc, DocumentBuilder doc_builder, Table table, int section_index,
+            int sec_table_index, int row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -230,24 +287,27 @@ namespace CSSTC1.FileProcessors.writers {
         }
 
         //软件配置项版本增加
-        public Dictionary<string, SoftwareItems> update_softwareId(Dictionary<string, SoftwareItems>
+        public Dictionary<string, StaticAnalysisFile> update_softwareId(Dictionary<string, StaticAnalysisFile>
             softwareItems_dict) {
-                Dictionary<string, SoftwareItems> new_dict = new Dictionary<string, SoftwareItems>();
-                foreach(string key in softwareItems_dict.Keys) {
+            Dictionary<string, StaticAnalysisFile> new_dict = new Dictionary<string, StaticAnalysisFile>();
+
+            foreach(string key in softwareItems_dict.Keys) {
                 Regex reg = new Regex("[v|V][0-9][.][0-9]+");
                 MatchCollection matches = reg.Matches(key, 0);
 
                 if(matches == null)
                     continue;
                 string temp = matches[matches.Count - 1].Value;
-                string temp1 = temp.Substring(1, temp.Length - 1);
-                double t = Double.Parse(temp1);
-                t = t + 0.1;
-                softwareItems_dict[key].rj_banben = "V" + t.ToString();
-                string id = key.Replace(temp, "V" + t.ToString());
-                new_dict.Add(id, softwareItems_dict[key]);
+                int start_index = matches[matches.Count - 1].Index;
+                int end_index = start_index + temp.Length;
+
+                string new_key = key.Substring(0, start_index) + softwareItems_dict[key].hg_banben +
+                    key.Substring(end_index, key.Length - end_index);
+                new_dict.Add(new_key, softwareItems_dict[key]);
             }
             return new_dict;
         }
+        #endregion
     }
 }
+

@@ -20,8 +20,10 @@ namespace CSSTC1.Pages {
 
         private void button1_Click(object sender, EventArgs e) {
             string time1 = this.dateTimePicker1.Value.ToLongDateString();
-            string time2 = this.dateTimePicker2.Value.ToLongDateString();
-            TestEnvironment test_env = new TestEnvironment(this.software_name, time1, time2);
+            string time2 = this.dateTimePicker3.Value.ToLongDateString();
+            string local1 = this.textBox1.Text;
+            string local2 = this.textBox2.Text;
+            TestEnvironment test_env = new TestEnvironment(this.software_name, time1, time2, local1, local2);
             TimeStamp.test_envs.Add(test_env);
             this.button1.Enabled = false;
             this.Hide();

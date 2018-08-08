@@ -87,8 +87,12 @@ namespace CSSTC1.FileProcessors.writers {
         public void write_rwtzd_chart(){
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            bool pzx_flag = ContentFlags.peizhiceshi;
-            bool xt_flag = ContentFlags.xitongceshi;
+            bool pzx_flag = true;
+            bool xt_flag = true;
+            if(ContentFlags.peizhiceshi == 0)
+                pzx_flag = false;
+            if(ContentFlags.xitongceshi == 0)
+                xt_flag = false;
             string insert_str = "";
             if(pzx_flag && xt_flag){
                  insert_str = "配置项测试和系统测试";
@@ -107,7 +111,8 @@ namespace CSSTC1.FileProcessors.writers {
                 types_str += t + '、';
                 test_num += 1;
             }
-            types_str = types_str.Substring(0, types_str.Length - 1);
+            if(types_str.Length > 0)
+                types_str = types_str.Substring(0, types_str.Length - 1);
             if(doc_builder.MoveToBookmark("测试类型"))
                 doc_builder.Write(types_str);
             if(doc_builder.MoveToBookmark("测试类型个数"))

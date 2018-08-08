@@ -20,14 +20,15 @@ namespace CSSTC1.InputProcessors {
             }
             //是否有测试就绪评审环节
             if(pl_time.Length > 0){
-                ContentFlags.pianli_3 = 0;
-                string[] marks = { "合同偏离通知单2" };
-                OperationHelper.delete_section(doc, doc_builder, marks);
+                if(ContentFlags.pianli_3 == 0){
+                    string[] marks = { "合同偏离通知单2" };
+                    OperationHelper.delete_section(doc, doc_builder, marks);
+                }
             }
-            else{
-                if(doc_builder.MoveToBookmark("测试就绪内部评审时间"))
-                    doc_builder.Write(pl_time);
-            }
+            //else{
+            //    if(doc_builder.MoveToBookmark("测试就绪内部评审时间"))
+            //        doc_builder.Write(pl_time);
+            //}
             DateHelper.fill_time_blank(doc, doc_builder, "文档审查结果记录入库时间", TimeStamp.wdscqr_time, 1);
             //文档审查确认时间
             if(doc_builder.MoveToBookmark("文档审查确认时间"))

@@ -48,6 +48,10 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
+            this.menu4 = this.Factory.CreateRibbonMenu();
+            this.button11 = this.Factory.CreateRibbonButton();
+            this.menu5 = this.Factory.CreateRibbonMenu();
+            this.button12 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
@@ -103,7 +107,7 @@
             // button8
             // 
             this.button8.Enabled = false;
-            this.button8.Label = "第四部分";
+            this.button8.Label = "测试总结";
             this.button8.Name = "button8";
             this.button8.ShowImage = true;
             // 
@@ -111,7 +115,7 @@
             // 
             this.menu2.Items.Add(this.button1);
             this.menu2.Items.Add(this.menu1);
-            this.menu2.Items.Add(this.button3);
+            this.menu2.Items.Add(this.menu4);
             this.menu2.Items.Add(this.button4);
             this.menu2.Label = "读取文件";
             this.menu2.Name = "menu2";
@@ -150,8 +154,7 @@
             // 
             // button3
             // 
-            this.button3.Enabled = false;
-            this.button3.Label = "测试设计与执行阶段";
+            this.button3.Label = "基本信息表";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
             this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
@@ -159,7 +162,7 @@
             // button4
             // 
             this.button4.Enabled = false;
-            this.button4.Label = "第四部分";
+            this.button4.Label = "测试总结阶段";
             this.button4.Name = "button4";
             this.button4.ShowImage = true;
             // 
@@ -193,7 +196,38 @@
             // 
             // openFileDialog4
             // 
-            this.openFileDialog4.FileName = "openFileDialog4";
+            this.openFileDialog4.FileName = "测试设计与执行阶段表格";
+            // 
+            // menu4
+            // 
+            this.menu4.Enabled = false;
+            this.menu4.Items.Add(this.button3);
+            this.menu4.Items.Add(this.menu5);
+            this.menu4.Label = "测试设计与执行阶段";
+            this.menu4.Name = "menu4";
+            this.menu4.ShowImage = true;
+            // 
+            // button11
+            // 
+            this.button11.Label = "第一次就绪";
+            this.button11.Name = "button11";
+            this.button11.ShowImage = true;
+            // 
+            // menu5
+            // 
+            this.menu5.Enabled = false;
+            this.menu5.Items.Add(this.button11);
+            this.menu5.Items.Add(this.button12);
+            this.menu5.Label = "配置项动态测试表格";
+            this.menu5.Name = "menu5";
+            this.menu5.ShowImage = true;
+            // 
+            // button12
+            // 
+            this.button12.Enabled = false;
+            this.button12.Label = "第二次就绪";
+            this.button12.Name = "button12";
+            this.button12.ShowImage = true;
             // 
             // Ribbon1
             // 
@@ -232,6 +266,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
         private System.Windows.Forms.OpenFileDialog openFileDialog4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu menu4;
+        internal Microsoft.Office.Tools.Ribbon.RibbonMenu menu5;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button11;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton button12;
     }
 
 }

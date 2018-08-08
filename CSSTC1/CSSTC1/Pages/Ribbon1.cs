@@ -79,7 +79,9 @@ namespace CSSTC1.Pages {
             if(openFileDialog4.ShowDialog() == DialogResult.OK) {
                 string read_in_file = openFileDialog4.FileName;
                 file_reader4.read_charts(read_in_file);
-            }    
+            } 
+            this.button3.Enabled = false;
+            this.menu5.Enabled = true;
         }
 
         //根据已填写信息更新测试大纲或需求说明阶段界面的默认值
@@ -98,11 +100,12 @@ namespace CSSTC1.Pages {
         }
 
         private void button7_Click(object sender, RibbonControlEventArgs e) {
+            Globals.ThisDocument.design_and_exe = new DesignAndExecution();
             bool res = Globals.ThisDocument.design_and_exe.fill_table();
             if(res)
                 Globals.ThisDocument.design_and_exe.Show();
             this.button7.Enabled = false;
-            this.button3.Enabled = true;
+            this.menu4.Enabled = true;
         }
 
         

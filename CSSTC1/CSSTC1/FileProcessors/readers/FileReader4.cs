@@ -13,50 +13,46 @@ using CSSTC1.FileProcessors.writers.PartFive3_4;
 
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader4 {
-        private FileWriter4 writer;
         private FileWriter5 writer1;
-        private FileWriter6 writer2;
+        private FileWriter4 writer;
+        
+
         public bool read_charts(string filepath){
             Document doc = new Document(filepath);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            //静态分析软件项
             List<SoftwareItems> software_items = new List<SoftwareItems>();
+            Table software_table = new Table(doc);
+            //静态分析硬件项
             List<HardwareItems> hardware_items = new List<HardwareItems>();
+            Table hardware_table = new Table(doc);
+            //测试说明内部评审表
             List<QestionReport> reports = new List<QestionReport>();
-            //for(int i = 0; i < ContentFlags.software_list.Count; i++){
-
-            //}
-            Table software_table = this.read_rjjtcshj_chart(doc, doc_builder, 0, software_items);
-            Table hardware_table = this.read_yjjtcshj_chart(doc, doc_builder, 1, hardware_items);
-            Table smns_table = (Table)doc.GetChild(NodeType.Table, 2, true);
-            reports = this.read_smns_chart(smns_table);
-            Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict = new Dictionary<string, 
-                List<SoftwareItems>>();
-            Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict = new Dictionary<string,
-                List<DynamicHardwareItems>>();
-            for(int i = 0; i < ContentFlags.software_list.Count; i++) {
-                List<DynamicHardwareItems> temp1 = new List<DynamicHardwareItems>();
-                List<SoftwareItems> temp2 = new List<SoftwareItems>();
-                //Table table1 = (Table)doc.GetChild(NodeType.Table, 2 * i + 3, true);
-                //Table table2 = (Table)doc.GetChild(NodeType.Table, 2 * i + 4, true);
-                this.read_rjjtcshj_chart(doc, doc_builder, 2 * i + 3, temp2);
-                this.read_yjdtcshj_chart(doc, doc_builder, 2 * i + 4, temp1);
-                if(temp1 == null || temp2 == null){
-                    MessageBox.Show("读取软件配置项动态测试环境软件项和硬件项表格失败");
-                    return false;
-                }
-                else{
-                    ruanjianpeizhi_dict.Add(ContentFlags.software_list[i], temp2);
-                    yingjianpeizhi_dict.Add(ContentFlags.software_list[i], temp1);
-                }
+            //就绪存在问题意见表
+            List<QestionReport> jxwt_reports = new List<QestionReport>();
+            int count = 0;
+            if(ContentFlags.jingtaifenxi > 0){
+            //静态分析软件项表格和硬件项表格
+                software_table = this.read_rjjtcshj_chart(doc, doc_builder, count, software_items);
+                hardware_table = this.read_yjjtcshj_chart(doc, doc_builder, count + 1, hardware_items);
+                count += 2;
             }
-            this.writer = new FileWriter4(software_items, hardware_items, reports, software_table,
-                hardware_table, ruanjianpeizhi_dict, yingjianpeizhi_dict);
+            //读取内审意见表
+            Table smns_table = (Table)doc.GetChild(NodeType.Table, count, true);
+            reports = this.read_smns_chart(smns_table);
+            count += 1;
+            if(ContentFlags.pianli_3 > 0){
+                Table jxwt_table = (Table)doc.GetChild(NodeType.Table, count, true);
+                jxwt_reports = this.read_smns_chart(jxwt_table);
+                count += 1;
+            }
+            this.writer = new FileWriter4(ContentFlags.static_files, software_table,
+                hardware_table);
             this.writer1 = new FileWriter5(reports);
-            this.writer2 = new FileWriter6(ruanjianpeizhi_dict, yingjianpeizhi_dict);
             return true;
         }
     
-        //软件静态测试和静态测试环境表格
+        //软件静态测试和动态测试环境表格
         public Table read_rjjtcshj_chart(Document doc, DocumentBuilder doc_builder, int index, 
             List<SoftwareItems> software_items) {
             int row_index = 1;
@@ -101,33 +97,6 @@ namespace CSSTC1.FileProcessors.readers {
             return table;
         }
 
-        //软件动态测试环境硬件项表格
-        public Table read_yjdtcshj_chart(Document doc, DocumentBuilder doc_builder, int index,
-            List<DynamicHardwareItems> dy_hardware_items) {
-            int row_index = 1;
-            Table table = (Table)doc.GetChild(NodeType.Table, index, true);
-            for(int i = row_index; i < table.Rows.Count; i++) {
-                Row row = table.Rows[i];
-                string name = row.Cells[1].Range.Text;
-                name = name.Substring(0, name.Length - 1);
-                string id = row.Cells[2].Range.Text;
-                id = id.Substring(0, id.Length - 1);
-                string count = row.Cells[3].Range.Text;
-                count = count.Substring(0, count.Length - 1);
-                string use = row.Cells[4].Range.Text;
-                use = use.Substring(0, use.Length - 1);
-                string configuration = row.Cells[5].Range.Text;
-                configuration = configuration.Substring(0, configuration.Length - 1);
-                string status = row.Cells[6].Range.Text;
-                status = status.Substring(0, status.Length - 1);
-                string provider = row.Cells[7].Range.Text;
-                provider = provider.Substring(0, provider.Length - 1);
-                DynamicHardwareItems item = new DynamicHardwareItems(name, id, count, use, configuration, 
-                    status, provider);
-                dy_hardware_items.Add(item);
-            }
-            return table;
-        }
 
         //测试说明内审意见表
         public List<QestionReport> read_smns_chart(Table t) {

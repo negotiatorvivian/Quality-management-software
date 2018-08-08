@@ -83,6 +83,7 @@ namespace CSSTC1.Pages {
 
         //提交信息
         private void button1_Click(object sender, EventArgs e) {
+            this.button1.Enabled = false;
             string lx_time = this.numericUpDown1.Value.ToString();
             //decimal lx_time = this.numericUpDown1.Value;
             string lq_times = this.comboBox1.Text;

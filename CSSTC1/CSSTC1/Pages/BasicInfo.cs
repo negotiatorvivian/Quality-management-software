@@ -36,19 +36,8 @@ namespace CSSTC1.Pages {
         public string Kf_danwei;
         public string Xm_kaishishijian;
         public string Xm_jieshushijian;
-        public string Wd_shenchashijian;
-        public string Wd_querenshijian;
-        public string Wd_huiguishijian;
-        public string Jtfx_shenchashijian;
-        public string Jtfx_querenshijian;
-        public string Jtfx_huiguishijian;
-        public string Csdg_pingshenshijian;
-        public string Dtpz_shoulunshijian;
-        public string Dtpz_huiguishijian;
-        public string Ljcs_shijian;
-        public string Xtcs_shoulunshijian;
-        public string Xtcs_huiguishijian;
-        public string Csbg_pingshenshijian;
+
+        //测试依据文档
         public bool Yz_renwushu;
         public bool Js_fangan;
         public bool Js_guigeshu;
@@ -57,61 +46,23 @@ namespace CSSTC1.Pages {
 
         BasicInfoProcessor processor = new BasicInfoProcessor();
 
-        private void wd_shenchashijian_ValueChanged(object sender, EventArgs e) {
-            this.Wd_shenchashijian = wd_shenchashijian.Text;
-            }
-
-        private void wd_querenshijian_ValueChanged(object sender, EventArgs e) {
-            this.Wd_querenshijian = wd_querenshijian.Text;
-            }
-
-        private void wd_huiguishijian_ValueChanged(object sender, EventArgs e) {
-            this.Wd_huiguishijian = wd_huiguishijian.Text;
-            }
-
-
-        private void csdg_pingshenshijian_ValueChanged(object sender, EventArgs e) {
-            //this.Csdg_pingshenshijian = csdg_pingshenshijian.Text;
-            //测试大纲评审时间
-            TimeStamp.ceshisc_time = csdg_pingshenshijian.Text;
-            //测试大纲评审时间文字形式
-            TimeStamp.ceshisc_format_time = csdg_pingshenshijian.Value.ToLongDateString();
-        }
-
-        private void csxq_pingshenshijian_ValueChanged(object sender, EventArgs e) {
-            //测试大纲或测试说明评审时间
-            TimeStamp.ceshisc_time = csxq_pingshenshijian.Text;
-            //测试大纲或测试说明评审时间文字形式
-            TimeStamp.ceshisc_format_time = csxq_pingshenshijian.Value.ToLongDateString();
-        }
-
         private void checkBox8_CheckedChanged(object sender, EventArgs e) {
             this.xtcs_huiguishijian.Enabled = this.checkBox8.Checked;
         }
 
+        //首轮动态测试时间
         private void dtpz_shoulunshijian_ValueChanged(object sender, EventArgs e) {
-            this.Dtpz_shoulunshijian = dtpz_shoulunshijian.Text;
             TimeStamp.sldtcs_format_time = this.dtpz_shoulunshijian.Value.ToLongDateString();
             TimeStamp.sldtcs_time = this.dtpz_shoulunshijian.Value.ToShortDateString();
         }
 
-        private void dtpz_huigui_ValueChanged(object sender, EventArgs e) {
-            this.Dtpz_huiguishijian = dtpz_huigui.Text;
-        }
-
-        private void ljcs_shijian_ValueChanged(object sender, EventArgs e) {
-            this.Ljcs_shijian = ljcs_shijian.Text;
-        }
-
+        //系统首轮测试时间
         private void xtcs_shoulunshijian_ValueChanged(object sender, EventArgs e) {
             TimeStamp.slxtcs_time = this.xtcs_shoulunshijian.Value.ToShortDateString();
             TimeStamp.slxtcs_format_time = this.xtcs_shoulunshijian.Value.ToLongDateString();
         }
 
-        private void xtcs_huiguishijian_ValueChanged(object sender, EventArgs e) {
-            this.Xtcs_huiguishijian = xtcs_huiguishijian.Text;
-        }
-
+        //测试报告评审时间
         private void csbg_pingshenshijian_ValueChanged(object sender, EventArgs e) {
             TimeStamp.csbgps_time = this.csbg_pingshenshijian.Value.ToShortDateString();
             TimeStamp.csbgps_format_time = this.csbg_pingshenshijian.Value.ToLongDateString();
@@ -182,8 +133,10 @@ namespace CSSTC1.Pages {
             this.Xm_biaoshi = xm_biaoshi.Text;
             this.Xm_mingcheng = xm_mingcheng.Text;
             this.Rj_mingcheng = rj_mingcheng.Text;
-            ContentFlags.peizhiceshi = pzx_ceshi.Checked;
-            ContentFlags.xitongceshi = xt_ceshi.Checked;
+            if(!pzx_ceshi.Checked)
+                ContentFlags.peizhiceshi = 0;
+            if(!xt_ceshi.Checked)
+                ContentFlags.xitongceshi = 0;
             this.Pz_guanliyuan = pz_guanliyuan.Text;
             this.Bcj_guanliyuan = bcj_guanliyuan.Text;
             this.Zlbz_renyuan = zlbz_renyuan.Text;
@@ -199,7 +152,7 @@ namespace CSSTC1.Pages {
             this.Kf_dianhua = kf_dianhua.Text;
             this.Kf_danwei = kf_danwei.Text;
             this.Xm_kaishishijian = xm_kaishishijian.Value.ToLongDateString();
-            TimeStamp.xiangmukaishishijian = xm_kaishishijian.Text;
+            TimeStamp.xiangmukaishishijian = xm_kaishishijian.Value.ToShortDateString();
             this.Xm_jieshushijian = xm_jieshushijian.Value.ToLongDateString();                                                 ContentFlags.ceshidagang = this.checkBox6.Checked;
             this.Yz_renwushu = checkBox1.Checked;
             this.Js_fangan = checkBox2.Checked;
@@ -242,6 +195,18 @@ namespace CSSTC1.Pages {
 
         //所有时间信息
         public void record_time(){
+            if(this.checkBox6.Checked) {
+                //测试大纲评审时间
+                TimeStamp.ceshisc_time = csdg_pingshenshijian.Value.ToShortDateString();
+                //测试大纲评审时间文字形式
+                TimeStamp.ceshisc_format_time = csdg_pingshenshijian.Value.ToLongDateString();
+            }
+            if(this.checkBox7.Checked) {
+                //测试大纲或测试说明评审时间
+                TimeStamp.ceshisc_time = csxq_pingshenshijian.Value.ToShortDateString();
+                //测试大纲或测试说明评审时间文字形式
+                TimeStamp.ceshisc_format_time = csxq_pingshenshijian.Value.ToLongDateString();
+            }
             if(this.checkBox9.Checked){
                 //文档审查时间            
                 TimeStamp.wdscqr_time = this.wd_querenshijian.Value.ToShortDateString();
@@ -300,10 +265,5 @@ namespace CSSTC1.Pages {
                 ContentFlags.xitonghuiguiceshi = 0;
         }
 
-
-
-
-
-   
         }
     }

@@ -135,6 +135,7 @@
     <Compile Include="FileProcessors\readers\FileReader2.cs" />
     <Compile Include="FileProcessors\readers\FileReader3.cs" />
     <Compile Include="FileProcessors\readers\FileReader4.cs" />
+    <Compile Include="FileProcessors\readers\FileReader5.cs" />
     <Compile Include="FileProcessors\writers\FileWriter2.cs" />
     <Compile Include="FileProcessors\writers\FileWriter3.cs" />
     <Compile Include="FileProcessors\writers\FileWriter1.cs" />

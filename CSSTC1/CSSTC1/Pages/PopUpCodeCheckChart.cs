@@ -21,6 +21,7 @@ namespace CSSTC1.Pages {
             this.files = files;
             this.var1 = var1;
             this.var2 = var2;
+            this.fill_table();
         }
         private string var1;
         private string var2;
@@ -33,7 +34,11 @@ namespace CSSTC1.Pages {
             List<System.Windows.Forms.TextBox> boxes = new List<TextBox>();
             List<string> huigui_banben = this.update_version();
             int row_index = 1;
-            this.tableLayoutPanel1.RowCount = files.Count + 1;
+            //this.tableLayoutPanel1.RowCount = files.Count + 1;
+            for(int i = 0; i < files.Count - 1; i++) {
+                this.tableLayoutPanel1.RowCount += 1;
+                this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            }
             foreach(StaticAnalysisFile file in files) {
                 System.Windows.Forms.Label label1 = new System.Windows.Forms.Label();
                 label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,7 +108,7 @@ namespace CSSTC1.Pages {
             Control control = (Control)sender;
             int index = this.tableLayoutPanel1.Controls.IndexOf(control) / this.tableLayoutPanel1.ColumnCount;
             for(int i = 0; i < this.tableLayoutPanel1.ColumnCount; i++) {
-                this.tableLayoutPanel1.Controls.Remove(this.tableLayoutPanel1.Controls[(index) * 7]);
+                this.tableLayoutPanel1.Controls.Remove(this.tableLayoutPanel1.Controls[(index) * 6]);
             }
             this.tableLayoutPanel1.Refresh();
 
@@ -149,12 +154,12 @@ namespace CSSTC1.Pages {
             this.Hide();
         }
 
-        //读取静态分析模块名页面上更改后的信息
+        //读取代码走查或代码审查模块名页面上更改后的信息
         public bool read_current_list() {
             TableLayoutControlCollection controls = this.tableLayoutPanel1.Controls;
             List<string> software_list = new List<string>();
             List<StaticAnalysisFile> files = new List<StaticAnalysisFile>();
-            for(int i = 7; i < controls.Count; i += 7) {
+            for(int i = 6; i < controls.Count; i += 6) {
                 string name = controls[i].Text;
                 software_list.Add(name);
                 string range = controls[i + 1].Text;
@@ -165,20 +170,16 @@ namespace CSSTC1.Pages {
                     provider);
                 files.Add(file);
             }
-            if(software_list.Count == 0) {
-                return false;
-            }
+            //if(software_list.Count == 0) {
+            //    return false;
+            //}
             BindingFlags flag = BindingFlags.Static | BindingFlags.Public;
             FieldInfo f_key = typeof(ContentFlags).GetField(this.var1, flag);
-            if(f_key != null){
-                List<String> temp = (List<String>)f_key.GetValue(new ContentFlags());
-                temp = software_list;
-            }
+            List<String> temp = new List<string>();
+            f_key.SetValue(temp, software_list);
+            List<StaticAnalysisFile> new_files = new List<StaticAnalysisFile>();
             FieldInfo f_key1 = typeof(ContentFlags).GetField(this.var2, flag);
-            if(f_key1 != null){
-                List<StaticAnalysisFile> temp1 = (List<StaticAnalysisFile>)f_key.GetValue(new ContentFlags());
-                temp1 = files;
-            }
+            f_key1.SetValue(new_files, files);
             return true;
         }
             

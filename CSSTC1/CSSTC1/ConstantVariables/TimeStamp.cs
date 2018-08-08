@@ -22,8 +22,8 @@ namespace CSSTC1.ConstantVariables {
 
 
         //就绪内部评审时间
-        public static string csjxps_time;
-        public static string csjxps_format_time;
+        public static List<string> csjxps_time = new List<string>();
+        public static List<string> csjxps_format_time = new List<string>();
 
         //文档审查确认时间
         public static string wdscqr_time;

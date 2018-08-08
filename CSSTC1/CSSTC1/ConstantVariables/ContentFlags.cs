@@ -11,9 +11,10 @@ namespace CSSTC1.ConstantVariables {
         //评审组成员
         public static List<string> pingshenzuchengyuan = new List<string>();
         #region 项目立项阶段
-        public static bool peizhiceshi;
-        public static bool xitongceshi;
-
+        public static int peizhiceshi = 23;
+        public static int xitongceshi = 20;
+        public static List<ProjectInfo> pro_infos = new List<ProjectInfo>();
+        public static List<FileList> all_file_lists = new List<FileList>();
        
 
         //测试类型
@@ -37,19 +38,20 @@ namespace CSSTC1.ConstantVariables {
         #endregion
 
         #region 测试设计和执行阶段
- 
-        public static Dictionary<string, SoftwareItems> software_dict;
+
+        public static Dictionary<string, StaticAnalysisFile> software_dict;
         //第一部分上传表格中选择静态分析的软件名称集合
-        public static List<string> software_list = new List<string>();
-        public static List<StaticAnalysisFile> software_info_list = new List<StaticAnalysisFile>();
+        public static List<string> static_list = new List<string>();
+        public static List<StaticAnalysisFile> static_files = new List<StaticAnalysisFile>();
         //第一部分上传表格中选择代码走查的软件名称集合
         public static List<string> dmzc_software_list = new List<string>();
         public static List<StaticAnalysisFile> dmzc_software_info = new List<StaticAnalysisFile>();
         //第一部分上传表格中选择代码审查的软件名称集合
         public static List<string> dmsc_software_list = new List<string>();
         public static List<StaticAnalysisFile> dmsc_software_info = new List<StaticAnalysisFile>();
-        //软件静态测试环境软件项
-        public static List<StaticAnalysisFile> static_files = new List<StaticAnalysisFile>();
+        //软件动态测试环境软件项
+        public static List<string> dynamic_list = new List<string>();
+        public static List<StaticAnalysisFile> dynamic_files = new List<StaticAnalysisFile>();
         //被测件子软件数量
         public static int beiceruanjianshuliang = 1;
 

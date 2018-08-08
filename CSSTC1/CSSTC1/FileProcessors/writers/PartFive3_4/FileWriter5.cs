@@ -14,14 +14,23 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
     //第五章 三四节
     class FileWriter5 {
         public string questions = "";
-        int[] times = { ContentFlags.pianli_1, ContentFlags.pianli_2, ContentFlags.lingqucishu * 2 };
-        Dictionary<string, SoftwareItems> software_dict;
+        List<int> times = new List<int>();
+        Dictionary<string, StaticAnalysisFile> software_dict;
         public FileWriter5(List<QestionReport> cssmns_reports) {
             this.software_dict = ContentFlags.software_dict;
-            
+            times.Add(ContentFlags.pianli_1);
+            times.Add(ContentFlags.pianli_2);
+            times.Add(ContentFlags.lingqucishu * 2);
+            times.Add(ContentFlags.wendangshencha);
+            times.Add(ContentFlags.jingtaifenxi);
+            times.Add(ContentFlags.daimashencha);
+            times.Add(ContentFlags.daimazoucha);
             this.write_charts(cssmns_reports);
+            //if(jxwt_reports.Count > 0)
+            //    this.write_charts(jxwt_reports);  
         }
-        //测试说明内审的的过程SQA偏差与问题追踪报告
+
+        //项目SQA偏差与问题追踪报告
         public void write_charts(List<QestionReport> cssmns_reports) {
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
@@ -30,8 +39,9 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
             if(res)
                 this.write_wtzz_chart(doc, doc_builder, cssmns_reports, InsertionPos.cssmns_section,
                 InsertionPos.cssmns_sec_table2, InsertionPos.cssmns_solu_row);
-            int section_index = InsertionPos.cssmns_section + ContentFlags.lingqucishu * 2 + 
-                ContentFlags.pianli_1 + ContentFlags.pianli_2;
+            int section_index = InsertionPos.cssmns_section;
+            foreach(int i in times)
+                section_index += i;
             OperationHelper.conference_signing(doc, doc_builder, section_index,
                 InsertionPos.cssmns_hyqdb_table);
             ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict, InsertionPos.cssmps_rksqd_section,
@@ -43,11 +53,12 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
 
         }
 
-        //偏差与问题报告
+        //项目SQA偏差与问题报告
         public bool write_chart(Document doc, DocumentBuilder doc_builder, List<QestionReport> files,
             int sec_index, int sec_table_index, int row_index) {
-            int section_index = sec_index + ContentFlags.lingqucishu * 2 + ContentFlags.pianli_1 + 
-                ContentFlags.pianli_2;
+            int section_index = sec_index;
+            foreach(int i in times)
+                section_index += i;
             doc_builder.MoveToSection(section_index);
             Table table = (Table)doc.Sections[section_index].GetChild(NodeType.Table,
                 sec_table_index, true);
@@ -67,8 +78,9 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
         //偏差与问题追踪
         public bool write_wtzz_chart(Document doc, DocumentBuilder doc_builder, List<QestionReport> files,
             int sec_index, int sec_table_index, int row_index) {
-                int section_index = sec_index + ContentFlags.lingqucishu * 2 + ContentFlags.pianli_1 + 
-                    ContentFlags.pianli_2;
+            int section_index = sec_index;
+            foreach(int i in times)
+                section_index += i;
             doc_builder.MoveToSection(section_index);
             Table table = (Table)doc.Sections[section_index].GetChild(NodeType.Table,
                 sec_table_index, true);
@@ -115,7 +127,7 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
                 foreach(string key in this.software_dict.Keys){
                     text += softawre_name + default1 + count.ToString() + ':';
                     text += software_dict[key].rj_mingcheng + default2 + '\t';
-                    text += software_dict[key].rj_banben + '\n';
+                    text += software_dict[key].xt_banben + '\n';
                     count += 1;
                 }
                 if(doc_builder.MoveToBookmark(mark))

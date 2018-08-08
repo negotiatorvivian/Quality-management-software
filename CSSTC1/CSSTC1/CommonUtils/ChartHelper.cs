@@ -12,7 +12,7 @@ namespace CSSTC1.CommonUtils {
         //被测件清单表格
         public static void write_bcjqd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, FileList> new_dict, int section_index, int sec_table_index,
-            int name_row_index, int iden_row_index, int[] time_diff) {
+            int name_row_index, int iden_row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff){
                 cur_section += i;
@@ -61,7 +61,7 @@ namespace CSSTC1.CommonUtils {
 
         public static void write_bcjdbd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, FileList> new_dict, int section_index, int sec_table_index, int row_index,
-            int name_row_index, int iden_row_index, int[] time_diff) {
+            int name_row_index, int iden_row_index, List<int> time_diff) {
             int flag = row_index;
             int cur_section = section_index;
             foreach(int i in time_diff) {
@@ -84,8 +84,8 @@ namespace CSSTC1.CommonUtils {
         }
 
         public static void write_rksqd_chart(Document doc, DocumentBuilder doc_builder,
-            Dictionary<string, SoftwareItems> new_dict, int section_index, int sec_table_index, int row_index,
-            int name_row_index, int iden_row_index, int[] time_diff) {
+            Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
+            int name_row_index, int iden_row_index, List<int> time_diff) {
             int flag = row_index;
             int cur_section = section_index;
             foreach(int i in time_diff) {
@@ -99,7 +99,7 @@ namespace CSSTC1.CommonUtils {
                     table.Rows.Insert(row_index + 1, row);
                 }
                 doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
-                string name = new_dict[key].rj_mingcheng;
+                string name = new_dict[key].rj_mingcheng + new_dict[key].jtfx_fanwei;
                 doc_builder.Write(name);
                 doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                 doc_builder.Write(key);
@@ -109,8 +109,8 @@ namespace CSSTC1.CommonUtils {
 
         //软件配置文件调拨单表格
         public static void write_bcjqd2_chart(Document doc, DocumentBuilder doc_builder,
-            Dictionary<string, SoftwareItems> new_dict, int section_index, int sec_table_index,
-            int name_row_index, int iden_row_index, int[] time_diff) {
+            Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index,
+            int name_row_index, int iden_row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -125,7 +125,7 @@ namespace CSSTC1.CommonUtils {
                     table.Rows.Insert(row_index + 1, row);
                 }
                 doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
-                string name = new_dict[key].rj_mingcheng;
+                string name = new_dict[key].rj_mingcheng + new_dict[key].jtfx_fanwei;
                 doc_builder.Write(name);
                 doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                 doc_builder.Write(key);
@@ -137,7 +137,7 @@ namespace CSSTC1.CommonUtils {
                 doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                 Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.sj_bcjqd_orig_row];
                 string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
-                if(temp.Equals(new_dict[key].wd_laiyuan)) {
+                if(temp.Equals(new_dict[key].yz_danwei)) {
                     //合并来源列
                     doc_builder.MoveToCell(sec_table_index, merge_cell,
                             InsertionPos.sj_bcjqd_orig_row, 0);
@@ -150,7 +150,7 @@ namespace CSSTC1.CommonUtils {
                 else {
                     doc_builder.MoveToCell(sec_table_index, row_index,
                         InsertionPos.sj_bcjqd_orig_row, 0);
-                    doc_builder.Write(new_dict[key].wd_laiyuan);
+                    doc_builder.Write(new_dict[key].yz_danwei);
                     merge_cell = row_index;
                 }
                 row_index += 1;
@@ -159,8 +159,8 @@ namespace CSSTC1.CommonUtils {
 
         //软件配置文件领取清单表格
         public static void write_bcjdbd2_chart(Document doc, DocumentBuilder doc_builder,
-            Dictionary<string, SoftwareItems> new_dict, int section_index, int sec_table_index, int row_index,
-            int name_row_index, int iden_row_index, int[] time_diff) {
+            Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
+            int name_row_index, int iden_row_index, List<int> time_diff) {
             int flag = row_index;
             int cur_section = section_index;
             foreach(int i in time_diff) {
@@ -174,7 +174,7 @@ namespace CSSTC1.CommonUtils {
                     table.Rows.Insert(row_index + 1, row);
                 }
                 doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
-                string name = new_dict[key].rj_mingcheng;
+                string name = new_dict[key].rj_mingcheng + new_dict[key].jtfx_fanwei;
                 doc_builder.Write(name);
                 doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                 doc_builder.Write(key);
