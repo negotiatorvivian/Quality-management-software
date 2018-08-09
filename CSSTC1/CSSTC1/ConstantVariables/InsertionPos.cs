@@ -171,7 +171,24 @@ namespace CSSTC1.ConstantVariables {
         public static int sj_rksqd_sec_table3 = 3;
         /******************************静态分析部分结束**************************/
 
-        
+        /******************************代码审查/走查部分开始**************************/
+        public static int dmsc_bcjqd_section = 10;
+        public static int dmsc_bcjqd_sec_table = 0;
+        public static int dmsc_bcjdbd_sec_table1 = 1;
+        public static int dmsc_bcjlqqd_sec_table1 = 2;
+        public static int dmsc_rksqd_sec_table1 = 3;
+
+        public static int dmsc_chhjhcd_section = 12;
+        public static int dmsc_cshj_sec_table1 = 0;
+        public static int dmsc_rjhj_sec_table1 = 1;
+        public static int dmsc_rjhj_name_row = 1;
+        public static int dmsc_rjhj_version_row = 2;
+        public static int dmsc_rjhj_orig_row = 4;
+
+        public static int dmsc_bcjqd_section1 = 16;
+        /******************************代码审查/走查部分结束**************************/ 
+   
+        /******************************测试说明评审部分开始**************************/
         //测试说明内审表偏差问题报告
         public static int cssmns_section = 9;
         public static int cssmns_sec_table1 = 2;
@@ -194,15 +211,31 @@ namespace CSSTC1.ConstantVariables {
         public static int cssmps_bcjdbd_sec_table = 1;
         //测试说明评审被测件领取清单位置
         public static int cssmps_bcjlqqd_sec_table = 2;
-        public static int cssmps_bcjlqqd_type_row = 6;
+        /******************************测试说明评审部分结束**************************/
+
+        /******************************搭建环境部分开始**************************/
+        //搭建环境阶段被测件清单第一张表格位置
+        public static int djhj_bcjqd_section = 13;
+        public static int djhj_bcjqd_sec_table = 0;
+        public static int djhj_bcjdbd_sec_table = 1;
+        public static int djhj_bcjlqqd_sec_table = 2;
+        public static int djhj_bcjlqqd_type_row = 6;
 
         //搭建环境阶段测试环境确认表位置
-        public static int djhj_cshjqr_section = 36;
+        public static int djhj_cshjqr_section = 15;
         public static int djhj_cshjqr_sec_table = 0;
         //搭建环境阶段测试环境核查表位置
-        public static int djhj_cshjhc_section = 37;
-        public static int djhj_cshjhc_sec_table = 0;
+        public static int djhj_cshjhc_section = 16;
+        public static int djhj_cshjhc_sec_table = 1;
+        //测试就绪评审会议签到表
+        public static int djhj_hyqdb_section = 15;
+        public static int djhj_hyqdb_sec_table = 2;
+        public static int djhj_pcywt_sec_table = 0;
+        public static int djhj_pcywtzz_sec_table = 1;
 
+        //搭建环境阶段被测件清单第二张表格位置
+        public static int djhj_bcjqd_section1 = 16;
+        /******************************搭建环境部分结束**************************/
 
     }
 }

@@ -34,6 +34,9 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
         public void write_charts(List<QestionReport> cssmns_reports) {
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            //测试说明内部评审时间
+            if(doc_builder.MoveToBookmark("测试说明内部评审时间"))
+                doc_builder.Write(TimeStamp.cssmps_format_time);
             bool res = this.write_chart(doc, doc_builder, cssmns_reports, InsertionPos.cssmns_section,
                 InsertionPos.cssmns_sec_table1, InsertionPos.cssmns_ques_row);
             if(res)

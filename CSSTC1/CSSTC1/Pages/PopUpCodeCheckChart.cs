@@ -27,6 +27,7 @@ namespace CSSTC1.Pages {
         private string var2;
         List<LinkLabel> labels = new List<LinkLabel>();
         List<StaticAnalysisFile> files;
+
         #region 在界面窗体动态创建更新静态项表格
         public bool fill_table() {
             if(files.Count == 0)
@@ -66,7 +67,7 @@ namespace CSSTC1.Pages {
                 textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
                 textBox4.AutoSize = true;
                 textBox4.Multiline = true;
-                textBox4.Text = file.xt_banben;
+                textBox4.Text = file.xt_banben.Split('/')[0];
 
                 System.Windows.Forms.TextBox textBox6 = new System.Windows.Forms.TextBox();
                 textBox6.BackColor = System.Drawing.SystemColors.Control;
@@ -170,9 +171,6 @@ namespace CSSTC1.Pages {
                     provider);
                 files.Add(file);
             }
-            //if(software_list.Count == 0) {
-            //    return false;
-            //}
             BindingFlags flag = BindingFlags.Static | BindingFlags.Public;
             FieldInfo f_key = typeof(ContentFlags).GetField(this.var1, flag);
             List<String> temp = new List<string>();
@@ -182,7 +180,5 @@ namespace CSSTC1.Pages {
             f_key1.SetValue(new_files, files);
             return true;
         }
-            
- 
     }
 }

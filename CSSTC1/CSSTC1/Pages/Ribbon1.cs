@@ -18,6 +18,7 @@ namespace CSSTC1.Pages {
         public FileReader2 file_reader2 = new FileReader2();
         public FileReader3 file_reader3 = new FileReader3();
         public FileReader4 file_reader4 = new FileReader4();
+        public FileReader5 file_reader5;
         public ProjectEstabInfoProcessor project_estab_info = new ProjectEstabInfoProcessor();
         public DemandAnalysis demand_analysis_form;
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e) {
@@ -106,6 +107,26 @@ namespace CSSTC1.Pages {
                 Globals.ThisDocument.design_and_exe.Show();
             this.button7.Enabled = false;
             this.menu4.Enabled = true;
+        }
+
+        private void button11_Click(object sender, RibbonControlEventArgs e) {
+            if(openFileDialog5.ShowDialog() == DialogResult.OK) {
+                string read_in_file = openFileDialog5.FileName;
+                file_reader5 = new FileReader5(false);
+                file_reader5.read_charts(read_in_file);
+            }
+            this.button11.Enabled = false;
+            this.button12.Enabled = true;
+        }
+
+        private void button12_Click(object sender, RibbonControlEventArgs e) {
+            if(openFileDialog6.ShowDialog() == DialogResult.OK) {
+                string read_in_file = openFileDialog6.FileName;
+                file_reader5 = new FileReader5(true);
+                file_reader5.read_charts(read_in_file);
+            }
+            this.button12.Enabled = false;
+            this.button8.Enabled = true;
         }
 
         

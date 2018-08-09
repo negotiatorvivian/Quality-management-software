@@ -40,7 +40,11 @@
             this.menu1 = this.Factory.CreateRibbonMenu();
             this.button9 = this.Factory.CreateRibbonButton();
             this.button10 = this.Factory.CreateRibbonButton();
+            this.menu4 = this.Factory.CreateRibbonMenu();
             this.button3 = this.Factory.CreateRibbonButton();
+            this.menu5 = this.Factory.CreateRibbonMenu();
+            this.button11 = this.Factory.CreateRibbonButton();
+            this.button12 = this.Factory.CreateRibbonButton();
             this.button4 = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.button2 = this.Factory.CreateRibbonButton();
@@ -48,10 +52,8 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
-            this.menu4 = this.Factory.CreateRibbonMenu();
-            this.button11 = this.Factory.CreateRibbonButton();
-            this.menu5 = this.Factory.CreateRibbonMenu();
-            this.button12 = this.Factory.CreateRibbonButton();
+            this.openFileDialog5 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
@@ -152,12 +154,45 @@
             this.button10.ShowImage = true;
             this.button10.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button10_Click);
             // 
+            // menu4
+            // 
+            this.menu4.Enabled = false;
+            this.menu4.Items.Add(this.button3);
+            this.menu4.Items.Add(this.menu5);
+            this.menu4.Label = "测试设计与执行阶段";
+            this.menu4.Name = "menu4";
+            this.menu4.ShowImage = true;
+            // 
             // button3
             // 
             this.button3.Label = "基本信息表";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
             this.button3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button3_Click);
+            // 
+            // menu5
+            // 
+            this.menu5.Enabled = false;
+            this.menu5.Items.Add(this.button11);
+            this.menu5.Items.Add(this.button12);
+            this.menu5.Label = "配置项动态测试表格";
+            this.menu5.Name = "menu5";
+            this.menu5.ShowImage = true;
+            // 
+            // button11
+            // 
+            this.button11.Label = "第一次就绪";
+            this.button11.Name = "button11";
+            this.button11.ShowImage = true;
+            this.button11.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Enabled = false;
+            this.button12.Label = "第二次就绪";
+            this.button12.Name = "button12";
+            this.button12.ShowImage = true;
+            this.button12.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button12_Click);
             // 
             // button4
             // 
@@ -197,37 +232,6 @@
             // openFileDialog4
             // 
             this.openFileDialog4.FileName = "测试设计与执行阶段表格";
-            // 
-            // menu4
-            // 
-            this.menu4.Enabled = false;
-            this.menu4.Items.Add(this.button3);
-            this.menu4.Items.Add(this.menu5);
-            this.menu4.Label = "测试设计与执行阶段";
-            this.menu4.Name = "menu4";
-            this.menu4.ShowImage = true;
-            // 
-            // button11
-            // 
-            this.button11.Label = "第一次就绪";
-            this.button11.Name = "button11";
-            this.button11.ShowImage = true;
-            // 
-            // menu5
-            // 
-            this.menu5.Enabled = false;
-            this.menu5.Items.Add(this.button11);
-            this.menu5.Items.Add(this.button12);
-            this.menu5.Label = "配置项动态测试表格";
-            this.menu5.Name = "menu5";
-            this.menu5.ShowImage = true;
-            // 
-            // button12
-            // 
-            this.button12.Enabled = false;
-            this.button12.Label = "第二次就绪";
-            this.button12.Name = "button12";
-            this.button12.ShowImage = true;
             // 
             // Ribbon1
             // 
@@ -270,6 +274,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonMenu menu5;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button11;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button12;
+        private System.Windows.Forms.OpenFileDialog openFileDialog5;
+        private System.Windows.Forms.OpenFileDialog openFileDialog6;
     }
 
 }

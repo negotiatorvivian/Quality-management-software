@@ -177,18 +177,19 @@ namespace CSSTC1.Pages {
         }
 
         private void button7_Click(object sender, EventArgs e) {
-            string times = this.comboBox3.Text;
-            string pl_time = this.comboBox2.Text;
+            string csjx_questions = this.comboBox2.Text;
             TimeStamp.csjxps_time.Add(this.dateTimePicker4.Value.ToShortDateString());
             TimeStamp.csjxps_format_time.Add(this.dateTimePicker4.Value.ToLongDateString());
             if(this.dateTimePicker5.Enabled){
                 TimeStamp.csjxps_time.Add(this.dateTimePicker5.Value.ToShortDateString());
                 TimeStamp.csjxps_format_time.Add(this.dateTimePicker5.Value.ToLongDateString());
             }
-            if(pl_time.Equals("无"))
+            if(csjx_questions.Equals("无"))
                 ContentFlags.pianli_3 = 0;
+            this.processor.fill_time_line(); 
             this.panel1.Hide();
         }
 
+        
     }
 }

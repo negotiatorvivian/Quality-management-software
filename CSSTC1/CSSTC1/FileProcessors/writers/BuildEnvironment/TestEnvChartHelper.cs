@@ -10,47 +10,49 @@ using Aspose.Words;
 using CSSTC1.CommonUtils;
 using System.Windows;
 
-namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
-    class FileWriter6 {
+namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
+    class TestEnvChartHelper {
         Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict;
         Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict;
         List<List<string>> files_ids = new List<List<string>>();
         List<SoftwareItems> softwares = new List<SoftwareItems>();
         public string software_names = "";
         int[] times = { ContentFlags.pianli_1, ContentFlags.pianli_2, ContentFlags.lingqucishu * 2 };
-        public FileWriter6(Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string,
+        public TestEnvChartHelper(Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string,
             List<DynamicHardwareItems>> yingjianpeizhi_dict) {
             this.ruanjianpeizhi_dict = ruanjianpeizhi_dict;
             this.yingjianpeizhi_dict = yingjianpeizhi_dict;
-            this.write_charts();
+            //this.write_charts();
         }
-        public void write_charts(){
-            Document doc = new Document(FileConstants.save_root_file);
-            DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            this.write_bcjqd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
-                InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjqd_sec_table,
-                InsertionPos.cssmns_bcjqd_name_row, InsertionPos.cssmns_bcjqd_iden_row, times);
-            this.write_bcjdbd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
-                InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjdbd_sec_table,
-                InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
-            this.write_bcjlqqd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
-                InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjlqqd_sec_table,
-                InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, 
-                InsertionPos.cssmps_bcjlqqd_type_row, times);
-            this.write_pzztbg_chart(doc, doc_builder, "配置项被测件名称");
-            this.write_csgjhsb_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict, 
-                InsertionPos.djhj_cshjqr_section, InsertionPos.djhj_cshjqr_sec_table, times);
-            this.append_content(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict, 
-                InsertionPos.djhj_cshjhc_section, InsertionPos.djhj_cshjhc_sec_table + 1, 1, times);
-            doc.Save(FileConstants.save_root_file);
-            MessageBox.Show("搭建环境就绪评审完成");
-        }
+        //public void write_charts(){
+        //    Document doc = new Document(FileConstants.save_root_file);
+        //    DocumentBuilder doc_builder = new DocumentBuilder(doc);
+        //    this.write_bcjqd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
+        //        InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjqd_sec_table,
+        //        InsertionPos.cssmns_bcjqd_name_row, InsertionPos.cssmns_bcjqd_iden_row, times);
+        //    this.write_bcjdbd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
+        //        InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjdbd_sec_table,
+        //        InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
+        //    this.write_bcjlqqd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
+        //        InsertionPos.cssmps_bcjqd_section, InsertionPos.cssmps_bcjlqqd_sec_table,
+        //        InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, 
+        //        InsertionPos.cssmps_bcjlqqd_type_row, times);
+        //    this.write_pzztbg_chart(doc, doc_builder, "配置项被测件名称");
+        //    this.write_csgjhsb_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict, 
+        //        InsertionPos.djhj_cshjqr_section, InsertionPos.djhj_cshjqr_sec_table, times);
+        //    this.append_content(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict, 
+        //        InsertionPos.djhj_cshjhc_section, InsertionPos.djhj_cshjhc_sec_table + 1, 1, times);
+        //    doc.Save(FileConstants.save_root_file);
+        //    MessageBox.Show("搭建环境就绪评审完成");
+        //}
+
 
         //测试环境调拨单表格
+        
         public void write_bcjdbd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string, 
             List<DynamicHardwareItems>>yingjianpeizhi_dict, int section_index, int sec_table_index, 
-            int name_row_index, int iden_row_index, int[] time_diff) {
+            int name_row_index, int iden_row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -102,11 +104,11 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
             table.Rows[sum - 1].Remove();
         }
 
-        //测试环境清单表格
+        //测试环境被测件清单表格
         public void write_bcjqd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, 
             Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict, int section_index, 
-            int sec_table_index,  int name_row_index, int iden_row_index, int[] time_diff) {
+            int sec_table_index,  int name_row_index, int iden_row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -241,7 +243,7 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
         public void write_bcjlqqd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string, 
             List<DynamicHardwareItems>> yingjianpeizhi_dict, int section_index, int sec_table_index,
-            int name_row_index, int iden_row_index, int type_row_index, int[] time_diff) {
+            int name_row_index, int iden_row_index, int type_row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -268,6 +270,12 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                     doc_builder.MoveToCell(sec_table_index, row_index, type_row_index, 0);
 
                     doc_builder.Write("硬件");
+                    doc_builder.MoveToCell(sec_table_index, 2,
+                            InsertionPos.sj_bcjqd_date_row, 0);
+                    doc_builder.CellFormat.VerticalMerge = CellMerge.First;
+                    doc_builder.MoveToCell(sec_table_index, row_index,
+                        InsertionPos.sj_bcjqd_date_row, 0);
+                    doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                     row_index += 1;
                 }
                 Dictionary<string, SoftwareItems> files = this.set_file_id(doc, doc_builder, softwares[i]);
@@ -291,6 +299,12 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                     doc_builder.MoveToCell(sec_table_index, row_index, type_row_index, 0);
 
                     doc_builder.Write("磁介质");
+                    doc_builder.MoveToCell(sec_table_index, 2,
+                            InsertionPos.sj_bcjqd_date_row, 0);
+                    doc_builder.CellFormat.VerticalMerge = CellMerge.First;
+                    doc_builder.MoveToCell(sec_table_index, row_index,
+                        InsertionPos.sj_bcjqd_date_row, 0);
+                    doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                     row_index += 1;
                     count += 1;
                 }
@@ -308,8 +322,8 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
 
         //软件动态测试配置项工具或设备确认表
         public void write_csgjhsb_chart(Document doc, DocumentBuilder doc_builder,
-            Dictionary<string, List<SoftwareItems>> new_dict, Dictionary<string, 
-            List<DynamicHardwareItems>> new_dict1, int section_index, int sec_table_index, int[] time_diff) {
+            Dictionary<string, List<SoftwareItems>> new_dict, Dictionary<string,
+            List<DynamicHardwareItems>> new_dict1, int section_index, int sec_table_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -335,13 +349,23 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                 
             for(int i = 0; i < new_dict.Count; i++) { //循环每个软件的软件配置项和硬件配置项   
                 int count = 0;
-                
                 if(i > 0){
                     cur_section += 2;
                     doc_builder.MoveToSection(cur_section);
                     table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
                 }
                 row_index = 1;
+                foreach(DynamicHardwareItems hardware in hardwares[i]) {
+                    for(int j = 0; j < 4; j++) {
+                        var row = table.Rows[row_index + j].Clone(true);
+                        table.Rows.Insert(row_index + 4 + j, row);
+                    }
+                    doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.sj_csgjqr_name_row, 0);
+                    doc_builder.Write(hardware.yj_mingcheng);
+                    doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.sj_csgjqr_iden_row, 0);
+                    doc_builder.Write(hardware.yj_bianhao);
+                    row_index += 4;
+                }
                 foreach(SoftwareItems software in softwares[i]) {
                     for(int j = 0; j < 4; j++) {
                         var row = table.Rows[row_index + j].Clone(true);
@@ -354,18 +378,6 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                     row_index += 4;
                     count += 1;
                 }
-                foreach(DynamicHardwareItems hardware in hardwares[i]) {
-                    for(int j = 0; j < 4; j++) {
-                        var row = table.Rows[row_index + j].Clone(true);
-                        table.Rows.Insert(row_index + 4 + j, row);
-                    }
-                    //DynamicHardwareItems hardware = hardwares[i][count];
-                    doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.sj_csgjqr_name_row, 0);
-                    doc_builder.Write(hardware.yj_mingcheng);
-                    doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.sj_csgjqr_iden_row, 0);
-                    doc_builder.Write(hardware.yj_bianhao);
-                    row_index += 4;
-                }
             }
             int sum = table.Rows.Count;
             table.Rows[sum - 1].Remove();
@@ -373,9 +385,9 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
         }
 
         //软件动态测试配置项工具或设备核查单
-        public void append_content(Document doc, DocumentBuilder doc_builder, 
-            Dictionary<string, List<SoftwareItems>> new_dict, Dictionary<string, List<DynamicHardwareItems>> 
-            new_dict1, int section_index, int sec_table_index, int row_index, int[] time_diff) {
+        public void write_csgjhsbhcd_chart(Document doc, DocumentBuilder doc_builder, 
+            Dictionary<string, List<SoftwareItems>> new_dict, Dictionary<string, List<DynamicHardwareItems>>
+            new_dict1, int section_index, int sec_table_index, int row_index, List<int> time_diff) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -406,8 +418,8 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
                     doc_builder.Write(software.rj_yongtu);
                     doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 3, 0);
                     doc_builder.Write(this.files_ids[count][j]);
-                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 4, 0);
-                    doc_builder.Write(software.wd_laiyuan);
+                    //doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 4, 0);
+                    //doc_builder.Write(software.wd_laiyuan);
                     Cell pre_cell = table.Rows[merge_cell].Cells[5];
                     string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
                     if(temp.Equals(software.wd_laiyuan)) {
@@ -468,9 +480,7 @@ namespace CSSTC1.FileProcessors.writers.PartFive3_4 {
             count += 1;
 
         }
-            doc.Save(FileConstants.save_root_file);
-
-        //}
+            //doc.Save(FileConstants.save_root_file);
         }
     
     }

@@ -84,7 +84,6 @@ namespace CSSTC1.ConstantVariables {
         //就绪内部评审时间
         public static string jxnbps_time;
         public static string jxnbps_format_time;
-        public static List<TestEnvironment> test_envs = new List<TestEnvironment>();
 
     }
 }

@@ -9,12 +9,13 @@ using Aspose.Words.Tables;
 using System.Windows;
 using CSSTC1.FileProcessors.writers;
 using CSSTC1.FileProcessors.writers.part3_4;
-using CSSTC1.FileProcessors.writers.PartFive3_4;
+using CSSTC1.FileProcessors.writers.CodeReview_Walkthrough;
 
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader4 {
         private FileWriter5 writer1;
         private FileWriter4 writer;
+        private FileWriter7 writer2;
         
 
         public bool read_charts(string filepath){
@@ -44,11 +45,18 @@ namespace CSSTC1.FileProcessors.readers {
             if(ContentFlags.pianli_3 > 0){
                 Table jxwt_table = (Table)doc.GetChild(NodeType.Table, count, true);
                 jxwt_reports = this.read_smns_chart(jxwt_table);
+                ContentFlags.jxwt_reports = jxwt_reports;
                 count += 1;
             }
             this.writer = new FileWriter4(ContentFlags.static_files, software_table,
                 hardware_table);
             this.writer1 = new FileWriter5(reports);
+            if(ContentFlags.daimashencha > 0) {
+                this.writer2 = new FileWriter7("代码审查", hardware_table);
+            }
+            if(ContentFlags.daimazoucha > 0){
+                this.writer2 = new FileWriter7("代码走查", hardware_table);
+            }
             return true;
         }
     
@@ -67,7 +75,7 @@ namespace CSSTC1.FileProcessors.readers {
                 use = use.Substring(0, use.Length - 1);
                 string provider = row.Cells[4].Range.Text;
                 provider = provider.Substring(0, provider.Length - 1);
-                SoftwareItems item = new SoftwareItems(name, version, use, provider);
+                SoftwareItems item = new SoftwareItems(name, version, use, provider, "");
                 software_items.Add(item);
             }
             return table;

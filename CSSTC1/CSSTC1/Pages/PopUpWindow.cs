@@ -24,7 +24,7 @@ namespace CSSTC1.Pages {
             string local1 = this.textBox1.Text;
             string local2 = this.textBox2.Text;
             TestEnvironment test_env = new TestEnvironment(this.software_name, time1, time2, local1, local2);
-            TimeStamp.test_envs.Add(test_env);
+            ContentFlags.test_envs.Add(test_env);
             this.button1.Enabled = false;
             this.Hide();
         }

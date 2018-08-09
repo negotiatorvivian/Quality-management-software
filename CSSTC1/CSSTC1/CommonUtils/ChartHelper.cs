@@ -107,7 +107,7 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
-        //软件配置文件调拨单表格
+        //配置文件被测件清单表格、被测件领取清单表格
         public static void write_bcjqd2_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index,
             int name_row_index, int iden_row_index, List<int> time_diff) {
@@ -157,7 +157,7 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
-        //软件配置文件领取清单表格
+        //配置项被测件调拨单表格
         public static void write_bcjdbd2_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
             int name_row_index, int iden_row_index, List<int> time_diff) {
@@ -180,6 +180,21 @@ namespace CSSTC1.CommonUtils {
                 doc_builder.Write(key);
                 row_index += 1;
             }
+        }
+
+        //填写测试工具或设备核查单
+        public static void append_content(Document doc, DocumentBuilder doc_builder, Table table, 
+            int section_index, int sec_table_index, int row_index, List<int> time_diff) {
+            int cur_section = section_index;
+            foreach(int i in time_diff) {
+                cur_section += i;
+            }
+            doc_builder.MoveToSection(cur_section);
+            int cell_index = 1;
+            Node node = doc.ImportNode(table, true);
+            Table parent_table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
+            parent_table.Rows[row_index].Cells[cell_index].AppendChild(node);
+
         }
     }
 }

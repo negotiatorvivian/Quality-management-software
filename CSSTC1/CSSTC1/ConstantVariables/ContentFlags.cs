@@ -54,6 +54,10 @@ namespace CSSTC1.ConstantVariables {
         public static List<StaticAnalysisFile> dynamic_files = new List<StaticAnalysisFile>();
         //被测件子软件数量
         public static int beiceruanjianshuliang = 1;
+        //就绪存在问题意见表
+        public static List<QestionReport> jxwt_reports = new List<QestionReport>();
+        //软件测试环境
+        public static List<TestEnvironment> test_envs = new List<TestEnvironment>();
 
         //是否有偏离报告
         public static int pianli_3 = 1;
@@ -65,6 +69,8 @@ namespace CSSTC1.ConstantVariables {
         public static int daimashencha = 13;
         //是否有代码走查(13节)
         public static int daimazoucha = 13;
+        //是否有第二次测试就绪
+        public static int ceshijiuxu2 = 5;
         //是否有逻辑测试
         public static int luojiceshi = 3;
         //是否有系统回归测试

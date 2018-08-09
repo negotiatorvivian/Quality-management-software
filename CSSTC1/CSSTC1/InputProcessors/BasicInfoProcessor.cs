@@ -14,7 +14,6 @@ using CSSTC1.CommonUtils;
 namespace CSSTC1.InputProcessors {
     class BasicInfoProcessor {
         public Document doc = new Document(FileConstants.root_file);
-        //public Microsoft.Office.Interop.Word._Application wordApp = new Microsoft.Office.Interop.Word.Application();
 
         public void fill_basic_info(string[] bookmarks, string[] values, bool[] test_accordings) {
             DocumentBuilder doc_builder = new DocumentBuilder(this.doc);
@@ -27,6 +26,10 @@ namespace CSSTC1.InputProcessors {
 
                     if(doc_builder.MoveToBookmark(o))
                         doc_builder.Write(values[index]);
+                    if(o.Equals("项目标识")){
+                        if(doc_builder.MoveToBookmark("项目标识正文"))
+                            doc_builder.Write(values[index]);
+                    }
                 }
                 index = index + 1;
             }

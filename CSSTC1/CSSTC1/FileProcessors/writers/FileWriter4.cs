@@ -40,6 +40,7 @@ namespace CSSTC1.FileProcessors.writers {
                 (ContentFlags.beicejianqingdan_dict);
             /***************************文档审查开始*********************************/
             if(ContentFlags.wendangshencha > 0){
+                this.write_wdsc_time_line(doc, doc_builder);
                 ChartHelper.write_bcjqd_chart(doc, doc_builder, beicejianqingdan_dict, 
                     InsertionPos.sj_bcjqd_section,
                     InsertionPos.sj_bcjqd_sec_table, InsertionPos.sj_bcjqd_name_row, 
@@ -65,6 +66,7 @@ namespace CSSTC1.FileProcessors.writers {
 
             /***************************静态分析开始*********************************/
             if(ContentFlags.jingtaifenxi > 0) {
+                this.write_jtfx_time_line(doc, doc_builder);
                 this.write_lxwtf_chart(doc, doc_builder, software_items, "委托方提供代码");
                 Dictionary<string, StaticAnalysisFile> software_dict = this.set_file_id(doc, doc_builder, 
                     software_items);
@@ -81,14 +83,12 @@ namespace CSSTC1.FileProcessors.writers {
                     InsertionPos.sj_rksqd_sec_table2, 3, InsertionPos.sj_rksqd_name_row,
                     InsertionPos.sj_rksqd_iden_row, times);
                 this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单3", false);
-                //this.write_csgjhsb_chart(doc, doc_builder, software_dict, InsertionPos.sj_csgjqr_section,
-                   //InsertionPos.sj_csgjqr_sec_table, times);
             
                 Table new_table = (Table)this.software_table.Clone(true);
-                this.append_content(doc, doc_builder, new_table, InsertionPos.sj_cshjhc_section,
+                ChartHelper.append_content(doc, doc_builder, new_table, InsertionPos.sj_cshjhc_section,
                     InsertionPos.sj_cshjhc_sec_table, 1, times);
                 Table new_table1 = (Table)this.hardware_table.Clone(true);
-                this.append_content(doc, doc_builder, new_table1, InsertionPos.sj_cshjhc_section,
+                ChartHelper.append_content(doc, doc_builder, new_table1, InsertionPos.sj_cshjhc_section,
                     InsertionPos.sj_cshjhc_sec_table, 2, times);
                 Dictionary<string, StaticAnalysisFile> new_software_dict = this.update_softwareId(software_dict);
                 ChartHelper.write_bcjqd2_chart(doc, doc_builder, new_software_dict, InsertionPos.sj_bcjqd_section3,
@@ -182,6 +182,16 @@ namespace CSSTC1.FileProcessors.writers {
             }
             return wdsc_files;
         }
+        
+        public void write_wdsc_time_line(Document doc, DocumentBuilder doc_builder){
+            DateHelper.fill_time_blank(doc, doc_builder, "文档审查结果记录入库时间", TimeStamp.wdscqr_time, 1);
+            //文档审查确认时间
+            if(doc_builder.MoveToBookmark("文档审查确认时间"))
+                doc_builder.Write(TimeStamp.wdscqr_format_time);
+            //文档审查回归时间
+            if(doc_builder.MoveToBookmark("文档审查回归时间"))
+                doc_builder.Write(TimeStamp.wdschg_format_time);
+        }
         #endregion
 
         #region 静态分析方法
@@ -268,23 +278,7 @@ namespace CSSTC1.FileProcessors.writers {
                 row_index += 4;
             }
         }
-    
-
-        //填写测试工具或设备核查单
-        public void append_content(Document doc, DocumentBuilder doc_builder, Table table, int section_index,
-            int sec_table_index, int row_index, List<int> time_diff) {
-            int cur_section = section_index;
-            foreach(int i in time_diff) {
-                cur_section += i;
-            }
-            doc_builder.MoveToSection(cur_section);
-            int cell_index = 1;
-            //Section prepend_section = doc.Sections[cur_section];
-            Node node = doc.ImportNode(table, true);
-            Table parent_table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
-            parent_table.Rows[row_index].Cells[cell_index].AppendChild(node);
-
-        }
+  
 
         //软件配置项版本增加
         public Dictionary<string, StaticAnalysisFile> update_softwareId(Dictionary<string, StaticAnalysisFile>
@@ -306,6 +300,20 @@ namespace CSSTC1.FileProcessors.writers {
                 new_dict.Add(new_key, softwareItems_dict[key]);
             }
             return new_dict;
+        }
+
+        public void write_jtfx_time_line(Document doc, DocumentBuilder doc_builder) {
+            //联系研制方提供被测软件源代码时间
+            DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第五次", TimeStamp.jtfxsc_time, 7);
+            //静态分析审查时间
+            if(doc_builder.MoveToBookmark("静态分析审查时间"))
+                doc_builder.Write(TimeStamp.jtfxsc_format_time);
+            //静态分析结果入库时间
+            DateHelper.fill_time_blank(doc, doc_builder, "静态分析结果入库时间", TimeStamp.jtfxqr_time, 1);
+            //联系委托方第六次:研制方来测评中心确认静态分析问题时间
+            DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第六次", TimeStamp.jtfxqr_time, 3);
+            if(doc_builder.MoveToBookmark("静态分析回归时间"))
+                doc_builder.Write(TimeStamp.jtfxhg_format_time);
         }
         #endregion
     }
