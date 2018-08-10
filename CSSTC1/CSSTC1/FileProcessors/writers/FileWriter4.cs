@@ -117,7 +117,6 @@ namespace CSSTC1.FileProcessors.writers {
             times.Add(ContentFlags.jingtaifenxi);
             /***************************静态分析结束*********************************/
             doc.Save(FileConstants.save_root_file);
-            MessageBox.Show("文档审查与静态分析部分写入完成！");
         }
 
         #region  公共方法

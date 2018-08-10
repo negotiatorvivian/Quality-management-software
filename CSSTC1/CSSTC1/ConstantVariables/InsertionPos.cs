@@ -235,7 +235,27 @@ namespace CSSTC1.ConstantVariables {
 
         //搭建环境阶段被测件清单第二张表格位置
         public static int djhj_bcjqd_section1 = 16;
+        //搭建环境阶段第二次测试环境确认表位置
+        public static int djhj_cshjqr_section1 = 18;
+        //搭建环境阶段第二次测试环境核查表位置
+        public static int djhj_cshjhc_section1 = 19;
+        //测试就绪评审会议签到表2
+        public static int djhj_hyqdb_section1 = 18;
         /******************************搭建环境部分结束**************************/
+        //首轮配置项测试第一张入库申请表格位置
+        public static int pzcs_rksqd_section = 17;
+        public static int pzcs_rksqd_sec_table = 0;
+        //配置项回归测试第一张被测件清单位置
+        public static int pzcs_bcjqd_section = 19;
+        public static int pzcs_bcjqd_sec_table = 0;
+        public static int pzcs_bcjdbd_sec_table = 1;
+        public static int pzcs_bcjlqqd_sec_table = 2;
 
+        //配置项回归测试第一次测试环境确认表位置
+        public static int pzcs_cshjqr_section1 = 21;
+        public static int pzcs_cshjhc_section1 = 22;
+        //配置项回归测试第二张入库申请表位置
+        public static int pzcs_rksqd_section1 = 23;
+        public static int pzcs_rksqd_section2 = 27;
     }
 }

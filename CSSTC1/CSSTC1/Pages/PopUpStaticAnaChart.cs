@@ -13,11 +13,12 @@ using System.Text.RegularExpressions;
 
 namespace CSSTC1.Pages {
     public partial class PopUpStaticAnaChart : Form {
-        public PopUpStaticAnaChart(string name) {
+        public PopUpStaticAnaChart(string name, bool enabled) {
             if(name.Length == 0)
                 name = "信息";
             this.Text = name;
             InitializeComponent();
+            //if(enabled)
             this.fill_table();
         }
         List<ComboBox> comboBoxes = new List<ComboBox>();

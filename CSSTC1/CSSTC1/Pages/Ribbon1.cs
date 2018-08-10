@@ -116,7 +116,8 @@ namespace CSSTC1.Pages {
                 file_reader5.read_charts(read_in_file);
             }
             this.button11.Enabled = false;
-            this.button12.Enabled = true;
+            if(TimeStamp.csjxps_format_time.Count > 1)
+                this.button12.Enabled = true;
         }
 
         private void button12_Click(object sender, RibbonControlEventArgs e) {

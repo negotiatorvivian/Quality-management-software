@@ -15,6 +15,10 @@ namespace CSSTC1.Pages {
     public partial class DesignAndExecution : Form {
         private DesignAndExeProcessor processor = new DesignAndExeProcessor();
         List<ComboBox> comboBoxes = new List<ComboBox>();
+        private bool jingtaifenxi = false;
+        private bool daimashencha = false;
+        private bool daimazoucha = false;
+        private bool ceshijiucupingshen = true;
         #region  构造函数与界面操作
         public DesignAndExecution() {
             InitializeComponent();
@@ -23,14 +27,17 @@ namespace CSSTC1.Pages {
             if(ContentFlags.jingtaifenxi > 0){
                 this.checkedListBox1.SetItemChecked(1, true);
                 this.button3.Enabled = true;
+                this.jingtaifenxi = true;
             }
             if(ContentFlags.daimazoucha > 0){
                 this.checkedListBox1.SetItemChecked(2, true);
                 this.button4.Enabled = true;
+                this.daimazoucha = true;
             }
             if(ContentFlags.daimashencha > 0){
                 this.checkedListBox1.SetItemChecked(3, true);
                 this.button5.Enabled = true;
+                this.daimashencha = true;
             }
             if(ContentFlags.peizhiceshi > 0){
                 this.checkedListBox1.SetItemChecked(4, true);
@@ -70,27 +77,9 @@ namespace CSSTC1.Pages {
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-            this.button1.Enabled = true;
+            //this.button1.Enabled = true;
         }
-
-        private void button6_Click(object sender, EventArgs e) {
-            this.fill_csjx_table();
-            this.panel1.Show();
-        }
-
-        public bool fill_table() {
-            if(ContentFlags.static_files.Count == 0)
-                return true;
-                //return false;
-            if(TimeStamp.sldtcs_time != null) {
-                DateTime date1 = DateHelper.cal_date(TimeStamp.sldtcs_time, 10);
-                DateTime date2 = DateHelper.cal_date(TimeStamp.sldtcs_time, 5);
-                this.dateTimePicker1.Value = date1;
-                this.dateTimePicker4.Value = date2;
-                this.dateTimePicker5.Value = date2;
-            }
-            return true;
-        }
+        
 
         //测试就绪表格
         public bool fill_csjx_table() {
@@ -149,24 +138,57 @@ namespace CSSTC1.Pages {
 
         /************************展示静态分析 代码走查 代码审查表*********************************/
         private void button3_Click(object sender, EventArgs e) {
-            PopUpStaticAnaChart chart1 = new PopUpStaticAnaChart("静态分析模块名");
+            PopUpStaticAnaChart chart1 = new PopUpStaticAnaChart("静态分析模块名", this.jingtaifenxi);
             chart1.Show();
+            this.jingtaifenxi = false;
+            if(!this.daimazoucha && !this.daimashencha && !this.jingtaifenxi && !this.ceshijiucupingshen)
+                this.button1.Enabled = true;
         }
 
         private void button5_Click(object sender, EventArgs e) {
             PopUpCodeCheckChart chart1 = new PopUpCodeCheckChart("代码审查模块名", "代码审查范围",
-                "dmsc_software_list", "dmsc_software_info", ContentFlags.dmsc_software_info);
+                "dmsc_software_list", "dmsc_software_info", ContentFlags.dmsc_software_info, this.daimashencha);
             chart1.Show();
+            this.daimashencha = false;
+            if(!this.daimazoucha && !this.daimashencha && !this.jingtaifenxi && !this.ceshijiucupingshen)
+                this.button1.Enabled = true;
         }
 
         private void button4_Click(object sender, EventArgs e) {
             PopUpCodeCheckChart chart1 = new PopUpCodeCheckChart("代码走查模块名", "代码走查范围",
-                "dmzc_software_list", "dmzc_software_info", ContentFlags.dmzc_software_info);
+                "dmzc_software_list", "dmzc_software_info", ContentFlags.dmzc_software_info, this.daimazoucha);
             chart1.Show();
+            this.daimazoucha = false;
+            if(!this.daimazoucha && !this.daimashencha && !this.jingtaifenxi && !this.ceshijiucupingshen)
+                this.button1.Enabled = true;
         }
         /************************展示静态分析 代码走查 代码审查表*********************************/
-        
-#endregion
+   
+        /****************************展示测试就绪界面*****************************/
+        private void button6_Click(object sender, EventArgs e) {
+            if(this.ceshijiucupingshen)
+                this.fill_csjx_table();
+            this.panel1.Show();
+            this.ceshijiucupingshen = false;
+            if(!this.daimazoucha && !this.daimashencha && !this.jingtaifenxi && !this.ceshijiucupingshen)
+                this.button1.Enabled = true;
+        }
+
+        public bool fill_table() {
+            if(ContentFlags.static_files.Count == 0)
+                return true;
+            //return false;
+            if(TimeStamp.sldtcs_time != null) {
+                DateTime date1 = DateHelper.cal_date(TimeStamp.sldtcs_time, 10);
+                DateTime date2 = DateHelper.cal_date(TimeStamp.sldtcs_time, 5);
+                this.dateTimePicker1.Value = date1;
+                this.dateTimePicker4.Value = date2;
+                this.dateTimePicker5.Value = date2;
+            }
+            return true;
+        }
+        /************************展示测试就绪界面*********************************/
+        #endregion
 
         //确认键提交信息
         private void button1_Click(object sender, EventArgs e) {

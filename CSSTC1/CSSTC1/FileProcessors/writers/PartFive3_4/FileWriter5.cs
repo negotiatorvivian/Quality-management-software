@@ -52,7 +52,7 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
                 InsertionPos.sj_rksqd_iden_row, times);
             this.write_pzzt_chart(doc, doc_builder, "测试说明入库清单1");
             doc.Save(FileConstants.save_root_file);
-            MessageBox.Show("测试说明内部评审部分写入完成！");
+
 
         }
 

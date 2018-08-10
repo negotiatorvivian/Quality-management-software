@@ -48,6 +48,12 @@ namespace CSSTC1.FileProcessors.readers {
                 ContentFlags.jxwt_reports = jxwt_reports;
                 count += 1;
             }
+            if(ContentFlags.xitongceshi > 0){
+                List<SoftwareItems> system_softwares = this.read_xtrjhj_chart(doc, doc_builder, count);
+                count += 1;
+                List<DynamicHardwareItems> system_hardwares = this.read_xtyjhj_chart(doc, doc_builder, count);
+                count += 1;
+            }
             this.writer = new FileWriter4(ContentFlags.static_files, software_table,
                 hardware_table);
             this.writer1 = new FileWriter5(reports);
@@ -57,6 +63,9 @@ namespace CSSTC1.FileProcessors.readers {
             if(ContentFlags.daimazoucha > 0){
                 this.writer2 = new FileWriter7("代码走查", hardware_table);
             }
+            if(ContentFlags.xitongceshi > 0){
+            }
+            MessageBox.Show("信息填写结束!");
             return true;
         }
     
@@ -105,7 +114,6 @@ namespace CSSTC1.FileProcessors.readers {
             return table;
         }
 
-
         //测试说明内审意见表
         public List<QestionReport> read_smns_chart(Table t) {
             List<QestionReport> reports = new List<QestionReport>();
@@ -122,6 +130,57 @@ namespace CSSTC1.FileProcessors.readers {
                 reports.Add(qus_report);
             }
             return reports;
+        }
+
+        //系统测试软件环境表格
+        public List<SoftwareItems> read_xtrjhj_chart(Document doc, DocumentBuilder doc_builder, int index) {
+            List<SoftwareItems> software_items = new List<SoftwareItems>();
+            int row_index = 1;
+            Table table = (Table)doc.GetChild(NodeType.Table, index, true);
+            for(int i = row_index; i < table.Rows.Count; i++) {
+                Row row = table.Rows[i];
+                string name = row.Cells[1].Range.Text;
+                name = name.Substring(0, name.Length - 1);
+                string version = row.Cells[2].Range.Text;
+                version = version.Substring(0, version.Length - 1);
+                string use = row.Cells[3].Range.Text;
+                use = use.Substring(0, use.Length - 1);
+                string id = row.Cells[4].Range.Text;
+                id = id.Substring(0, id.Length - 1);
+                string provider = row.Cells[5].Range.Text;
+                provider = provider.Substring(0, provider.Length - 1);
+                SoftwareItems item = new SoftwareItems(name, version, use, provider, id);
+                software_items.Add(item);
+            }
+            return software_items;
+        }
+
+        //系统动态测试环境硬件项表格
+        public List<DynamicHardwareItems> read_xtyjhj_chart(Document doc, DocumentBuilder doc_builder, int index) {
+            int row_index = 1;
+            List<DynamicHardwareItems> hardware_items = new List<DynamicHardwareItems>();
+            Table table = (Table)doc.GetChild(NodeType.Table, index, true);
+            for(int i = row_index; i < table.Rows.Count; i++) {
+                Row row = table.Rows[i];
+                string name = row.Cells[1].Range.Text;
+                name = name.Substring(0, name.Length - 1);
+                string id = row.Cells[2].Range.Text;
+                id = id.Substring(0, id.Length - 1);
+                string num = row.Cells[3].Range.Text;
+                num = num.Substring(0, num.Length - 1);
+                string use = row.Cells[4].Range.Text;
+                use = use.Substring(0, use.Length - 1);
+                string configure = row.Cells[5].Range.Text;
+                configure = configure.Substring(0, configure.Length - 1);
+                string status = row.Cells[6].Range.Text;
+                status = status.Substring(0, status.Length - 1);
+                string provider = row.Cells[7].Range.Text;
+                provider = provider.Substring(0, provider.Length - 1);
+                DynamicHardwareItems item = new DynamicHardwareItems(name, id, num, use, configure, status, 
+                    provider);
+                hardware_items.Add(item);
+            }
+            return hardware_items;
         }
     }
 }

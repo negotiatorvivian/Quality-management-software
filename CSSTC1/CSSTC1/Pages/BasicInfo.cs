@@ -263,6 +263,13 @@ namespace CSSTC1.Pages {
             }
             else
                 ContentFlags.xitonghuiguiceshi = 0;
+            //动态配置项测试时间
+            if(this.pzx_ceshi.Checked){
+                TimeStamp.sldtcs_time = this.dtpz_shoulunshijian.Value.ToShortDateString();
+                TimeStamp.sldtcs_format_time = this.dtpz_shoulunshijian.Value.ToLongDateString();
+                TimeStamp.hgdtcs_time = this.dtpz_huigui.Value.ToShortDateString();
+                TimeStamp.hgdtcs_format_time = this.dtpz_huigui.Value.ToLongDateString();
+            }
         }
 
         }

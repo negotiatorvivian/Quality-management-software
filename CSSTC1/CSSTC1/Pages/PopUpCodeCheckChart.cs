@@ -14,7 +14,7 @@ using System.Reflection;
 namespace CSSTC1.Pages {
     public partial class PopUpCodeCheckChart : Form {
         public PopUpCodeCheckChart(string name, string label, string var1, string var2,
-            List<StaticAnalysisFile> files) {
+            List<StaticAnalysisFile> files, bool enabled) {
             InitializeComponent();
             this.Text = name;
             this.label3.Text = label;

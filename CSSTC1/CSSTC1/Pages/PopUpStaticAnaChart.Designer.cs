@@ -48,7 +48,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 157F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 122F));
             this.tableLayoutPanel1.Controls.Add(this.label9, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.label6, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 4, 0);
@@ -69,9 +69,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(687, 1);
+            this.label9.Location = new System.Drawing.Point(681, 1);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 40);
+            this.label9.Size = new System.Drawing.Size(116, 40);
             this.label9.TabIndex = 6;
             this.label9.Text = "编辑";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -80,7 +80,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Location = new System.Drawing.Point(529, 1);
+            this.label6.Location = new System.Drawing.Point(523, 1);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(151, 40);
             this.label6.TabIndex = 5;
@@ -93,7 +93,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(422, 1);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(100, 40);
+            this.label5.Size = new System.Drawing.Size(94, 40);
             this.label5.TabIndex = 4;
             this.label5.Text = "回归版本";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,7 +166,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(800, 26);
             this.tableLayoutPanel2.TabIndex = 80;
-            // 
+            
             // PopUpStaticAnaChart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);

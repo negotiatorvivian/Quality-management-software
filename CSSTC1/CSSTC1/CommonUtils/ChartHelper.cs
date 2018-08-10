@@ -83,6 +83,36 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
+        public static void write_bcjlqqd_chart(Document doc, DocumentBuilder doc_builder,
+            Dictionary<string, FileList> new_dict, int section_index, int sec_table_index, int row_index,
+            int name_row_index, int iden_row_index, List<int> time_diff) {
+            int flag = row_index;
+            int cur_section = section_index;
+            foreach(int i in time_diff) {
+                cur_section += i;
+            }
+            doc_builder.MoveToSection(cur_section);
+            Table table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
+            foreach(string key in new_dict.Keys) {
+                if(row_index < new_dict.Count + flag - 1) {
+                    var row = table.Rows[row_index].Clone(true);
+                    table.Rows.Insert(row_index + 1, row);
+                }
+                doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
+                string name = new_dict[key].wd_mingcheng;
+                doc_builder.Write(name);
+                doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
+                doc_builder.Write(key);
+                doc_builder.MoveToCell(sec_table_index, 2,
+                        InsertionPos.sj_bcjqd_date_row, 0);
+                doc_builder.CellFormat.VerticalMerge = CellMerge.First;
+                doc_builder.MoveToCell(sec_table_index, row_index,
+                    InsertionPos.sj_bcjqd_date_row, 0);
+                doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
+                row_index += 1;
+            }
+        }
+
         public static void write_rksqd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
             int name_row_index, int iden_row_index, List<int> time_diff) {

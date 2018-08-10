@@ -30,7 +30,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             time_diff.Add(ContentFlags.jingtaifenxi);
             time_diff.Add(ContentFlags.daimashencha);
             time_diff.Add(ContentFlags.daimazoucha);
-            helper = new TestEnvChartHelper(ruanjianpeizhi_dict, yingjianpeizhi_dict);
+            helper = new TestEnvChartHelper();
             this.write_charts();
         }
 

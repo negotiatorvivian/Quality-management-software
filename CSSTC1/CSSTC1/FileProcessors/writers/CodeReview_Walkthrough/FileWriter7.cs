@@ -62,7 +62,7 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
                 InsertionPos.dmsc_chhjhcd_section, InsertionPos.dmsc_rjhj_sec_table1, 1 ,this.time_diff);
             this.write_file_charts_2(doc, doc_builder, code_review_list, bookmarks[2]);
             doc.Save(FileConstants.save_root_file);
-            MessageBox.Show(this.type + "填写结束");
+            //MessageBox.Show(this.type + "填写结束");
         }
 
         //填写代码审查时间线

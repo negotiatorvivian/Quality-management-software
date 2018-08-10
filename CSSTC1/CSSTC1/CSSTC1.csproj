@@ -139,6 +139,8 @@
     <Compile Include="FileProcessors\writers\BuildEnvironment\FileWriter8.cs" />
     <Compile Include="FileProcessors\writers\BuildEnvironment\FileWriter9.cs" />
     <Compile Include="FileProcessors\writers\CodeReview_Walkthrough\FileWriter7.cs" />
+    <Compile Include="FileProcessors\writers\ConfigurationItemTest\ConfigChartHelper.cs" />
+    <Compile Include="FileProcessors\writers\ConfigurationItemTest\FileWriter10.cs" />
     <Compile Include="FileProcessors\writers\FileWriter2.cs" />
     <Compile Include="FileProcessors\writers\FileWriter3.cs" />
     <Compile Include="FileProcessors\writers\FileWriter1.cs" />

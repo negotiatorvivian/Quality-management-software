@@ -13,9 +13,12 @@ namespace CSSTC1.ConstantVariables {
         public static string ceshisc_time;
         public static string ceshisc_format_time;
 
-        //首轮动态测试时间
+        //动态配置项首轮测试时间
         public static string sldtcs_time;
         public static string sldtcs_format_time;
+        //动态配置项回归测试时间
+        public static string hgdtcs_time;
+        public static string hgdtcs_format_time;
 
         //第三阶段偏离联系时间
         public static string pianli2_time;

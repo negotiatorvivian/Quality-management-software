@@ -36,6 +36,26 @@ namespace CSSTC1.InputProcessors {
                     doc_builder.Write(bcjjs_time2);
             }
             this.change_file_structure(doc, doc_builder);
+
+            if(ContentFlags.peizhiceshi > 0){
+                string pzcs_lxwtf_time1 = DateHelper.cal_time(TimeStamp.hgdtcs_time, 14);
+                string pzcs_lxwtf_time2 = DateHelper.cal_time(TimeStamp.hgdtcs_time, 7);
+                string pzcs_bcjjs_time1 = DateHelper.cal_time(TimeStamp.hgdtcs_time, 3);
+                string pzcs_hg_time = TimeStamp.hgdtcs_format_time;
+                if(doc_builder.MoveToBookmark("联系委托方第八次"))
+                    doc_builder.Write(pzcs_lxwtf_time1);
+                if(doc_builder.MoveToBookmark("联系委托方第九次"))
+                    doc_builder.Write(pzcs_lxwtf_time2);
+                if(doc_builder.MoveToBookmark("配置项动态回归被测件接收时间"))
+                    doc_builder.Write(pzcs_bcjjs_time1);
+                if(doc_builder.MoveToBookmark("回归测试时间"))
+                    doc_builder.Write(pzcs_hg_time);
+            } 
+            if(ContentFlags.luojiceshi > 0){
+                string ljcs_lxwtf_time1 = TimeStamp.ljcs_format_time;
+                if(doc_builder.MoveToBookmark("逻辑测试时间"))
+                    doc_builder.Write(ljcs_lxwtf_time1);
+            }
             doc.Save(FileConstants.save_root_file);
             return true;
 
@@ -44,6 +64,7 @@ namespace CSSTC1.InputProcessors {
         public void change_file_structure(Document doc, DocumentBuilder doc_builder){
             if(TimeStamp.csjxps_time.Count == 0 || ContentFlags.test_envs.Count == 0){            
                 OperationHelper.delete_section(doc, doc_builder, "测试就绪第二次", "ceshijiuxu2");
+                ContentFlags.ceshijiuxu2 = 0;
             }
         }
     }
