@@ -979,7 +979,6 @@
             this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csxq_pingshenshijian.TabIndex = 60;
             this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-         
             // 
             // label33
             // 
@@ -999,7 +998,6 @@
             this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csdg_pingshenshijian.TabIndex = 58;
             this.csdg_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-   
             // 
             // tabPage6
             // 
@@ -1277,6 +1275,8 @@
             // xt_ceshi
             // 
             this.xt_ceshi.AutoSize = true;
+            this.xt_ceshi.Checked = true;
+            this.xt_ceshi.CheckState = System.Windows.Forms.CheckState.Checked;
             this.xt_ceshi.Location = new System.Drawing.Point(183, 110);
             this.xt_ceshi.Name = "xt_ceshi";
             this.xt_ceshi.Size = new System.Drawing.Size(82, 18);

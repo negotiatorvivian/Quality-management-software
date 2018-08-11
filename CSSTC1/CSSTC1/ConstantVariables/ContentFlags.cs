@@ -11,7 +11,7 @@ namespace CSSTC1.ConstantVariables {
         //评审组成员
         public static List<string> pingshenzuchengyuan = new List<string>();
         #region 项目立项阶段
-        public static int peizhiceshi = 23;
+        public static int peizhiceshi = 12;
         public static int xitongceshi = 20;
         public static List<ProjectInfo> pro_infos = new List<ProjectInfo>();
         public static List<FileList> all_file_lists = new List<FileList>();
@@ -52,6 +52,14 @@ namespace CSSTC1.ConstantVariables {
         //软件动态测试环境软件项
         public static List<string> dynamic_list = new List<string>();
         public static List<StaticAnalysisFile> dynamic_files = new List<StaticAnalysisFile>();
+        //上传文件中的测试用例表格
+        public static Dictionary<string, List<TestExample>> example_dict = new Dictionary
+            <string, List<TestExample>>();
+        //上传文件中的测试问题统计表格
+        public static Dictionary<string, List<TestProblem>> problems = new Dictionary<string, List<TestProblem>>();
+        //上传文件中的系统测试问题统计表格
+        public static Dictionary<string, List<TestProblem>> system_problems = new Dictionary<string, 
+            List<TestProblem>>();
         //被测件子软件数量
         public static int beiceruanjianshuliang = 0;
         //第二次就绪子软件数量
@@ -65,6 +73,10 @@ namespace CSSTC1.ConstantVariables {
                 List<SoftwareItems>>();
         public static Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict = new Dictionary<string,
             List<DynamicHardwareItems>>();
+        //系统测试软件环境与硬件环境
+        public static List<SoftwareItems> system_softwares = new List<SoftwareItems>();
+        public static List<DynamicHardwareItems> system_hardwares = new List<DynamicHardwareItems>();
+
         //是否有偏离报告
         public static int pianli_3 = 1;
         //是否有文档审查
@@ -83,5 +95,7 @@ namespace CSSTC1.ConstantVariables {
         public static int xitonghuiguiceshi = 10;
         #endregion
 
+        #region 测试总结阶段
+        #endregion
     }
 }

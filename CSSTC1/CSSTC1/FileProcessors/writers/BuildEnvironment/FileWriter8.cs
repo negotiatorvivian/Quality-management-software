@@ -50,6 +50,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 InsertionPos.djhj_bcjlqqd_type_row, this.time_diff);
             helper.write_csgjhsb_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict, 
                 InsertionPos.djhj_cshjqr_section, InsertionPos.djhj_cshjqr_sec_table, this.time_diff);
+            ContentFlags.beiceruanjianshuliang = ruanjianpeizhi_dict.Count;
             helper.write_csgjhsbhcd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
                 InsertionPos.djhj_cshjhc_section, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff);
             this.time_diff.Add(ContentFlags.beiceruanjianshuliang * 2);

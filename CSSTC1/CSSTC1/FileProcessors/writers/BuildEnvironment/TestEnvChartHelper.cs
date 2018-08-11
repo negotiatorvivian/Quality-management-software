@@ -16,10 +16,6 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
         List<SoftwareItems> softwares = new List<SoftwareItems>();
         public string software_names = "";
         int[] times = { ContentFlags.pianli_1, ContentFlags.pianli_2, ContentFlags.lingqucishu * 2 };
-        public TestEnvChartHelper() {
-
-        }
-
 
         //测试环境调拨单表格     
         public void write_bcjdbd_chart(Document doc, DocumentBuilder doc_builder,
@@ -279,7 +275,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 doc_builder.MoveToSection(cur_section);
                 temp += 1;
             }
-            doc.Save(FileConstants.save_root_file);
+            //doc.Save(FileConstants.save_root_file);
                 
             for(int i = 0; i < new_dict.Count; i++) { //循环每个软件的软件配置项和硬件配置项   
                 int count = 0;
@@ -315,10 +311,8 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             }
             int sum = table.Rows.Count;
             table.Rows[sum - 1].Remove();
-            if(ContentFlags.beiceruanjianshuliang > 0)
-                ContentFlags.beiceruanjianshuliang1 = new_dict.Count;
-            else
-            ContentFlags.beiceruanjianshuliang = new_dict.Count;
+        
+                
         }
 
         //软件动态测试配置项工具或设备核查单

@@ -10,12 +10,14 @@ using Aspose.Words.Tables;
 using System.Windows;
 using CSSTC1.FileProcessors.writers.BuildEnvironment;
 using CSSTC1.FileProcessors.writers.ConfigurationItemTest;
+using CSSTC1.FileProcessors.writers.SystemTest;
 
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader5 {
         private FileWriter8 writer;
         private FileWriter9 writer1;
         private FileWriter10 writer2;
+        private FileWriter11 writer3;
         private bool flag;
         public FileReader5(bool twice){
             this.flag = twice;
@@ -52,15 +54,24 @@ namespace CSSTC1.FileProcessors.readers {
                 this.writer = new FileWriter8(ruanjianpeizhi_dict, yingjianpeizhi_dict);
                 ContentFlags.ruanjianpeizhi_dict = ruanjianpeizhi_dict;
                 ContentFlags.yingjianpeizhi_dict = yingjianpeizhi_dict;
-                if(TimeStamp.csjxps_format_time.Count < 2 && ContentFlags.peizhiceshi > 0)
-                    this.writer2 = new FileWriter10(ruanjianpeizhi_dict, yingjianpeizhi_dict);
+                if(TimeStamp.csjxps_format_time.Count < 2){
+                    if(ContentFlags.peizhiceshi > 0)
+                        this.writer2 = new FileWriter10(ruanjianpeizhi_dict, yingjianpeizhi_dict);
+                    if(ContentFlags.xitongceshi > 0) {
+                        this.writer3 = new FileWriter11(ContentFlags.system_softwares, 
+                            ContentFlags.system_hardwares);
+                    }
+                }
             }
             else{
                 this.writer1 = new FileWriter9(ruanjianpeizhi_dict, yingjianpeizhi_dict);
                 if(ContentFlags.peizhiceshi > 0)
                     this.writer2 = new FileWriter10(ruanjianpeizhi_dict, yingjianpeizhi_dict);
+                if(ContentFlags.xitongceshi > 0) {
+                    this.writer3 = new FileWriter11(ContentFlags.system_softwares, ContentFlags.system_hardwares);
+                }
             }
-
+            
         }
 
         //配置项动态测试软件环境表格

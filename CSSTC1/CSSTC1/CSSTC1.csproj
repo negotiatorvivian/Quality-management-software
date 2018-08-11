@@ -131,6 +131,8 @@
     <Compile Include="FileProcessors\models\SoftwareItems.cs" />
     <Compile Include="FileProcessors\models\StaticAnalysisFile.cs" />
     <Compile Include="FileProcessors\models\TestEnvironment.cs" />
+    <Compile Include="FileProcessors\models\TestExample.cs" />
+    <Compile Include="FileProcessors\models\TestProblem.cs" />
     <Compile Include="FileProcessors\readers\FileReader1.cs" />
     <Compile Include="FileProcessors\readers\FileReader2.cs" />
     <Compile Include="FileProcessors\readers\FileReader3.cs" />
@@ -151,6 +153,8 @@
     <Compile Include="FileProcessors\writers\FileWriter4.cs" />
     <Compile Include="FileProcessors\writers\PartFive3_4\FileWriter5.cs" />
     <Compile Include="FileProcessors\writers\BuildEnvironment\TestEnvChartHelper.cs" />
+    <Compile Include="FileProcessors\writers\SystemSummary.cs" />
+    <Compile Include="FileProcessors\writers\SystemTest\FileWriter11.cs" />
     <Compile Include="InputProcessors\BasicInfoProcessor.cs" />
     <Compile Include="InputProcessors\DemandAnaProcessor.cs" />
     <Compile Include="InputProcessors\DesignAndExeProcessor.cs" />

@@ -242,6 +242,8 @@ namespace CSSTC1.ConstantVariables {
         //测试就绪评审会议签到表2
         public static int djhj_hyqdb_section1 = 18;
         /******************************搭建环境部分结束**************************/
+
+        /******************************配置测试部分开始**************************/
         //首轮配置项测试第一张入库申请表格位置
         public static int pzcs_rksqd_section = 17;
         public static int pzcs_rksqd_sec_table = 0;
@@ -257,5 +259,22 @@ namespace CSSTC1.ConstantVariables {
         //配置项回归测试第二张入库申请表位置
         public static int pzcs_rksqd_section1 = 23;
         public static int pzcs_rksqd_section2 = 27;
+        /******************************配置测试部分结束**************************/
+
+        /******************************系统测试部分开始**************************/
+        public static int xtcs_section = 17;
+        public static int xtcs_bcjqd_sec_table = 0;
+        public static int xtcs_bcjdbd_sec_table = 1;
+        //系统回归测试环境确认单
+        public static int xtcs_cshjqr_section1 = 19;
+        public static int xtcs_cshjhc_section1 = 20;
+        public static int xtcs_csgjqr_sec_table = 0;
+        public static int xtcs_csgjhc_sec_table = 0;
+        //系统回归测试被测件清单
+        public static int xtcs_section1 = 27;
+        //系统回归测试环境确认单
+        public static int xtcs_cshjqr_section2 = 29;
+        public static int xtcs_cshjhc_section2 = 30;
+        /******************************系统测试部分结束**************************/
     }
 }

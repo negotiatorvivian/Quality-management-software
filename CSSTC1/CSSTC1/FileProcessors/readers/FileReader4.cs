@@ -10,6 +10,7 @@ using System.Windows;
 using CSSTC1.FileProcessors.writers;
 using CSSTC1.FileProcessors.writers.part3_4;
 using CSSTC1.FileProcessors.writers.CodeReview_Walkthrough;
+using CSSTC1.FileProcessors.writers.SystemTest;
 
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader4 {
@@ -53,6 +54,21 @@ namespace CSSTC1.FileProcessors.readers {
                 count += 1;
                 List<DynamicHardwareItems> system_hardwares = this.read_xtyjhj_chart(doc, doc_builder, count);
                 count += 1;
+                ContentFlags.system_softwares = system_softwares;
+                ContentFlags.system_hardwares = system_hardwares;
+            }
+            this.read_csyl_chart(doc, doc_builder, count, ContentFlags.pro_infos.Count);
+            count += ContentFlags.pro_infos.Count;
+            Dictionary<string, List<TestProblem>> problem_dict = this.read_cswt_chart(doc, doc_builder, count,
+                ContentFlags.pro_infos.Count);
+            ContentFlags.problems = problem_dict;
+            count += ContentFlags.pro_infos.Count;
+            if(ContentFlags.xitongceshi > 0){
+                this.read_csyl_chart(doc, doc_builder, count, 1);
+                count += 1;
+                Dictionary<string, List<TestProblem>> system_problem_dict = this.read_cswt_chart(doc, doc_builder, 
+                    count, 1);
+                ContentFlags.system_problems = system_problem_dict;
             }
             this.writer = new FileWriter4(ContentFlags.static_files, software_table,
                 hardware_table);
@@ -63,8 +79,7 @@ namespace CSSTC1.FileProcessors.readers {
             if(ContentFlags.daimazoucha > 0){
                 this.writer2 = new FileWriter7("代码走查", hardware_table);
             }
-            if(ContentFlags.xitongceshi > 0){
-            }
+
             MessageBox.Show("信息填写结束!");
             return true;
         }
@@ -156,7 +171,8 @@ namespace CSSTC1.FileProcessors.readers {
         }
 
         //系统动态测试环境硬件项表格
-        public List<DynamicHardwareItems> read_xtyjhj_chart(Document doc, DocumentBuilder doc_builder, int index) {
+        public List<DynamicHardwareItems> read_xtyjhj_chart(Document doc, DocumentBuilder doc_builder, 
+            int index) {
             int row_index = 1;
             List<DynamicHardwareItems> hardware_items = new List<DynamicHardwareItems>();
             Table table = (Table)doc.GetChild(NodeType.Table, index, true);
@@ -181,6 +197,87 @@ namespace CSSTC1.FileProcessors.readers {
                 hardware_items.Add(item);
             }
             return hardware_items;
+        }
+
+        //测试用例表格
+        public void read_csyl_chart(Document doc, DocumentBuilder doc_builder, int index, int number) {
+            Dictionary<string, List<TestExample>> examples = new Dictionary<string,List<TestExample>>();
+            for(int i = 0; i < number; i++){
+                List<TestExample> example_list = new List<TestExample>(); 
+                string key = "";
+                if(number == 1){
+                    Bookmark mark = doc.Range.Bookmarks["软件名称"];
+                    if(mark != null)
+                        key = mark.Text;
+                    }
+                else
+                    key = ContentFlags.pro_infos[i].rj_mingcheng;
+                Table table = (Table)doc.GetChild(NodeType.Table, index + i, true);
+                for(int j = 2; j < table.Rows.Count - 2; j ++){
+                    Row row = table.Rows[j];
+                    string type = row.Cells[0].Range.Text;
+                    type = type.Substring(0, type.Length - 1);
+                    string sjyl_num = row.Cells[1].Range.Text;
+                    sjyl_num = sjyl_num.Substring(0, sjyl_num.Length - 1);
+                    string sjyl_percent = row.Cells[2].Range.Text;
+                    sjyl_percent = sjyl_percent.Substring(0, sjyl_percent.Length - 1);
+                    string zxyl_num = row.Cells[3].Range.Text;
+                    zxyl_num = zxyl_num.Substring(0, zxyl_num.Length - 1);
+                    string wtgyl_num = row.Cells[4].Range.Text;
+                    wtgyl_num = wtgyl_num.Substring(0, wtgyl_num.Length - 1);
+                    TestExample temp = new TestExample(type, sjyl_num, sjyl_percent, zxyl_num, wtgyl_num);
+                    example_list.Add(temp);
+                }
+                examples.Add(key, example_list);
+            }
+            if(ContentFlags.example_dict.Count > 0)
+                ContentFlags.example_dict.Concat(examples);
+            else
+                ContentFlags.example_dict = examples;
+        }
+
+        //测试问题表格
+        public Dictionary<string, List<TestProblem>> read_cswt_chart(Document doc, DocumentBuilder doc_builder, 
+            int index, int number) {
+            Dictionary<string, List<TestProblem>> problems = new Dictionary<string, List<TestProblem>>();
+            for(int i = 0; i < number; i++){
+                List<TestProblem> problem_list = new List<TestProblem>(); 
+                string key = ContentFlags.pro_infos[i].rj_mingcheng;
+                Table table = (Table)doc.GetChild(NodeType.Table, index + i, true);
+                for(int j = 2; j < table.Rows.Count - 2; j += 4){
+                    string type = table.Rows[j].Cells[0].Range.Text;
+                    type = type.Substring(0, type.Length - 1);
+                    List<List<int>> rows = new List<List<int>>();
+                    
+                    for(int k = j; k < 4 + j; k++) {
+                        Row row = table.Rows[k];
+                        List<int> temp_list = new List<int>();
+                        string sjwt_num = row.Cells[2].Range.Text;
+                        sjwt_num = sjwt_num.Substring(0, sjwt_num.Length - 1);
+                        temp_list.Add(int.Parse(sjwt_num));
+                        string cxwt_num = row.Cells[3].Range.Text;
+                        cxwt_num = cxwt_num.Substring(0, cxwt_num.Length - 1);
+                        temp_list.Add(int.Parse(cxwt_num));
+                        string wdwt_num = row.Cells[4].Range.Text;
+                        wdwt_num = wdwt_num.Substring(0, wdwt_num.Length - 1);
+                        temp_list.Add(int.Parse(wdwt_num));
+                        string qtwt_num = row.Cells[5].Range.Text;
+                        qtwt_num = qtwt_num.Substring(0, qtwt_num.Length - 1);
+                        temp_list.Add(int.Parse(qtwt_num));
+                        string glwt_num = row.Cells[6].Range.Text;
+                        glwt_num = glwt_num.Substring(0, glwt_num.Length - 1);
+                        temp_list.Add(int.Parse(glwt_num));
+                        string ylwt_num = row.Cells[6].Range.Text;
+                        ylwt_num = ylwt_num.Substring(0, ylwt_num.Length - 1);
+                        temp_list.Add(int.Parse(ylwt_num));
+                        rows.Add(temp_list);
+                    }
+                    TestProblem temp = new TestProblem(type, rows[0], rows[1], rows[2], rows[3]);
+                    problem_list.Add(temp);
+                }
+                problems.Add(key, problem_list);
+            }
+            return problems;
         }
     }
 }

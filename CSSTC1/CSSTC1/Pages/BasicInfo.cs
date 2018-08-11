@@ -50,7 +50,7 @@ namespace CSSTC1.Pages {
             this.xtcs_huiguishijian.Enabled = this.checkBox8.Checked;
         }
 
-        //首轮动态测试时间
+        //配置项首轮动态测试时间
         private void dtpz_shoulunshijian_ValueChanged(object sender, EventArgs e) {
             TimeStamp.sldtcs_format_time = this.dtpz_shoulunshijian.Value.ToLongDateString();
             TimeStamp.sldtcs_time = this.dtpz_shoulunshijian.Value.ToShortDateString();
@@ -257,6 +257,9 @@ namespace CSSTC1.Pages {
             else
                 ContentFlags.luojiceshi = 0;
             if(this.checkBox8.Checked) {
+                //系统首轮测试时间
+                TimeStamp.slxtcs_time = this.xtcs_shoulunshijian.Value.ToShortDateString();
+                TimeStamp.slxtcs_format_time = this.xtcs_shoulunshijian.Value.ToLongDateString();
                 //系统测试回归时间
                 TimeStamp.xthgcs_time = this.xtcs_huiguishijian.Value.ToShortDateString();
                 TimeStamp.xthgcs_format_time = this.xtcs_huiguishijian.Value.ToLongDateString();

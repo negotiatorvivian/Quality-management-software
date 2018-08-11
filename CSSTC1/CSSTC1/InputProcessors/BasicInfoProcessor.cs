@@ -36,12 +36,14 @@ namespace CSSTC1.InputProcessors {
             string year = values[values.Length - 2].Substring(0, 4);
             doc_builder.MoveToBookmark("年份");
             doc_builder.Write(year);
-            this.fill_test_accordings(test_accordings);
+            doc_builder.MoveToBookmark("年份正文");
+            doc_builder.Write(year);
+            this.fill_test_accordings(doc, doc_builder, test_accordings);
             this.change_file_structure(doc, doc_builder);
             doc.Save(FileConstants.save_root_file);
         }
 
-        public void fill_test_accordings(bool[] test_accordings) {
+        public void fill_test_accordings(Document doc, DocumentBuilder doc_builder, bool[] test_accordings) {
             string ceshiyiju = "";
             for(int i = 0; i < test_accordings.Length; i++){
                 bool flag = test_accordings[i];
@@ -51,13 +53,9 @@ namespace CSSTC1.InputProcessors {
             }
             if(ceshiyiju.Length > 0){
                 ceshiyiju = ceshiyiju.Substring(0, ceshiyiju.Length - 1);
-                Document doc = new Document(FileConstants.save_root_file);
-                DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            
                 if(doc_builder.MoveToBookmark("测试依据")){
                     doc_builder.Write(ceshiyiju);
                 }
-                doc.Save(FileConstants.save_root_file);
             }
        }
 

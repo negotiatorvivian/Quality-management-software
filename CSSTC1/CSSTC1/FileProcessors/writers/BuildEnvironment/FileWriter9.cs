@@ -74,6 +74,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 InsertionPos.djhj_cshjqr_section1, InsertionPos.djhj_cshjqr_sec_table, this.time_diff);
             helper.write_csgjhsbhcd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
                 InsertionPos.djhj_cshjhc_section1, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff);
+            ContentFlags.beiceruanjianshuliang1 = ruanjianpeizhi_dict.Count;
             this.time_diff.Add(ContentFlags.beiceruanjianshuliang1 * 2);
             //this.merge_location(doc, doc_builder, "搭建环境配置状态报告单1");
             int index = InsertionPos.djhj_hyqdb_section1;

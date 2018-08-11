@@ -56,6 +56,20 @@ namespace CSSTC1.InputProcessors {
                 if(doc_builder.MoveToBookmark("逻辑测试时间"))
                     doc_builder.Write(ljcs_lxwtf_time1);
             }
+            if(ContentFlags.xitongceshi > 0){
+                string xtcs_lxwtf_time = DateHelper.cal_time(TimeStamp.slxtcs_time, 3);
+                if(doc_builder.MoveToBookmark("联系委托方第十次"))
+                    doc_builder.Write(xtcs_lxwtf_time);
+                if(doc_builder.MoveToBookmark("系统测试时间"))
+                    doc_builder.Write(TimeStamp.slxtcs_format_time);
+                if(ContentFlags.xitonghuiguiceshi > 0){
+                    string xthgcs_time = DateHelper.cal_time(TimeStamp.xthgcs_time, 3);
+                    if(doc_builder.MoveToBookmark("联系委托方第十一次"))
+                        doc_builder.Write(xthgcs_time);
+                    if(doc_builder.MoveToBookmark("系统回归测试时间"))
+                        doc_builder.Write(TimeStamp.xthgcs_format_time);
+                }
+            }
             doc.Save(FileConstants.save_root_file);
             return true;
 
