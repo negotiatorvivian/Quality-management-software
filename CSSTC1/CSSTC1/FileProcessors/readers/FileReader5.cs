@@ -11,6 +11,7 @@ using System.Windows;
 using CSSTC1.FileProcessors.writers.BuildEnvironment;
 using CSSTC1.FileProcessors.writers.ConfigurationItemTest;
 using CSSTC1.FileProcessors.writers.SystemTest;
+using CSSTC1.FileProcessors.writers;
 
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader5 {
@@ -18,6 +19,7 @@ namespace CSSTC1.FileProcessors.readers {
         private FileWriter9 writer1;
         private FileWriter10 writer2;
         private FileWriter11 writer3;
+        private SuperviseRecord system_sum;
         private bool flag;
         public FileReader5(bool twice){
             this.flag = twice;
@@ -62,6 +64,7 @@ namespace CSSTC1.FileProcessors.readers {
                             ContentFlags.system_hardwares);
                     }
                 }
+                this.system_sum = new SuperviseRecord();
             }
             else{
                 this.writer1 = new FileWriter9(ruanjianpeizhi_dict, yingjianpeizhi_dict);
@@ -71,7 +74,7 @@ namespace CSSTC1.FileProcessors.readers {
                     this.writer3 = new FileWriter11(ContentFlags.system_softwares, ContentFlags.system_hardwares);
                 }
             }
-            
+            MessageBox.Show("填写完成");            
         }
 
         //配置项动态测试软件环境表格

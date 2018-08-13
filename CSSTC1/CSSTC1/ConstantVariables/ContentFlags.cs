@@ -11,20 +11,26 @@ namespace CSSTC1.ConstantVariables {
         //评审组成员
         public static List<string> pingshenzuchengyuan = new List<string>();
         #region 项目立项阶段
+        public static float code_line = 0;
+        //配置项测试节数
         public static int peizhiceshi = 12;
-        public static int xitongceshi = 20;
+        //系统首轮测试
+        public static int xitongceshi = 10;
         public static List<ProjectInfo> pro_infos = new List<ProjectInfo>();
+        //所有的文档（包含多个版本）
         public static List<FileList> all_file_lists = new List<FileList>();
-       
-
         //测试类型
         public static HashSet<string> test_types = new HashSet<string>();
+        //文档命名计数
+        public static Dictionary<string, int> file_counter = new Dictionary<string, int>();
+        public static Dictionary<string, int> file_type_counter = new Dictionary<string, int>();
         //立项阶段被测件清单
         public static Dictionary<string, FileList> beicejianqingdan_dict = new Dictionary<string, FileList>();
+        //入库文档合集（key为文档名称）
+        public static Dictionary<string, string> rukuwendang_dict = new Dictionary<string, string>();
         //被测件领取次数
         public static int lingqucishu = 2;
-        ////指示节复制次数
-        //public static int copy = 0;
+
         //是否偏离
         public static int pianli_1 = 1;
         #endregion
@@ -77,6 +83,7 @@ namespace CSSTC1.ConstantVariables {
         public static List<SoftwareItems> system_softwares = new List<SoftwareItems>();
         public static List<DynamicHardwareItems> system_hardwares = new List<DynamicHardwareItems>();
 
+        public static Dictionary<string, string> sys_time_dict = new Dictionary<string,string>();
         //是否有偏离报告
         public static int pianli_3 = 1;
         //是否有文档审查

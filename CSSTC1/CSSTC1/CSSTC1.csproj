@@ -151,9 +151,10 @@
     <Compile Include="FileProcessors\models\ProjectInfo.cs" />
     <Compile Include="FileProcessors\models\TableCell.cs" />
     <Compile Include="FileProcessors\writers\FileWriter4.cs" />
-    <Compile Include="FileProcessors\writers\PartFive3_4\FileWriter5.cs" />
+    <Compile Include="FileProcessors\writers\TestSpecificationReview\FileWriter5.cs" />
     <Compile Include="FileProcessors\writers\BuildEnvironment\TestEnvChartHelper.cs" />
-    <Compile Include="FileProcessors\writers\SystemSummary.cs" />
+    <Compile Include="FileProcessors\writers\ProjectSummary.cs" />
+    <Compile Include="FileProcessors\writers\SuperviseRecord.cs" />
     <Compile Include="FileProcessors\writers\SystemTest\FileWriter11.cs" />
     <Compile Include="InputProcessors\BasicInfoProcessor.cs" />
     <Compile Include="InputProcessors\DemandAnaProcessor.cs" />

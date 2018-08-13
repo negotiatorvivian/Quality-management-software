@@ -57,19 +57,25 @@ namespace CSSTC1.FileProcessors.readers {
                 ContentFlags.system_softwares = system_softwares;
                 ContentFlags.system_hardwares = system_hardwares;
             }
+            //软件测试用例
             this.read_csyl_chart(doc, doc_builder, count, ContentFlags.pro_infos.Count);
             count += ContentFlags.pro_infos.Count;
+            //软件测试问题
             Dictionary<string, List<TestProblem>> problem_dict = this.read_cswt_chart(doc, doc_builder, count,
                 ContentFlags.pro_infos.Count);
             ContentFlags.problems = problem_dict;
             count += ContentFlags.pro_infos.Count;
             if(ContentFlags.xitongceshi > 0){
+                //系统测试用例
                 this.read_csyl_chart(doc, doc_builder, count, 1);
                 count += 1;
+                //系统测试问题
                 Dictionary<string, List<TestProblem>> system_problem_dict = this.read_cswt_chart(doc, doc_builder, 
                     count, 1);
                 ContentFlags.system_problems = system_problem_dict;
+                count += 1;
             }
+            ContentFlags.sys_time_dict = this.read_system_time_chart(doc, doc_builder, count);
             this.writer = new FileWriter4(ContentFlags.static_files, software_table,
                 hardware_table);
             this.writer1 = new FileWriter5(reports);
@@ -267,7 +273,7 @@ namespace CSSTC1.FileProcessors.readers {
                         string glwt_num = row.Cells[6].Range.Text;
                         glwt_num = glwt_num.Substring(0, glwt_num.Length - 1);
                         temp_list.Add(int.Parse(glwt_num));
-                        string ylwt_num = row.Cells[6].Range.Text;
+                        string ylwt_num = row.Cells[7].Range.Text;
                         ylwt_num = ylwt_num.Substring(0, ylwt_num.Length - 1);
                         temp_list.Add(int.Parse(ylwt_num));
                         rows.Add(temp_list);
@@ -278,6 +284,50 @@ namespace CSSTC1.FileProcessors.readers {
                 problems.Add(key, problem_list);
             }
             return problems;
+        }
+
+        //系统时间表
+        public Dictionary<string, string> read_system_time_chart(Document doc, DocumentBuilder doc_builder, 
+           int index){
+            Table table = (Table)doc.GetChild(NodeType.Table, index, true);
+            Dictionary<string, string> sys_time_dict = new Dictionary<string,string>();
+            string xqfx_time = table.Rows[1].Cells[1].Range.Text;
+            xqfx_time = xqfx_time.Substring(0, xqfx_time.Length - 1);
+            sys_time_dict.Add("需求分析阶段", xqfx_time);
+            string csch_time = table.Rows[2].Cells[1].Range.Text;
+            csch_time = csch_time.Substring(0, csch_time.Length - 1);
+            sys_time_dict.Add("策划阶段", csch_time);
+            string cssj_time = table.Rows[3].Cells[1].Range.Text;
+            cssj_time = cssj_time.Substring(0, cssj_time.Length - 1);
+            sys_time_dict.Add("设计阶段", cssj_time);
+            int row_index1 = 4;
+            for(int i = row_index1; i < table.Rows.Count - row_index1; i++) {
+                Row row = table.Rows[i];
+                Cell cur_cell = row.Cells[2];
+                if(cur_cell.CellFormat.VerticalMerge == CellMerge.Previous){
+                    row_index1 = i - 1;
+                    break;
+                }
+            }
+            for(int i = row_index1; i < 5 + row_index1; i++) {
+                Row row = table.Rows[i];
+                Cell pre_cell = row.Cells[1];
+                Cell cur_cell = row.Cells[3];
+                string value = pre_cell.GetText();
+                string key = cur_cell.GetText();
+                if(!sys_time_dict.ContainsKey(key))
+                    sys_time_dict.Add(key, value);
+                else 
+                    break;
+            }
+            int count = table.Rows.Count - 3;
+            if(ContentFlags.xitongceshi > 0) {
+                string xtcs_time = table.Rows[count].Cells[1].GetText();
+                sys_time_dict.Add("系统测试", xtcs_time);
+            }
+            string zjjd_time = table.Rows[count + 1].Cells[1].GetText();
+            sys_time_dict.Add("总结阶段", zjjd_time);
+            return sys_time_dict;
         }
     }
 }

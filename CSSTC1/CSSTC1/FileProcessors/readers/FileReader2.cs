@@ -13,6 +13,13 @@ using CSSTC1.ConstantVariables;
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader2 {
         private FileWriter2 writer = new FileWriter2();
+        private ProjectSummary writer1 = new ProjectSummary();
+        private bool flag = false;
+        public FileReader2(bool flag){
+            if(flag)
+                this.flag = flag;
+        }
+
         public void read_charts(string filepath){
             Document doc = new Document(filepath);
             List<QestionReport> ns_reports = new List<QestionReport>();
@@ -26,8 +33,12 @@ namespace CSSTC1.FileProcessors.readers {
                 ns_reports = this.read_dg_chart(t0);
                 Table t1 = (Table)nodes[1];
                 ws_reports = this.read_dg_chart(t1);
-                writer.write_charts(ns_reports, ws_reports);
+                if(this.flag)
+                    writer.write_charts(ns_reports, ws_reports);
+                else
+                    this.writer1.write_charts(ns_reports, ws_reports);
             }
+            MessageBox.Show("填写完成");
         }
 
         public List<QestionReport> read_dg_chart(Table t) {

@@ -31,7 +31,7 @@ namespace CSSTC1.FileProcessors.writers {
             if(res2)
                 this.write_wtzz_chart(doc, doc_builder, ws_report, InsertionPos.csxqws_section,
                 InsertionPos.csxqws_sec_table2, InsertionPos.csxqws_solu_row);
-            this.write_pzgg_chart(doc, doc_builder, ws_report);
+            this.write_pzgg_chart(doc, doc_builder, ws_report, "测试说明与计划更改内容");
             doc.Save(FileConstants.save_root_file);
 
             MessageBox.Show("需求规格与说明文件读取完成");
@@ -77,13 +77,19 @@ namespace CSSTC1.FileProcessors.writers {
             return true;
         }
 
-        public void write_pzgg_chart(Document doc, DocumentBuilder doc_builder, List<QestionReport> files){
+
+        //配置状态更改表
+        public void write_pzgg_chart(Document doc, DocumentBuilder doc_builder, List<QestionReport> files,
+            string bookmark) {
+            string solutions = "";
             foreach(QestionReport report in files) {
-                string temp = report.wenti;
-                this.questions += temp + '\n';
+                string temp = report.chulicuoshi;
+                if(temp.Contains("已采纳"))
+                    temp = temp.Substring(5, temp.Length - 5);
+                solutions += temp + '\n';
             }
-            if(doc_builder.MoveToBookmark("测试说明与计划更改内容"))
-                doc_builder.Write(this.questions);
+            if(doc_builder.MoveToBookmark(bookmark))
+                doc_builder.Write(solutions);
         }
 
         //会议签到表

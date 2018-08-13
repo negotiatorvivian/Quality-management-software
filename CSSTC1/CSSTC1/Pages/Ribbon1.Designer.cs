@@ -54,6 +54,7 @@
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog5 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog6 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog7 = new System.Windows.Forms.OpenFileDialog();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.group2.SuspendLayout();
@@ -200,6 +201,7 @@
             this.button4.Label = "测试总结阶段";
             this.button4.Name = "button4";
             this.button4.ShowImage = true;
+            this.button4.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button4_Click);
             // 
             // group2
             // 
@@ -232,6 +234,22 @@
             // openFileDialog4
             // 
             this.openFileDialog4.FileName = "测试设计与执行阶段表格";
+            this.openFileDialog4.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
+            // 
+            // openFileDialog5
+            // 
+            this.openFileDialog5.DefaultExt = "doc";
+            this.openFileDialog5.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
+            // 
+            // openFileDialog6
+            // 
+            this.openFileDialog6.DefaultExt = "doc";
+            this.openFileDialog6.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
+            // 
+            // openFileDialog7
+            // 
+            this.openFileDialog7.DefaultExt = "doc";
+            this.openFileDialog7.Filter = "所有word文档|*.doc; *.docx; *.dot; *.dotx|所有文件|*.*";
             // 
             // Ribbon1
             // 
@@ -276,6 +294,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button12;
         private System.Windows.Forms.OpenFileDialog openFileDialog5;
         private System.Windows.Forms.OpenFileDialog openFileDialog6;
+        private System.Windows.Forms.OpenFileDialog openFileDialog7;
     }
 
 }

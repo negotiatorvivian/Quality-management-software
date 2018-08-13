@@ -65,8 +65,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     count += 1;
                 }
             }
-            int sum = table.Rows.Count;
-            table.Rows[sum - 1].Remove();
+            table.Rows[row_index].Remove();
         }
 
         //测试环境被测件清单表格
@@ -96,6 +95,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                     string id = key.yj_bianhao;
                     doc_builder.Write(id);
+                    //合并日期列
                     doc_builder.MoveToCell(sec_table_index, 1,
                             InsertionPos.sj_bcjqd_date_row, 0);
                     doc_builder.CellFormat.VerticalMerge = CellMerge.First;
@@ -122,9 +122,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     }
                     row_index += 1;
                 }
-                //Dictionary<string, SoftwareItems> files = this.set_file_id(doc, doc_builder, softwares[i]);
                 int count = 0;
-                //List<string> file_ids = files.Select(r => r.Key).ToList();
                 doc_builder.MoveToSection(cur_section);
 
                 foreach(SoftwareItems key in softwares[i]) {  //某个软件的软件配置
@@ -140,6 +138,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                     //string id = file_ids[count];
                     doc_builder.Write(key.rj_bianhao);
+                    //合并日期列
                     doc_builder.MoveToCell(sec_table_index, 1,
                             InsertionPos.sj_bcjqd_date_row, 0);
                     doc_builder.CellFormat.VerticalMerge = CellMerge.First;
@@ -210,7 +209,6 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                     row_index += 1;
                 }
-                //Dictionary<string, SoftwareItems> files = this.set_file_id(doc, doc_builder, softwares[i]);
                 int count = 0;
                 //List<string> file_ids = files.Select(r => r.Key).ToList();
                 //this.files_ids.Add(file_ids);
@@ -318,7 +316,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
         //软件动态测试配置项工具或设备核查单
         public void write_csgjhsbhcd_chart(Document doc, DocumentBuilder doc_builder, 
             Dictionary<string, List<SoftwareItems>> new_dict, Dictionary<string, List<DynamicHardwareItems>>
-            new_dict1, int section_index, int sec_table_index, int row_index, List<int> time_diff) {
+            new_dict1, int section_index, int sec_table_index, int row_index, List<int> time_diff, bool flag) {
             int cur_section = section_index;
             foreach(int i in time_diff) {
                 cur_section += i;
@@ -380,24 +378,40 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             foreach(DynamicHardwareItems hardware in hardware_list) {
                 var row = hard_table.Rows[row_index].Clone(true);
                 hard_table.Rows.Insert(row_index + 1, row);
-                doc_builder.MoveToCell(sec_table_index, row_index, cell_index, 0);
-                doc_builder.Write(hardware.yj_mingcheng + '\n' + hardware.yj_peizhi);
-                doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 1, 0);
-                doc_builder.Write(hardware.yj_yongtu);
-                doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 2, 0);
-                doc_builder.Write(hardware.yj_bianhao);
-               
-                Cell pre_cell = hard_table.Rows[merge_cell].Cells[4];
+                int oringin_row_index = 0;
+                if(flag){//表头含有数量一列
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index, 0);
+                    doc_builder.Write(hardware.yj_mingcheng);
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 1, 0);
+                    doc_builder.Write(hardware.yj_bianhao);
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 2, 0);
+                    doc_builder.Write(hardware.yj_shuliang);
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 3, 0);
+                    doc_builder.Write(hardware.yj_yongtu);
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 4, 0);
+                    doc_builder.Write(hardware.yj_peizhi);
+                    oringin_row_index = 6;
+                }
+                else{
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index, 0);
+                    doc_builder.Write(hardware.yj_mingcheng + '\n' + hardware.yj_peizhi);
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 1, 0);
+                    doc_builder.Write(hardware.yj_yongtu);
+                    doc_builder.MoveToCell(sec_table_index, row_index, cell_index + 2, 0);
+                    doc_builder.Write(hardware.yj_bianhao);
+                    oringin_row_index = 4;
+                }
+                Cell pre_cell = hard_table.Rows[merge_cell].Cells[oringin_row_index];
                 string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
                 if(temp.Equals(hardware.wd_laiyuan)) {
                     //合并来源列
-                    doc_builder.MoveToCell(sec_table_index, merge_cell, 4, 0);
+                    doc_builder.MoveToCell(sec_table_index, merge_cell, oringin_row_index, 0);
                     doc_builder.CellFormat.VerticalMerge = CellMerge.First;
-                    doc_builder.MoveToCell(sec_table_index, row_index, 4, 0);
+                    doc_builder.MoveToCell(sec_table_index, row_index, oringin_row_index, 0);
                     doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                 }
                 else {
-                    doc_builder.MoveToCell(sec_table_index, row_index, 4, 0);
+                    doc_builder.MoveToCell(sec_table_index, row_index, oringin_row_index, 0);
                     doc_builder.Write(hardware.wd_laiyuan);
                     merge_cell = row_index;
                 }

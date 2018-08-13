@@ -130,11 +130,11 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
                 InsertionPos.dmsc_bcjdbd_sec_table1, 1, InsertionPos.sj_bcjdbd_name_row, 
                 InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
             ChartHelper.write_rksqd_chart(doc, doc_builder, dict, InsertionPos.dmsc_bcjqd_section,
-                InsertionPos.dmsc_bcjlqqd_sec_table1, 2, InsertionPos.sj_bcjdbd_name_row,
-                InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
+                InsertionPos.dmsc_bcjlqqd_sec_table1, 2, InsertionPos.sj_bcjdbd_name_row, 
+                InsertionPos.sj_code_row_index, InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
             ChartHelper.write_rksqd_chart(doc, doc_builder, dict, InsertionPos.dmsc_bcjqd_section,
-                InsertionPos.dmsc_rksqd_sec_table1, 3, InsertionPos.sj_rksqd_name_row,
-                InsertionPos.sj_rksqd_iden_row, this.time_diff);
+                InsertionPos.dmsc_rksqd_sec_table1, 3, InsertionPos.sj_rksqd_name_row, 
+                InsertionPos.sj_code_row_index, InsertionPos.sj_rksqd_iden_row, this.time_diff);
             this.write_pzbbd_chart(doc, doc_builder, code_review_list, bookmark2);
             
             return true;
@@ -154,6 +154,7 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
 
         //填写第一个配置报告单
         public void write_pzbbd_chart(Document doc, DocumentBuilder doc_builder,
+
             List<StaticAnalysisFile> code_review_list, string bookmark) {
             string text = "";
             foreach(StaticAnalysisFile file in code_review_list) {
@@ -284,11 +285,11 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
                 InsertionPos.dmsc_bcjdbd_sec_table1, 1, InsertionPos.sj_bcjdbd_name_row,
                 InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
             ChartHelper.write_rksqd_chart(doc, doc_builder, dict, InsertionPos.dmsc_bcjqd_section1,
-                InsertionPos.dmsc_bcjlqqd_sec_table1, 2, InsertionPos.sj_bcjdbd_name_row,
-                InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
+                InsertionPos.dmsc_bcjlqqd_sec_table1, 2, InsertionPos.sj_bcjdbd_name_row, 
+                ContentFlags.missing, InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
             ChartHelper.write_rksqd_chart(doc, doc_builder, dict, InsertionPos.dmsc_bcjqd_section1,
-                InsertionPos.dmsc_rksqd_sec_table1, 3, InsertionPos.sj_rksqd_name_row,
-                InsertionPos.sj_rksqd_iden_row, this.time_diff);
+                InsertionPos.dmsc_rksqd_sec_table1, 3, InsertionPos.sj_rksqd_name_row, 
+                InsertionPos.sj_code_row_index, InsertionPos.sj_rksqd_iden_row, this.time_diff);
             return true;
         }
 

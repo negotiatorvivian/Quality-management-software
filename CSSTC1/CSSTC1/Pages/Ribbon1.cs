@@ -15,7 +15,7 @@ using CSSTC1.CommonUtils;
 namespace CSSTC1.Pages {
     public partial class Ribbon1 {
         public FileReader1 file_reader = new FileReader1();
-        public FileReader2 file_reader2 = new FileReader2();
+        public FileReader2 file_reader2;
         public FileReader3 file_reader3 = new FileReader3();
         public FileReader4 file_reader4 = new FileReader4();
         public FileReader5 file_reader5;
@@ -50,6 +50,7 @@ namespace CSSTC1.Pages {
         private void button9_Click(object sender, RibbonControlEventArgs e) {
             if(ContentFlags.ceshidagang) {
                 if(openFileDialog2.ShowDialog() == DialogResult.OK) {
+                    this.file_reader2 = new FileReader2(true);
                     string read_in_file = openFileDialog2.FileName;
                     file_reader2.read_charts(read_in_file);
                 }
@@ -118,6 +119,8 @@ namespace CSSTC1.Pages {
             this.button11.Enabled = false;
             if(TimeStamp.csjxps_format_time.Count > 1)
                 this.button12.Enabled = true;
+            else
+                this.button4.Enabled = true;
         }
 
         private void button12_Click(object sender, RibbonControlEventArgs e) {
@@ -128,10 +131,17 @@ namespace CSSTC1.Pages {
             }
             this.button12.Enabled = false;
             this.button8.Enabled = true;
+            this.button4.Enabled = true;
         }
 
-        
+        private void button4_Click(object sender, RibbonControlEventArgs e) {
+            if(openFileDialog7.ShowDialog() == DialogResult.OK) {
+                this.file_reader2 = new FileReader2(false);
+                string read_in_file = openFileDialog7.FileName;
+                file_reader2.read_charts(read_in_file);
+            }
+            this.button4.Enabled = false;
+        }
 
-        
     }
 }

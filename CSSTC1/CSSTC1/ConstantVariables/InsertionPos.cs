@@ -148,6 +148,9 @@ namespace CSSTC1.ConstantVariables {
         //测试设计与执行第二个入库申请单位置
         public static int sj_rksqd_section2 = 10;
         public static int sj_rksqd_sec_table2 = 3;
+        //编程语言列
+        public static int sj_code_row_index = 2;
+
         //测试设计与执行第一个测试工具或设备确认表位置
         public static int sj_csgjqr_section = 12;
         public static int sj_csgjqr_sec_table = 0;
@@ -257,8 +260,8 @@ namespace CSSTC1.ConstantVariables {
         public static int pzcs_cshjqr_section1 = 21;
         public static int pzcs_cshjhc_section1 = 22;
         //配置项回归测试第二张入库申请表位置
-        public static int pzcs_rksqd_section1 = 23;
-        public static int pzcs_rksqd_section2 = 27;
+        public static int pzcs_rksqd_section1 = 22;
+        public static int pzcs_rksqd_section2 = 26;
         /******************************配置测试部分结束**************************/
 
         /******************************系统测试部分开始**************************/
@@ -276,5 +279,32 @@ namespace CSSTC1.ConstantVariables {
         public static int xtcs_cshjqr_section2 = 29;
         public static int xtcs_cshjhc_section2 = 30;
         /******************************系统测试部分结束**************************/
+
+        /******************************项目总结部分开始**************************/
+        //内审意见表
+        public static int xtzj_jdcp_section = 17;
+        public static int xtzj_hyqdb_sec_table = 1;
+        public static int xtzj_wtbg_sec_table = 2;
+        public static int xtzj_wtzz_sec_table = 3;
+        //外审意见表
+        public static int xtzj_jdcp_section1 = 19;
+        //出库申请单
+        public static int xtzj_cksqd_section = 24;
+        public static int xtzj_cksqd_section1 = 26;
+        public static int xtzj_cksqd_sec_table = 0;
+        //第一个出库申请单文档审查记录起始位置
+        public static int xtzj_wdscjl_row_index1 = 8;
+        //第二个出库申请单文档审查记录起始位置
+        public static int xtzj_wdscjl_row_index2 = 6;
+
+        //第一个入库申请单软件测试执行记录附件起始位置
+        public static int xtzj_cszxjl_row_index1 = 9;
+        //第二个入库申请单软件测试执行记录附件起始位置
+        public static int xtzj_cszxjl_row_index2 = 7;
+
+        //第二个出库申请单测试说明附件起始位置
+        public static int xtzj_cssmfj_row_index2 = 5;
+        
+        /******************************项目总结部分结束**************************/
     }
 }

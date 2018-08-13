@@ -13,7 +13,7 @@ using CSSTC1.InputProcessors;
 
 namespace CSSTC1.Pages {
     public partial class DemandAnalysis : Form {
-        private FileReader2 reader1 = new FileReader2();
+        private FileReader2 reader1 = new FileReader2(true);
         private FileReader3 reader2 = new FileReader3();
         private DemandAnaProcessor processor = new DemandAnaProcessor();
 

@@ -18,15 +18,14 @@ namespace CSSTC1.FileProcessors.writers {
             bool res = this.write_csdgnswt_chart(doc, doc_builder, ns_report);
             if(res)
                 this.write_csdgnswtzz_chart(doc, doc_builder, ns_report);
-            doc.Save(FileConstants.save_root_file);
+            //doc.Save(FileConstants.save_root_file);
             bool res1 = this.write_csdgwswt_chart(doc, doc_builder, ws_report);
             if(res1)
                 this.write_csdgwswtzz_chart(doc, doc_builder, ws_report);
             this.write_file_list(doc, doc_builder, InsertionPos.pzgljh_section,
                 InsertionPos.pzgljh_sec_table, ContentFlags.beicejianqingdan_dict);
-            this.write_pzgg_chart(doc, doc_builder, ws_report);
+            this.write_pzgg_chart(doc, doc_builder, ws_report, "配置更改问题");
             doc.Save(FileConstants.save_root_file);
-            MessageBox.Show("测试大纲文件读取完成");
 
         }
 
@@ -136,13 +135,18 @@ namespace CSSTC1.FileProcessors.writers {
             return true;
         }
 
-        public void write_pzgg_chart(Document doc, DocumentBuilder doc_builder, List<QestionReport> files) {
+        //配置状态更改表
+        public void write_pzgg_chart(Document doc, DocumentBuilder doc_builder, List<QestionReport> files,
+            string bookmark) {
+            string solutions = "";
             foreach(QestionReport report in files) {
-                string temp = report.wenti;
-                this.questions += temp + '\n';
+                string temp = report.chulicuoshi;
+                if(temp.Contains("已采纳"))
+                    temp = temp.Substring(5, temp.Length - 5);
+                solutions += temp + '\n';
             }
-            if(doc_builder.MoveToBookmark("配置更改问题"))
-                doc_builder.Write(this.questions);
+            if(doc_builder.MoveToBookmark(bookmark))
+                doc_builder.Write(solutions);
         }
 
         //会议签到表

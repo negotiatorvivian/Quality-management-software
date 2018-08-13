@@ -112,10 +112,10 @@ namespace CSSTC1.CommonUtils {
                 row_index += 1;
             }
         }
-
+        //静态分析、代码走查与代码审查阶段的入库申请单
         public static void write_rksqd_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
-            int name_row_index, int iden_row_index, List<int> time_diff) {
+            int name_row_index, int code_row_index, int iden_row_index, List<int> time_diff) {
             int flag = row_index;
             int cur_section = section_index;
             foreach(int i in time_diff) {
@@ -131,6 +131,10 @@ namespace CSSTC1.CommonUtils {
                 doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
                 string name = new_dict[key].rj_mingcheng + new_dict[key].jtfx_fanwei;
                 doc_builder.Write(name);
+                if(code_row_index > 0){
+                    doc_builder.MoveToCell(sec_table_index, row_index, code_row_index, 0);
+                    doc_builder.Write(new_dict[key].bc_yuyan);
+                }
                 doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                 doc_builder.Write(key);
                 row_index += 1;
@@ -187,7 +191,7 @@ namespace CSSTC1.CommonUtils {
             }
         }
 
-        //配置项被测件调拨单表格
+        //配置项与静态分析被测件调拨单表格
         public static void write_bcjdbd2_chart(Document doc, DocumentBuilder doc_builder,
             Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
             int name_row_index, int iden_row_index, List<int> time_diff) {

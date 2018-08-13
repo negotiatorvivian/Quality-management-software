@@ -63,11 +63,15 @@ namespace CSSTC1.Pages {
                 case "1次": {
                         this.label3.Enabled = false;
                         this.dateTimePicker5.Enabled = false;
+                        foreach(ComboBox box in this.comboBoxes)
+                            box.Enabled = false;
                         break;
                     }
                 case "2次": {
                         this.label3.Enabled = true;
                         this.dateTimePicker5.Enabled = true;
+                        foreach(ComboBox box in this.comboBoxes)
+                            box.Enabled = true;
                         break;
                     }
                 default:
@@ -112,7 +116,7 @@ namespace CSSTC1.Pages {
             "2"});
                 comboBox1.Size = new System.Drawing.Size(93, 21);
                 comboBox1.Text = "1";
-                comboBox1.Enabled = true;
+                comboBox1.Enabled = false;
                 this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
                 comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
                 comboBoxes.Add(comboBox1);
@@ -208,8 +212,17 @@ namespace CSSTC1.Pages {
             }
             if(csjx_questions.Equals("无"))
                 ContentFlags.pianli_3 = 0;
-            this.processor.fill_time_line(); 
-            this.panel1.Hide();
+            bool flag = false;
+            foreach(ComboBox box in comboBoxes){
+                if(box.Text.Equals("2")){
+                    this.processor.fill_time_line(); 
+                    this.panel1.Hide();
+                    flag = true;
+                    break;
+                }
+            }
+            if(!flag)
+                MessageBox.Show("请填写第二次就绪软件的环境信息！");
         }
 
         

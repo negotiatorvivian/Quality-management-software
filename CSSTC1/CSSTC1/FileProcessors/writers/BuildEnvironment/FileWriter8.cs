@@ -52,7 +52,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 InsertionPos.djhj_cshjqr_section, InsertionPos.djhj_cshjqr_sec_table, this.time_diff);
             ContentFlags.beiceruanjianshuliang = ruanjianpeizhi_dict.Count;
             helper.write_csgjhsbhcd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
-                InsertionPos.djhj_cshjhc_section, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff);
+                InsertionPos.djhj_cshjhc_section, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff, false);
             this.time_diff.Add(ContentFlags.beiceruanjianshuliang * 2);
             int num = InsertionPos.djhj_hyqdb_section;
             foreach(int i in time_diff)
@@ -67,7 +67,6 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             }
                 
             doc.Save(FileConstants.save_root_file);
-            MessageBox.Show("第一次搭建环境部分填写完成");
         }
 
         public void write_lxwtf_chart_1(Document doc, DocumentBuilder doc_builder,

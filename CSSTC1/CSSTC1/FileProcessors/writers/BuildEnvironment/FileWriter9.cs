@@ -65,7 +65,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 }
             }
             if(temp1.Count == 0)
-                this.delete_table(doc, doc_builder, "搭建环境被测件领取清单");
+                OperationHelper.delete_table(doc, doc_builder, "搭建环境被测件领取清单", 2);
             helper.write_bcjlqqd_chart(doc, doc_builder, temp1, temp2, InsertionPos.djhj_bcjqd_section1, 
                 InsertionPos.djhj_bcjlqqd_sec_table, InsertionPos.sj_bcjdbd_name_row, 
                 InsertionPos.sj_bcjdbd_iden_row, InsertionPos.djhj_bcjlqqd_type_row, this.time_diff);
@@ -73,7 +73,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             helper.write_csgjhsb_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
                 InsertionPos.djhj_cshjqr_section1, InsertionPos.djhj_cshjqr_sec_table, this.time_diff);
             helper.write_csgjhsbhcd_chart(doc, doc_builder, ruanjianpeizhi_dict, yingjianpeizhi_dict,
-                InsertionPos.djhj_cshjhc_section1, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff);
+                InsertionPos.djhj_cshjhc_section1, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff, true);
             ContentFlags.beiceruanjianshuliang1 = ruanjianpeizhi_dict.Count;
             this.time_diff.Add(ContentFlags.beiceruanjianshuliang1 * 2);
             //this.merge_location(doc, doc_builder, "搭建环境配置状态报告单1");
@@ -85,16 +85,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             return true;
         }
 
-        public void delete_table(Document doc, DocumentBuilder doc_builder, string bookmark){
-            doc_builder.MoveToBookmark(bookmark);
-            Table table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, 2, true);
-            table.Range.Delete();
-            doc_builder.MoveToBookmark(bookmark);
-            Paragraph temp1 = (Paragraph)doc_builder.CurrentParagraph.NextSibling;
-            doc_builder.CurrentParagraph.Range.Delete();  
-            temp1.Range.Delete();
-            //doc_buiilder.CurrentNode.
-        }
+        
 
         public void write_pzztbbd_chart(Document doc, DocumentBuilder doc_builder, string bookmark) {
             string text = "";

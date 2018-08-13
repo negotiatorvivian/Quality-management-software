@@ -20,10 +20,10 @@ namespace CSSTC1.InputProcessors {
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             string xmks_time = TimeStamp.xiangmukaishishijian ;
             if(xmks_time.Length > 0) {
-                doc = DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第一次", xmks_time, lixiang_time);
-                doc = DateHelper.fill_time_blank(doc, doc_builder, "任务通知时间", xmks_time, lixiang_time - 1);
-                doc = DateHelper.fill_time_blank(doc, doc_builder, "内部评审时间", xmks_time, lixiang_time - 4);
-                doc = DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第二次", xmks_time, lixiang_time - 6);
+                DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第一次", xmks_time, lixiang_time);
+                DateHelper.fill_time_blank(doc, doc_builder, "任务通知时间", xmks_time, lixiang_time - 1);
+                DateHelper.fill_time_blank(doc, doc_builder, "内部评审时间", xmks_time, lixiang_time - 4);
+                DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第二次", xmks_time, lixiang_time - 6);
                 //被测件接收时间以默认为准还是输入为准？？
                 //doc = this.fill_time_blank(doc, doc_builder, "被测件接收时间", xmks_time, lixiang_time - 7);
             }
@@ -51,11 +51,11 @@ namespace CSSTC1.InputProcessors {
                     OperationHelper.delete_section(doc, doc_builder,marks);
                 }
             }
-            NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
-            foreach(Aspose.Words.Fields.FieldStart field_ref in nodes) {
-                Aspose.Words.Fields.Field field = field_ref.GetField();
-                field.Update();
-            }
+            //NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
+            //foreach(Aspose.Words.Fields.FieldStart field_ref in nodes) {
+            //    Aspose.Words.Fields.Field field = field_ref.GetField();
+            //    field.Update();
+            //}
             doc.Save(FileConstants.save_root_file);
         }
 

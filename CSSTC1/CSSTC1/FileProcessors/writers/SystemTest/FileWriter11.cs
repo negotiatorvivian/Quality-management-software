@@ -51,7 +51,7 @@ namespace CSSTC1.FileProcessors.writers.SystemTest {
             test_env_helper.write_csgjhsb_chart(doc, doc_builder, new_dict1, new_dict2, 
                 InsertionPos.xtcs_cshjqr_section1, InsertionPos.xtcs_csgjqr_sec_table, this.time_diff);
             test_env_helper.write_csgjhsbhcd_chart(doc, doc_builder, new_dict1, new_dict2,
-                InsertionPos.xtcs_cshjhc_section1, InsertionPos.xtcs_csgjhc_sec_table, 1, this.time_diff);
+                InsertionPos.xtcs_cshjhc_section1, InsertionPos.xtcs_csgjhc_sec_table, 1, this.time_diff, false);
             if(ContentFlags.xitonghuiguiceshi > 0) {
                 test_env_helper.write_bcjqd_chart(doc, doc_builder, new_dict1, new_dict2, 
                     InsertionPos.xtcs_section1, InsertionPos.xtcs_bcjqd_sec_table, InsertionPos.sj_bcjqd_name_row, 
@@ -62,7 +62,8 @@ namespace CSSTC1.FileProcessors.writers.SystemTest {
                 test_env_helper.write_csgjhsb_chart(doc, doc_builder, new_dict1, new_dict2,
                 InsertionPos.xtcs_cshjqr_section2, InsertionPos.xtcs_csgjqr_sec_table, this.time_diff);
                 test_env_helper.write_csgjhsbhcd_chart(doc, doc_builder, new_dict1, new_dict2,
-                    InsertionPos.xtcs_cshjhc_section2, InsertionPos.xtcs_csgjhc_sec_table, 1, this.time_diff);
+                    InsertionPos.xtcs_cshjhc_section2, InsertionPos.xtcs_csgjhc_sec_table, 1, this.time_diff, 
+                    false);
             }
             doc.Save(FileConstants.save_root_file);
 

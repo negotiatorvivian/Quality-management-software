@@ -14,31 +14,40 @@ using CSSTC1.CommonUtils;
 namespace CSSTC1.FileProcessors.readers {
     public class FileReader1 {
         public static int count = 0;
-        private FileWriter1 file_writer = new FileWriter1();
+        private FileWriter1 file_writer;
 
         public void read_charts(string filepath){
             if(ContentFlags.pingshenzuchengyuan.Count > 0){
                 Document doc = new Document(filepath);
+                DocumentBuilder doc_builder = new DocumentBuilder(doc);
                 NodeCollection tables = doc.GetChildNodes(NodeType.Table, true);
+                this.file_writer = new FileWriter1();
                 if(ContentFlags.peizhiceshi > 0) {
-                    this.read_pzx_chart(count, doc);
+                    this.read_pzx_chart(doc, doc_builder, (Table)tables[count], count);
                     count += 1;
                 }
                 else {
-                    this.read_pzx_chart(ContentFlags.missing, doc);
+                    Table table = new Table(doc);
+                    this.read_pzx_chart(doc, doc_builder, table, count);
                 }
                 if(ContentFlags.xitongceshi > 0) {
-                    this.read_xt_chart(count, doc);
+                    List<string> cellTexts = this.read_xt_chart((Table)tables[count], count);
                     count += 1;
+                    file_writer.write_xt_chart(cellTexts);
+
                 }
                 else {
-                    this.read_xt_chart(ContentFlags.missing, doc);
+                    List<string> cellTexts = this.read_xt_chart((Table)tables[count], ContentFlags.missing);
+                    file_writer.write_xt_chart(cellTexts);
                 }
                 file_writer.write_rwtzd_chart();
 
-                this.read_csry_chart(count, doc);
+                string names = this.read_csry_chart((Table)tables[count], count);
+                file_writer.write_csry_chart(names);
+
                 count += 1;
-                bool res = this.read_xmjs_chart(count, doc);
+                
+                bool res = this.read_xmjs_chart((Table)tables[count]);
                 count += 1;
                 if(res){
                     for(int i = 0; i < ContentFlags.lingqucishu; i++){
@@ -46,26 +55,20 @@ namespace CSSTC1.FileProcessors.readers {
                         this.read_wdqd_chart(index, doc, i);
                     }
                 }
-                Document doc1 = new Document(FileConstants.save_root_file);
-                DocumentBuilder doc_builder = new DocumentBuilder(doc1);
-                bool res1 = file_writer.write_hyqdb_chart(doc1, doc_builder);
-                if(res1)
-                    MessageBox.Show("写入文档完成!");
+                MessageBox.Show("写入文档完成!");
             }
             else
-                MessageBox.Show("请先填写测试需求分析与策划阶段的信息！");
+                MessageBox.Show("请检查上传表格内容！");
 
         }
 
-        public void read_pzx_chart(int index, Document doc) {
+        //配置项表格
+        public void read_pzx_chart(Document doc, DocumentBuilder doc_builder, Table table, int index) {
             List<string> cellTexts = new List<string>();
-            if(index < 0) {
+            if(table == null) {
                 file_writer.write_pzx_chart(cellTexts);
             }
             else {
-                DocumentBuilder doc_builder = new DocumentBuilder(doc);
-                Node node = doc.GetChild(NodeType.Table, index, true);
-                Table table = (Table)node;
                 Row row = table.Rows[0];
                 int jtfx_index = 0;
                 int dmzc_index = 0;
@@ -129,15 +132,9 @@ namespace CSSTC1.FileProcessors.readers {
         }
 
         //系统测试表格
-        public void read_xt_chart(int index, Document doc) {
+        public List<string> read_xt_chart(Table table, int index) {
             List<string> cellTexts = new List<string>();
-            if(index < 0) {
-                file_writer.write_xt_chart(cellTexts);
-            }
-            else {
-                DocumentBuilder doc_builder = new DocumentBuilder(doc);
-                Node node = doc.GetChild(NodeType.Table, index, true);
-                Table table = (Table)node;
+            if(index > 0){
                 Row row = table.Rows[0];
                 foreach(Cell cell in row.Cells) {
                     string cellText = cell.GetText().ToString().Trim();
@@ -145,16 +142,13 @@ namespace CSSTC1.FileProcessors.readers {
                 }
                 NamingRules.table_names.Add(index, "系统测试");
                 cellTexts.RemoveAt(0);
-                file_writer.write_xt_chart(cellTexts);
             }
+            return cellTexts;
         }
 
         //测试人员
-        public void read_csry_chart(int index, Document doc) {
+        public string read_csry_chart(Table table, int index) {
             string names = "";
-            DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, index, true);
-            Table table = (Table)node;
             foreach(Row row in table.Rows) {
                 Cell cell = row.Cells[1];
                 string cellText = cell.GetText().ToString().Trim();
@@ -165,18 +159,15 @@ namespace CSSTC1.FileProcessors.readers {
             NamingRules.table_names.Add(index, "测试人员");
             //cellTexts.RemoveAt(0);
             names = names.Substring(3, names.Length - 4);
-            file_writer.write_csry_chart(names);
+            return names;
         }
 
         //项目简介表格
-        public bool read_xmjs_chart(int index, Document doc) {
+        public bool read_xmjs_chart(Table table) {
             List<ProjectInfo> pro_infos = new List<ProjectInfo>();
             List<StaticAnalysisFile> static_files = new List<StaticAnalysisFile>();
             List<StaticAnalysisFile> code_walkthrough_files = new List<StaticAnalysisFile>();
             List<StaticAnalysisFile> code_review_files = new List<StaticAnalysisFile>();
-            DocumentBuilder doc_builder = new DocumentBuilder(doc);
-            Node node = doc.GetChild(NodeType.Table, index, true);
-            Table table = (Table)node;
 
             for(int i = 0; i < table.Rows.Count; i++) {
                 string[] temp = new string[10];

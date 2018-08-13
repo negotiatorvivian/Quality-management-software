@@ -256,10 +256,12 @@ namespace CSSTC1.Pages {
             }
             else
                 ContentFlags.luojiceshi = 0;
-            if(this.checkBox8.Checked) {
+            if(this.xt_ceshi.Checked){
                 //系统首轮测试时间
                 TimeStamp.slxtcs_time = this.xtcs_shoulunshijian.Value.ToShortDateString();
                 TimeStamp.slxtcs_format_time = this.xtcs_shoulunshijian.Value.ToLongDateString();
+            }
+            if(this.xt_ceshi.Checked && this.checkBox8.Checked) {
                 //系统测试回归时间
                 TimeStamp.xthgcs_time = this.xtcs_huiguishijian.Value.ToShortDateString();
                 TimeStamp.xthgcs_format_time = this.xtcs_huiguishijian.Value.ToLongDateString();
@@ -273,6 +275,10 @@ namespace CSSTC1.Pages {
                 TimeStamp.hgdtcs_time = this.dtpz_huigui.Value.ToShortDateString();
                 TimeStamp.hgdtcs_format_time = this.dtpz_huigui.Value.ToLongDateString();
             }
+            //测试报告评审时间
+            TimeStamp.csbgps_time = this.csbg_pingshenshijian.Value.ToShortDateString();
+            TimeStamp.csbgps_format_time = this.csbg_pingshenshijian.Value.ToLongDateString();
+
         }
 
         }

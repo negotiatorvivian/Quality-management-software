@@ -6,8 +6,8 @@ using Aspose.Words;
 
 namespace CSSTC1.CommonUtils {
     class DateHelper {
-        public static Document fill_time_blank(Document doc, DocumentBuilder doc_builder,
-    string bookmark, string origin_time, int diff) {
+        public static void fill_time_blank(Document doc, DocumentBuilder doc_builder, string bookmark, 
+            string origin_time, int diff) {
             if(origin_time == null || origin_time.Length == 0){
                 string temp =  new DateTime().ToLongDateString();
                 if(doc_builder.MoveToBookmark(bookmark)) {
@@ -23,7 +23,6 @@ namespace CSSTC1.CommonUtils {
                     doc_builder.Write(temp);
                 }
             }
-            return doc;
         }
 
         public static string cal_time(string origin_time, int diff) {

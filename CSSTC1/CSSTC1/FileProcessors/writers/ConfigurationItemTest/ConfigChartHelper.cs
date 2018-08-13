@@ -139,6 +139,8 @@ namespace CSSTC1.FileProcessors.writers.ConfigurationItemTest {
                 contents_new.Add(text);
                 content_new += text + "V1.1" + '\n';
             }
+            content_new = content_new.Substring(0, content_new.Length - 1);
+
             doc_builder.MoveToSection(section);
             Table table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
             int row_index = 4;

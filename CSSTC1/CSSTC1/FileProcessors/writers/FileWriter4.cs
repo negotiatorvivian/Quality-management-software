@@ -38,7 +38,7 @@ namespace CSSTC1.FileProcessors.writers {
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             Dictionary<string, FileList> beicejianqingdan_dict = this.get_wdsc_files
                 (ContentFlags.beicejianqingdan_dict);
-            /***************************文档审查开始*********************************/
+            #region          /***************************文档审查开始*********************************/
             if(ContentFlags.wendangshencha > 0){
                 this.write_wdsc_time_line(doc, doc_builder);
                 ChartHelper.write_bcjqd_chart(doc, doc_builder, beicejianqingdan_dict, 
@@ -62,16 +62,16 @@ namespace CSSTC1.FileProcessors.writers {
                 this.write_pzztbg_chart(doc, doc_builder, beicejianqingdan_dict, "文档审查入库软件文档");
             }
             times.Add(ContentFlags.wendangshencha);
-            /***************************文档审查结束*********************************/
+#endregion/***************************文档审查结束*********************************/
 
-            /***************************静态分析开始*********************************/
+            #region /***************************静态分析开始*********************************/
             if(ContentFlags.jingtaifenxi > 0) {
                 this.write_jtfx_time_line(doc, doc_builder);
                 this.write_lxwtf_chart(doc, doc_builder, software_items, "委托方提供代码");
                 Dictionary<string, StaticAnalysisFile> software_dict = this.set_file_id(doc, doc_builder, 
                     software_items);
-                ChartHelper.write_rksqd_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjdbd_section2,
-                    InsertionPos.sj_bcjdbd_sec_table2, 1, InsertionPos.sj_bcjdbd_name_row,
+                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjdbd_section2,
+                    InsertionPos.sj_bcjdbd_sec_table2, 1, InsertionPos.sj_bcjdbd_name_row, 
                     InsertionPos.sj_bcjdbd_iden_row, times);
                 ChartHelper.write_bcjqd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_bcjqd_section2,
                     InsertionPos.sj_bcjqd_sec_table2, InsertionPos.sj_bcjqd_name_row,
@@ -79,9 +79,9 @@ namespace CSSTC1.FileProcessors.writers {
                 ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict,
                     InsertionPos.sj_bcjlqqd_section2, InsertionPos.sj_bcjlqqd_sec_table2, 2, 
                     InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
-                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict, InsertionPos.sj_rksqd_section2,
-                    InsertionPos.sj_rksqd_sec_table2, 3, InsertionPos.sj_rksqd_name_row,
-                    InsertionPos.sj_rksqd_iden_row, times);
+                ChartHelper.write_rksqd_chart(doc, doc_builder, software_dict, InsertionPos.sj_rksqd_section2,
+                    InsertionPos.sj_rksqd_sec_table2, 3, InsertionPos.sj_rksqd_name_row, 
+                    InsertionPos.sj_code_row_index, InsertionPos.sj_rksqd_iden_row, times);
                 this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单3", false);
             
                 Table new_table = (Table)this.software_table.Clone(true);
@@ -95,15 +95,14 @@ namespace CSSTC1.FileProcessors.writers {
                     InsertionPos.sj_bcjqd_sec_table3, InsertionPos.sj_bcjqd_name_row,
                     InsertionPos.sj_bcjqd_iden_row, times);
                 ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict, 
-                    InsertionPos.sj_bcjdbd_section3,
-                    InsertionPos.sj_bcjdbd_sec_table3, 1, InsertionPos.sj_bcjdbd_name_row,
-                    InsertionPos.sj_bcjdbd_iden_row, times);
+                    InsertionPos.sj_bcjdbd_section3,InsertionPos.sj_bcjdbd_sec_table3, 1, 
+                    InsertionPos.sj_bcjdbd_name_row,InsertionPos.sj_bcjdbd_iden_row, times);
                 ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict,
                     InsertionPos.sj_bcjlqqd_section3, InsertionPos.sj_bcjlqqd_sec_table3, 2,
                     InsertionPos.sj_bcjdbd_name_row, InsertionPos.sj_bcjdbd_iden_row, times);
-                ChartHelper.write_bcjdbd2_chart(doc, doc_builder, new_software_dict, 
-                    InsertionPos.sj_rksqd_section3,
-                    InsertionPos.sj_rksqd_sec_table3, 3, InsertionPos.sj_rksqd_name_row,
+                ChartHelper.write_rksqd_chart(doc, doc_builder, new_software_dict,
+                    InsertionPos.sj_rksqd_section3, InsertionPos.sj_rksqd_sec_table3, 3,
+                    InsertionPos.sj_rksqd_name_row, InsertionPos.sj_code_row_index, 
                     InsertionPos.sj_rksqd_iden_row, times);
                 this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单4", true);
                 ContentFlags.software_dict = new_software_dict;
@@ -115,7 +114,7 @@ namespace CSSTC1.FileProcessors.writers {
                 ContentFlags.software_dict = new_software_dict;
             }
             times.Add(ContentFlags.jingtaifenxi);
-            /***************************静态分析结束*********************************/
+            #endregion/***************************静态分析结束*********************************/
             doc.Save(FileConstants.save_root_file);
         }
 
@@ -174,8 +173,8 @@ namespace CSSTC1.FileProcessors.writers {
 
                     id = id.Substring(0, start_index) + new_version + id.Substring(end_index, id.Length -
                         end_index);
-                    //id = id.Replace(temp, new_version);
                     wdsc_files.Add(id, file);
+                    ContentFlags.rukuwendang_dict[file.wd_mingcheng] += "\n" + id;   
                 }
                 count += 1;
             }
@@ -300,6 +299,33 @@ namespace CSSTC1.FileProcessors.writers {
             }
             return new_dict;
         }
+
+        //入库申请单
+        //public void write_rksqd_chart(Document doc, DocumentBuilder doc_builder,
+        //    Dictionary<string, StaticAnalysisFile> new_dict, int section_index, int sec_table_index, int row_index,
+        //    int name_row_index, int code_row_index, int iden_row_index, List<int> time_diff) {
+        //    int flag = row_index;
+        //    int cur_section = section_index;
+        //    foreach(int i in time_diff) {
+        //        cur_section += i;
+        //    }
+        //    doc_builder.MoveToSection(cur_section);
+        //    Table table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
+        //    foreach(string key in new_dict.Keys) {
+        //        if(row_index < new_dict.Count + flag - 1) {
+        //            var row = table.Rows[row_index].Clone(true);
+        //            table.Rows.Insert(row_index + 1, row);
+        //        }
+        //        doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
+        //        string name = new_dict[key].rj_mingcheng + new_dict[key].jtfx_fanwei;
+        //        doc_builder.Write(name);
+        //        doc_builder.MoveToCell(sec_table_index, row_index, code_row_index, 0);
+        //        doc_builder.Write(new_dict[key].bc_yuyan);
+        //        doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
+        //        doc_builder.Write(key);
+        //        row_index += 1;
+        //    }
+        //}
 
         public void write_jtfx_time_line(Document doc, DocumentBuilder doc_builder) {
             //联系研制方提供被测软件源代码时间
