@@ -61,6 +61,12 @@
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tab_control1 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.csxq_pingshenshijian = new System.Windows.Forms.DateTimePicker();
+            this.label33 = new System.Windows.Forms.Label();
+            this.csdg_pingshenshijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label21 = new System.Windows.Forms.Label();
@@ -98,12 +104,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.csxq_pingshenshijian = new System.Windows.Forms.DateTimePicker();
-            this.label33 = new System.Windows.Forms.Label();
-            this.csdg_pingshenshijian = new System.Windows.Forms.DateTimePicker();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.label_48 = new System.Windows.Forms.Label();
             this.dtpz_huigui = new System.Windows.Forms.DateTimePicker();
@@ -145,6 +145,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tab_control1.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -153,7 +154,6 @@
             this.panel4.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
@@ -504,11 +504,11 @@
             // 
             // tab_control1
             // 
+            this.tab_control1.Controls.Add(this.tabPage5);
             this.tab_control1.Controls.Add(this.tabPage1);
             this.tab_control1.Controls.Add(this.tabPage2);
             this.tab_control1.Controls.Add(this.tabPage3);
             this.tab_control1.Controls.Add(this.tabPage4);
-            this.tab_control1.Controls.Add(this.tabPage5);
             this.tab_control1.Controls.Add(this.tabPage6);
             this.tab_control1.Controls.Add(this.tabPage7);
             this.tab_control1.Controls.Add(this.tabPage8);
@@ -520,6 +520,77 @@
             this.tab_control1.SelectedIndex = 0;
             this.tab_control1.Size = new System.Drawing.Size(543, 148);
             this.tab_control1.TabIndex = 41;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.checkBox7);
+            this.tabPage5.Controls.Add(this.checkBox6);
+            this.tabPage5.Controls.Add(this.csxq_pingshenshijian);
+            this.tabPage5.Controls.Add(this.label33);
+            this.tabPage5.Controls.Add(this.csdg_pingshenshijian);
+            this.tabPage5.Location = new System.Drawing.Point(4, 23);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(535, 121);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "测试大纲或需求规格说明评审时间";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Enabled = false;
+            this.checkBox7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox7.Location = new System.Drawing.Point(110, 74);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(180, 18);
+            this.checkBox7.TabIndex = 63;
+            this.checkBox7.Text = "测试需求与计划评审时间";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Checked = true;
+            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBox6.Location = new System.Drawing.Point(110, 37);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(138, 18);
+            this.checkBox6.TabIndex = 62;
+            this.checkBox6.Text = "测试大纲评审时间";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // csxq_pingshenshijian
+            // 
+            this.csxq_pingshenshijian.Enabled = false;
+            this.csxq_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.csxq_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.csxq_pingshenshijian.Location = new System.Drawing.Point(300, 72);
+            this.csxq_pingshenshijian.Name = "csxq_pingshenshijian";
+            this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
+            this.csxq_pingshenshijian.TabIndex = 60;
+            this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label33.Location = new System.Drawing.Point(128, 38);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(0, 14);
+            this.label33.TabIndex = 59;
+            // 
+            // csdg_pingshenshijian
+            // 
+            this.csdg_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.csdg_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.csdg_pingshenshijian.Location = new System.Drawing.Point(300, 35);
+            this.csdg_pingshenshijian.Name = "csdg_pingshenshijian";
+            this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
+            this.csdg_pingshenshijian.TabIndex = 58;
+            this.csdg_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
             // 
             // tabPage1
             // 
@@ -550,7 +621,6 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Enabled = false;
             this.label21.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label21.Location = new System.Drawing.Point(3, 12);
             this.label21.Name = "label21";
@@ -560,7 +630,6 @@
             // 
             // wd_shenchashijian
             // 
-            this.wd_shenchashijian.Enabled = false;
             this.wd_shenchashijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_shenchashijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.wd_shenchashijian.Location = new System.Drawing.Point(93, 9);
@@ -572,7 +641,6 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Enabled = false;
             this.label23.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label23.Location = new System.Drawing.Point(3, 91);
             this.label23.Name = "label23";
@@ -582,7 +650,6 @@
             // 
             // wd_querenshijian
             // 
-            this.wd_querenshijian.Enabled = false;
             this.wd_querenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_querenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.wd_querenshijian.Location = new System.Drawing.Point(93, 48);
@@ -593,7 +660,6 @@
             // 
             // wd_huiguishijian
             // 
-            this.wd_huiguishijian.Enabled = false;
             this.wd_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.wd_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.wd_huiguishijian.Location = new System.Drawing.Point(93, 88);
@@ -605,7 +671,6 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Enabled = false;
             this.label22.ForeColor = System.Drawing.SystemColors.InfoText;
             this.label22.Location = new System.Drawing.Point(3, 51);
             this.label22.Name = "label22";
@@ -616,6 +681,8 @@
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
+            this.checkBox9.Checked = true;
+            this.checkBox9.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox9.Location = new System.Drawing.Point(81, 48);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(82, 18);
@@ -639,6 +706,8 @@
             // checkBox10
             // 
             this.checkBox10.AutoSize = true;
+            this.checkBox10.Checked = true;
+            this.checkBox10.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox10.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBox10.Location = new System.Drawing.Point(79, 48);
             this.checkBox10.Name = "checkBox10";
@@ -656,7 +725,6 @@
             this.panel3.Controls.Add(this.dateTimePicker2);
             this.panel3.Controls.Add(this.jt_huiguishijian);
             this.panel3.Controls.Add(this.label24);
-            this.panel3.Enabled = false;
             this.panel3.Location = new System.Drawing.Point(204, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(251, 121);
@@ -666,7 +734,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label26.Location = new System.Drawing.Point(5, 11);
+            this.label26.Location = new System.Drawing.Point(13, 11);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(63, 14);
             this.label26.TabIndex = 51;
@@ -676,7 +744,7 @@
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(84, 50);
+            this.dateTimePicker1.Location = new System.Drawing.Point(92, 50);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker1.TabIndex = 58;
@@ -686,7 +754,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label25.Location = new System.Drawing.Point(5, 50);
+            this.label25.Location = new System.Drawing.Point(13, 50);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(63, 14);
             this.label25.TabIndex = 53;
@@ -696,7 +764,7 @@
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(84, 11);
+            this.dateTimePicker2.Location = new System.Drawing.Point(92, 11);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker2.TabIndex = 57;
@@ -706,7 +774,7 @@
             // 
             this.jt_huiguishijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.jt_huiguishijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.jt_huiguishijian.Location = new System.Drawing.Point(84, 87);
+            this.jt_huiguishijian.Location = new System.Drawing.Point(92, 87);
             this.jt_huiguishijian.Name = "jt_huiguishijian";
             this.jt_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.jt_huiguishijian.TabIndex = 54;
@@ -716,7 +784,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(5, 90);
+            this.label24.Location = new System.Drawing.Point(13, 90);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(63, 14);
             this.label24.TabIndex = 55;
@@ -928,77 +996,6 @@
             this.label32.TabIndex = 62;
             this.label32.Text = "审查时间";
             // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.checkBox7);
-            this.tabPage5.Controls.Add(this.checkBox6);
-            this.tabPage5.Controls.Add(this.csxq_pingshenshijian);
-            this.tabPage5.Controls.Add(this.label33);
-            this.tabPage5.Controls.Add(this.csdg_pingshenshijian);
-            this.tabPage5.Location = new System.Drawing.Point(4, 23);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(535, 121);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "测试大纲或需求规格说明评审时间";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Enabled = false;
-            this.checkBox7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox7.Location = new System.Drawing.Point(110, 74);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(180, 18);
-            this.checkBox7.TabIndex = 63;
-            this.checkBox7.Text = "测试需求与计划评审时间";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBox6.Location = new System.Drawing.Point(110, 37);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(138, 18);
-            this.checkBox6.TabIndex = 62;
-            this.checkBox6.Text = "测试大纲评审时间";
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
-            // 
-            // csxq_pingshenshijian
-            // 
-            this.csxq_pingshenshijian.Enabled = false;
-            this.csxq_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.csxq_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.csxq_pingshenshijian.Location = new System.Drawing.Point(300, 72);
-            this.csxq_pingshenshijian.Name = "csxq_pingshenshijian";
-            this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
-            this.csxq_pingshenshijian.TabIndex = 60;
-            this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label33.Location = new System.Drawing.Point(128, 38);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(0, 14);
-            this.label33.TabIndex = 59;
-            // 
-            // csdg_pingshenshijian
-            // 
-            this.csdg_pingshenshijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.csdg_pingshenshijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.csdg_pingshenshijian.Location = new System.Drawing.Point(300, 35);
-            this.csdg_pingshenshijian.Name = "csdg_pingshenshijian";
-            this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
-            this.csdg_pingshenshijian.TabIndex = 58;
-            this.csdg_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.label_48);
@@ -1031,6 +1028,7 @@
             this.dtpz_huigui.Size = new System.Drawing.Size(141, 22);
             this.dtpz_huigui.TabIndex = 60;
             this.dtpz_huigui.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dtpz_huigui.ValueChanged += new System.EventHandler(this.dtpz_huigui_ValueChanged);
             // 
             // label47
             // 
@@ -1067,6 +1065,8 @@
             // checkBox14
             // 
             this.checkBox14.AutoSize = true;
+            this.checkBox14.Checked = true;
+            this.checkBox14.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox14.ForeColor = System.Drawing.SystemColors.ControlText;
             this.checkBox14.Location = new System.Drawing.Point(142, 51);
             this.checkBox14.Name = "checkBox14";
@@ -1078,7 +1078,6 @@
             // 
             // ljcs_shijian
             // 
-            this.ljcs_shijian.Enabled = false;
             this.ljcs_shijian.Font = new System.Drawing.Font("宋体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ljcs_shijian.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.ljcs_shijian.Location = new System.Drawing.Point(252, 49);
@@ -1463,6 +1462,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tab_control1.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1479,8 +1480,6 @@
             this.tabPage4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);

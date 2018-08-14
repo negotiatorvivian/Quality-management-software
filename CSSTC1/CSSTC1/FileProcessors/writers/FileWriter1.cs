@@ -19,6 +19,30 @@ namespace CSSTC1.FileProcessors.writers {
         public FileWriter1(){
             this.doc = new Document(FileConstants.save_root_file);
             this.doc_builder = new DocumentBuilder(doc);
+            //this.test();
+        }
+
+        public void test() {
+            doc_builder.MoveToBookmark("测试依据");
+
+            Paragraph old_para = (Paragraph)doc_builder.CurrentParagraph;
+            Paragraph para = (Paragraph)doc_builder.CurrentParagraph.Clone(true);
+            Cell node = (Cell)old_para.GetAncestor(NodeType.Cell);
+            node.AppendChild(para);
+
+            doc_builder.MoveTo(old_para);
+            string names = "";
+            names = "hhhhhhhhh";
+            names = names.Substring(0, names.Length - 1);
+            names += "动态测试环境已搭建，位于" + "BBBB单位";
+            Run run = new Run(doc);
+            run.Text = names;
+            Run first_run = (Run)old_para.GetChild(NodeType.Run, 0, true);
+            old_para.InsertBefore(run, first_run);
+            doc.Save(FileConstants.save_root_file);
+            //doc_builder.Write(names);
+            doc_builder.MoveTo(para);
+            //text += names + '\n';
         }
 
         //配置项测试
@@ -232,7 +256,7 @@ namespace CSSTC1.FileProcessors.writers {
                 }
                 j = j + 1;
             }
-
+            ContentFlags.beicejianshuliang.Add(beicejianqingdan_dict.Count);
             ContentFlags.rukuwendang_dict = rukuwendang_dict;
             this.write_bcjdbd_chart(this.doc, this.doc_builder, files, content_list, time);
             this.write_bcjqd_chart(this.doc, this.doc_builder, beicejianqingdan_dict, time);

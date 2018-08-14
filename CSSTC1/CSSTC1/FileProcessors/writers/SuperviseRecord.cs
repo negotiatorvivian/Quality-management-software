@@ -33,28 +33,30 @@ namespace CSSTC1.FileProcessors.writers {
             int current_table_index = 1;
             if(ContentFlags.wendangshencha > 0){
                 this.wdsc_stage_sum(problem_sum["文档审查"]);
+                current_table_index += 1;
             }
             else{
                 this.remove_rows(table, this.current_row_index, 3);
                 OperationHelper.delete_table(doc, doc_builder, "文档审查SQA", current_table_index);
-                current_table_index += 1;
             }
             if(ContentFlags.jingtaifenxi > 0) {
                 this.jtfx_stage_sum(problem_sum["静态分析"]);
+                current_table_index += 1;
             }
             else {
                 OperationHelper.delete_table(doc, doc_builder, "静态分析SQA", current_table_index);
                 this.remove_rows(table, this.current_row_index, 3);
-                current_table_index += 1;
             }
-            if(ContentFlags.daimashencha > 0){
+            if(ContentFlags.daimashencha == 0){
                 OperationHelper.delete_table(doc, doc_builder, "代码审查SQA", current_table_index);
-                current_table_index += 1;
             }
-            if(ContentFlags.daimazoucha > 0) {
+            else
+                current_table_index += 1;
+            if(ContentFlags.daimazoucha == 0) {
                 OperationHelper.delete_table(doc, doc_builder, "代码走查SQA", current_table_index);
-                current_table_index += 1;
             }
+            else
+                current_table_index += 1;
             if(ContentFlags.ceshidagang)
                 this.xqfx_stage_sum();
             else{
@@ -207,7 +209,7 @@ namespace CSSTC1.FileProcessors.writers {
             this.contents.Add(count_zx_sum.ToString());
             this.bookmarks.Add("执行测试用例个数");
             float rate = (float)count_zx_sum/ContentFlags.code_line/100;
-            rate = (float)Math.Round(rate, 1);
+            rate = (float)Math.Round(rate, 2);
             this.contents.Add(rate.ToString());
             this.bookmarks.Add("测试工作质量优良率");
         }

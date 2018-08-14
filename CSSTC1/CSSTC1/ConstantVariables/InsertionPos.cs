@@ -111,6 +111,10 @@ namespace CSSTC1.ConstantVariables {
         public static int pzgljh_sec_table = 1;
         public static int pzgljh_name_row = 0;
         public static int pzgljh_iden_row = 1;
+        //需求基线起始行
+        public static int pzgljh_xqjx_row_index = 6;
+        //配管活动起始行
+        public static int pzgljh_pghd_row_index = 16;
         /******************************文档审查部分**************************/
         //测试设计与执行第一个被测件清单位置
         public static int sj_bcjqd_section = 11;

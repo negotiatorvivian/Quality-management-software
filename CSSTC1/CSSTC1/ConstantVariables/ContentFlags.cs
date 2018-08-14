@@ -26,6 +26,8 @@ namespace CSSTC1.ConstantVariables {
         public static Dictionary<string, int> file_type_counter = new Dictionary<string, int>();
         //立项阶段被测件清单
         public static Dictionary<string, FileList> beicejianqingdan_dict = new Dictionary<string, FileList>();
+        //若领取两次，每一次领取的数量
+        public static List<int> beicejianshuliang = new List<int>();
         //入库文档合集（key为文档名称）
         public static Dictionary<string, string> rukuwendang_dict = new Dictionary<string, string>();
         //被测件领取次数

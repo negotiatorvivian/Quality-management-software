@@ -122,7 +122,7 @@ namespace CSSTC1.Pages {
             }
             string pl_time = "";
             if(this.dateTimePicker5.Enabled == true){
-                pl_time = this.dateTimePicker5.Text;
+                pl_time = this.dateTimePicker5.Value.ToLongDateString();
             }
             processor.fill_estab_info(lx_time, lq_time, pl_time);
             Globals.ThisDocument.project_estab_info.Hide();

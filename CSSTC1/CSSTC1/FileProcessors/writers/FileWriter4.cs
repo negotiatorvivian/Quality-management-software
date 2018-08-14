@@ -160,7 +160,7 @@ namespace CSSTC1.FileProcessors.writers {
             foreach(FileList file in ContentFlags.all_file_lists) {
                 if(file.wd_banben.Length > 4) {
                     string new_version = file.wd_banben.Substring(5, file.wd_banben.Length - 5);
-                    file.wd_banben = new_version;
+                    //file.wd_banben = new_version;
                     string id = file_ids[count];
                     Regex reg = new Regex("[v|V][0-9][.][0-9]+");
                     MatchCollection matches = reg.Matches(id, 0);
@@ -241,9 +241,9 @@ namespace CSSTC1.FileProcessors.writers {
             foreach(string key in new_dict.Keys) {
                 StaticAnalysisFile file = new_dict[key];
                 if(huigui)
-                    text += file.rj_mingcheng + "\t\t" + file.hg_banben + '\n';
+                    text += file.rj_mingcheng + file.jtfx_fanwei + "\t\t" + file.hg_banben + '\n';
                 else
-                    text += file.rj_mingcheng + "\t\t" + file.xt_banben + '\n';
+                    text += file.rj_mingcheng + file.jtfx_fanwei + "\t\t" + file.xt_banben + '\n';
             }
             if(doc_builder.MoveToBookmark(mark))
                 doc_builder.Write(text);

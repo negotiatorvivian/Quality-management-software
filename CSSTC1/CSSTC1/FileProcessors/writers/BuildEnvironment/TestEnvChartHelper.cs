@@ -58,7 +58,6 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.Write(name);
                     
                     doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
-                    //string id = file_ids[count];
                     doc_builder.Write(key.rj_bianhao);
                     
                     row_index += 1;
@@ -201,12 +200,6 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.MoveToCell(sec_table_index, row_index, type_row_index, 0);
 
                     doc_builder.Write("硬件");
-                    doc_builder.MoveToCell(sec_table_index, 2,
-                            InsertionPos.sj_bcjqd_date_row, 0);
-                    doc_builder.CellFormat.VerticalMerge = CellMerge.First;
-                    doc_builder.MoveToCell(sec_table_index, row_index,
-                        InsertionPos.sj_bcjqd_date_row, 0);
-                    doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                     row_index += 1;
                 }
                 int count = 0;
@@ -227,12 +220,6 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.MoveToCell(sec_table_index, row_index, type_row_index, 0);
 
                     doc_builder.Write("磁介质");
-                    doc_builder.MoveToCell(sec_table_index, 2,
-                            InsertionPos.sj_bcjqd_date_row, 0);
-                    doc_builder.CellFormat.VerticalMerge = CellMerge.First;
-                    doc_builder.MoveToCell(sec_table_index, row_index,
-                        InsertionPos.sj_bcjqd_date_row, 0);
-                    doc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
                     row_index += 1;
                     count += 1;
                 }
@@ -276,7 +263,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             //doc.Save(FileConstants.save_root_file);
                 
             for(int i = 0; i < new_dict.Count; i++) { //循环每个软件的软件配置项和硬件配置项   
-                int count = 0;
+                //int count = 0;
                 if(i > 0){
                     cur_section += 2;
                     doc_builder.MoveToSection(cur_section);
@@ -304,13 +291,13 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     doc_builder.MoveToCell(sec_table_index, row_index, InsertionPos.sj_csgjqr_iden_row, 0);
                     doc_builder.Write(software.rj_bianhao);
                     row_index += 4;
-                    count += 1;
+                    //count += 1;
+                }
+                for(int j = 0; j < 4; j++) {
+                    table.Rows[row_index].Remove();
+                    //doc.Save(FileConstants.save_root_file);
                 }
             }
-            int sum = table.Rows.Count;
-            table.Rows[sum - 1].Remove();
-        
-                
         }
 
         //软件动态测试配置项工具或设备核查单

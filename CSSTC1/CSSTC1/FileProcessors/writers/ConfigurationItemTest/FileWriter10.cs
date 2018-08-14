@@ -52,7 +52,8 @@ namespace CSSTC1.FileProcessors.writers.ConfigurationItemTest {
             ChartHelper.write_bcjdbd_chart(doc, doc_builder, dict, InsertionPos.pzcs_bcjqd_section,
                 InsertionPos.pzcs_bcjdbd_sec_table, 1, InsertionPos.sj_bcjdbd_name_row, 
                 InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
-            ChartHelper.write_bcjlqqd_chart(doc, doc_builder, dict, InsertionPos.pzcs_bcjqd_section,
+            //被测件领取清单
+            ChartHelper.write_bcjdbd_chart(doc, doc_builder, dict, InsertionPos.pzcs_bcjqd_section,
                 InsertionPos.pzcs_bcjlqqd_sec_table, 2, InsertionPos.sj_bcjdbd_name_row,
                 InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
             //测试环境确认与测试环境核查单

@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using CSSTC1.InputProcessors;
 using CSSTC1.ConstantVariables;
+using CSSTC1.CommonUtils;
+using Aspose.Words;
 
 namespace CSSTC1.Pages {
     public partial class BasicInfo : Form {
@@ -179,6 +181,8 @@ namespace CSSTC1.Pages {
             //MessageBox.Show("正在写入，请稍候...");
         }
 
+        
+
         //大纲与需求说明二选一，删除未选的表格部分
         private void del_section(){
             if(!this.csdg_pingshenshijian.Enabled){
@@ -279,6 +283,12 @@ namespace CSSTC1.Pages {
             TimeStamp.csbgps_time = this.csbg_pingshenshijian.Value.ToShortDateString();
             TimeStamp.csbgps_format_time = this.csbg_pingshenshijian.Value.ToLongDateString();
 
+        }
+
+        private void dtpz_huigui_ValueChanged(object sender, EventArgs e) {
+            string dtpzhg_time = this.dtpz_huigui.Value.ToShortDateString();
+            DateTime ljcs_time = DateHelper.cal_date(dtpzhg_time, -7);
+            this.ljcs_shijian.Value = ljcs_time;
         }
 
         }

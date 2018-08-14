@@ -220,7 +220,7 @@ namespace CSSTC1.FileProcessors.readers {
         //文档清单表格
         public void read_wdqd_chart(int[] index, Document doc, int time) {
             List<FileList> file_lists = new List<FileList>();
-            List<FileList> all_file_lists = new List<FileList>();
+            List<FileList> all_file_lists = ContentFlags.all_file_lists;
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             foreach(int i in index) {
                 Node node = doc.GetChild(NodeType.Table, i, true);

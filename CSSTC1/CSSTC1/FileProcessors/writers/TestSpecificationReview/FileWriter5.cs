@@ -47,10 +47,10 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
                 section_index += i;
             OperationHelper.conference_signing(doc, doc_builder, section_index,
                 InsertionPos.cssmns_hyqdb_table);
-            ChartHelper.write_bcjdbd2_chart(doc, doc_builder, software_dict, InsertionPos.cssmps_rksqd_section,
-                InsertionPos.cssmps_rksqd_sec_table, 4, InsertionPos.sj_rksqd_name_row,
-                InsertionPos.sj_rksqd_iden_row, times);
-            this.write_pzzt_chart(doc, doc_builder, "测试说明入库清单1");
+            
+            List<string> contents = this.write_pzzt_chart(doc, doc_builder, "测试说明入库清单1");
+            this.write_rksqd_chart(doc, doc_builder, contents, InsertionPos.cssmps_rksqd_section,
+                InsertionPos.cssmps_rksqd_sec_table, 4, InsertionPos.sj_rksqd_name_row, times);
             doc.Save(FileConstants.save_root_file);
 
 
@@ -119,22 +119,47 @@ namespace CSSTC1.FileProcessors.writers.part3_4 {
         }
 
         //配置状态报告
-        public void write_pzzt_chart(Document doc, DocumentBuilder doc_builder, string mark){
+        public List<string> write_pzzt_chart(Document doc, DocumentBuilder doc_builder, string mark) {
             string text = "";
             string default1 = "测试说明附件";
             string default2 = "配置项动态测试用例集";
-
+            List<string> contents = new List<string>();
             if(doc_builder.MoveToBookmark("软件名称")){
                 string softawre_name = doc.Range.Bookmarks["软件名称"].Text;
                 int count = 1;
                 foreach(string key in this.software_dict.Keys){
-                    text += softawre_name + default1 + count.ToString() + ':';
-                    text += software_dict[key].rj_mingcheng + default2 + '\t';
-                    text += software_dict[key].xt_banben + '\n';
+                    string temp = softawre_name + default1 + count.ToString() + ':';
+                    temp += software_dict[key].rj_mingcheng + default2;
+                    contents.Add(temp);
+                    text +=  temp + '\t' + software_dict[key].xt_banben + '\n';
                     count += 1;
                 }
+                text = text.Substring(0, text.Length - 1);
                 if(doc_builder.MoveToBookmark(mark))
                     doc_builder.Write(text);
+            }
+            return contents;
+        }
+
+        //填写入库申请单
+        public void write_rksqd_chart(Document doc, DocumentBuilder doc_builder, List<string> contents,
+            int section_index, int sec_table_index, int row_index, int name_row_index, List<int> time_diff) {
+            int flag = row_index;
+            int cur_section = section_index;
+            foreach(int i in time_diff) {
+                cur_section += i;
+            }
+            doc_builder.MoveToSection(cur_section);
+            Table table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
+            foreach(string key in contents) {
+                if(row_index < contents.Count + flag - 1) {
+                    var row = table.Rows[row_index].Clone(true);
+                    table.Rows.Insert(row_index + 1, row);
+                }
+                //doc.Save(FileConstants.save_root_file);
+                doc_builder.MoveToCell(sec_table_index, row_index, name_row_index, 0);
+                doc_builder.Write(key);
+                row_index += 1;
             }
         }
     }

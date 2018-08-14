@@ -18,12 +18,22 @@ namespace CSSTC1.InputProcessors {
             int lixiang_time = int.Parse(lx_time);
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            List<string> keys = new List<string>();
+            List<string> values = new List<string>();
             string xmks_time = TimeStamp.xiangmukaishishijian ;
             if(xmks_time.Length > 0) {
-                DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第一次", xmks_time, lixiang_time);
-                DateHelper.fill_time_blank(doc, doc_builder, "任务通知时间", xmks_time, lixiang_time - 1);
-                DateHelper.fill_time_blank(doc, doc_builder, "内部评审时间", xmks_time, lixiang_time - 4);
-                DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第二次", xmks_time, lixiang_time - 6);
+                string lxwtf_time1 = DateHelper.cal_time(xmks_time, lixiang_time);
+                keys.Add("联系委托方第一次");
+                values.Add(lxwtf_time1);
+                string rwtzd_time = DateHelper.cal_time(xmks_time, lixiang_time - 1);
+                keys.Add("任务通知时间");
+                values.Add(rwtzd_time);
+                string ns_time = DateHelper.cal_time(xmks_time, lixiang_time - 1);
+                keys.Add("内部评审时间");
+                values.Add(ns_time);
+                string lxwtf_time2 = DateHelper.cal_time(xmks_time, lixiang_time);
+                keys.Add("联系委托方第二次");
+                values.Add(lxwtf_time2);
                 //被测件接收时间以默认为准还是输入为准？？
                 //doc = this.fill_time_blank(doc, doc_builder, "被测件接收时间", xmks_time, lixiang_time - 7);
             }
@@ -34,28 +44,36 @@ namespace CSSTC1.InputProcessors {
             //    doc_builder.CurrentSection.Range.Delete();
 
             //}
+            string csdgps_time = TimeStamp.ceshisc_format_time;
+            string datetime = DateHelper.cal_general_time(csdgps_time);
+            keys.Add("测试大纲评审时间");
+            values.Add(datetime);
+
             this.change_file_struc(doc, doc_builder, "被测件领取次数");
             for(int i = 0; i < lq_times.Count; i ++){
-                if(doc_builder.MoveToBookmark("入库日期" + (i + 1).ToString()))
-                    doc_builder.Write(lq_times[i]);
+                keys.Add("入库日期" + (i + 1).ToString());
+                values.Add(lq_times[i]);
+                string rk_general_time = DateHelper.cal_general_time(lq_times[i]);
+                keys.Add("入库时间" + (i + 1).ToString() + "精确到月");
+                values.Add(rk_general_time);
             }
-            if(doc_builder.MoveToBookmark("偏离联系时间")){
-                if(pl_time.Length > 0){
-                    string[] temp = pl_time.Split('/');
-                    string temp1 = temp[0] + "年" + temp[1] + "月" + temp[2] + "日";
-                    doc_builder.Write(temp1);
-                }
-                else{
-                    ContentFlags.pianli_1 = 0;
-                    string[] marks = {"合同偏离通知单"};
-                    OperationHelper.delete_section(doc, doc_builder,marks);
-                }
+          
+            if(pl_time.Length > 0){
+                keys.Add("偏离联系时间");
+                values.Add(pl_time);
             }
-            //NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
-            //foreach(Aspose.Words.Fields.FieldStart field_ref in nodes) {
-            //    Aspose.Words.Fields.Field field = field_ref.GetField();
-            //    field.Update();
-            //}
+            else{
+                ContentFlags.pianli_1 = 0;
+                string[] marks = {"合同偏离通知单"};
+                OperationHelper.delete_section(doc, doc_builder,marks);
+            }
+            int index = 0;
+            foreach(string mark in keys){
+                if(doc_builder.MoveToBookmark(mark))
+                    doc_builder.Write(values[index]);
+                index += 1;
+            }
+
             doc.Save(FileConstants.save_root_file);
         }
 

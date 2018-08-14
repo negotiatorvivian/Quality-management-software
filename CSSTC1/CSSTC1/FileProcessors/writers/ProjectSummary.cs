@@ -262,7 +262,7 @@ namespace CSSTC1.FileProcessors.writers {
                 text += info.rj_mingcheng + "配置项动态回归测试原始记录";
                 count += 1;
                 contents.Add(text);
-                content += text + "V1.0" + '\n';
+                content += text + " V1.0" + '\n';
             }
             //contents.Concat(contents_new);
             this.pzcs_record += content;
@@ -307,10 +307,16 @@ namespace CSSTC1.FileProcessors.writers {
                 table.Rows[row_index].Remove();
                 table1.Rows[row_index].Remove();
                 table2.Rows[row_index1].Remove();
+                if(doc_builder.MoveToBookmark("鉴定测评配置状态报告1"))
+                    doc_builder.Write(this.pzcs_record);
+                return row_index1 + 1;
             }
-            if(doc_builder.MoveToBookmark("鉴定测评配置状态报告1"))
-                doc_builder.Write(this.pzcs_record);
-            return row_index1 + 1;
+            else{
+                this.pzcs_record += "\n" + this.software_name + "逻辑测试执行记录及结果 V1.0";
+                if(doc_builder.MoveToBookmark("鉴定测评配置状态报告1"))
+                    doc_builder.Write(this.pzcs_record);
+                return row_index1 + 2;
+            }
         }
 
         //最后一张出库申请表测试用例集部分
@@ -378,6 +384,8 @@ namespace CSSTC1.FileProcessors.writers {
                 section += i;
             }
             string content = "";
+            List<string> all_file_names = ContentFlags.all_file_lists.Select(r => r.wd_mingcheng).ToList();
+            List<string> all_file_versions = ContentFlags.all_file_lists.Select(r => r.wd_banben).ToList();
             Dictionary<string, string> rukuwendang_dict = ContentFlags.rukuwendang_dict;
             doc_builder.MoveToSection(section);
             Table table = (Table)doc_builder.CurrentSection.GetChild(NodeType.Table, sec_table_index, true);
@@ -390,12 +398,28 @@ namespace CSSTC1.FileProcessors.writers {
                 doc_builder.MoveToCell(sec_table_index, row_index, iden_row_index, 0);
                 doc_builder.Write(rukuwendang_dict[name]);
                 row_index += 1;
-                MatchCollection matches = reg.Matches(rukuwendang_dict[name], 0);
-                if(matches == null)
-                    continue;
-                string version = matches[matches.Count - 1].Value;
-                string text = name + ' ' + version + '\n';
-                content += text;
+                
+                string text = "";
+                //if(all_file_names.Contains(name)){
+                text = name + " ";
+                int index = all_file_names.IndexOf(name);
+                if(index >= 0){
+                    string[] versions = all_file_versions[index].Split('/');
+                    foreach(string v in versions){
+                        text += v + "、";
+                    }
+                    text = text.Substring(0, text.Length - 1);
+                    text += '\n';
+                    content += text;
+                }
+                else{
+                    MatchCollection matches = reg.Matches(rukuwendang_dict[name], 0);
+                    if(matches != null){
+                        string version = matches[matches.Count - 1].Value;
+                        text = name + ' ' + version + '\n';
+                        content += text;
+                    }
+                }
             }
             table.Rows[row_index].Remove();
             this.pzcs_record2 += content;

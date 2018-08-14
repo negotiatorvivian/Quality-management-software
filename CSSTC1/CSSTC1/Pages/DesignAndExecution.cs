@@ -134,7 +134,11 @@ namespace CSSTC1.Pages {
             string temp = this.tableLayoutPanel2.GetControlFromPosition(1, index).Text;
             if(temp.Equals("2")) {
                 string software_name = this.tableLayoutPanel2.GetControlFromPosition(0, index).Text;
-                PopUpWindow pop_up = new PopUpWindow(software_name);
+                string csjxps_time1 = this.dateTimePicker4.Value.ToShortDateString();
+                string csjxps_time2 = this.dateTimePicker5.Value.ToShortDateString();
+                DateTime date1 = DateHelper.cal_date(csjxps_time1, 1);
+                DateTime date2 = DateHelper.cal_date(csjxps_time2, 1);
+                PopUpWindow pop_up = new PopUpWindow(software_name, date1, date2);
                 pop_up.Show();
                 this.tableLayoutPanel2.GetControlFromPosition(1, index).Enabled = false;
             }
@@ -213,16 +217,23 @@ namespace CSSTC1.Pages {
             if(csjx_questions.Equals("无"))
                 ContentFlags.pianli_3 = 0;
             bool flag = false;
-            foreach(ComboBox box in comboBoxes){
-                if(box.Text.Equals("2")){
-                    this.processor.fill_time_line(); 
-                    this.panel1.Hide();
-                    flag = true;
-                    break;
+            if(this.comboBox3.Text.Equals("2次")){
+                foreach(ComboBox box in comboBoxes){
+                    if(box.Enabled == false && box.Text.Equals("2")){
+                        this.processor.fill_time_line();
+                        this.panel1.Hide();
+                        flag = true;
+                        break;
+                    }
                 }
+                if(!flag)
+                    MessageBox.Show("请填写第二次就绪软件的环境信息！");
             }
-            if(!flag)
-                MessageBox.Show("请填写第二次就绪软件的环境信息！");
+            else{
+                this.processor.fill_time_line();
+                this.panel1.Hide();
+            }
+            
         }
 
         

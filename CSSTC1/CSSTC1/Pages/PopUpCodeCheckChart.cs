@@ -167,6 +167,7 @@ namespace CSSTC1.Pages {
                 string old_version = controls[i + 2].Text;
                 string new_version = controls[i + 3].Text;
                 string provider = controls[i + 4].Text;
+                
                 StaticAnalysisFile file = new StaticAnalysisFile(name, range, old_version, new_version, "",
                     provider);
                 files.Add(file);

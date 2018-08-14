@@ -14,6 +14,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
     class FileWriter9 {
         Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict;
         Dictionary<string, List<DynamicHardwareItems>> yingjianpeizhi_dict;
+        Dictionary<string, List<string>> software_test_env2 = new Dictionary<string, List<string>>();
         List<List<string>> files_ids = new List<List<string>>();
         List<SoftwareItems> softwares = new List<SoftwareItems>();
         public string software_names = "";
@@ -76,7 +77,10 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 InsertionPos.djhj_cshjhc_section1, InsertionPos.djhj_cshjhc_sec_table, 1, this.time_diff, true);
             ContentFlags.beiceruanjianshuliang1 = ruanjianpeizhi_dict.Count;
             this.time_diff.Add(ContentFlags.beiceruanjianshuliang1 * 2);
-            //this.merge_location(doc, doc_builder, "搭建环境配置状态报告单1");
+
+            Dictionary<string, List<string>> software_test_env1 = this.merge_location(doc, doc_builder);
+            this.write_cshj_chart(doc, doc_builder, this.software_test_env2, "搭建环境配置状态报告单1");
+            this.write_cshj_chart(doc, doc_builder, software_test_env1, "配置项动态回归测试配置状态报告单2");
             int index = InsertionPos.djhj_hyqdb_section1;
             foreach(int i in time_diff)
                 index += i;
@@ -97,9 +101,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 doc_builder.Write(text);
         }
 
-        public bool merge_location(Document doc, DocumentBuilder doc_builder, string bookmark){
-            if(!doc_builder.MoveToBookmark(bookmark))
-                return false;
+        public Dictionary<string, List<string>> merge_location(Document doc, DocumentBuilder doc_builder) {
             Dictionary<string, List<string>> software_test_envs = new Dictionary<string,List<string>>();
             foreach(TestEnvironment test_env in ContentFlags.test_envs){
                 if(!software_test_envs.ContainsKey(test_env.ceshi_didian2)){
@@ -111,29 +113,56 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     software_test_envs[test_env.ceshi_didian2].Add(test_env.rj_mingcheng);
                 }
             }
-            //string text = "";
+            foreach(string key in software_test_envs.Keys)
+                this.software_test_env2.Add(key, software_test_envs[key]);
+            List<string> jiuxu_softwares2 = ContentFlags.test_envs.Select(r => r.rj_mingcheng).ToList();
+            foreach(ProjectInfo info in ContentFlags.pro_infos){
+                if(jiuxu_softwares2.Contains(info.rj_mingcheng))
+                    continue;
+                else{
+                    if(software_test_envs.ContainsKey("本测评中心")){
+                        software_test_envs["本测评中心"].Add(info.rj_mingcheng);
+                    }
+                    else{
+                        List<string> temp = new List<string>();
+                        temp.Add(info.rj_mingcheng);
+                        software_test_envs.Add("本测评中心", temp);
+                    }
+                }
+            }
+            return software_test_envs;
+        }
+
+        //配置报告单中的测试环境
+        public bool write_cshj_chart(Document doc, DocumentBuilder doc_builder, Dictionary<string, 
+            List<string>> software_test_envs, string bookmark) {
+            if(!doc_builder.MoveToBookmark(bookmark))
+                return false;
             doc_builder.MoveToBookmark(bookmark);
-            foreach(string location in software_test_envs.Keys){
+            int flag = 0;
+            foreach(string location in software_test_envs.Keys) {
                 Paragraph old_para = (Paragraph)doc_builder.CurrentParagraph;
-                int t = doc_builder.CurrentSection.IndexOf(old_para);
-                old_para = (Paragraph)doc_builder.CurrentSection.GetChild(NodeType.Paragraph, t, true);
                 Paragraph para = (Paragraph)doc_builder.CurrentParagraph.Clone(true);
-                Paragraph temp = new Paragraph(doc);
-                
-                doc.InsertAfter(para, old_para);
+
                 doc_builder.MoveTo(old_para);
                 string names = "";
-                foreach(string software in software_test_envs[location]){
+                foreach(string software in software_test_envs[location]) {
                     names += software + '、';
                 }
                 names = names.Substring(0, names.Length - 1);
-                names += "动态测试环境已搭建，位于" + location;
-                doc_builder.Write(names);
-                doc_builder.MoveTo(para);
-                //text += names + '\n';
+                names += "动态测试环境已搭建，位于" + location + "，";
+                Run run = new Run(doc);
+                run.Text = names;
+                Run first_run = (Run)old_para.GetChild(NodeType.Run, 0, true);
+                old_para.InsertBefore(run, first_run);
+                if(flag < software_test_envs.Count - 1) {
+                    Cell node = (Cell)old_para.GetAncestor(NodeType.Cell);
+                    node.AppendChild(para);
+                    doc_builder.MoveTo(para);
+                }
+                flag += 1;
             }
             return true;
-//doc_builder.Write(text);
         }
     }
 }

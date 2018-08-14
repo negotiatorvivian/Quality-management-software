@@ -132,6 +132,7 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
             ChartHelper.write_rksqd_chart(doc, doc_builder, dict, InsertionPos.dmsc_bcjqd_section,
                 InsertionPos.dmsc_bcjlqqd_sec_table1, 2, InsertionPos.sj_bcjdbd_name_row, 
                 InsertionPos.sj_code_row_index, InsertionPos.sj_bcjdbd_iden_row, this.time_diff);
+            this.update_code_language(dict);
             ChartHelper.write_rksqd_chart(doc, doc_builder, dict, InsertionPos.dmsc_bcjqd_section,
                 InsertionPos.dmsc_rksqd_sec_table1, 3, InsertionPos.sj_rksqd_name_row, 
                 InsertionPos.sj_code_row_index, InsertionPos.sj_rksqd_iden_row, this.time_diff);
@@ -139,6 +140,21 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
             
             return true;
         }
+
+        //同步编程语言信息
+        public void update_code_language(Dictionary<string, StaticAnalysisFile> dict) {
+            foreach(string name in dict.Keys){
+                for(int i = 0; i< ContentFlags.static_files.Count; i++){
+                    if(dict[name].rj_mingcheng.Equals(ContentFlags.static_files[i].rj_mingcheng)){
+                        dict[name].bc_yuyan = ContentFlags.static_files[i].bc_yuyan;
+                        break;
+                    }
+                }
+                if(dict[name].bc_yuyan.Length == 0)
+                    dict[name].bc_yuyan = "C/C++";
+            }
+        }
+
 
         //填写第一个联系委托方单
         public void write_lxwtf_chart(Document doc, DocumentBuilder doc_builder, 
