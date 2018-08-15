@@ -9,13 +9,22 @@ using System.Windows;
 
 namespace CSSTC1.InputProcessors {
     class DesignAndExeProcessor {
-        public bool fill_time_line(){
+        public bool fill_time_line(string pl_time){
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             //测试就绪评审环节是否有问题
             if(ContentFlags.pianli_3 == 0){
                 string[] marks = { "合同偏离通知单2" };
                 OperationHelper.delete_section(doc, doc_builder, marks);
+            }
+
+            if(ContentFlags.pianli_4 == 0) {
+                string[] marks = { "合同偏离通知单3" };
+                OperationHelper.delete_section(doc, doc_builder, marks);
+            }
+            else{
+                if(doc_builder.MoveToBookmark("偏离联系时间3"))
+                    doc_builder.Write(pl_time);
             }
             string csjxps_time1 = TimeStamp.csjxps_time[0];
             string lxqtf_time3 = DateHelper.cal_time(csjxps_time1, 3);

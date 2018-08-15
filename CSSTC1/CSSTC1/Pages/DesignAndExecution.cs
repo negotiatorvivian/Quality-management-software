@@ -214,13 +214,19 @@ namespace CSSTC1.Pages {
                 TimeStamp.csjxps_time.Add(this.dateTimePicker5.Value.ToShortDateString());
                 TimeStamp.csjxps_format_time.Add(this.dateTimePicker5.Value.ToLongDateString());
             }
+            string pl_time = "";
+            if(this.dateTimePicker2.Enabled) {
+                pl_time = this.dateTimePicker2.Value.ToLongDateString();
+            }
+            else
+                ContentFlags.pianli_4 = 0;
             if(csjx_questions.Equals("无"))
                 ContentFlags.pianli_3 = 0;
             bool flag = false;
             if(this.comboBox3.Text.Equals("2次")){
                 foreach(ComboBox box in comboBoxes){
                     if(box.Enabled == false && box.Text.Equals("2")){
-                        this.processor.fill_time_line();
+                        this.processor.fill_time_line(pl_time);
                         this.panel1.Hide();
                         flag = true;
                         break;
@@ -230,10 +236,14 @@ namespace CSSTC1.Pages {
                     MessageBox.Show("请填写第二次就绪软件的环境信息！");
             }
             else{
-                this.processor.fill_time_line();
+                this.processor.fill_time_line(pl_time);
                 this.panel1.Hide();
             }
             
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            this.dateTimePicker2.Enabled = this.checkBox1.Checked;
         }
 
         

@@ -102,6 +102,9 @@ namespace CSSTC1.ConstantVariables {
         public static int luojiceshi = 3;
         //是否有系统回归测试
         public static int xitonghuiguiceshi = 10;
+
+        //测试与执行阶段是否有偏离
+        public static int pianli_4 = 1;
         #endregion
 
         #region 测试总结阶段

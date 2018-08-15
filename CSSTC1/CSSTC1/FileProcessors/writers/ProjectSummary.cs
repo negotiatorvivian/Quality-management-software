@@ -36,6 +36,7 @@ namespace CSSTC1.FileProcessors.writers {
             time_diff.Add(ContentFlags.luojiceshi);
             time_diff.Add(ContentFlags.xitongceshi);
             time_diff.Add(ContentFlags.xitonghuiguiceshi);
+            time_diff.Add(ContentFlags.pianli_4);
         }
         public void write_charts(List<QestionReport> ns_report, List<QestionReport> ws_report) {
             Document doc = new Document(FileConstants.save_root_file);
