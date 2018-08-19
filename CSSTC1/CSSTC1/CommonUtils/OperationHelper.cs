@@ -158,11 +158,23 @@ namespace CSSTC1.CommonUtils {
             }
             return true;
         }
-
+        //更新文档域
         public static void update_file(){
             Document doc = new Document(FileConstants.save_root_file);
             if(doc != null){
                 DocumentBuilder doc_builder = new DocumentBuilder(doc);
+                if(ContentFlags.dmsc_same) {
+                    string[] bookmarks = { "调拨6", "调拨7", "配置7"};
+                    delete_section(doc, doc_builder, bookmarks);
+                    delete_table(doc, doc_builder, "代码审查配置状态报告单", 0);
+                }
+                if(ContentFlags.dmzc_same) {
+                    string[] bookmarks = { "调拨8", "调拨9", "配置12" };
+                    delete_section(doc, doc_builder, bookmarks);
+                    delete_table(doc, doc_builder, "代码走查配置状态报告单", 0);
+                }
+                set_file_order(doc, doc_builder);
+                set_file_order1(doc, doc_builder);
                 NodeCollection nodes = doc.GetChildNodes(NodeType.FieldStart, true);
                 foreach(Aspose.Words.Fields.FieldStart field_ref in nodes) {
                     Aspose.Words.Fields.Field field = field_ref.GetField();
@@ -171,5 +183,102 @@ namespace CSSTC1.CommonUtils {
                 doc.Save(FileConstants.save_root_file);
             }
         }
+
+        //编号
+        public static void set_file_order(Document doc, DocumentBuilder doc_builder){
+           // ContentFlags.set_order();
+            Dictionary<string, string> lxwtf_time_dict = ContentFlags.set_lxwtf_order();
+            var lxwtf_sort_dict = from objDic in ContentFlags.time_dict1 orderby objDic.Value 
+                                      ascending select objDic;//升序
+            List<string> new_lxwtf_list = new List<string>();
+            List<string> bookmarks = lxwtf_sort_dict.Select(r => r.Key).ToList();
+            foreach(string bookmark in lxwtf_time_dict.Keys) {
+                if(bookmarks.Contains(bookmark))
+                    new_lxwtf_list.Add(lxwtf_time_dict[bookmark]);
+            }
+            int i = 3;
+            foreach(string id_mark in new_lxwtf_list){
+                if(doc_builder.MoveToBookmark(id_mark)){
+                    if(i < 10)
+                        doc_builder.Write("0" + i.ToString());
+                    else
+                        doc_builder.Write(i.ToString());
+                    i += 1;
+                }
+            }
+        }
+
+        //编号
+        public static void set_file_order1(Document doc, DocumentBuilder doc_builder) {
+            Dictionary<string, List<string>> project_id_dict = ContentFlags.set_order();
+            var sort_dict = from objDic in ContentFlags.time_dict2
+                                  orderby objDic.Value ascending
+                                  select objDic;//升序
+            //按顺序排列的时间书签
+            List<string> bookmarks = sort_dict.Select(r => r.Key).ToList();
+
+            List<string> new_id_list1 = new List<string>();
+            List<string> new_id_list2 = new List<string>();
+            List<string> new_id_list3 = new List<string>();
+            List<string> new_id_list4 = new List<string>();
+            //List<string> bookmarks = lxwtf_sort_dict.Select(r => r.Value).ToList();
+            foreach(string bookmark in bookmarks) {
+                if(!project_id_dict.ContainsKey(bookmark))
+                    continue;
+                List<string> positions = project_id_dict[bookmark];
+                foreach(string s in positions){
+                    if(s.StartsWith("调拨"))
+                        new_id_list1.Add(s);
+                    else if(s.StartsWith("入库"))
+                        new_id_list2.Add(s);
+                    else if(s.StartsWith("配置"))
+                        new_id_list3.Add(s);
+                    else
+                        new_id_list4.Add(s);
+                }
+
+            }
+            int i = 1;
+            foreach(string id_mark in new_id_list1) {
+                if(doc_builder.MoveToBookmark(id_mark)) {
+                    if(i < 10)
+                        doc_builder.Write("0" + i.ToString());
+                    else
+                        doc_builder.Write(i.ToString());
+                    i += 1;
+                }
+            }
+            i = 1;
+            foreach(string id_mark in new_id_list2) {
+                if(doc_builder.MoveToBookmark(id_mark)) {
+                    if(i < 10)
+                        doc_builder.Write("0" + i.ToString());
+                    else
+                        doc_builder.Write(i.ToString());
+                    i += 1;
+                }
+            }
+            i = 1;
+            foreach(string id_mark in new_id_list3) {
+                if(doc_builder.MoveToBookmark(id_mark)) {
+                    if(i < 10)
+                        doc_builder.Write("0" + i.ToString());
+                    else
+                        doc_builder.Write(i.ToString());
+                    i += 1;
+                }
+            }
+            i = 1;
+            foreach(string id_mark in new_id_list4) {
+                if(doc_builder.MoveToBookmark(id_mark)) {
+                    if(i < 10)
+                        doc_builder.Write("0" + i.ToString());
+                    else
+                        doc_builder.Write(i.ToString());
+                    i += 1;
+                }
+            }
+        }
+
     }
 }

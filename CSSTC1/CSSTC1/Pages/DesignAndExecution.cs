@@ -217,6 +217,7 @@ namespace CSSTC1.Pages {
             string pl_time = "";
             if(this.dateTimePicker2.Enabled) {
                 pl_time = this.dateTimePicker2.Value.ToLongDateString();
+                
             }
             else
                 ContentFlags.pianli_4 = 0;

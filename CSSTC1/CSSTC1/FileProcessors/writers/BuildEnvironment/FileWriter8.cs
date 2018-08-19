@@ -19,6 +19,8 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
         public string software_names = "";
         List<int> time_diff = new List<int>();
         private TestEnvChartHelper helper;
+        private string project_id;
+        private string year;
         public FileWriter8(Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string,
             List<DynamicHardwareItems>> yingjianpeizhi_dict) {
             this.ruanjianpeizhi_dict = ruanjianpeizhi_dict;
@@ -37,6 +39,8 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
         private void write_charts(){
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            this.project_id = doc.Range.Bookmarks["项目标识"].Text;
+            this.year = doc.Range.Bookmarks["年份"].Text;
             this.write_lxwtf_chart_1(doc, doc_builder, ruanjianpeizhi_dict, "配置项被测件名称");
             helper.write_bcjqd_chart(doc, doc_builder, this.ruanjianpeizhi_dict, this.yingjianpeizhi_dict, 
                 InsertionPos.djhj_bcjqd_section, InsertionPos.djhj_bcjqd_sec_table, InsertionPos.sj_bcjqd_name_row,
@@ -65,7 +69,7 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                     InsertionPos.djhj_pcywtzz_sec_table, InsertionPos.csdgws_solu_row);
                 this.time_diff.Add(ContentFlags.pianli_3);
             }
-                
+            this.write_pzzt_chart(doc,doc_builder);
             doc.Save(FileConstants.save_root_file);
         }
 
@@ -117,6 +121,35 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
                 index_row += 1;
             }
             return true;
+        }
+
+        public void write_pzzt_chart(Document doc, DocumentBuilder doc_builder){
+            Dictionary<string, string> test_env_id_dict = new Dictionary<string, string>();
+            List<string> names = ContentFlags.pro_infos.Select(r => r.rj_mingcheng).ToList();
+            string text = "";
+            string text1 = "";
+            string text_id = "";
+            string head = "CSSTC-TE-{" + this.project_id + "}-N";
+            string tail = "-" + this.year;
+            foreach(string software_name in names){
+                text1 += software_name + "、";
+                int i = ContentFlags.test_env_id + 1;
+                if(i < 10)
+                    text = head + "0" + i.ToString() + tail;
+                else
+                    text = head + i.ToString() + tail;
+                ContentFlags.test_env_id += 1;
+                test_env_id_dict.Add(software_name, text);
+                text_id += text + "、";
+            }
+            text1 = text1.Substring(0, text1.Length - 1);
+            text_id = text_id.Substring(0, text_id.Length - 1);
+            text1 += "动态测试环境已搭建，位于动态测评中心，测试环境标识：" + text_id;
+            text1 += "，测试环境所用测试设备、工具等的标识与测试说明中一致;\n";
+            text1 = text1.Substring(0, text1.Length - 1);
+            ContentFlags.test_env_id_dict = test_env_id_dict;
+            if(doc_builder.MoveToBookmark("搭建环境配置状态报告单"))
+                doc_builder.Write(text1);
         }
     }
 }

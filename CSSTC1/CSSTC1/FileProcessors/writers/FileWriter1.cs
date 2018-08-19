@@ -319,53 +319,6 @@ namespace CSSTC1.FileProcessors.writers {
             int sec_table_index = 1;
             ChartHelper.write_bcjqd_chart(doc, rootdoc_builder, beicejianqingdan_dict, cur_section, 
                 sec_table_index, InsertionPos.sj_bcjqd_name_row, InsertionPos.sj_bcjqd_iden_row, time_diff);
-            //rootdoc_builder.MoveToSection(cur_section);
-            //int row_index = 1;
-            //int merge_cell = 1;
-            
-            //foreach(FileList file in files) {
-            //    if(row_index < files.Count) {
-            //        var row = table.Rows[row_index].Clone(true);
-            //        table.Rows.Insert(1 + row_index, row);
-            //    }
-            //    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index, 
-            //        InsertionPos.lx_bcjqd_name_row, 0);
-            //    rootdoc_builder.Write(file.wd_mingcheng);
-            //    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
-            //        InsertionPos.lx_bcjqd_res_row, 0);
-            //    rootdoc_builder.Write(content_list[row_index - 1]);
-            //    rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
-            //        InsertionPos.lx_bcjqd_orig_row, 0);
-            //    Cell pre_cell = table.Rows[merge_cell].Cells[InsertionPos.lx_bcjqd_orig_row];
-            //    string temp = pre_cell.Range.Text.Substring(0, pre_cell.Range.Text.Length - 1);
-            //    string date = DateHelper.cal_time(TimeStamp.lingqushijian[time], 0);
-            //    if(temp.Equals(file.wd_laiyuan)) {
-            //        //合并来源列
-            //        rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, merge_cell,
-            //                InsertionPos.lx_bcjqd_orig_row, 0);
-            //        rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
-            //        rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
-            //            InsertionPos.lx_bcjqd_orig_row, 0);
-            //        rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
-
-            //        //合并接收日期列
-            //        rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, merge_cell,
-            //            InsertionPos.lx_bcjqd_date_row, 0);
-            //        rootdoc_builder.CellFormat.VerticalMerge = CellMerge.First;
-            //        rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, row_index,
-            //            InsertionPos.lx_bcjqd_date_row, 0);
-            //        rootdoc_builder.CellFormat.VerticalMerge = CellMerge.Previous;
-            //    }
-            //    else {
-            //        rootdoc_builder.Write(file.wd_laiyuan);
-            //        merge_cell = row_index;
-            //        rootdoc_builder.MoveToCell(InsertionPos.lx_bcjqd_sec_table, merge_cell,
-            //            InsertionPos.lx_bcjqd_date_row, 0);
-            //        rootdoc_builder.Write(date);
-            //    }
-
-            //    row_index += 1;
-            //}
         }
 
         //被测件领取清单

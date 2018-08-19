@@ -181,5 +181,13 @@ namespace CSSTC1.Pages {
             f_key1.SetValue(new_files, files);
             return true;
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
+            if(this.Text.Equals("代码走查模块名")) {
+                ContentFlags.dmzc_same = this.checkBox1.Checked;
+            }
+            else
+                ContentFlags.dmsc_same = this.checkBox1.Checked;
+        }
     }
 }

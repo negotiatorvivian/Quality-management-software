@@ -15,6 +15,8 @@ namespace CSSTC1.InputProcessors {
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
             if(doc_builder.MoveToBookmark("偏离联系时间2") && pl_time.Length > 0){
                 doc_builder.Write(pl_time);
+                DateTime t = DateHelper.cal_date(TimeStamp.pianli2_time, 0);
+                ContentFlags.time_dict1.Add("偏离联系时间2", t);
             }
             //没有偏离，删除偏离表格
             else if(pl_time.Length == 0){
@@ -28,6 +30,8 @@ namespace CSSTC1.InputProcessors {
             //填写需求说明部分
             else {
                 this.fill_xqsm_basic_time(doc, doc_builder, ns_time);
+                DateTime t = DateHelper.cal_date(ns_time, 0);
+                ContentFlags.time_dict2.Add("测试说明与计划内审时间", t);
             }
         }
 
@@ -46,14 +50,22 @@ namespace CSSTC1.InputProcessors {
                 if(doc_builder.MoveToBookmark("大纲内审时间"))
                     doc_builder.Write(ns_time);
                 string ceshidagang_shencha = TimeStamp.ceshisc_time;
-                DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第三次", ceshidagang_shencha, 7);
-                DateHelper.fill_time_blank(doc, doc_builder, "测试大纲出库时间", ceshidagang_shencha, -1);
+                //DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第三次", );
+                DateTime t1 = DateHelper.cal_date(ceshidagang_shencha, 7);
+                DateTime t2 = DateHelper.cal_date(ceshidagang_shencha, -1);
+                if(doc_builder.MoveToBookmark("联系委托方第三次"))
+                    doc_builder.Write(t1.ToLongDateString());
+                if(doc_builder.MoveToBookmark("测试大纲出库时间"))
+                    doc_builder.Write(t2.ToLongDateString());
+                //DateHelper.fill_time_blank(doc, doc_builder, "测试大纲出库时间", ceshidagang_shencha, -1);
                 string ceshidagang_shencha1 = TimeStamp.ceshisc_format_time;
                 int index = ceshidagang_shencha1.IndexOf("月");
                 string temp1 = ceshidagang_shencha1.Substring(0, index + 1);
                 if(doc_builder.MoveToBookmark("测试大纲审查时间"))
                     doc_builder.Write(temp1);
                 doc.Save(FileConstants.save_root_file);
+                ContentFlags.time_dict1.Add("联系委托方第三次", t1);
+                ContentFlags.time_dict2.Add("测试大纲出库时间", t2);
             }
             else
                 MessageBox.Show("请先填写项目立项阶段信息");
@@ -63,10 +75,16 @@ namespace CSSTC1.InputProcessors {
             if(doc_builder.MoveToBookmark("测试说明与计划内审时间"))
                 doc_builder.Write(ns_time);
             if(TimeStamp.ceshisc_time != null){
-                DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第四次", TimeStamp.ceshisc_time, 7);
+                DateTime t = DateHelper.cal_date(TimeStamp.ceshisc_time, 7);
+                ContentFlags.time_dict1.Add("联系委托方第四次", t);
+                if(doc_builder.MoveToBookmark("联系委托方第四次"))
+                    doc_builder.Write(t.ToLongDateString());
                 if(doc_builder.MoveToBookmark("测试说明与计划审查时间"))
                     doc_builder.Write(TimeStamp.ceshisc_format_time);
-                DateHelper.fill_time_blank(doc, doc_builder, "测试说明与计划出库时间", TimeStamp.ceshisc_time, -1);
+                DateTime t1 = DateHelper.cal_date(TimeStamp.ceshisc_time, -1);
+                ContentFlags.time_dict2.Add("测试说明与计划出库时间", t);
+                if(doc_builder.MoveToBookmark("测试说明与计划出库时间"))
+                    doc_builder.Write(t1.ToLongDateString());
             }
             doc.Save(FileConstants.save_root_file);
         }

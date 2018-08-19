@@ -73,7 +73,7 @@ namespace CSSTC1.Pages {
                 string temp = name_list[i].ToString();
                 names.Add(temp);
             }
-            string ceshixuqiu_time = this.xuqiufenxi_shijian.Value.ToLongDateString();
+            string ceshixuqiu_time = this.xuqiufenxi_shijian.Text;
             TimeStamp.ceshins_time = this.xuqiufenxi_shijian.Text;
             if(ContentFlags.ceshidagang)
                 reader1.read_psz_members(names);

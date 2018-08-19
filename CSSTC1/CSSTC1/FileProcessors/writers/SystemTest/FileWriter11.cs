@@ -36,7 +36,7 @@ namespace CSSTC1.FileProcessors.writers.SystemTest {
             time_diff.Add(ContentFlags.beiceruanjianshuliang1 * 2);
             time_diff.Add(ContentFlags.beiceruanjianshuliang * 2);
             time_diff.Add(ContentFlags.peizhiceshi);
-            time_diff.Add(ContentFlags.luojiceshi);
+           // time_diff.Add(ContentFlags.luojiceshi);
 
             this.write_charts();
         }
@@ -44,6 +44,14 @@ namespace CSSTC1.FileProcessors.writers.SystemTest {
         public void write_charts(){
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
+            if(doc_builder.MoveToBookmark("系统测试环境标识")) {
+                if(ContentFlags.test_env_id + 1 < 10)
+                    doc_builder.Write( "0" + (ContentFlags.test_env_id + 1).ToString());
+                else
+                    doc_builder.Write((ContentFlags.test_env_id + 1).ToString());
+
+                ContentFlags.test_env_id += 1;
+            }
             this.write_bcjqd_chart(doc, doc_builder, system_softwares, system_hardwares);
             test_env_helper.write_bcjdbd_chart(doc, doc_builder, new_dict1, new_dict2, InsertionPos.xtcs_section,
                 InsertionPos.xtcs_bcjdbd_sec_table, InsertionPos.sj_bcjdbd_name_row, 

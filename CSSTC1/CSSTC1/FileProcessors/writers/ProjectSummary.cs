@@ -33,7 +33,7 @@ namespace CSSTC1.FileProcessors.writers {
             time_diff.Add(ContentFlags.beiceruanjianshuliang1 * 2);
             time_diff.Add(ContentFlags.beiceruanjianshuliang * 2);
             time_diff.Add(ContentFlags.peizhiceshi);
-            time_diff.Add(ContentFlags.luojiceshi);
+            //time_diff.Add(ContentFlags.luojiceshi);
             time_diff.Add(ContentFlags.xitongceshi);
             time_diff.Add(ContentFlags.xitonghuiguiceshi);
             time_diff.Add(ContentFlags.pianli_4);
@@ -81,27 +81,34 @@ namespace CSSTC1.FileProcessors.writers {
 
         //阶段主要时间
         public void write_time_line(Document doc, DocumentBuilder doc_builder){
-            List<string> times = new List<string>();
+            List<DateTime> times = new List<DateTime>();
             List<string> bookmarks = new List<string>();
             string jdcpps_time = TimeStamp.csbgps_time;
-            times.Add(TimeStamp.csbgps_format_time);
+            times.Add(DateHelper.cal_date(TimeStamp.csbgps_time, 0));
             bookmarks.Add("鉴定测评报告外审时间");
-            string jdcpns_time = DateHelper.cal_time(jdcpps_time, 7);
+            DateTime jdcpns_time = DateHelper.cal_date(jdcpps_time, 7);
             times.Add(jdcpns_time);
             bookmarks.Add("鉴定测评报告时间");
-            string lxwtf_time = DateHelper.cal_time(jdcpps_time, 3);
-            times.Add(lxwtf_time);
-            bookmarks.Add("联系委托方第十二次");
-            string jdcpck_time = DateHelper.cal_time(jdcpps_time, -3);
+            //DateTime jdcpns_time = DateHelper.cal_date(jdcpps_time, 7);
+            DateTime jdcpck_time = DateHelper.cal_date(jdcpps_time, -3);
             times.Add(jdcpck_time);
             bookmarks.Add("鉴定测评报告出库时间");
-            string lxwtf_time1 = DateHelper.cal_time(jdcpps_time, -10);
+            DateTime lxwtf_time = DateHelper.cal_date(jdcpps_time, 3);
+            times.Add(lxwtf_time);
+
+            bookmarks.Add("联系委托方第十二次");
+            DateTime lxwtf_time1 = DateHelper.cal_date(jdcpps_time, -10);
             times.Add(lxwtf_time1);
             bookmarks.Add("联系委托方第十三次");
             int i = 0;
             foreach(string mark in bookmarks){
                 if(doc_builder.MoveToBookmark(mark)){
-                    doc_builder.Write(times[i]);
+                    if(i > 2)
+                        ContentFlags.time_dict1.Add(mark, times[i]);
+                    else
+                        ContentFlags.time_dict2.Add(mark, times[i]);
+
+                    doc_builder.Write(times[i].ToLongDateString());
                     i += 1;
                 }
             }
@@ -426,10 +433,15 @@ namespace CSSTC1.FileProcessors.writers {
             this.pzcs_record2 += content;
             //被测件清单部分
             int bcjqd_count = 0;
-            bcjqd_count = ContentFlags.lingqucishu + ContentFlags.wendangshencha + ContentFlags.jingtaifenxi / 15 
-                * 2 + ContentFlags.daimashencha / 13 * 2 + ContentFlags.daimazoucha / 13 * 2 + 
-                ContentFlags.ceshijiuxu2 / 3 * 2 + ContentFlags.peizhiceshi /6 + ContentFlags.xitongceshi/5 + 
-                ContentFlags.xitonghuiguiceshi/5;
+            bcjqd_count = ContentFlags.lingqucishu + ContentFlags.wendangshencha / 6 +
+                ContentFlags.jingtaifenxi / 15 * 2 + ContentFlags.daimashencha / 13 * 2 + 
+                ContentFlags.daimazoucha / 13 * 2 + 1 + ContentFlags.ceshijiuxu2 / 3 + 
+                ContentFlags.peizhiceshi /12 + ContentFlags.xitongceshi / 10 + 
+                ContentFlags.xitonghuiguiceshi / 10;
+            if(ContentFlags.dmsc_same)
+                bcjqd_count -= 2;
+            if(ContentFlags.dmzc_same)
+                bcjqd_count -= 2;
             for(int i = 0; i < bcjqd_count; i ++){
                 var row = table.Rows[row_index].Clone(true);
                 table.Rows.Insert(row_index + 1, row);

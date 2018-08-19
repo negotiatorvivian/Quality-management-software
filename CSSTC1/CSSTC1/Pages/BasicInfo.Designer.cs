@@ -571,7 +571,7 @@
             this.csxq_pingshenshijian.Name = "csxq_pingshenshijian";
             this.csxq_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csxq_pingshenshijian.TabIndex = 60;
-            this.csxq_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.csxq_pingshenshijian.Value = new System.DateTime(2018, 3, 11, 0, 0, 0, 0);
             // 
             // label33
             // 
@@ -590,7 +590,7 @@
             this.csdg_pingshenshijian.Name = "csdg_pingshenshijian";
             this.csdg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csdg_pingshenshijian.TabIndex = 58;
-            this.csdg_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.csdg_pingshenshijian.Value = new System.DateTime(2018, 3, 3, 0, 0, 0, 0);
             // 
             // tabPage1
             // 
@@ -636,7 +636,7 @@
             this.wd_shenchashijian.Name = "wd_shenchashijian";
             this.wd_shenchashijian.Size = new System.Drawing.Size(141, 22);
             this.wd_shenchashijian.TabIndex = 44;
-            this.wd_shenchashijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.wd_shenchashijian.Value = new System.DateTime(2018, 3, 16, 0, 0, 0, 0);
             // 
             // label23
             // 
@@ -656,7 +656,7 @@
             this.wd_querenshijian.Name = "wd_querenshijian";
             this.wd_querenshijian.Size = new System.Drawing.Size(141, 22);
             this.wd_querenshijian.TabIndex = 46;
-            this.wd_querenshijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.wd_querenshijian.Value = new System.DateTime(2018, 3, 27, 0, 0, 0, 0);
             // 
             // wd_huiguishijian
             // 
@@ -666,7 +666,7 @@
             this.wd_huiguishijian.Name = "wd_huiguishijian";
             this.wd_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.wd_huiguishijian.TabIndex = 48;
-            this.wd_huiguishijian.Value = new System.DateTime(2018, 7, 27, 0, 0, 0, 0);
+            this.wd_huiguishijian.Value = new System.DateTime(2018, 4, 2, 0, 0, 0, 0);
             // 
             // label22
             // 
@@ -748,7 +748,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker1.TabIndex = 58;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2018, 5, 10, 0, 0, 0, 0);
             // 
             // label25
             // 
@@ -768,7 +768,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker2.TabIndex = 57;
-            this.dateTimePicker2.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dateTimePicker2.Value = new System.DateTime(2018, 5, 2, 0, 0, 0, 0);
             // 
             // jt_huiguishijian
             // 
@@ -778,7 +778,7 @@
             this.jt_huiguishijian.Name = "jt_huiguishijian";
             this.jt_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.jt_huiguishijian.TabIndex = 54;
-            this.jt_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.jt_huiguishijian.Value = new System.DateTime(2018, 5, 16, 0, 0, 0, 0);
             // 
             // label24
             // 
@@ -835,7 +835,7 @@
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker3.TabIndex = 67;
-            this.dateTimePicker3.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dateTimePicker3.Value = new System.DateTime(2018, 5, 29, 0, 0, 0, 0);
             // 
             // label27
             // 
@@ -855,7 +855,7 @@
             this.dmhg_huiguishijian.Name = "dmhg_huiguishijian";
             this.dmhg_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.dmhg_huiguishijian.TabIndex = 65;
-            this.dmhg_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dmhg_huiguishijian.Value = new System.DateTime(2018, 6, 8, 0, 0, 0, 0);
             // 
             // label28
             // 
@@ -885,7 +885,7 @@
             this.dmsc_shijian.Name = "dmsc_shijian";
             this.dmsc_shijian.Size = new System.Drawing.Size(141, 22);
             this.dmsc_shijian.TabIndex = 62;
-            this.dmsc_shijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dmsc_shijian.Value = new System.DateTime(2018, 5, 23, 0, 0, 0, 0);
             // 
             // tabPage4
             // 
@@ -944,7 +944,7 @@
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker4.TabIndex = 70;
-            this.dateTimePicker4.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dateTimePicker4.Value = new System.DateTime(2018, 6, 23, 0, 0, 0, 0);
             // 
             // dateTimePicker5
             // 
@@ -954,7 +954,7 @@
             this.dateTimePicker5.Name = "dateTimePicker5";
             this.dateTimePicker5.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker5.TabIndex = 69;
-            this.dateTimePicker5.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dateTimePicker5.Value = new System.DateTime(2018, 6, 30, 0, 0, 0, 0);
             // 
             // dateTimePicker6
             // 
@@ -964,7 +964,7 @@
             this.dateTimePicker6.Name = "dateTimePicker6";
             this.dateTimePicker6.Size = new System.Drawing.Size(141, 22);
             this.dateTimePicker6.TabIndex = 68;
-            this.dateTimePicker6.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dateTimePicker6.Value = new System.DateTime(2018, 6, 13, 0, 0, 0, 0);
             // 
             // label30
             // 
@@ -1027,7 +1027,7 @@
             this.dtpz_huigui.Name = "dtpz_huigui";
             this.dtpz_huigui.Size = new System.Drawing.Size(141, 22);
             this.dtpz_huigui.TabIndex = 60;
-            this.dtpz_huigui.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dtpz_huigui.Value = new System.DateTime(2018, 7, 15, 0, 0, 0, 0);
             this.dtpz_huigui.ValueChanged += new System.EventHandler(this.dtpz_huigui_ValueChanged);
             // 
             // label47
@@ -1048,7 +1048,7 @@
             this.dtpz_shoulunshijian.Name = "dtpz_shoulunshijian";
             this.dtpz_shoulunshijian.Size = new System.Drawing.Size(141, 22);
             this.dtpz_shoulunshijian.TabIndex = 56;
-            this.dtpz_shoulunshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.dtpz_shoulunshijian.Value = new System.DateTime(2018, 7, 4, 0, 0, 0, 0);
             this.dtpz_shoulunshijian.ValueChanged += new System.EventHandler(this.dtpz_shoulunshijian_ValueChanged);
             // 
             // tabPage7
@@ -1121,7 +1121,7 @@
             this.xtcs_huiguishijian.Name = "xtcs_huiguishijian";
             this.xtcs_huiguishijian.Size = new System.Drawing.Size(141, 22);
             this.xtcs_huiguishijian.TabIndex = 64;
-            this.xtcs_huiguishijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.xtcs_huiguishijian.Value = new System.DateTime(2018, 8, 6, 0, 0, 0, 0);
             // 
             // label35
             // 
@@ -1141,7 +1141,7 @@
             this.xtcs_shoulunshijian.Name = "xtcs_shoulunshijian";
             this.xtcs_shoulunshijian.Size = new System.Drawing.Size(141, 22);
             this.xtcs_shoulunshijian.TabIndex = 62;
-            this.xtcs_shoulunshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.xtcs_shoulunshijian.Value = new System.DateTime(2018, 7, 29, 0, 0, 0, 0);
             this.xtcs_shoulunshijian.ValueChanged += new System.EventHandler(this.xtcs_shoulunshijian_ValueChanged);
             // 
             // tabPage9
@@ -1173,7 +1173,7 @@
             this.csbg_pingshenshijian.Name = "csbg_pingshenshijian";
             this.csbg_pingshenshijian.Size = new System.Drawing.Size(141, 22);
             this.csbg_pingshenshijian.TabIndex = 56;
-            this.csbg_pingshenshijian.Value = new System.DateTime(2018, 7, 23, 0, 0, 0, 0);
+            this.csbg_pingshenshijian.Value = new System.DateTime(2018, 8, 17, 0, 0, 0, 0);
             this.csbg_pingshenshijian.ValueChanged += new System.EventHandler(this.csbg_pingshenshijian_ValueChanged);
             // 
             // xm_jieshushijian
@@ -1184,7 +1184,7 @@
             this.xm_jieshushijian.Name = "xm_jieshushijian";
             this.xm_jieshushijian.Size = new System.Drawing.Size(141, 22);
             this.xm_jieshushijian.TabIndex = 41;
-            this.xm_jieshushijian.Value = new System.DateTime(2018, 7, 1, 0, 0, 0, 0);
+            this.xm_jieshushijian.Value = new System.DateTime(2018, 8, 19, 0, 0, 0, 0);
             // 
             // label18
             // 

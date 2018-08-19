@@ -69,21 +69,34 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
         public void write_time_line(Document doc, DocumentBuilder doc_builder){
             List<string> bookmarks = new List<string>();
             List<string> values = new List<string>();
-            string dmsc_time = TimeStamp.dmsc_format_time;
-            bookmarks.Add("代码审查时间");
-            values.Add(dmsc_time);
+            if(!ContentFlags.dmsc_same){
+                string dmsc_time = TimeStamp.dmsc_format_time;
+                bookmarks.Add("代码审查时间");
+                values.Add(dmsc_time);
+                DateTime t1 = DateHelper.cal_date(TimeStamp.dmsc_time, 0);
+                ContentFlags.time_dict2.Add("代码审查时间", t1);
+            }
             string dmsc_lxwtf_time = DateHelper.cal_time(TimeStamp.dmsc_time, 1);
             bookmarks.Add("代码审查联系委托方");
             values.Add(dmsc_lxwtf_time);
+            DateTime t2 = DateHelper.cal_date(TimeStamp.dmsc_time, 1);
+            ContentFlags.time_dict1.Add("代码审查联系委托方", t2);
+
             string dmschg_time = TimeStamp.dmschg_format_time;
             bookmarks.Add("代码审查回归时间");
             values.Add(dmschg_time);
+            DateTime t3 = DateHelper.cal_date(TimeStamp.dmschg_time, 0);
+            ContentFlags.time_dict2.Add("代码审查回归时间", t3);
             string dmscqr_time = TimeStamp.dmscqr_format_time;
             bookmarks.Add("代码审查确认时间");
             values.Add(dmscqr_time);
             string dmsc_rk_time = DateHelper.cal_time(TimeStamp.dmscqr_time, 1);
             bookmarks.Add("代码审查文档入库时间");
             values.Add(dmsc_rk_time);
+            DateTime t4 = DateHelper.cal_date(TimeStamp.dmscqr_time, 1);
+            ContentFlags.time_dict1.Add("代码审查文档入库时间", t4);
+            ContentFlags.time_dict2.Add("代码审查文档入库时间", t4);
+           
             int count = 0;
             foreach(string bookmark in bookmarks){
                 if(doc_builder.MoveToBookmark(bookmark))
@@ -96,21 +109,34 @@ namespace CSSTC1.FileProcessors.writers.CodeReview_Walkthrough {
         public void write_dmzc_time_line(Document doc, DocumentBuilder doc_builder) {
             List<string> bookmarks = new List<string>();
             List<string> values = new List<string>();
-            string dmzc_time = TimeStamp.dmzc_format_time;
-            bookmarks.Add("代码走查时间");
-            values.Add(dmzc_time);
+            //if(!ContentFlags.dmzc_same){
+                string dmzc_time = TimeStamp.dmzc_format_time;
+                bookmarks.Add("代码走查时间");
+                values.Add(dmzc_time);
+                DateTime t1 = DateHelper.cal_date(TimeStamp.dmzc_time, 0);
+                ContentFlags.time_dict2.Add("代码走查时间", t1);
+           // }
             string dmzc_lxwtf_time = DateHelper.cal_time(TimeStamp.dmzc_time, 1);
             bookmarks.Add("代码走查联系委托方");
+            DateTime t2 = DateHelper.cal_date(TimeStamp.dmzc_time, 1);
+            ContentFlags.time_dict1.Add("代码走查联系委托方", t2);
             values.Add(dmzc_lxwtf_time);
             string dmzchg_time = TimeStamp.dmzchg_format_time;
             bookmarks.Add("代码走查回归时间");
             values.Add(dmzchg_time);
+            DateTime t3 = DateHelper.cal_date(TimeStamp.dmzchg_time, 0);
+            ContentFlags.time_dict2.Add("代码走查回归时间", t3);
             string dmzcqr_time = TimeStamp.dmzcqr_format_time;
             bookmarks.Add("代码走查确认时间");
             values.Add(dmzcqr_time);
+            //DateTime t4 = DateHelper.cal_date(TimeStamp.dmzcqr_time, 0);
+            //ContentFlags.time_dict2.Add("代码走查确认时间", (int)t4.Ticks);
             string dmzc_rk_time = DateHelper.cal_time(TimeStamp.dmzcqr_time, 1);
             bookmarks.Add("代码走查入库申请时间");
             values.Add(dmzc_rk_time);
+            DateTime t5 = DateHelper.cal_date(TimeStamp.dmzcqr_time, 1);
+            ContentFlags.time_dict1.Add("代码走查入库申请时间", t5);
+            ContentFlags.time_dict2.Add("代码走查入库申请时间", t5);
             int count = 0;
             foreach(string bookmark in bookmarks) {
                 if(doc_builder.MoveToBookmark(bookmark))

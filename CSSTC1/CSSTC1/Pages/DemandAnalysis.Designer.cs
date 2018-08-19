@@ -158,6 +158,7 @@
             // 
             // xuqiufenxi_shijian
             // 
+            this.xuqiufenxi_shijian.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.xuqiufenxi_shijian.Location = new System.Drawing.Point(74, 3);
             this.xuqiufenxi_shijian.Name = "xuqiufenxi_shijian";
             this.xuqiufenxi_shijian.Size = new System.Drawing.Size(172, 23);
@@ -169,8 +170,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(257, 363);
             this.panel1.TabIndex = 75;

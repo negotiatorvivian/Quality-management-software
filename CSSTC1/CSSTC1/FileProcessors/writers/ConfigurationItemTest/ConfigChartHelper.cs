@@ -139,6 +139,9 @@ namespace CSSTC1.FileProcessors.writers.ConfigurationItemTest {
                 contents_new.Add(text);
                 content_new += text + "V1.1" + '\n';
             }
+            content_new += software_name + "问题报告单V1.1\n";
+            if(ContentFlags.luojiceshi > 0)
+                content_new += software_name + "逻辑测试执行记录及结果文件 V1.0\n";
             content_new = content_new.Substring(0, content_new.Length - 1);
 
             doc_builder.MoveToSection(section);

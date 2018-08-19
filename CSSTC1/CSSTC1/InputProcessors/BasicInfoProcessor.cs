@@ -69,8 +69,8 @@ namespace CSSTC1.InputProcessors {
                 OperationHelper.delete_section(doc, doc_builder, "代码走查", "daimazoucha");
             if(ContentFlags.peizhiceshi == 0)
                 OperationHelper.delete_section(doc, doc_builder, "配置项测试", "peizhiceshi");
-            if(ContentFlags.luojiceshi == 0)
-                OperationHelper.delete_section(doc, doc_builder, "逻辑测试", "luojiceshi");
+            //if(ContentFlags.luojiceshi == 0)
+            //    OperationHelper.delete_section(doc, doc_builder, "逻辑测试", "luojiceshi");
             if(ContentFlags.xitongceshi == 0)
                 OperationHelper.delete_section(doc, doc_builder, "系统测试", "xitongceshi");
             else if(ContentFlags.xitonghuiguiceshi == 0)

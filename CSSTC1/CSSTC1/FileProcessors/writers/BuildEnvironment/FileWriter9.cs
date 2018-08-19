@@ -20,6 +20,8 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
         public string software_names = "";
         List<int> time_diff = new List<int>();
         private TestEnvChartHelper helper;
+        private string project_id;
+        private string year;
         public FileWriter9(Dictionary<string, List<SoftwareItems>> ruanjianpeizhi_dict, Dictionary<string,
             List<DynamicHardwareItems>> yingjianpeizhi_dict) {
             this.ruanjianpeizhi_dict = ruanjianpeizhi_dict;
@@ -41,8 +43,13 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
         public bool write_charts(){
             Document doc = new Document(FileConstants.save_root_file);
             DocumentBuilder doc_builder = new DocumentBuilder(doc);
+
             if(TimeStamp.csjxps_time.Count == 0)
                 return false;
+            this.project_id = doc.Range.Bookmarks["项目标识"].Text;
+            this.year = doc.Range.Bookmarks["年份"].Text;
+
+
             helper.write_bcjqd_chart(doc, doc_builder, this.ruanjianpeizhi_dict, this.yingjianpeizhi_dict,
                 InsertionPos.djhj_bcjqd_section1, InsertionPos.djhj_bcjqd_sec_table, 
                 InsertionPos.sj_bcjqd_name_row, InsertionPos.sj_bcjqd_iden_row, this.time_diff);
@@ -138,31 +145,69 @@ namespace CSSTC1.FileProcessors.writers.BuildEnvironment {
             List<string>> software_test_envs, string bookmark) {
             if(!doc_builder.MoveToBookmark(bookmark))
                 return false;
+            
             doc_builder.MoveToBookmark(bookmark);
-            int flag = 0;
-            foreach(string location in software_test_envs.Keys) {
-                Paragraph old_para = (Paragraph)doc_builder.CurrentParagraph;
-                Paragraph para = (Paragraph)doc_builder.CurrentParagraph.Clone(true);
+            string contents = "";
 
-                doc_builder.MoveTo(old_para);
+            foreach(string location in software_test_envs.Keys) {
+                List<string> test_env_id_list = new List<string>();
                 string names = "";
-                foreach(string software in software_test_envs[location]) {
-                    names += software + '、';
+                if(!location.Equals("本测评中心")){
+                    foreach(string software in software_test_envs[location]) {  
+                        names += software + "、";
+                    }
+                    test_env_id_list = this.get_test_env_id_list(location, software_test_envs[location].Count);
+                    
+                }
+                else{
+                    foreach(string software in software_test_envs[location]) {
+                        names += software + "、";
+                        test_env_id_list.Add(ContentFlags.test_env_id_dict[software]);
+                    }
                 }
                 names = names.Substring(0, names.Length - 1);
-                names += "动态测试环境已搭建，位于" + location + "，";
-                Run run = new Run(doc);
-                run.Text = names;
-                Run first_run = (Run)old_para.GetChild(NodeType.Run, 0, true);
-                old_para.InsertBefore(run, first_run);
-                if(flag < software_test_envs.Count - 1) {
-                    Cell node = (Cell)old_para.GetAncestor(NodeType.Cell);
-                    node.AppendChild(para);
-                    doc_builder.MoveTo(para);
-                }
-                flag += 1;
+                names += "动态测试环境已搭建，位于" + location + "，测试环境标识：";
+                foreach(string text in test_env_id_list)
+                    names += text + "、";
+                names = names.Substring(0, names.Length - 1);
+                names += "，测试环境所用测试设备、工具等的标识与测试说明中一致;\n";
+                contents += names;
             }
+            contents = contents.Substring(0, contents.Length - 1);
+            if(doc_builder.MoveToBookmark(bookmark))
+                doc_builder.Write(contents);
             return true;
+        }
+
+        public List<string> get_test_env_id_list(string location, int count){
+            List<string> test_env_id_list = new List<string>();
+            string head = "CSSTC-TE-{" + this.project_id + "}-N";
+            string tail = "-" + this.year;
+            if(location.Equals("本测评中心")) {
+                //int start_index = ContentFlags.wendangshencha/6 + ContentFlags.jingtaifenxi/15;
+                
+                //for(int i = 0; i < count; i++) {
+                //    start_index += 1;
+                //    string text = head;
+                //    if(start_index < 10)
+                //        text += "0" + ContentFlags.test_env_id.ToString() + tail;
+                //    else
+                //        text += start_index.ToString() + tail;
+                //    test_env_id_list.Add(text);
+                //}
+            }
+            else{
+                for(int i = 0; i < count; i++){
+                    ContentFlags.test_env_id += 1;
+                    string text = head;
+                    if(ContentFlags.test_env_id < 10)
+                        text += "0" + ContentFlags.test_env_id.ToString() + tail;
+                    else
+                        text += ContentFlags.test_env_id.ToString() + tail;
+                    test_env_id_list.Add(text);
+                }
+            }
+            return test_env_id_list;
         }
     }
 }

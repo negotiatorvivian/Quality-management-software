@@ -104,6 +104,16 @@ namespace CSSTC1.FileProcessors.writers {
                     InsertionPos.sj_rksqd_section3, InsertionPos.sj_rksqd_sec_table3, 3,
                     InsertionPos.sj_rksqd_name_row, InsertionPos.sj_code_row_index, 
                     InsertionPos.sj_rksqd_iden_row, times);
+                //如果代码审查或代码走查的源代码与静态分析一致，在入库申请单中加入该内容
+                string text = "";
+                if(ContentFlags.dmsc_same)
+                    text += "、代码审查";
+                if(ContentFlags.dmzc_same)
+                    text += "、代码走查";
+                if(text.Length > 0){
+                    if(doc_builder.MoveToBookmark("源代码是否一致"))
+                        doc_builder.Write(text);
+                    }
                 this.write_pzztbg2_chart(doc, doc_builder, software_dict, "被测件清单4", true);
                 ContentFlags.software_dict = new_software_dict;
             }
@@ -182,13 +192,23 @@ namespace CSSTC1.FileProcessors.writers {
         }
         
         public void write_wdsc_time_line(Document doc, DocumentBuilder doc_builder){
-            DateHelper.fill_time_blank(doc, doc_builder, "文档审查结果记录入库时间", TimeStamp.wdscqr_time, 1);
+            //DateHelper.fill_time_blank(doc, doc_builder, "文档审查结果记录入库时间", TimeStamp.wdscqr_time, 1);
+            DateTime t1 = DateHelper.cal_date(TimeStamp.wdscqr_time, 1);
+            ContentFlags.time_dict2.Add("文档审查结果记录入库时间", t1);
+            if(doc_builder.MoveToBookmark("文档审查结果记录入库时间"))
+                doc_builder.Write(t1.ToLongDateString());
             //文档审查确认时间
             if(doc_builder.MoveToBookmark("文档审查确认时间"))
                 doc_builder.Write(TimeStamp.wdscqr_format_time);
+            DateTime t2 = DateHelper.cal_date(TimeStamp.wdscqr_time, 0);
+            ContentFlags.time_dict2.Add("文档审查确认时间", t2);
+            ContentFlags.time_dict1.Add("文档审查确认时间", t2);
             //文档审查回归时间
             if(doc_builder.MoveToBookmark("文档审查回归时间"))
                 doc_builder.Write(TimeStamp.wdschg_format_time);
+            DateTime t3 = DateHelper.cal_date(TimeStamp.wdschg_time, 0);
+            ContentFlags.time_dict2.Add("文档审查回归时间", t3);
+
         }
         #endregion
 
@@ -329,16 +349,30 @@ namespace CSSTC1.FileProcessors.writers {
 
         public void write_jtfx_time_line(Document doc, DocumentBuilder doc_builder) {
             //联系研制方提供被测软件源代码时间
-            DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第五次", TimeStamp.jtfxsc_time, 7);
+            DateTime t1 = DateHelper.cal_date(TimeStamp.jtfxsc_time, 7);
+            ContentFlags.time_dict1.Add("联系委托方第五次", t1);
+            if(doc_builder.MoveToBookmark("联系委托方第五次"))
+                doc_builder.Write(t1.ToLongDateString());
             //静态分析审查时间
             if(doc_builder.MoveToBookmark("静态分析审查时间"))
                 doc_builder.Write(TimeStamp.jtfxsc_format_time);
+            DateTime t2 = DateHelper.cal_date(TimeStamp.jtfxsc_time, 0);
+            ContentFlags.time_dict2.Add("静态分析审查时间", t2);
             //静态分析结果入库时间
-            DateHelper.fill_time_blank(doc, doc_builder, "静态分析结果入库时间", TimeStamp.jtfxqr_time, 1);
+            DateTime t3 = DateHelper.cal_date(TimeStamp.jtfxqr_time, 1);
+            ContentFlags.time_dict2.Add("静态分析结果入库时间", t3);
+            if(doc_builder.MoveToBookmark("静态分析结果入库时间"))
+                doc_builder.Write(t3.ToLongDateString());
             //联系委托方第六次:研制方来测评中心确认静态分析问题时间
-            DateHelper.fill_time_blank(doc, doc_builder, "联系委托方第六次", TimeStamp.jtfxqr_time, 3);
+            DateTime t4 = DateHelper.cal_date(TimeStamp.jtfxqr_time, 3);
+            ContentFlags.time_dict1.Add("联系委托方第六次", t4);
+            if(doc_builder.MoveToBookmark("联系委托方第六次"))
+                doc_builder.Write(t4.ToLongDateString());
+            DateTime t5 = DateHelper.cal_date(TimeStamp.jtfxhg_time, 0);
+            ContentFlags.time_dict2.Add("静态分析回归时间", t5);
             if(doc_builder.MoveToBookmark("静态分析回归时间"))
                 doc_builder.Write(TimeStamp.jtfxhg_format_time);
+            
         }
         #endregion
     }

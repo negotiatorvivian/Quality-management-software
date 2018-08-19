@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using CSSTC1.InputProcessors;
 using CSSTC1.ConstantVariables;
+using CSSTC1.CommonUtils;
 
 namespace CSSTC1.Pages {
     public partial class ProjectEstabInfo : Form {
@@ -87,42 +88,43 @@ namespace CSSTC1.Pages {
             string lx_time = this.numericUpDown1.Value.ToString();
             //decimal lx_time = this.numericUpDown1.Value;
             string lq_times = this.comboBox1.Text;
-            List<string> lq_time = new List<string>();
+            List<DateTime> lq_time = new List<DateTime>();
             if(lq_times[0].Equals('1')){
                 ContentFlags.lingqucishu = 1;
-                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker1.Value);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
             }
             else if(lq_times[0].Equals('2')) {
                 ContentFlags.lingqucishu = 2;
-                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
-                lq_time.Add(this.dateTimePicker2.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker1.Value);
+                lq_time.Add(this.dateTimePicker2.Value);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker2.Text);
             }
             else if(lq_times[0].Equals('3')) {
                 ContentFlags.lingqucishu = 3;
-                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
-                lq_time.Add(this.dateTimePicker2.Value.ToLongDateString());
-                lq_time.Add(this.dateTimePicker3.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker1.Value);
+                lq_time.Add(this.dateTimePicker2.Value);
+                lq_time.Add(this.dateTimePicker3.Value);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker2.Text);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker3.Text);
             }
             else{
                 ContentFlags.lingqucishu = lq_times[0];
-                lq_time.Add(this.dateTimePicker1.Value.ToLongDateString());
-                lq_time.Add(this.dateTimePicker2.Value.ToLongDateString());
-                lq_time.Add(this.dateTimePicker3.Value.ToLongDateString());
-                lq_time.Add(this.dateTimePicker4.Value.ToLongDateString());
+                lq_time.Add(this.dateTimePicker1.Value);
+                lq_time.Add(this.dateTimePicker2.Value);
+                lq_time.Add(this.dateTimePicker3.Value);
+                lq_time.Add(this.dateTimePicker4.Value);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker1.Text);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker2.Text);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker3.Text);
                 TimeStamp.lingqushijian.Add(this.dateTimePicker4.Text);
             }
-            string pl_time = "";
+            DateTime pl_time = DateTime.MaxValue;
             if(this.dateTimePicker5.Enabled == true){
-                pl_time = this.dateTimePicker5.Value.ToLongDateString();
+                pl_time = this.dateTimePicker5.Value;
+                //pl_time = DateHelper.cal_date(temp, 0);
             }
             processor.fill_estab_info(lx_time, lq_time, pl_time);
             Globals.ThisDocument.project_estab_info.Hide();
